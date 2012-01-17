@@ -1,0 +1,22 @@
+This is a framework I'm slowly developing in the context of my PhD research (see publications here: http://disi.unitn.it/~vitorsouza/academia/). The purpose of this framework is to facilitate the implementation of adaptive systems that follow our approach in their design. This project should also contain one or more simulations that use the framework.
+
+The project's name -- Zanshin -- refers to a "term used in the Japanese martial arts. It refers to a state of awareness" [http://en.wikipedia.org/wiki/Zanshin]. In episode 17 of the 6th season of the American television series Friends, Ross uses "Unagi" instead of "Zanshin" to refer to this concept (and that's why the CASE Tool I'm also developing in my PhD is called Unagi [https://github.com/vitorsouza/Unagi]).
+
+This is an Eclipse project containing several OSGi (Equinox) bundles. If you want to contribute or just run it, I suggest you install Eclipse Indigo for RCP developers and use its Git support to clone the repository. Note this project is being developed with Java 7.
+
+Other than the base Eclipse RCP intall, you will also need the following plug-ins:
+- EMF - Eclipse Modeling Framework SDK
+- AspectJ Development Tools and Equinox Weaving SDK (see Update Site URL here: http://eclipse.org/ajdt/downloads/)
+- The it.unitn.disi.zanshin.core bundle itself (see below).
+
+To install the it.unitn.disi.zanshin.core bundle into Eclipse itself, right-click it and select "Export...". Then, select "Deployable plug-ins and fragments" in the "Plug-in Development" category and click Next. Finally, in the "Destination" tab, select the "Instal into host" option and click "Finish".
+
+To run, create a new OSGi Framework run configuration in Eclipse and configure the items below:
+
+1. In the "Bundles" tab, mark all it.unitn.disi bundles using the following start levels: simulation = 6, adaptivity = 4, core = 3, logging = 2, monitoring = 5. Clique the "Add Required Bundles" button many times, until no more bundles are selected by Eclipse;
+
+2. In the "Arguments" tab, add two extra switches to the end of "VM arguments":  -Dosgi.framework.extensions=org.eclipse.equinox.weaving.hook -XX:-UseSplitVerifier
+
+3. In the "Settings" tab, make sure you select a Java 7 runtime environment. Marking "Clear the configuration area before launching" is also interesting if you experience strange problems during the execution.
+
+Questions, comments, contributions, please contact me.
