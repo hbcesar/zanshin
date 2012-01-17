@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gore"
+    nsURI="http://zanshin.disi.unitn.it/1.0/core" nsPrefix="it.unitn.disi.zanshin.model">
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="LTL.ecore#//OclAny">
+    <eOperations name="findGoalModel" eType="#//GoalModel">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="GoalModel model = null;&#xA;&#xA;// First look if the object has a direct relation to the goal model instance.&#xA;if (it.unitn.disi.zanshin.model.gore.Goal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.Softgoal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Softgoal) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.AwReq.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.AwReq) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.QualityConstraint.class.isAssignableFrom(getClass())) {&#xA;&#x9;it.unitn.disi.zanshin.model.gore.Softgoal softgoal = ((it.unitn.disi.zanshin.model.gore.QualityConstraint) this).getSoftgoal();&#xA;&#x9;if (softgoal != null) model = softgoal.getGoalModel();&#xA;}&#xA;&#xA;// If the goal model is not directly related, it should still be null. Then, checks the parent (if there is one).&#xA;if ((model == null) &amp;&amp; (getParent() != null))&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;&#xA;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Requirement" containment="true" eOpposite="#//Requirement/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Requirement"
+        eOpposite="#//Requirement/children"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DefinableRequirement" eSuperTypes="#//Requirement">
+    <eOperations name="start">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())&#xA;&#x9;if (child instanceof DefinableRequirement) ((DefinableRequirement)child).start();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement) &amp;&amp; (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))&#xA;&#x9;((DefinableRequirement) parent).start();&#xA;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="end">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement ended: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="success">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement succeeded: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((DefinableRequirement) parent).success();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="fail">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement failed: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="checkState">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// For AND-refined requirements, checks if all children have SUCCEEDED.&#xA;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {&#xA;&#x9;if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE] == defChildrenCount) success();&#xA;}&#xA;&#xA;// For OR-refined requirements, checks if all children have FAILED.&#xA;else {&#xA;&#x9;if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE] == defChildrenCount) fail();&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//DefinableRequirementState"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//QualityConstraint" containment="true" eOpposite="#//QualityConstraint/softgoal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/softgoals"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" eSuperTypes="#//DefinableRequirement">
+    <eOperations name="cancel">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Only process the cancellation if the requirement has not yet been canceled.&#xA;if (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement canceled: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;&#x9;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);&#xA;&#x9;end();&#xA;&#x9;&#xA;&#x9;// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.&#xA;&#x9;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;&#x9;if ((parent != null) &amp;&amp; (parent instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement)) {&#xA;&#x9;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).checkState();&#xA;&#x9;&#x9;else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();&#xA;&#x9;&#x9;else ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).fail();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;// Also propagate the cancellation to the children if and-refined and the children are performative.&#xA;&#x9;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)&#xA;&#x9;&#x9;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())&#xA;&#x9;&#x9;&#x9;if (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="checkState">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Counts the number of children in each state and the number of definable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((it.unitn.disi.zanshin.model.gore.DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// For AND-refined requirements, checks if all children have SUCCEEDED.&#xA;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {&#xA;&#x9;if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE] == defChildrenCount) success();&#xA;}&#xA;&#xA;// For OR-refined requirements, checks if all children have FAILED or have been CANCELED.&#xA;else {&#xA;&#x9;if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE] == defChildrenCount) fail();&#xA;&#x9;else if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED_VALUE] == defChildrenCount) cancel();&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualityConstraint" eSuperTypes="#//DefinableRequirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="softgoal" lowerBound="1"
+        eType="#//Softgoal" eOpposite="#//Softgoal/constraints"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AwReq" eSuperTypes="#//DefinableRequirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherTargets" upperBound="-1"
+        eType="#//DefinableRequirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//DefinableRequirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/awReqs"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//DefinableRequirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//PerformativeRequirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/rootGoal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="AggregationLevel">
+    <eLiterals name="INSTANCE" literal="Instance level only"/>
+    <eLiterals name="CLASS" value="1" literal="Class level only"/>
+    <eLiterals name="BOTH" value="2" literal="Both instance and class level"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DefinableRequirementState">
+    <eLiterals name="UNDEFINED" literal="Undefined"/>
+    <eLiterals name="STARTED" value="1" literal="Started"/>
+    <eLiterals name="SUCCEEDED" value="2" literal="Succeeded"/>
+    <eLiterals name="FAILED" value="3" literal="Failed"/>
+    <eLiterals name="CANCELED" value="4" literal="Canceled"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MonitorableMethod">
+    <eLiterals name="START" literal="Start"/>
+    <eLiterals name="END" value="1" literal="End"/>
+    <eLiterals name="SUCCESS" value="2" literal="Success"/>
+    <eLiterals name="FAIL" value="3" literal="Fail"/>
+    <eLiterals name="CANCEL" value="4" literal="Cancel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RefinementType">
+    <eLiterals name="AND" literal="And"/>
+    <eLiterals name="OR" value="1" literal="Or"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/actors"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GoalModel">
+    <eOperations name="getId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (internalId == null) internalId = System.currentTimeMillis();&#xA;return internalId;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" lowerBound="1"
+        eType="#//Goal" containment="true" eOpposite="#//Goal/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="softgoals" upperBound="-1"
+        eType="#//Softgoal" containment="true" eOpposite="#//Softgoal/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awReqs" upperBound="-1"
+        eType="#//AwReq" containment="true" eOpposite="#//AwReq/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
+        eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true" eOpposite="#//Parameter/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        changeable="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedGetVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedSetVisibility" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/parameters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationAlgorithm"/>
+</ecore:EPackage>

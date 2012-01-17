@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="eca"
+    nsURI="http://zanshin.disi.unitn.it/1.0/eca" nsPrefix="it.unitn.disi.zanshin.model">
+  <eClassifiers xsi:type="ecore:EClass" name="EcaAwReq" eSuperTypes="gore.ecore#//AwReq">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ResolutionCondition"
+        containment="true" eOpposite="#//ResolutionCondition/awReq"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategies" upperBound="-1"
+        eType="#//AdaptationStrategy" containment="true" eOpposite="#//AdaptationStrategy/awReq"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectedStrategy" eType="#//AdaptationStrategy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResolutionCondition" abstract="true">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awReq" eType="#//EcaAwReq"
+        eOpposite="#//EcaAwReq/condition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdaptationStrategy" abstract="true">
+    <eOperations name="execute">
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awReq" eType="#//EcaAwReq"
+        eOpposite="#//EcaAwReq/strategies"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ApplicabilityCondition"
+        containment="true" eOpposite="#//ApplicabilityCondition/strategy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicabilityCondition" abstract="true">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" eType="#//AdaptationStrategy"
+        eOpposite="#//AdaptationStrategy/condition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="session" eType="#//AdaptationSession"
+        eOpposite="#//AdaptationSession/events"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awReq" eType="#//EcaAwReq"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdaptationSession">
+    <eOperations name="addEvent">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.model.eca.Event event = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createEvent();&#xA;event.setTime(new java.util.Date(System.currentTimeMillis()));&#xA;event.setAwReq(awreq);&#xA;getEvents().add(event);"/>
+      </eAnnotations>
+      <eParameters name="awreq" eType="#//EcaAwReq"/>
+    </eOperations>
+    <eOperations name="terminate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="setActive(false);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//Event" containment="true" eOpposite="#//Event/session"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleResolutionCondition" eSuperTypes="#//ResolutionCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;return ((awreq != null) &amp;&amp; (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED));"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleApplicabilityCondition" eSuperTypes="#//ApplicabilityCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return true;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="System.out.println(&quot;############ Retry Strategy being applied!!!&quot;);"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+  </eClassifiers>
+</ecore:EPackage>
