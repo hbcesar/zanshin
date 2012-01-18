@@ -47,8 +47,21 @@ public class SimpleResolutionConditionImpl extends ResolutionConditionImpl imple
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
+		// If the current evaluation is Success, the problem is solved. 
 		it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();
-		return ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED));
+		if ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED)) return true;
+		
+		// Otherwise, if the last applied strategy was "abort", the problem is also solved.
+		else if (session.getEvents().size() > 0) {
+			it.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);
+			it.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();
+			it.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();
+			if ((lastStrategy != null) && (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))
+				return true;
+		}
+		
+		// If none of the above, the problem is not yet solved.
+		return false;
 	}
 
 } //SimpleResolutionConditionImpl

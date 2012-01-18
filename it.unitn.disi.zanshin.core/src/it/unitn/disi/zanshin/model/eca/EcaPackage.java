@@ -347,13 +347,22 @@ public interface EcaPackage extends EPackage {
 	int ADAPTATION_SESSION__ACTIVE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTATION_SESSION__ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>Adaptation Session</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTATION_SESSION_FEATURE_COUNT = 2;
+	int ADAPTATION_SESSION_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.SimpleResolutionConditionImpl <em>Simple Resolution Condition</em>}' class.
@@ -384,6 +393,80 @@ public interface EcaPackage extends EPackage {
 	int SIMPLE_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.AndRefinedResolutionConditionImpl <em>And Refined Resolution Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.AndRefinedResolutionConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAndRefinedResolutionCondition()
+	 * @generated
+	 */
+	int AND_REFINED_RESOLUTION_CONDITION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_RESOLUTION_CONDITION__CHILDREN = RESOLUTION_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>And Refined Resolution Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.OrRefinedResolutionConditionImpl <em>Or Refined Resolution Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.OrRefinedResolutionConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getOrRefinedResolutionCondition()
+	 * @generated
+	 */
+	int OR_REFINED_RESOLUTION_CONDITION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_RESOLUTION_CONDITION__CHILDREN = RESOLUTION_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Or Refined Resolution Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.SimpleApplicabilityConditionImpl <em>Simple Applicability Condition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -391,7 +474,7 @@ public interface EcaPackage extends EPackage {
 	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getSimpleApplicabilityCondition()
 	 * @generated
 	 */
-	int SIMPLE_APPLICABILITY_CONDITION = 7;
+	int SIMPLE_APPLICABILITY_CONDITION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Strategy</b></em>' container reference.
@@ -412,6 +495,117 @@ public interface EcaPackage extends EPackage {
 	int SIMPLE_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.MaxExecutionsPerSessionApplicabilityConditionImpl <em>Max Executions Per Session Applicability Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.MaxExecutionsPerSessionApplicabilityConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getMaxExecutionsPerSessionApplicabilityCondition()
+	 * @generated
+	 */
+	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Max Executions</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION__MAX_EXECUTIONS = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Max Executions Per Session Applicability Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.AndRefinedApplicabilityConditionImpl <em>And Refined Applicability Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.AndRefinedApplicabilityConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAndRefinedApplicabilityCondition()
+	 * @generated
+	 */
+	int AND_REFINED_APPLICABILITY_CONDITION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_APPLICABILITY_CONDITION__CHILDREN = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>And Refined Applicability Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.OrRefinedApplicabilityConditionImpl <em>Or Refined Applicability Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.OrRefinedApplicabilityConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getOrRefinedApplicabilityCondition()
+	 * @generated
+	 */
+	int OR_REFINED_APPLICABILITY_CONDITION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_APPLICABILITY_CONDITION__CHILDREN = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Or Refined Applicability Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.RetryStrategyImpl <em>Retry Strategy</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,7 +613,258 @@ public interface EcaPackage extends EPackage {
 	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getRetryStrategy()
 	 * @generated
 	 */
-	int RETRY_STRATEGY = 8;
+	int RETRY_STRATEGY = 17;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.StrengthenEnableChildStrategyImpl <em>Strengthen Enable Child Strategy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.StrengthenEnableChildStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getStrengthenEnableChildStrategy()
+	 * @generated
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY = 18;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.StrengthenReplaceImpl <em>Strengthen Replace</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.StrengthenReplaceImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getStrengthenReplace()
+	 * @generated
+	 */
+	int STRENGTHEN_REPLACE = 19;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.WarningStrategyImpl <em>Warning Strategy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.WarningStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getWarningStrategy()
+	 * @generated
+	 */
+	int WARNING_STRATEGY = 20;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.AbortStrategyImpl <em>Abort Strategy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.AbortStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAbortStrategy()
+	 * @generated
+	 */
+	int ABORT_STRATEGY = 13;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABORT_STRATEGY__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABORT_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The number of structural features of the '<em>Abort Strategy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABORT_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.DelegateStrategyImpl <em>Delegate Strategy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.DelegateStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getDelegateStrategy()
+	 * @generated
+	 */
+	int DELEGATE_STRATEGY = 14;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELEGATE_STRATEGY__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELEGATE_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Actor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELEGATE_STRATEGY__ACTOR = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Delegate Strategy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELEGATE_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.RelaxDisableChildStrategyImpl <em>Relax Disable Child Strategy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.RelaxDisableChildStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getRelaxDisableChildStrategy()
+	 * @generated
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY = 15;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__LEVEL = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Child</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__CHILD = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Relax Disable Child Strategy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.RelaxReplaceImpl <em>Relax Replace</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.eca.impl.RelaxReplaceImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getRelaxReplace()
+	 * @generated
+	 */
+	int RELAX_REPLACE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__COPY = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__LEVEL = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>New Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__NEW_REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Relax Replace</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
@@ -440,13 +885,184 @@ public interface EcaPackage extends EPackage {
 	int RETRY_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
 
 	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_STRATEGY__COPY = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_STRATEGY__TIME = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Retry Strategy</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RETRY_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+	int RETRY_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__LEVEL = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Child</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__CHILD = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Strengthen Enable Child Strategy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__COPY = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__LEVEL = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>New Requirement</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__NEW_REQUIREMENT = ADAPTATION_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Strengthen Replace</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Aw Req</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WARNING_STRATEGY__AW_REQ = ADAPTATION_STRATEGY__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WARNING_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Actor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WARNING_STRATEGY__ACTOR = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Warning Strategy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WARNING_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
 
 
 	/**
@@ -642,6 +1258,17 @@ public interface EcaPackage extends EPackage {
 	EAttribute getAdaptationSession_Active();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.AdaptationSession#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AdaptationSession#getId()
+	 * @see #getAdaptationSession()
+	 * @generated
+	 */
+	EAttribute getAdaptationSession_Id();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.SimpleResolutionCondition <em>Simple Resolution Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -650,6 +1277,48 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSimpleResolutionCondition();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition <em>And Refined Resolution Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And Refined Resolution Condition</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition
+	 * @generated
+	 */
+	EClass getAndRefinedResolutionCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition#getChildren()
+	 * @see #getAndRefinedResolutionCondition()
+	 * @generated
+	 */
+	EReference getAndRefinedResolutionCondition_Children();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition <em>Or Refined Resolution Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or Refined Resolution Condition</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition
+	 * @generated
+	 */
+	EClass getOrRefinedResolutionCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition#getChildren()
+	 * @see #getOrRefinedResolutionCondition()
+	 * @generated
+	 */
+	EReference getOrRefinedResolutionCondition_Children();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.SimpleApplicabilityCondition <em>Simple Applicability Condition</em>}'.
@@ -662,6 +1331,69 @@ public interface EcaPackage extends EPackage {
 	EClass getSimpleApplicabilityCondition();
 
 	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition <em>Max Executions Per Session Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Max Executions Per Session Applicability Condition</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition
+	 * @generated
+	 */
+	EClass getMaxExecutionsPerSessionApplicabilityCondition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition#getMaxExecutions <em>Max Executions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Executions</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition#getMaxExecutions()
+	 * @see #getMaxExecutionsPerSessionApplicabilityCondition()
+	 * @generated
+	 */
+	EAttribute getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition <em>And Refined Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And Refined Applicability Condition</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition
+	 * @generated
+	 */
+	EClass getAndRefinedApplicabilityCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition#getChildren()
+	 * @see #getAndRefinedApplicabilityCondition()
+	 * @generated
+	 */
+	EReference getAndRefinedApplicabilityCondition_Children();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition <em>Or Refined Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or Refined Applicability Condition</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition
+	 * @generated
+	 */
+	EClass getOrRefinedApplicabilityCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition#getChildren()
+	 * @see #getOrRefinedApplicabilityCondition()
+	 * @generated
+	 */
+	EReference getOrRefinedApplicabilityCondition_Children();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.RetryStrategy <em>Retry Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -670,6 +1402,274 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRetryStrategy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.RetryStrategy#getCopy <em>Copy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Copy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RetryStrategy#getCopy()
+	 * @see #getRetryStrategy()
+	 * @generated
+	 */
+	EAttribute getRetryStrategy_Copy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.RetryStrategy#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RetryStrategy#getTime()
+	 * @see #getRetryStrategy()
+	 * @generated
+	 */
+	EAttribute getRetryStrategy_Time();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy <em>Strengthen Enable Child Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Strengthen Enable Child Strategy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy
+	 * @generated
+	 */
+	EClass getStrengthenEnableChildStrategy();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getRequirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getRequirement()
+	 * @see #getStrengthenEnableChildStrategy()
+	 * @generated
+	 */
+	EReference getStrengthenEnableChildStrategy_Requirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getLevel()
+	 * @see #getStrengthenEnableChildStrategy()
+	 * @generated
+	 */
+	EAttribute getStrengthenEnableChildStrategy_Level();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getChild <em>Child</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Child</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy#getChild()
+	 * @see #getStrengthenEnableChildStrategy()
+	 * @generated
+	 */
+	EReference getStrengthenEnableChildStrategy_Child();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace <em>Strengthen Replace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Strengthen Replace</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace
+	 * @generated
+	 */
+	EClass getStrengthenReplace();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace#getRequirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace#getRequirement()
+	 * @see #getStrengthenReplace()
+	 * @generated
+	 */
+	EReference getStrengthenReplace_Requirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace#getCopy <em>Copy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Copy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace#getCopy()
+	 * @see #getStrengthenReplace()
+	 * @generated
+	 */
+	EAttribute getStrengthenReplace_Copy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace#getLevel()
+	 * @see #getStrengthenReplace()
+	 * @generated
+	 */
+	EAttribute getStrengthenReplace_Level();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace#getNewRequirement <em>New Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>New Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace#getNewRequirement()
+	 * @see #getStrengthenReplace()
+	 * @generated
+	 */
+	EReference getStrengthenReplace_NewRequirement();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.WarningStrategy <em>Warning Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Warning Strategy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.WarningStrategy
+	 * @generated
+	 */
+	EClass getWarningStrategy();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.WarningStrategy#getActor <em>Actor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Actor</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.WarningStrategy#getActor()
+	 * @see #getWarningStrategy()
+	 * @generated
+	 */
+	EReference getWarningStrategy_Actor();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.AbortStrategy <em>Abort Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abort Strategy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AbortStrategy
+	 * @generated
+	 */
+	EClass getAbortStrategy();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.DelegateStrategy <em>Delegate Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Delegate Strategy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.DelegateStrategy
+	 * @generated
+	 */
+	EClass getDelegateStrategy();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.DelegateStrategy#getActor <em>Actor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Actor</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.DelegateStrategy#getActor()
+	 * @see #getDelegateStrategy()
+	 * @generated
+	 */
+	EReference getDelegateStrategy_Actor();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy <em>Relax Disable Child Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Relax Disable Child Strategy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy
+	 * @generated
+	 */
+	EClass getRelaxDisableChildStrategy();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getRequirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getRequirement()
+	 * @see #getRelaxDisableChildStrategy()
+	 * @generated
+	 */
+	EReference getRelaxDisableChildStrategy_Requirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getLevel()
+	 * @see #getRelaxDisableChildStrategy()
+	 * @generated
+	 */
+	EAttribute getRelaxDisableChildStrategy_Level();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getChild <em>Child</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Child</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy#getChild()
+	 * @see #getRelaxDisableChildStrategy()
+	 * @generated
+	 */
+	EReference getRelaxDisableChildStrategy_Child();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace <em>Relax Replace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Relax Replace</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace
+	 * @generated
+	 */
+	EClass getRelaxReplace();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace#getRequirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace#getRequirement()
+	 * @see #getRelaxReplace()
+	 * @generated
+	 */
+	EReference getRelaxReplace_Requirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace#getCopy <em>Copy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Copy</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace#getCopy()
+	 * @see #getRelaxReplace()
+	 * @generated
+	 */
+	EAttribute getRelaxReplace_Copy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace#getLevel()
+	 * @see #getRelaxReplace()
+	 * @generated
+	 */
+	EAttribute getRelaxReplace_Level();
+
+	/**
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace#getNewRequirement <em>New Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>New Requirement</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace#getNewRequirement()
+	 * @see #getRelaxReplace()
+	 * @generated
+	 */
+	EReference getRelaxReplace_NewRequirement();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -850,6 +1850,14 @@ public interface EcaPackage extends EPackage {
 		EAttribute ADAPTATION_SESSION__ACTIVE = eINSTANCE.getAdaptationSession_Active();
 
 		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTATION_SESSION__ID = eINSTANCE.getAdaptationSession_Id();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.SimpleResolutionConditionImpl <em>Simple Resolution Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -858,6 +1866,42 @@ public interface EcaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SIMPLE_RESOLUTION_CONDITION = eINSTANCE.getSimpleResolutionCondition();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.AndRefinedResolutionConditionImpl <em>And Refined Resolution Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.AndRefinedResolutionConditionImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAndRefinedResolutionCondition()
+		 * @generated
+		 */
+		EClass AND_REFINED_RESOLUTION_CONDITION = eINSTANCE.getAndRefinedResolutionCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AND_REFINED_RESOLUTION_CONDITION__CHILDREN = eINSTANCE.getAndRefinedResolutionCondition_Children();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.OrRefinedResolutionConditionImpl <em>Or Refined Resolution Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.OrRefinedResolutionConditionImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getOrRefinedResolutionCondition()
+		 * @generated
+		 */
+		EClass OR_REFINED_RESOLUTION_CONDITION = eINSTANCE.getOrRefinedResolutionCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OR_REFINED_RESOLUTION_CONDITION__CHILDREN = eINSTANCE.getOrRefinedResolutionCondition_Children();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.SimpleApplicabilityConditionImpl <em>Simple Applicability Condition</em>}' class.
@@ -870,6 +1914,60 @@ public interface EcaPackage extends EPackage {
 		EClass SIMPLE_APPLICABILITY_CONDITION = eINSTANCE.getSimpleApplicabilityCondition();
 
 		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.MaxExecutionsPerSessionApplicabilityConditionImpl <em>Max Executions Per Session Applicability Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.MaxExecutionsPerSessionApplicabilityConditionImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getMaxExecutionsPerSessionApplicabilityCondition()
+		 * @generated
+		 */
+		EClass MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION = eINSTANCE.getMaxExecutionsPerSessionApplicabilityCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Executions</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION__MAX_EXECUTIONS = eINSTANCE.getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.AndRefinedApplicabilityConditionImpl <em>And Refined Applicability Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.AndRefinedApplicabilityConditionImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAndRefinedApplicabilityCondition()
+		 * @generated
+		 */
+		EClass AND_REFINED_APPLICABILITY_CONDITION = eINSTANCE.getAndRefinedApplicabilityCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AND_REFINED_APPLICABILITY_CONDITION__CHILDREN = eINSTANCE.getAndRefinedApplicabilityCondition_Children();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.OrRefinedApplicabilityConditionImpl <em>Or Refined Applicability Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.OrRefinedApplicabilityConditionImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getOrRefinedApplicabilityCondition()
+		 * @generated
+		 */
+		EClass OR_REFINED_APPLICABILITY_CONDITION = eINSTANCE.getOrRefinedApplicabilityCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OR_REFINED_APPLICABILITY_CONDITION__CHILDREN = eINSTANCE.getOrRefinedApplicabilityCondition_Children();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.RetryStrategyImpl <em>Retry Strategy</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -878,6 +1976,220 @@ public interface EcaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RETRY_STRATEGY = eINSTANCE.getRetryStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RETRY_STRATEGY__COPY = eINSTANCE.getRetryStrategy_Copy();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RETRY_STRATEGY__TIME = eINSTANCE.getRetryStrategy_Time();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.StrengthenEnableChildStrategyImpl <em>Strengthen Enable Child Strategy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.StrengthenEnableChildStrategyImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getStrengthenEnableChildStrategy()
+		 * @generated
+		 */
+		EClass STRENGTHEN_ENABLE_CHILD_STRATEGY = eINSTANCE.getStrengthenEnableChildStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRENGTHEN_ENABLE_CHILD_STRATEGY__REQUIREMENT = eINSTANCE.getStrengthenEnableChildStrategy_Requirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRENGTHEN_ENABLE_CHILD_STRATEGY__LEVEL = eINSTANCE.getStrengthenEnableChildStrategy_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>Child</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRENGTHEN_ENABLE_CHILD_STRATEGY__CHILD = eINSTANCE.getStrengthenEnableChildStrategy_Child();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.StrengthenReplaceImpl <em>Strengthen Replace</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.StrengthenReplaceImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getStrengthenReplace()
+		 * @generated
+		 */
+		EClass STRENGTHEN_REPLACE = eINSTANCE.getStrengthenReplace();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRENGTHEN_REPLACE__REQUIREMENT = eINSTANCE.getStrengthenReplace_Requirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRENGTHEN_REPLACE__COPY = eINSTANCE.getStrengthenReplace_Copy();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRENGTHEN_REPLACE__LEVEL = eINSTANCE.getStrengthenReplace_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>New Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRENGTHEN_REPLACE__NEW_REQUIREMENT = eINSTANCE.getStrengthenReplace_NewRequirement();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.WarningStrategyImpl <em>Warning Strategy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.WarningStrategyImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getWarningStrategy()
+		 * @generated
+		 */
+		EClass WARNING_STRATEGY = eINSTANCE.getWarningStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Actor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WARNING_STRATEGY__ACTOR = eINSTANCE.getWarningStrategy_Actor();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.AbortStrategyImpl <em>Abort Strategy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.AbortStrategyImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getAbortStrategy()
+		 * @generated
+		 */
+		EClass ABORT_STRATEGY = eINSTANCE.getAbortStrategy();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.DelegateStrategyImpl <em>Delegate Strategy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.DelegateStrategyImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getDelegateStrategy()
+		 * @generated
+		 */
+		EClass DELEGATE_STRATEGY = eINSTANCE.getDelegateStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Actor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DELEGATE_STRATEGY__ACTOR = eINSTANCE.getDelegateStrategy_Actor();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.RelaxDisableChildStrategyImpl <em>Relax Disable Child Strategy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.RelaxDisableChildStrategyImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getRelaxDisableChildStrategy()
+		 * @generated
+		 */
+		EClass RELAX_DISABLE_CHILD_STRATEGY = eINSTANCE.getRelaxDisableChildStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELAX_DISABLE_CHILD_STRATEGY__REQUIREMENT = eINSTANCE.getRelaxDisableChildStrategy_Requirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RELAX_DISABLE_CHILD_STRATEGY__LEVEL = eINSTANCE.getRelaxDisableChildStrategy_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>Child</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELAX_DISABLE_CHILD_STRATEGY__CHILD = eINSTANCE.getRelaxDisableChildStrategy_Child();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.RelaxReplaceImpl <em>Relax Replace</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.eca.impl.RelaxReplaceImpl
+		 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getRelaxReplace()
+		 * @generated
+		 */
+		EClass RELAX_REPLACE = eINSTANCE.getRelaxReplace();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELAX_REPLACE__REQUIREMENT = eINSTANCE.getRelaxReplace_Requirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RELAX_REPLACE__COPY = eINSTANCE.getRelaxReplace_Copy();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RELAX_REPLACE__LEVEL = eINSTANCE.getRelaxReplace_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>New Requirement</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELAX_REPLACE__NEW_REQUIREMENT = eINSTANCE.getRelaxReplace_NewRequirement();
 
 	}
 

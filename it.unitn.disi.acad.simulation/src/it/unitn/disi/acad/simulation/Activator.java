@@ -1,6 +1,8 @@
 package it.unitn.disi.acad.simulation;
 
 import it.unitn.disi.acad.simulation.cases.Simulation;
+import it.unitn.disi.acad.simulation.internal.services.TargetSystemControllerService;
+import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
 import java.util.Properties;
 
@@ -39,6 +41,10 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		SimulationUtils.initialize(logTracker.getService());
 		SimulationUtils.log.info("A-CAD Simulation Component starting..."); //$NON-NLS-1$
+
+		// Registers the target system controller service (the controller at the application side).
+		ITargetSystemControllerService controllerService = new TargetSystemControllerService();
+		context.registerService(ITargetSystemControllerService.class, controllerService, null);
 		
 		// Reads the simulation properties.
 		Properties props = SimulationUtils.readSimulationProperties();

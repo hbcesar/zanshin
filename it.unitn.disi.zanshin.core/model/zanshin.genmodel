@@ -61,6 +61,11 @@
         <genParameters ecoreParameter="eca.ecore#//RetryStrategy/execute/session"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="eca.ecore#//AbortStrategy">
+      <genOperations ecoreOperation="eca.ecore#//AbortStrategy/execute">
+        <genParameters ecoreParameter="eca.ecore#//AbortStrategy/execute/session"/>
+      </genOperations>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Gore" basePackage="it.unitn.disi.zanshin.model" disposableProviderFactory="true"
       ecorePackage="gore.ecore#/">

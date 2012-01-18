@@ -5,7 +5,10 @@ import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.Parameter;
+import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * TODO: document this type.
@@ -13,7 +16,7 @@ import it.unitn.disi.zanshin.model.gore.Requirement;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public interface AdaptivityFacade {
+public interface ITargetSystemControllerService {
 	/**
 	 * The target system should "fail gracefully", which could range from just showing an error message to shutting the
 	 * entire system down, depending on the system and the AwReq that failed.
@@ -59,18 +62,18 @@ public interface AdaptivityFacade {
 	 * @param value
 	 *          The new value of the parameter.
 	 */
-	void changeParameter(Class<? extends Requirement> reqClass, Parameter param, Object value);
+	void changeParameter(EClass reqClass, Parameter param, Object value);
 
 	/**
-	 * The target system should copy the data associated with the source requirement instance (e.g., data provided by the
-	 * user) to the destination requirements instance.
+	 * The target system should copy the data associated with the source performative requirement instance (e.g., data
+	 * provided by the user) to the destination requirements instance.
 	 * 
 	 * @param srcReq
 	 *          The source requirement instance.
 	 * @param dstReq
 	 *          The destination requirement instance.
 	 */
-	void copyData(Requirement srcReq, Requirement dstReq);
+	void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq);
 
 	/**
 	 * From now on, the target system should stop trying to satisfy the specified requirement. If it is an AwReq, the
@@ -79,7 +82,7 @@ public interface AdaptivityFacade {
 	 * @param reqClass
 	 *          The requirement class to disable.
 	 */
-	void disable(Class<? extends Requirement> reqClass);
+	void disable(EClass reqClass);
 
 	/**
 	 * From now on, the target system should resume trying to satisfy the specified requirement. If it is an AwReq, the
@@ -88,7 +91,7 @@ public interface AdaptivityFacade {
 	 * @param reqClass
 	 *          The requirement class to enable.
 	 */
-	void enable(Class<? extends Requirement> reqClass);
+	void enable(EClass reqClass);
 
 	/**
 	 * The target system should initialize the components related to the specified requirements instance and start
@@ -101,6 +104,15 @@ public interface AdaptivityFacade {
 	void initiate(Requirement req);
 
 	/**
+	 * The adaptivity framework should create a new instance of the given requirement class.
+	 * 
+	 * @param reqClass
+	 *          The requirement class of the instance that should be created.
+	 * @return The newly created requirement instance.
+	 */
+	Requirement newInstance(EClass reqClass);
+
+	/**
 	 * If the specified requirement instance has been previously suspended, the target system should resume pursuing the
 	 * its satisfaction.
 	 * 
@@ -111,12 +123,13 @@ public interface AdaptivityFacade {
 
 	/**
 	 * The target system should undo any partial changes that might have been effected while the satisfaction of the
-	 * specified requirement instance was being pursued and which would leave the system in an inconsistent state.
+	 * specified performative requirement instance was being pursued and which would leave the system in an inconsistent
+	 * state.
 	 * 
 	 * @param req
 	 *          The requirement instance that should be rolled back.
 	 */
-	void rollback(Requirement req);
+	void rollback(PerformativeRequirement req);
 
 	/**
 	 * The target system should warn the specified actor about the failure of the specified AwReq instance.

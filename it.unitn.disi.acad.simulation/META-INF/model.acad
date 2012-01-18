@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<acad:AcadGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:acad="http://acad/1.0">
+<acad:AcadGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:acad="http://acad/1.0" xmlns:it.unitn.disi.zanshin.model="http://zanshin.disi.unitn.it/1.0/eca">
   <rootGoal xsi:type="acad:G_GenDispatch">
     <children xsi:type="acad:G_CallTaking">
       <children xsi:type="acad:D_MaxCalls"/>
@@ -83,5 +83,13 @@
   <awReqs xsi:type="acad:AR12"/>
   <awReqs xsi:type="acad:AR13"/>
   <awReqs xsi:type="acad:AR14"/>
-  <awReqs xsi:type="acad:AR15" target="//@rootGoal/@children.0/@children.1"/>
+  <awReqs xsi:type="acad:AR15" target="//@rootGoal/@children.0/@children.1">
+    <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
+    <strategies xsi:type="it.unitn.disi.zanshin.model:RetryStrategy" time="5000">
+    	<condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+    </strategies>
+    <strategies xsi:type="it.unitn.disi.zanshin.model:RelaxDisableChildStrategy" child="//@rootGoal/@children.0/@children.1/@children.1">
+    	<condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+    </strategies>
+  </awReqs>
 </acad:AcadGoalModel>

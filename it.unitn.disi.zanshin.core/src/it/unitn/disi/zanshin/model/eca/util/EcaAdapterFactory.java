@@ -6,16 +6,28 @@
  */
 package it.unitn.disi.zanshin.model.eca.util;
 
+import it.unitn.disi.zanshin.model.eca.AbortStrategy;
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.AdaptationStrategy;
+import it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition;
+import it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition;
 import it.unitn.disi.zanshin.model.eca.ApplicabilityCondition;
+import it.unitn.disi.zanshin.model.eca.DelegateStrategy;
 import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.eca.EcaPackage;
 import it.unitn.disi.zanshin.model.eca.Event;
+import it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition;
+import it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition;
+import it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition;
+import it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy;
+import it.unitn.disi.zanshin.model.eca.RelaxReplace;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.eca.RetryStrategy;
 import it.unitn.disi.zanshin.model.eca.SimpleApplicabilityCondition;
 import it.unitn.disi.zanshin.model.eca.SimpleResolutionCondition;
+import it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy;
+import it.unitn.disi.zanshin.model.eca.StrengthenReplace;
+import it.unitn.disi.zanshin.model.eca.WarningStrategy;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
@@ -111,12 +123,60 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 				return createSimpleResolutionConditionAdapter();
 			}
 			@Override
+			public Adapter caseAndRefinedResolutionCondition(AndRefinedResolutionCondition object) {
+				return createAndRefinedResolutionConditionAdapter();
+			}
+			@Override
+			public Adapter caseOrRefinedResolutionCondition(OrRefinedResolutionCondition object) {
+				return createOrRefinedResolutionConditionAdapter();
+			}
+			@Override
 			public Adapter caseSimpleApplicabilityCondition(SimpleApplicabilityCondition object) {
 				return createSimpleApplicabilityConditionAdapter();
 			}
 			@Override
+			public Adapter caseMaxExecutionsPerSessionApplicabilityCondition(MaxExecutionsPerSessionApplicabilityCondition object) {
+				return createMaxExecutionsPerSessionApplicabilityConditionAdapter();
+			}
+			@Override
+			public Adapter caseAndRefinedApplicabilityCondition(AndRefinedApplicabilityCondition object) {
+				return createAndRefinedApplicabilityConditionAdapter();
+			}
+			@Override
+			public Adapter caseOrRefinedApplicabilityCondition(OrRefinedApplicabilityCondition object) {
+				return createOrRefinedApplicabilityConditionAdapter();
+			}
+			@Override
+			public Adapter caseAbortStrategy(AbortStrategy object) {
+				return createAbortStrategyAdapter();
+			}
+			@Override
+			public Adapter caseDelegateStrategy(DelegateStrategy object) {
+				return createDelegateStrategyAdapter();
+			}
+			@Override
+			public Adapter caseRelaxDisableChildStrategy(RelaxDisableChildStrategy object) {
+				return createRelaxDisableChildStrategyAdapter();
+			}
+			@Override
+			public Adapter caseRelaxReplace(RelaxReplace object) {
+				return createRelaxReplaceAdapter();
+			}
+			@Override
 			public Adapter caseRetryStrategy(RetryStrategy object) {
 				return createRetryStrategyAdapter();
+			}
+			@Override
+			public Adapter caseStrengthenEnableChildStrategy(StrengthenEnableChildStrategy object) {
+				return createStrengthenEnableChildStrategyAdapter();
+			}
+			@Override
+			public Adapter caseStrengthenReplace(StrengthenReplace object) {
+				return createStrengthenReplaceAdapter();
+			}
+			@Override
+			public Adapter caseWarningStrategy(WarningStrategy object) {
+				return createWarningStrategyAdapter();
 			}
 			@Override
 			public Adapter caseOclAny(OclAny object) {
@@ -253,6 +313,34 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition <em>And Refined Resolution Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedResolutionCondition
+	 * @generated
+	 */
+	public Adapter createAndRefinedResolutionConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition <em>Or Refined Resolution Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedResolutionCondition
+	 * @generated
+	 */
+	public Adapter createOrRefinedResolutionConditionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.SimpleApplicabilityCondition <em>Simple Applicability Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -267,6 +355,48 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition <em>Max Executions Per Session Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition
+	 * @generated
+	 */
+	public Adapter createMaxExecutionsPerSessionApplicabilityConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition <em>And Refined Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.AndRefinedApplicabilityCondition
+	 * @generated
+	 */
+	public Adapter createAndRefinedApplicabilityConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition <em>Or Refined Applicability Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.OrRefinedApplicabilityCondition
+	 * @generated
+	 */
+	public Adapter createOrRefinedApplicabilityConditionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.RetryStrategy <em>Retry Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -277,6 +407,104 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRetryStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy <em>Strengthen Enable Child Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenEnableChildStrategy
+	 * @generated
+	 */
+	public Adapter createStrengthenEnableChildStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.StrengthenReplace <em>Strengthen Replace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.StrengthenReplace
+	 * @generated
+	 */
+	public Adapter createStrengthenReplaceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.WarningStrategy <em>Warning Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.WarningStrategy
+	 * @generated
+	 */
+	public Adapter createWarningStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.AbortStrategy <em>Abort Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.AbortStrategy
+	 * @generated
+	 */
+	public Adapter createAbortStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.DelegateStrategy <em>Delegate Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.DelegateStrategy
+	 * @generated
+	 */
+	public Adapter createDelegateStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy <em>Relax Disable Child Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxDisableChildStrategy
+	 * @generated
+	 */
+	public Adapter createRelaxDisableChildStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.eca.RelaxReplace <em>Relax Replace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.eca.RelaxReplace
+	 * @generated
+	 */
+	public Adapter createRelaxReplaceAdapter() {
 		return null;
 	}
 

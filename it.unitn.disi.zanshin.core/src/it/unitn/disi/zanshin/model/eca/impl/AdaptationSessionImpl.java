@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationSessionImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationSessionImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationSessionImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +68,26 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 	 * @ordered
 	 */
 	protected boolean active = ACTIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,11 +146,42 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.ADAPTATION_SESSION__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void addEvent(EcaAwReq awreq) {
+		// Creates a new event with the current date/time, associated with the given AwReq, and adds it to the timeline.
 		it.unitn.disi.zanshin.model.eca.Event event = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createEvent();
 		event.setTime(new java.util.Date(System.currentTimeMillis()));
 		event.setAwReq(awreq);
 		getEvents().add(event);
+		
+		// If this is the first event of the session, produce its id.
+		if (getEvents().size() == 1) {
+			StringBuilder builder = new StringBuilder();
+			java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //$NON-NLS-1$
+			builder.append("(Session: ").append(awreq.eClass().getName()); //$NON-NLS-1$
+			builder.append(" / ").append(dateFormat.format(event.getTime())).append(")"); //$NON-NLS-1$ //$NON-NLS-2$
+			setId(builder.toString());
+		}
 	}
 
 	/**
@@ -182,6 +234,8 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 				return getEvents();
 			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
 				return isActive();
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +256,9 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
 				setActive((Boolean)newValue);
 				return;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				setId((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -220,6 +277,9 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
 				setActive(ACTIVE_EDEFAULT);
 				return;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				setId(ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,6 +296,8 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 				return events != null && !events.isEmpty();
 			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
 				return active != ACTIVE_EDEFAULT;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -252,6 +314,8 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (active: "); //$NON-NLS-1$
 		result.append(active);
+		result.append(", id: "); //$NON-NLS-1$
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

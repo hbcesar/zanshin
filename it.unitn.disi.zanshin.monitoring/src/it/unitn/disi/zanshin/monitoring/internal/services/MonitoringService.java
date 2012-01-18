@@ -2,6 +2,7 @@ package it.unitn.disi.zanshin.monitoring.internal.services;
 
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.model.gore.impl.AwReqImpl;
@@ -46,17 +47,27 @@ public class MonitoringService implements IMonitoringService {
 		
 		// FIXME: really implement this service using AwReqs, Drools, etc.
 		// This is a temporary implementation that triggers AwReq failures by hand for the A-CAD.
-		String reqName = req.getClass().getSimpleName();
 		AwReq awreq = null;
-		if ("G_RegCallImpl".equals(reqName) && (method == MonitorableMethod.FAIL)) { //$NON-NLS-1$
+		switch (req.eClass().getName()) {
+		case "G_RegCall": //$NON-NLS-1$
 			try {
 				GoalModel model = req.findGoalModel();
-				awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "it.unitn.disi.acad.model.acad.AR15"); //$NON-NLS-1$
+				awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "AR15"); //$NON-NLS-1$
+				switch (method) {
+				case FAIL:
+					awreq.setState(DefinableRequirementState.FAILED);
+					break;
+				case SUCCESS:
+					awreq.setState(DefinableRequirementState.SUCCEEDED);
+					break;
+				default:
+					awreq = null;
+				}
 			}
 			catch (Exception e) {
 				MonitoringUtils.log.error("Can't instantiate AR15: {0}", e, e.getMessage()); //$NON-NLS-1$
 			}
-		}
+		}		
 		
 		if (awreq != null) {
 			adaptivityService.adaptToFailure(awreq);

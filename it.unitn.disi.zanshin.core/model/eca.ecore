@@ -42,7 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="AdaptationSession">
     <eOperations name="addEvent">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.model.eca.Event event = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createEvent();&#xA;event.setTime(new java.util.Date(System.currentTimeMillis()));&#xA;event.setAwReq(awreq);&#xA;getEvents().add(event);"/>
+        <details key="body" value="// Creates a new event with the current date/time, associated with the given AwReq, and adds it to the timeline.&#xA;it.unitn.disi.zanshin.model.eca.Event event = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createEvent();&#xA;event.setTime(new java.util.Date(System.currentTimeMillis()));&#xA;event.setAwReq(awreq);&#xA;getEvents().add(event);&#xA;&#xA;// If this is the first event of the session, produce its id.&#xA;if (getEvents().size() == 1) {&#xA;&#x9;StringBuilder builder = new StringBuilder();&#xA;&#x9;java.text.DateFormat dateFormat = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;); //$NON-NLS-1$&#xA;&#x9;builder.append(&quot;(Session: &quot;).append(awreq.eClass().getName()); //$NON-NLS-1$&#xA;&#x9;builder.append(&quot; / &quot;).append(dateFormat.format(event.getTime())).append(&quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$&#xA;&#x9;setId(builder.toString());&#xA;}"/>
       </eAnnotations>
       <eParameters name="awreq" eType="#//EcaAwReq"/>
     </eOperations>
@@ -54,14 +54,35 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//Event" containment="true" eOpposite="#//Event/session"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleResolutionCondition" eSuperTypes="#//ResolutionCondition">
     <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;return ((awreq != null) &amp;&amp; (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED));"/>
+        <details key="body" value="// If the current evaluation is Success, the problem is solved. &#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;if ((awreq != null) &amp;&amp; (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED)) return true;&#xA;&#xA;// Otherwise, if the last applied strategy was &quot;abort&quot;, the problem is also solved.&#xA;else if (session.getEvents().size() > 0) {&#xA;&#x9;it.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);&#xA;&#x9;it.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();&#xA;&#x9;it.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();&#xA;&#x9;if ((lastStrategy != null) &amp;&amp; (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))&#xA;&#x9;&#x9;return true;&#xA;}&#xA;&#xA;// If none of the above, the problem is not yet solved.&#xA;return false;"/>
       </eAnnotations>
       <eParameters name="session" eType="#//AdaptationSession"/>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndRefinedResolutionCondition" eSuperTypes="#//ResolutionCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// The problem is solved if all children evaluate to true, i.e., if any of them is false, it is not solved.&#xA;for (it.unitn.disi.zanshin.model.eca.ResolutionCondition condition : getChildren())&#xA;&#x9;if (! condition.evaluate(session)) return false;&#xA;&#xA;// If none of them were false, then the problem is solved.&#xA;return true;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ResolutionCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrRefinedResolutionCondition" eSuperTypes="#//ResolutionCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// The problem is solved if any child evaluates to true.&#xA;for (it.unitn.disi.zanshin.model.eca.ResolutionCondition condition : getChildren())&#xA;&#x9;if (condition.evaluate(session)) return true;&#xA;&#xA;// If none of them were true, then the problem is not solved.&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ResolutionCondition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleApplicabilityCondition" eSuperTypes="#//ApplicabilityCondition">
     <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -71,12 +92,116 @@
       <eParameters name="session" eType="#//AdaptationSession"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetryStrategy" eSuperTypes="#//AdaptationStrategy">
-    <eOperations name="execute">
+  <eClassifiers xsi:type="ecore:EClass" name="MaxExecutionsPerSessionApplicabilityCondition"
+      eSuperTypes="#//ApplicabilityCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="System.out.println(&quot;############ Retry Strategy being applied!!!&quot;);"/>
+        <details key="body" value="String conditionName = getClass().getInterfaces()[0].getSimpleName();&#xA;EClass strategyClass = getStrategy().eClass();&#xA;&#xA;// Attribute maxExecutions is mandatory.&#xA;if (maxExecutions == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Applicability Condition {0} is missing mandatory attribute \&quot;maxExecutions\&quot; and, thus, will be evaluated to false.&quot;, conditionName); //$NON-NLS-1$&#xA;&#x9;return false;&#xA;}&#xA;&#xA;// Count the number of times this strategy has already been applied in this adaptation session.&#xA;int count = 0;&#xA;for (it.unitn.disi.zanshin.model.eca.Event event : session.getEvents()) {&#xA;&#x9;it.unitn.disi.zanshin.model.eca.AdaptationStrategy strategy = event.getAwReq().getSelectedStrategy();&#xA;&#x9;if ((strategy != null) &amp;&amp; (strategy.eClass().equals(strategyClass))) count++;&#xA;}&#xA;&#xA;// If this number is equal or greater than the limit, do not apply it again.&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Strategy {1} {2,choice,0#is not applicable because it has been applied at least {3} time(s) this session|0&lt;is applicable}.&quot;, session.getId(), strategyClass.getName(), maxExecutions - count, maxExecutions); //$NON-NLS-1$&#xA;return (count &lt; maxExecutions);"/>
       </eAnnotations>
       <eParameters name="session" eType="#//AdaptationSession"/>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxExecutions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndRefinedApplicabilityCondition" eSuperTypes="#//ApplicabilityCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// The problem is solved if all children evaluate to true, i.e., if any of them is false, it is not solved.&#xA;for (it.unitn.disi.zanshin.model.eca.ApplicabilityCondition condition : getChildren())&#xA;&#x9;if (! condition.evaluate(session)) return false;&#xA;&#xA;// If none of them were false, then the problem is solved.&#xA;return true;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ApplicabilityCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrRefinedApplicabilityCondition" eSuperTypes="#//ApplicabilityCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// The problem is solved if any child evaluates to true.&#xA;for (it.unitn.disi.zanshin.model.eca.ApplicabilityCondition condition : getChildren())&#xA;&#x9;if (condition.evaluate(session)) return true;&#xA;&#xA;// If none of them were true, then the problem is not solved.&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ApplicabilityCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbortStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Abort strategy.&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;controller.abort(getAwReq());"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DelegateStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute actor is mandatory.&#xA;if (actor == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;actor\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Delegate strategy.&#xA;strategyName += &quot;(&quot; + actor.getClass().getInterfaces()[0].getSimpleName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;controller.sendWarning(actor, awreq);&#xA;controller.waitForFix(awreq);"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actor" eType="ecore:EClass gore.ecore#//Actor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelaxDisableChildStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute requirement defaults to the AwReq's target.&#xA;if (requirement == null) {&#xA;&#x9;setRequirement(awreq.getTarget());&#xA;&#x9;if (requirement == null) {&#xA;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;requirement\&quot; and cannot be executed. Cannot use the default value because the referred AwReq doesn't have a target set.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;&#x9;return;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Attribute level defaults to INSTANCE.&#xA;if (level == null) level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;&#xA;&#xA;// Attribute child is mandatory.&#xA;if (child == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;child\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Relax by Disabling Child strategy.&#xA;strategyName += &quot;(&quot; + requirement.eClass().getName() + &quot;; &quot; + level + &quot;; &quot; + child.eClass().getName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH))&#xA;&#x9;controller.disable(child.eClass());&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;controller.suspend(requirement);&#xA;&#x9;controller.terminate(child);&#xA;&#x9;if (child instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)&#xA;&#x9;&#x9;controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) child);&#xA;&#x9;controller.resume(requirement);&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//Requirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelaxReplace" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute requirement defaults to the AwReq's target.&#xA;if (requirement == null) {&#xA;&#x9;setRequirement(awreq.getTarget());&#xA;&#x9;if (requirement == null) {&#xA;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;requirement\&quot; and cannot be executed. Cannot use the default value because the referred AwReq doesn't have a target set.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;&#x9;return;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Attribute copy defaults to TRUE.&#xA;if (copy == null) copy = Boolean.TRUE;&#xA;&#xA;// Attribute level defaults to INSTANCE.&#xA;if (level == null) level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;&#xA;&#xA;// Attribute newRequirement is mandatory.&#xA;if (newRequirement == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;newRequirement\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Relax by Replacing strategy.&#xA;strategyName += &quot;(&quot; + requirement.eClass().getName() + &quot;; &quot; + copy + &quot;; &quot; + level + &quot;; &quot; + newRequirement.eClass().getName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;controller.disable(requirement.eClass());&#xA;&#x9;controller.enable(newRequirement.eClass());&#xA;}&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;if ((copy) &amp;&amp; (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) &amp;&amp; (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) &#xA;&#x9;&#x9;controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);&#xA;&#x9;controller.terminate(requirement);&#xA;&#x9;if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)&#xA;&#x9;&#x9;controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);&#xA;&#x9;controller.initiate(newRequirement);&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="copy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute copy defaults to TRUE.&#xA;if (copy == null) copy = Boolean.TRUE;&#xA;&#xA;// Attribute time is mandatory.&#xA;if (time == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;time\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// The requirement to retry is always the AwReq's target.&#xA;it.unitn.disi.zanshin.model.gore.Requirement requirement = awreq.getTarget();&#xA;if (requirement == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} cannot be executed because the referred AwReq doesn't have a target set.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Retry strategy.&#xA;strategyName += &quot;(&quot; + copy + &quot;; &quot; + time + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;org.eclipse.emf.ecore.EClass eClass = requirement.eClass();&#xA;it.unitn.disi.zanshin.model.gore.Requirement newRequirement = controller.newInstance(eClass);&#xA;if ((copy) &amp;&amp; (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) &amp;&amp; (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) &#xA;&#x9;controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);&#xA;controller.terminate(requirement);&#xA;if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)&#xA;&#x9;controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);&#xA;controller.waitFor(time);&#xA;controller.initiate(newRequirement);"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="copy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StrengthenEnableChildStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute requirement defaults to the AwReq's target.&#xA;if (requirement == null) {&#xA;&#x9;setRequirement(awreq.getTarget());&#xA;&#x9;if (requirement == null) {&#xA;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;requirement\&quot; and cannot be executed. Cannot use the default value because the referred AwReq doesn't have a target set.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;&#x9;return;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Attribute level defaults to INSTANCE.&#xA;if (level == null) level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;&#xA;&#xA;// Attribute child is mandatory.&#xA;if (child == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;child\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Strengthen by Enabling Child strategy.&#xA;strategyName += &quot;(&quot; + requirement.eClass().getName() + &quot;; &quot; + level + &quot;; &quot; + child.eClass().getName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;controller.enable(child.eClass());&#xA;}&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;controller.suspend(requirement);&#xA;&#x9;controller.initiate(child);&#xA;&#x9;controller.resume(requirement);&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//Requirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StrengthenReplace" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute requirement defaults to the AwReq's target.&#xA;if (requirement == null) {&#xA;&#x9;setRequirement(awreq.getTarget());&#xA;&#x9;if (requirement == null) {&#xA;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;requirement\&quot; and cannot be executed. Cannot use the default value because the referred AwReq doesn't have a target set.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;&#x9;return;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Attribute copy defaults to TRUE.&#xA;if (copy == null) copy = Boolean.TRUE;&#xA;&#xA;// Attribute level defaults to INSTANCE.&#xA;if (level == null) level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;&#xA;&#xA;// Attribute newRequirement is mandatory.&#xA;if (newRequirement == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;newRequirement\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Strengthen by Replacing strategy.&#xA;strategyName += &quot;(&quot; + requirement.eClass().getName() + &quot;; &quot; + copy + &quot;; &quot; + level + &quot;; &quot; + newRequirement.eClass().getName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;controller.disable(requirement.eClass());&#xA;&#x9;controller.enable(newRequirement.eClass());&#xA;}&#xA;if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {&#xA;&#x9;if ((copy) &amp;&amp; (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) &amp;&amp; (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) &#xA;&#x9;&#x9;controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);&#xA;&#x9;controller.terminate(requirement);&#xA;&#x9;if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)&#xA;&#x9;&#x9;controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);&#xA;&#x9;controller.initiate(newRequirement);&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="copy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WarningStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).&#xA;it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();&#xA;if (controller == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Attempting to apply {0}, but the target system's controller has not yet been registered!&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Retrieve the strategy's attributes.&#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;&#xA;// Attribute actor is mandatory.&#xA;if (actor == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.warn(&quot;Strategy {0} is missing mandatory attribute \&quot;actor\&quot; and cannot be executed.&quot;, strategyName); //$NON-NLS-1$&#xA;&#x9;return;&#xA;}&#xA;&#xA;// Executes the Warning strategy.&#xA;strategyName += &quot;(&quot; + actor.getClass().getInterfaces()[0].getSimpleName() + &quot;)&quot;; //$NON-NLS-1$ //$NON-NLS-2$&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.info(&quot;{0} Applying strategy {1}...&quot;, session.getId(), strategyName); //$NON-NLS-1$&#xA;controller.sendWarning(actor, awreq);"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actor" eType="ecore:EClass gore.ecore#//Actor"/>
   </eClassifiers>
 </ecore:EPackage>

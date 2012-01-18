@@ -3,6 +3,8 @@ package it.unitn.disi.zanshin.services;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
  * TODO: document this type.
  *
@@ -26,16 +28,16 @@ public interface IRepositoryService {
 	/**
 	 * TODO: document this method.
 	 * @param modelId
-	 * @param reqClass
+	 * @param eClass
 	 * @return
 	 */
-	<R extends Requirement> R retrieveRequirement(Long modelId, Class<R> reqClass);
+	Requirement retrieveRequirement(Long modelId, EClass eClass);
 	
 	/**
 	 * TODO: document this method.
 	 * @param modelId
-	 * @param reqClassName
+	 * @param eClassName
 	 * @return
 	 */
-	Requirement retrieveRequirement(Long modelId, String reqClassName);
+	Requirement retrieveRequirement(Long modelId, String eClassName);
 }

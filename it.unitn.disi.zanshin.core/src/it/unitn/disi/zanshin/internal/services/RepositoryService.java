@@ -7,6 +7,8 @@ import it.unitn.disi.zanshin.services.IRepositoryService;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
  * TODO: document this type.
  *
@@ -39,23 +41,23 @@ public class RepositoryService implements IRepositoryService {
 		return repository.get(id);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.IRepositoryService#retrieveRequirement(java.lang.Long, java.lang.Class) */
+	/** @see it.unitn.disi.zanshin.services.IRepositoryService#retrieveRequirement(java.lang.Long, org.eclipse.emf.ecore.EClass) */
 	@Override
-	public <R extends Requirement> R retrieveRequirement(Long modelId, Class<R> reqClass) {
+	public Requirement retrieveRequirement(Long modelId, EClass eClass) {
 		// Obtains the element mapping object from the elements repository.
 		GoalModelElements elements = elementsRepository.get(modelId);
 		
 		// Retrieve the element from the model.
-		return (elements == null) ? null : elements.retrieveRequirementInstance(reqClass);
+		return (elements == null) ? null : elements.retrieveRequirementInstance(eClass);
 	}
 
 	/** @see it.unitn.disi.zanshin.services.IRepositoryService#retrieveRequirement(java.lang.Long, java.lang.String) */
 	@Override
-	public Requirement retrieveRequirement(Long modelId, String reqClassName) {
+	public Requirement retrieveRequirement(Long modelId, String eClassName) {
 		// Obtains the element mapping object from the elements repository.
 		GoalModelElements elements = elementsRepository.get(modelId);
 		
 		// Retrieve the element from the model.
-		return (elements == null) ? null : elements.retrieveRequirementInstance(reqClassName);
+		return (elements == null) ? null : elements.retrieveRequirementInstance(eClassName);
 	}
 }

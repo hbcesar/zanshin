@@ -9,13 +9,17 @@ import it.unitn.disi.zanshin.model.gore.QualityConstraint;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
-import it.unitn.disi.zanshin.util.GoalModelUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * TODO: document this type.
@@ -28,43 +32,43 @@ public class GoalModelElements {
 	private GoalModel model;
 
 	/** The AwReq elements of the goal model. */
-	private Collection<AwReq> awReqs = new ArrayList<AwReq>();
+	private Collection<AwReq> awReqs = new ArrayList<>();
 
 	/** The DomainAssumption elements of the goal model. */
-	private Collection<DomainAssumption> domainAssumptions = new ArrayList<DomainAssumption>();
+	private Collection<DomainAssumption> domainAssumptions = new ArrayList<>();
 
 	/** The Goal elements of the goal model. */
 	private Collection<Goal> goals = new ArrayList<Goal>();
 
 	/** The QualityConstraint elements of the goal model. */
-	private Collection<QualityConstraint> qualityConstraints = new ArrayList<QualityConstraint>();
+	private Collection<QualityConstraint> qualityConstraints = new ArrayList<>();
 
 	/** The Softgoal elements of the goal model. */
-	private Collection<Softgoal> softgoals = new ArrayList<Softgoal>();
+	private Collection<Softgoal> softgoals = new ArrayList<>();
 
 	/** The Task elements of the goal model. */
-	private Collection<Task> tasks = new ArrayList<Task>();
+	private Collection<Task> tasks = new ArrayList<>();
 
-	/** The AwReq elements map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends AwReq>, AwReq> awReqsMap = new HashMap<Class<? extends AwReq>, AwReq>();
+	/** The AwReq elements map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, AwReq> awReqsMap = new HashMap<>();
 
-	/** The DomainAssumption elements map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends DomainAssumption>, DomainAssumption> domainAssumptionsMap = new HashMap<Class<? extends DomainAssumption>, DomainAssumption>();
+	/** The DomainAssumption elements map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, DomainAssumption> domainAssumptionsMap = new HashMap<>();
 
-	/** The Goal elements map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends Goal>, Goal> goalsMap = new HashMap<Class<? extends Goal>, Goal>();
+	/** The Goal elements map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, Goal> goalsMap = new HashMap<>();
 
-	/** The QualityConstraint map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends QualityConstraint>, QualityConstraint> qualityConstraintsMap = new HashMap<Class<? extends QualityConstraint>, QualityConstraint>();
+	/** The QualityConstraint map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, QualityConstraint> qualityConstraintsMap = new HashMap<>();
 
-	/** The Softgoal map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends Softgoal>, Softgoal> softgoalsMap = new HashMap<Class<? extends Softgoal>, Softgoal>();
+	/** The Softgoal map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, Softgoal> softgoalsMap = new HashMap<>();
 
-	/** The Task map, mapping the elements declaring interface to its implementation. */
-	private Map<Class<? extends Task>, Task> tasksMap = new HashMap<Class<? extends Task>, Task>();
+	/** The Task map, mapping the elements EMF class to its implementation. */
+	private Map<EClass, Task> tasksMap = new HashMap<>();
 
-	/** The declared interfaces map, mapping the interface's name to its class object. */
-	private Map<String, Class<? extends Requirement>> ifacesMap = new HashMap<String, Class<? extends Requirement>>();
+	/** The EMF class map, mapping the eClass' name to its eClass object. */
+	private Map<String, EClass> eClassMap = new HashMap<>();
 
 	/** Constructor. */
 	protected GoalModelElements(GoalModel model) {
@@ -75,7 +79,6 @@ public class GoalModelElements {
 	/**
 	 * Builds the collections of elements of the model.
 	 */
-	@SuppressWarnings("unchecked")
 	private void buildCollections() {
 		// Uses a stack to perform a breadth-first search in the goal tree to check all elements.
 		Goal rootGoal = model.getRootGoal();
@@ -87,25 +90,26 @@ public class GoalModelElements {
 			Requirement req = stack.pop();
 
 			// Checks the element's type and stores it in the appropriate collections.
-			Class<?> iface = req.getClass().getInterfaces()[0];
-			switch (GoalModelUtils.getEmfType(req)) {
+			EList<EClass> superTypes = req.eClass().getEAllSuperTypes();
+			int superTypeId = superTypes.get(superTypes.size() - 1).getClassifierID();
+			switch (superTypeId) {
 			case GorePackage.AW_REQ:
-				store((Class<? extends AwReq>) iface, (AwReq) req, awReqs, awReqsMap);
+				store((AwReq) req, awReqs, awReqsMap);
 				break;
 			case GorePackage.DOMAIN_ASSUMPTION:
-				store((Class<? extends DomainAssumption>) iface, (DomainAssumption) req, domainAssumptions, domainAssumptionsMap);
+				store((DomainAssumption) req, domainAssumptions, domainAssumptionsMap);
 				break;
 			case GorePackage.GOAL:
-				store((Class<? extends Goal>) iface, (Goal) req, goals, goalsMap);
+				store((Goal) req, goals, goalsMap);
 				break;
 			case GorePackage.QUALITY_CONSTRAINT:
-				store((Class<? extends QualityConstraint>) iface, (QualityConstraint) req, qualityConstraints, qualityConstraintsMap);
+				store((QualityConstraint) req, qualityConstraints, qualityConstraintsMap);
 				break;
 			case GorePackage.SOFTGOAL:
-				store((Class<? extends Softgoal>) iface, (Softgoal) req, softgoals, softgoalsMap);
+				store((Softgoal) req, softgoals, softgoalsMap);
 				break;
 			case GorePackage.TASK:
-				store((Class<? extends Task>) iface, (Task) req, tasks, tasksMap);
+				store((Task) req, tasks, tasksMap);
 				break;
 			}
 
@@ -116,21 +120,16 @@ public class GoalModelElements {
 
 		// Goes through the softgoal list.
 		for (Softgoal sg : model.getSoftgoals()) {
-			Class<? extends Softgoal> sgInterface = (Class<? extends Softgoal>) sg.getClass().getInterfaces()[0];
-			store(sgInterface, sg, softgoals, softgoalsMap);
+			store(sg, softgoals, softgoalsMap);
 
 			// Goes through the softgoal's quality constraint list.
-			for (QualityConstraint qc : sg.getConstraints()) {
-				Class<? extends QualityConstraint> qcInterface = (Class<? extends QualityConstraint>) qc.getClass().getInterfaces()[0];
-				store(qcInterface, qc, qualityConstraints, qualityConstraintsMap);
-			}
+			for (QualityConstraint qc : sg.getConstraints()) 
+				store(qc, qualityConstraints, qualityConstraintsMap);
 		}
 
 		// Lastly, goes through the AwReqs list.
-		for (AwReq awreq : model.getAwReqs()) {
-			Class<? extends AwReq> awreqInterface = (Class<? extends AwReq>) awreq.getClass().getInterfaces()[0];
-			store(awreqInterface, awreq, awReqs, awReqsMap);
-		}
+		for (AwReq awreq : model.getAwReqs())
+			store(awreq, awReqs, awReqsMap);
 	}
 
 	/**
@@ -138,8 +137,8 @@ public class GoalModelElements {
 	 * collections have already been instantiated and, therefore, is only a shortcut to make the buildCollections() method
 	 * less verbose.
 	 * 
-	 * @param iface
-	 *          The declared interface of the requirement that serves as key for the requirements map.
+	 * @param eClass
+	 *          The EMF class of the requirement that serves as key for the requirements map.
 	 * @param req
 	 *          The requirement instance.
 	 * @param reqs
@@ -147,62 +146,57 @@ public class GoalModelElements {
 	 * @param reqsMap
 	 *          The requirements map.
 	 */
-	@SuppressWarnings("unchecked")
-	private <R> void store(Class<? extends R> iface, R req, Collection<R> reqs, Map<Class<? extends R>, R> reqsMap) {
+	private <R extends Requirement> void store(R req, Collection<R> reqs, Map<EClass, R> reqsMap) {
+		EClass eClass = req.eClass();
 		reqs.add(req);
-		reqsMap.put(iface, req);
-		ifacesMap.put(iface.getName(), (Class<? extends Requirement>) iface);
+		reqsMap.put(eClass, req);
+		eClassMap.put(eClass.getName(), eClass);
 	}
 
 	/**
-	 * Retrieves a requirement instance from the model's elements, given its declared interface.
+	 * Retrieves a requirement instance from the model's elements, given its EMF class.
 	 * 
-	 * @param reqClass
-	 *          The declared interface of the requirement.
+	 * @param eClass
+	 *          The EMF class of the requirement.
 	 * @return The requirement instance, if found, or <code>null</code> otherwise.
 	 */
-	@SuppressWarnings("unchecked")
-	public <R extends Requirement> R retrieveRequirementInstance(Class<R> reqClass) {
-		R req = null;
+	public Requirement retrieveRequirementInstance(EClass eClass) {
+		// Creates a list with the IDs of all EMF classes implemented by this requirement class, including its own.
+		EList<EClass> superTypes = eClass.getEAllSuperTypes();
+		Set<Integer> superTypeIds = new HashSet<>();
+		for (EClass superType : superTypes) superTypeIds.add(superType.getClassifierID());
+		superTypeIds.add(eClass.getClassifierID());
+		
+		// Searches the appropriate requirement map, depending on the EMF class.
+		if (superTypeIds.contains(GorePackage.AW_REQ))
+			return awReqsMap.get(eClass);
+		if (superTypeIds.contains(GorePackage.DOMAIN_ASSUMPTION))
+			return domainAssumptionsMap.get(eClass);
+		if (superTypeIds.contains(GorePackage.GOAL))
+			return goalsMap.get(eClass);
+		if (superTypeIds.contains(GorePackage.QUALITY_CONSTRAINT))
+			return qualityConstraintsMap.get(eClass);
+		if (superTypeIds.contains(GorePackage.SOFTGOAL))
+			return softgoalsMap.get(eClass);
+		if (superTypeIds.contains(GorePackage.TASK))
+			return tasksMap.get(eClass);
 
-		// Checks the element's type and obtains the requirement instance from the appropriate map.
-		switch (GoalModelUtils.getEmfType(reqClass)) {
-		case GorePackage.AW_REQ:
-			req = reqClass.cast(awReqsMap.get((Class<? extends AwReq>) reqClass));
-			break;
-		case GorePackage.DOMAIN_ASSUMPTION:
-			req = reqClass.cast(domainAssumptionsMap.get((Class<? extends DomainAssumption>) reqClass));
-			break;
-		case GorePackage.GOAL:
-			req = reqClass.cast(goalsMap.get(Goal.class.asSubclass(reqClass)));
-			break;
-		case GorePackage.QUALITY_CONSTRAINT:
-			req = reqClass.cast(qualityConstraintsMap.get((Class<? extends QualityConstraint>) reqClass));
-			break;
-		case GorePackage.SOFTGOAL:
-			req = reqClass.cast(softgoalsMap.get((Class<? extends Softgoal>) reqClass));
-			break;
-		case GorePackage.TASK:
-			req = reqClass.cast(tasksMap.get((Class<? extends Task>) reqClass));
-			break;
-		}
-
-		// Returns the requirement instance retrieved from the maps, or null if not found (or unrecognized type).
-		return req;
+		// If not found (or unrecognized type), returns null.
+		return null;
 	}
 
 	/**
-	 * Retrieves a requirement instance from the model's elements, given its declared interface's name.
+	 * Retrieves a requirement instance from the model's elements, given its EMF class's name.
 	 * 
-	 * @param reqClassName
-	 *          The name of the declared interface of the requirement.
+	 * @param eClassName
+	 *          The name of the EMF class of the requirement.
 	 * @return The requirement instance, if found, or <code>null</code> otherwise.
 	 */
-	public Requirement retrieveRequirementInstance(String reqClassName) {
+	public Requirement retrieveRequirementInstance(String eClassName) {
 		// Searches for the interface that represents this requirement by its name.
-		Class<? extends Requirement> iface = ifacesMap.get(reqClassName);
+		EClass eClass = eClassMap.get(eClassName);
 
 		// If not null, search for the instance using the requirement's interface.
-		return (iface == null) ? null : retrieveRequirementInstance(iface);
+		return (eClass == null) ? null : (Requirement) retrieveRequirementInstance(eClass);
 	}
 }
