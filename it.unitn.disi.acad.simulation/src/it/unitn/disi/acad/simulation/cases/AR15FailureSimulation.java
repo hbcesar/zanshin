@@ -11,7 +11,7 @@ import it.unitn.disi.zanshin.services.IRepositoryService;
 import org.osgi.framework.ServiceReference;
 
 /**
- * TODO: document this type.
+ * Simulation of the failure of AR15 during an execution of the A-CAD.
  *
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

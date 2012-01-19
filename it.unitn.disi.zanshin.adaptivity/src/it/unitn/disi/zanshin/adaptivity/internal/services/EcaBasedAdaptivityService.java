@@ -9,6 +9,7 @@ import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.eca.EcaFactory;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.IAdaptivityService;
 
 import java.util.HashMap;
@@ -17,7 +18,17 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * TODO: document this type.
+ * ECA-based implementation of the Adaptivity Service.
+ * 
+ * This implementation works with the ECA EMF Package and only handles AwReqs that belong to the EcaAwReq EMF Class
+ * defined in that package's meta-model. EcaAwReqs are associated with one resolution condition (which indicates when
+ * the problem represented by that AwReq has been solved) and one or more adaptation strategies (to try and solve the
+ * problem). Moreover, adaptation strategies should contain an applicability condition, which indicate when they can be
+ * executed to try and adapt to a given situation.
+ * 
+ * The ECA-based implementation considers AwReq state changes as the EVENT, Resolution and Applicability conditions as
+ * the CONDITION and the execution of adaptation strategies as the ACTION. More details can be found in research papers
+ * published by the author of this framework (see http://disi.unitn.it/~vitorsouza/academia/).
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -29,13 +40,28 @@ public class EcaBasedAdaptivityService implements IAdaptivityService {
 	/** ECA-based model EMF factory used to create new adaptation sessions. */
 	private EcaFactory ecaFactory = EcaFactory.eINSTANCE;
 
-	/** @see it.unitn.disi.zanshin.services.IAdaptivityService#adaptToFailure(it.unitn.disi.zanshin.model.gore.AwReq) */
+	/** @see it.unitn.disi.zanshin.services.IAdaptivityService#processStateChange(it.unitn.disi.zanshin.model.gore.AwReq) */
 	@Override
-	public void adaptToFailure(AwReq awreq) {
-		// FIXME: check for nulls?
+	public void processStateChange(AwReq awreq) {
+		// Checks if the AwReq have been properly supplied.
+		if (awreq == null) {
+			AdaptivityUtils.log.warn("The adaptivity service has been called, but no AwReq has been supplied. Please check your model or file a bug."); //$NON-NLS-1$			
+			return;
+		}
+
+		// Retrieves information on the AwReq.
 		EClass awreqClass = awreq.eClass();
 		String awreqName = awreqClass.getName();
-		String targetName = awreq.getTarget().eClass().getName();
+		Requirement target = awreq.getTarget();
+
+		// Checks if the AwReq's target has been properly set.
+		if (target == null) {
+			AdaptivityUtils.log.warn("AwReq {0} does not have a target, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
+			return;
+		}
+
+		// Retrieves information on the target and logs a proper
+		String targetName = target.eClass().getName();
 		AdaptivityUtils.log.info("Processing state change: {0} (ref. {1}) -> {2}", awreqName, targetName, awreq.getState()); //$NON-NLS-1$
 
 		// This process is available only for ECA-based AwReqs.
@@ -58,7 +84,7 @@ public class EcaBasedAdaptivityService implements IAdaptivityService {
 				activeSessions.put(awreqClass, session);
 				AdaptivityUtils.log.info("{0} Created new session for {1}", session.getId(), awreqName); //$NON-NLS-1$
 			}
-			
+
 			// If there is, adds the current AwReq's evaluation to the session.
 			else {
 				AdaptivityUtils.log.info("{0} Retrieved existing session for {1}, {2,choice,0#no events|1#one event|1<{2} events} already in the timeline", session.getId(), awreqName, session.getEvents().size()); //$NON-NLS-1$

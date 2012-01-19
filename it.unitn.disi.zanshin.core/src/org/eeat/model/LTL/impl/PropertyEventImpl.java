@@ -49,8 +49,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public String name() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.name() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -60,8 +60,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Boolean satisfied() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.satisfied() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -71,8 +71,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Date openDate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.openDate() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -82,8 +82,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Date closeDate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.closeDate() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -93,8 +93,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Event openEvent() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.openEvent() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -104,8 +104,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Event closeEvent() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.closeEvent() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -115,8 +115,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public Event scopeEvent() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.scopeEvent() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -126,8 +126,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public EList<PropertyEvent> support() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.support() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -137,8 +137,8 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	 * @generated
 	 */
 	public String property() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method PropertyEvent.property() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 

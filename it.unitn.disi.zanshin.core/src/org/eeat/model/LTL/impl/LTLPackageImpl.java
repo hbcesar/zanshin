@@ -276,6 +276,11 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "after", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "between", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -288,6 +293,10 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "always", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "before", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -297,8 +306,17 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "before", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "eventually", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 1, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "eventually", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "never", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
@@ -307,6 +325,13 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "never", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "newPEval", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "responds", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "stimulus", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "response", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
@@ -315,12 +340,6 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		addEParameter(op, ecorePackage.getEBooleanObject(), "stimulus", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBooleanObject(), "response", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "unless", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "until", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "sequence", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 		EGenericType g1 = createEGenericType(ecorePackage.getEEList());
@@ -334,71 +353,6 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "expression", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "spec", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, null, "receivedMessages", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		g1 = createEGenericType(ecorePackage.getEEList());
-		g2 = createEGenericType(this.getOclMessage());
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(oclAnyEClass, this.getOclMessage(), "receivedMessage", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, this.getOclMessage(), "receivedMessage", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "className", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "newPEval", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "after", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "before", 0, 1, !IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "exp1", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "exp2", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "eventually", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "always", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "never", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "responds", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "stimulus", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "response", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "unless", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "until", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(oclAnyEClass, null, "receivedProperties", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		g1 = createEGenericType(ecorePackage.getEEList());
-		g2 = createEGenericType(this.getPropertyEvent());
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(oclAnyEClass, this.getPropertyEvent(), "receivedProperty", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(oclAnyEClass, this.getEvent(), "receivedEvent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEString(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -417,6 +371,52 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		g2 = createEGenericType(this.getOclMessage());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		op = addEOperation(oclAnyEClass, null, "receivedMessages", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(ecorePackage.getEEList());
+		g2 = createEGenericType(this.getOclMessage());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(oclAnyEClass, this.getOclMessage(), "receivedMessage", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, this.getOclMessage(), "receivedMessage", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "className", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "methodName", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, null, "receivedProperties", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(ecorePackage.getEEList());
+		g2 = createEGenericType(this.getPropertyEvent());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(oclAnyEClass, this.getPropertyEvent(), "receivedProperty", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "responds", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "stimulus", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "response", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, this.getTimeout(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "spec", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "unless", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "unless", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "until", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(oclAnyEClass, ecorePackage.getEBooleanObject(), "until", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEBooleanObject(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(oclMessageEClass, OclMessage.class, "OclMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -497,187 +497,187 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		  (oclAnyEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(4), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(5), 
 		   source, 
 		   new String[] {
-		   });				
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(6), 
 		   source, 
 		   new String[] {
-		   });				
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(7), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(8), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(9), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(10), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(11), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(12), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(13), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(14), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(15), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(16), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(17), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(18), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(19), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(20), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(21), 
 		   source, 
 		   new String[] {
-		   });				
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(22), 
 		   source, 
 		   new String[] {
-		   });				
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(23), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(24), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(25), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(26), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(27), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(28), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(29), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(30), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(31), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(32), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(33), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-		   });	
+		   });																
 	}
 
 	/**
@@ -692,37 +692,37 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 		  (oclAnyEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  (oclAnyEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-		   });						
+		   });					
 		addAnnotation
-		  (oclAnyEClass.getEOperations().get(5), 
+		  (oclAnyEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
-		   });				
+		   });											
 		addAnnotation
-		  (oclAnyEClass.getEOperations().get(6), 
+		  (oclAnyEClass.getEOperations().get(7), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });					
 		addAnnotation
-		  (oclAnyEClass.getEOperations().get(21), 
+		  (oclAnyEClass.getEOperations().get(8), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
-		  (oclAnyEClass.getEOperations().get(22), 
+		  (oclAnyEClass.getEOperations().get(9), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });																																																																									
 	}
 
 	/**
@@ -732,42 +732,42 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 	 * @generated
 	 */
 	protected void createLTL_2Annotations() {
-		String source = "LTL.scoped";				 //$NON-NLS-1$
+		String source = "LTL.scoped";					 //$NON-NLS-1$
 		addAnnotation
 		  ((oclAnyEClass.getEOperations().get(0)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
 		  ((oclAnyEClass.getEOperations().get(1)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
-		  ((oclAnyEClass.getEOperations().get(2)).getEParameters().get(2), 
+		  ((oclAnyEClass.getEOperations().get(2)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });						
+		   });					
 		addAnnotation
-		  ((oclAnyEClass.getEOperations().get(5)).getEParameters().get(1), 
+		  ((oclAnyEClass.getEOperations().get(3)).getEParameters().get(2), 
 		   source, 
 		   new String[] {
-		   });				
+		   });											
 		addAnnotation
-		  ((oclAnyEClass.getEOperations().get(6)).getEParameters().get(1), 
+		  ((oclAnyEClass.getEOperations().get(7)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });					
 		addAnnotation
-		  ((oclAnyEClass.getEOperations().get(21)).getEParameters().get(1), 
+		  ((oclAnyEClass.getEOperations().get(8)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
-		  ((oclAnyEClass.getEOperations().get(22)).getEParameters().get(1), 
+		  ((oclAnyEClass.getEOperations().get(9)).getEParameters().get(1), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });																																																																							
 	}
 
 	/**
@@ -777,22 +777,22 @@ public class LTLPackageImpl extends EPackageImpl implements LTLPackage {
 	 * @generated
 	 */
 	protected void createLTL_3Annotations() {
-		String source = "LTL.noTemplate";																																																			 //$NON-NLS-1$
+		String source = "LTL.noTemplate";																																																																																					 //$NON-NLS-1$
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (oclMessageEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-		   });
+		   });															
 	}
 
 } //LTLPackageImpl

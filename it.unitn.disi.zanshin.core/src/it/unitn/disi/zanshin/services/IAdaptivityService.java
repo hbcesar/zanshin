@@ -3,15 +3,23 @@ package it.unitn.disi.zanshin.services;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 
 /**
- * TODO: document this type.
- *
+ * Interface that defines the Adaptivity Service. This service is called when an Awareness Requirement changes its state
+ * and is responsible for adapting the target system to the possible failure represented by the state change.
+ * 
+ * A change of state in an AwReq can represent a new failure (usually when the state changes to Failed and the framework
+ * did not know about the problem), an existing failure (usually when the state changes to Failed and the framework is
+ * already working on a solution for this failure) or a solution to the problem (usually when the state changes to
+ * Success, which indicates that the problem has been solved).
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public interface IAdaptivityService {
 	/**
-	 * TODO: document this method.
+	 * Method called by the monitoring service, indicating the given AwReq instance has changed its state.
+	 * 
 	 * @param awreq
+	 *          The AwReq instance that changed state.
 	 */
-	void adaptToFailure(AwReq awreq);
+	void processStateChange(AwReq awreq);
 }

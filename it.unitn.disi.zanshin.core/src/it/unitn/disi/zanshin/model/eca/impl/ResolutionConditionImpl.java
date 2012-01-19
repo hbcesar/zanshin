@@ -99,8 +99,8 @@ public abstract class ResolutionConditionImpl extends EObjectImpl implements Res
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method is not supposed to be called.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method ResolutionConditionImpl.evaluate() has been called, but this method is not meant to be called!"); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 

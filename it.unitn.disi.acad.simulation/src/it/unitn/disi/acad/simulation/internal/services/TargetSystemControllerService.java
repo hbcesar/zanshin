@@ -14,7 +14,7 @@ import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * TODO: document this type.
+ * Implementation of the Target System Controller Service for the A-CAD simulations present in this bundle.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

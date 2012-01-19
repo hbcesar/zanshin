@@ -1,10 +1,16 @@
 package it.unitn.disi.zanshin.util;
 
 /**
- * TODO: document this type.
- *
+ * Interface for a logger utility used by Zanshin components.
+ * 
+ * Zanshin's Core Component provides an empty logger implementation that is used by default by all Zanshin components
+ * and a logger implementation that uses OSGi's logging platform that is used by Zanshin components if they detect that
+ * Zanshin's logging component has already been registered in the platform.
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
+ * @see it.unitn.disi.zanshin.util.EmptyLogger
+ * @see it.unitn.disi.zanshin.util.PlatformLogger
  */
 public interface ILogger {
 	/**

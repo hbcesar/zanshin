@@ -1,8 +1,10 @@
 package it.unitn.disi.zanshin.logging;
 
 import java.text.DateFormat;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.framework.BundleContext;
@@ -11,10 +13,12 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
-import org.osgi.service.log.LogService;
 
 /**
- * TODO: document this type.
+ * This class is both a log listener and a service listener. As a log listener, it receives log entries and processes
+ * them, formatting the log messages according to the specified patterns and printing them in the appropriate means. As
+ * a service listener, it keeps track of all log reader services registered by OSGi in the platform and adds itself as a
+ * listener to these services in order to be able to receive the log entries from other components in the first place.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -26,8 +30,21 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 	/** Date/time formatter for log entries. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //$NON-NLS-1$
 
+	/** Message format for log entries. */
+	private String messagePattern = "{0} [{1}] {2}: {3}"; //$NON-NLS-1$
+
 	/** Log level label array. */
 	private String[] logLevelLabels = new String[] { "UNKNOWN", "ERROR", "WARNING", "INFO", "DEBUG" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+
+	/** Changes the pattern for date format. */
+	public void changeDatePattern(String datePattern) {
+		dateFormat = new SimpleDateFormat(datePattern);
+	}
+
+	/** Changes the pattern for log messages. */
+	public void changeMessagePattern(String messagePattern) {
+		this.messagePattern = messagePattern;
+	}
 
 	/** @see org.osgi.framework.ServiceListener#serviceChanged(org.osgi.framework.ServiceEvent) */
 	@Override
@@ -79,21 +96,44 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 	/** @see org.osgi.service.log.LogListener#logged(org.osgi.service.log.LogEntry) */
 	@Override
 	public void logged(LogEntry entry) {
-		// FIXME: add logging configuration (bundles to show, message pattern, logging level).
+		// Obtains the bundle name and message from the log entry.
 		String bundleName = entry.getBundle().getSymbolicName();
-		String message = entry.getMessage(); 
-		int level = entry.getLevel();
+		String message = entry.getMessage();
 
-		// Only shows messages from Zanshin bundles and with log level INFO or higher.
-		if ((message != null) && (level <= LogService.LOG_INFO) && bundleName.startsWith("it.unitn.disi")) { //$NON-NLS-1$
+		// Only shows messages from Zanshin bundles.
+		if ((message != null) && bundleName.startsWith("it.unitn.disi")) { //$NON-NLS-1$
 			// Formats and prints the message.
-			String formattedBundleName = (bundleName.substring(14) + "                     ").substring(0, 18); //$NON-NLS-1$
-			StringBuilder builder = new StringBuilder();
-			builder.append(dateFormat.format(entry.getTime()));
-			builder.append(" [").append(formattedBundleName).append("] "); //$NON-NLS-1$ //$NON-NLS-2$
-			builder.append(logLevelLabels[level]).append(": "); //$NON-NLS-1$
-			builder.append(message);
-			System.out.println(builder);
+			String formattedMessage = formatLogMessage(new Date(entry.getTime()), bundleName, entry.getLevel(), entry.getMessage());
+			printLogMessage(formattedMessage);
 		}
+	}
+
+	/**
+	 * Formats the log message according to the date and message patterns.
+	 * 
+	 * @param time
+	 *          The date/time of the message.
+	 * @param bundleName
+	 *          The name of the bundle that produced the message.
+	 * @param level
+	 *          The logging level.
+	 * @param message
+	 *          The log message itself.
+	 * @return The formatted log message.
+	 */
+	protected String formatLogMessage(Date time, String bundleName, int level, String message) {
+		String formattedBundleName = (bundleName.substring(14) + "                     ").substring(0, 18); //$NON-NLS-1$
+		return MessageFormat.format(messagePattern, dateFormat.format(time), formattedBundleName, logLevelLabels[level], message);
+	}
+
+	/**
+	 * Prints the given message, using the appropriate means.
+	 * 
+	 * @param message
+	 *          The message to be printed.
+	 */
+	protected void printLogMessage(String message) {
+		// So far, this component can only handle standard output printing.
+		System.out.println(message);
 	}
 }

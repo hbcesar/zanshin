@@ -10,8 +10,6 @@ import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -22,7 +20,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * TODO: document this type.
+ * Helper class for the Repository Service's implementation, which parses a goal model and stores their elements in maps
+ * indexed by their EMF classes. This class also contains a map that indexes EMF classes by their name in order to allow
+ * for the search of a requirement instance given their name.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -30,24 +30,6 @@ import org.eclipse.emf.ecore.EClass;
 public class GoalModelElements {
 	/** Goal model that owns the elements contained in this. */
 	private GoalModel model;
-
-	/** The AwReq elements of the goal model. */
-	private Collection<AwReq> awReqs = new ArrayList<>();
-
-	/** The DomainAssumption elements of the goal model. */
-	private Collection<DomainAssumption> domainAssumptions = new ArrayList<>();
-
-	/** The Goal elements of the goal model. */
-	private Collection<Goal> goals = new ArrayList<Goal>();
-
-	/** The QualityConstraint elements of the goal model. */
-	private Collection<QualityConstraint> qualityConstraints = new ArrayList<>();
-
-	/** The Softgoal elements of the goal model. */
-	private Collection<Softgoal> softgoals = new ArrayList<>();
-
-	/** The Task elements of the goal model. */
-	private Collection<Task> tasks = new ArrayList<>();
 
 	/** The AwReq elements map, mapping the elements EMF class to its implementation. */
 	private Map<EClass, AwReq> awReqsMap = new HashMap<>();
@@ -94,22 +76,22 @@ public class GoalModelElements {
 			int superTypeId = superTypes.get(superTypes.size() - 1).getClassifierID();
 			switch (superTypeId) {
 			case GorePackage.AW_REQ:
-				store((AwReq) req, awReqs, awReqsMap);
+				store((AwReq) req, awReqsMap);
 				break;
 			case GorePackage.DOMAIN_ASSUMPTION:
-				store((DomainAssumption) req, domainAssumptions, domainAssumptionsMap);
+				store((DomainAssumption) req, domainAssumptionsMap);
 				break;
 			case GorePackage.GOAL:
-				store((Goal) req, goals, goalsMap);
+				store((Goal) req, goalsMap);
 				break;
 			case GorePackage.QUALITY_CONSTRAINT:
-				store((QualityConstraint) req, qualityConstraints, qualityConstraintsMap);
+				store((QualityConstraint) req, qualityConstraintsMap);
 				break;
 			case GorePackage.SOFTGOAL:
-				store((Softgoal) req, softgoals, softgoalsMap);
+				store((Softgoal) req, softgoalsMap);
 				break;
 			case GorePackage.TASK:
-				store((Task) req, tasks, tasksMap);
+				store((Task) req, tasksMap);
 				break;
 			}
 
@@ -120,35 +102,31 @@ public class GoalModelElements {
 
 		// Goes through the softgoal list.
 		for (Softgoal sg : model.getSoftgoals()) {
-			store(sg, softgoals, softgoalsMap);
+			store(sg, softgoalsMap);
 
 			// Goes through the softgoal's quality constraint list.
-			for (QualityConstraint qc : sg.getConstraints()) 
-				store(qc, qualityConstraints, qualityConstraintsMap);
+			for (QualityConstraint qc : sg.getConstraints())
+				store(qc, qualityConstraintsMap);
 		}
 
 		// Lastly, goes through the AwReqs list.
 		for (AwReq awreq : model.getAwReqs())
-			store(awreq, awReqs, awReqsMap);
+			store(awreq, awReqsMap);
 	}
 
 	/**
-	 * Generic method to store a requirement in its appropriate requirement collection and map. This method assumes both
-	 * collections have already been instantiated and, therefore, is only a shortcut to make the buildCollections() method
-	 * less verbose.
+	 * Generic method to store a requirement in its appropriate requirement map. This method assumes the map has already
+	 * been instantiated and, therefore, is only a shortcut to make the buildCollections() method less verbose.
 	 * 
 	 * @param eClass
 	 *          The EMF class of the requirement that serves as key for the requirements map.
 	 * @param req
 	 *          The requirement instance.
-	 * @param reqs
-	 *          The requirement collection.
 	 * @param reqsMap
 	 *          The requirements map.
 	 */
-	private <R extends Requirement> void store(R req, Collection<R> reqs, Map<EClass, R> reqsMap) {
+	private <R extends Requirement> void store(R req, Map<EClass, R> reqsMap) {
 		EClass eClass = req.eClass();
-		reqs.add(req);
 		reqsMap.put(eClass, req);
 		eClassMap.put(eClass.getName(), eClass);
 	}
@@ -164,9 +142,10 @@ public class GoalModelElements {
 		// Creates a list with the IDs of all EMF classes implemented by this requirement class, including its own.
 		EList<EClass> superTypes = eClass.getEAllSuperTypes();
 		Set<Integer> superTypeIds = new HashSet<>();
-		for (EClass superType : superTypes) superTypeIds.add(superType.getClassifierID());
+		for (EClass superType : superTypes)
+			superTypeIds.add(superType.getClassifierID());
 		superTypeIds.add(eClass.getClassifierID());
-		
+
 		// Searches the appropriate requirement map, depending on the EMF class.
 		if (superTypeIds.contains(GorePackage.AW_REQ))
 			return awReqsMap.get(eClass);

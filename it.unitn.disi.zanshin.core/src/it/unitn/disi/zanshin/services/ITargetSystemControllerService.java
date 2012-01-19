@@ -11,7 +11,11 @@ import it.unitn.disi.zanshin.model.gore.Requirement;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * TODO: document this type.
+ * Interface that defines the Target System Controller Service. This service is called during the execution of
+ * adaptation strategies to instruct the target system on how to adapt to AwReq failures.
+ * 
+ * Implementations of this service should have some way of communicating with the target system and applying the
+ * appropriate application-specific actions to adapt.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

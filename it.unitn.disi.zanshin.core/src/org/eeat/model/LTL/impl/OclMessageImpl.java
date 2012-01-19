@@ -47,8 +47,8 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 	 * @generated
 	 */
 	public OclAny argument(String expression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.argument() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -58,8 +58,8 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 	 * @generated
 	 */
 	public OclAny argument(int expression) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.argument() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -69,8 +69,8 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 	 * @generated
 	 */
 	public EList<OclAny> arguments() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.arguments() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -80,8 +80,8 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 	 * @generated
 	 */
 	public String className() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.className() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -91,8 +91,8 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 	 * @generated
 	 */
 	public String methodName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.methodName() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 

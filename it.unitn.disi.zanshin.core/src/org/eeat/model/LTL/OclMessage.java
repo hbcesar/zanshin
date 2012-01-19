@@ -22,7 +22,7 @@ public interface OclMessage extends Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method has not been implemented.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method OclMessage.argument() has not been implemented.\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	OclAny argument(String expression);
@@ -30,7 +30,7 @@ public interface OclMessage extends Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method has not been implemented.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method OclMessage.argument() has not been implemented.\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	OclAny argument(int expression);
@@ -39,6 +39,7 @@ public interface OclMessage extends Event {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model many="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method has not been implemented.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method OclMessage.arguments() has not been implemented.\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	EList<OclAny> arguments();
@@ -46,7 +47,7 @@ public interface OclMessage extends Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method has not been implemented.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method OclMessage.className() has not been implemented.\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	String className();
@@ -54,7 +55,7 @@ public interface OclMessage extends Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method has not been implemented.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method OclMessage.methodName() has not been implemented.\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	String methodName();

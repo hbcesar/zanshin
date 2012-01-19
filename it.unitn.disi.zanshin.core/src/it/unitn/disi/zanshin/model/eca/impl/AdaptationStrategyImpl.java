@@ -154,8 +154,8 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 	 * @generated
 	 */
 	public void execute(AdaptationSession session) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method is not supposed to be called.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method AdaptationStrategyImpl.execute() has been called, but this method is not meant to be called!"); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 

@@ -11,7 +11,12 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 /**
- * TODO: document this type.
+ * Aspect that intercepts calls to life-cicle methods of definable and performative requirements and sends them to the
+ * monitoring service in this bundle.
+ * 
+ * In order to apply this aspect to the other bundles in the platform, you need to run the JVM with argument
+ * -Dosgi.framework.extensions=org.eclipse.equinox.weaving.hook in order to activate Equinox's AspectJ weaving. I
+ * currently don't know if this works only in Equinox or if it will be applied also to other OSGi containers.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -19,7 +24,7 @@ import org.osgi.framework.ServiceReference;
 public aspect AwReqsMonitoringAspect {
 	/** The monitoring service. */
 	private IMonitoringService monitoringService;
-	
+
 	/** Constructor. */
 	public AwReqsMonitoringAspect() {
 		// Initializes the monitoring service using the registered service in the platform.
@@ -27,7 +32,7 @@ public aspect AwReqsMonitoringAspect {
 		ServiceReference<IMonitoringService> reference = context.getServiceReference(IMonitoringService.class);
 		monitoringService = context.getService(reference);
 	}
-	
+
 	/** Defines a point-cut for calls to definable requirements' methods. */
 	pointcut definable(DefinableRequirement req): target(req) && (
 			call(void start()) ||

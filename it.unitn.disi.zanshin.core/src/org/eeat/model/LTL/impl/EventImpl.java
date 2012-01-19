@@ -47,8 +47,8 @@ public class EventImpl extends OclAnyImpl implements Event {
 	 * @generated
 	 */
 	public Date date() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method Event.date() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -58,8 +58,8 @@ public class EventImpl extends OclAnyImpl implements Event {
 	 * @generated
 	 */
 	public long timestamp() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method Event.timestamp() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
@@ -69,8 +69,8 @@ public class EventImpl extends OclAnyImpl implements Event {
 	 * @generated
 	 */
 	public Object object() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// This method has not been implemented.
+		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method Event.object() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
 	}
 
