@@ -2,7 +2,6 @@ package it.unitn.disi.acad.simulation.cases;
 
 import it.unitn.disi.acad.model.acad.AcadGoalModel;
 import it.unitn.disi.acad.model.acad.AcadPackage;
-import it.unitn.disi.acad.model.acad.T_DetectLoc;
 import it.unitn.disi.acad.model.acad.T_InputInfo;
 import it.unitn.disi.acad.simulation.Activator;
 import it.unitn.disi.acad.simulation.SimulationUtils;
@@ -28,22 +27,10 @@ public class AR15FailureSimulation implements Simulation {
 		IRepositoryService repositoryService = Activator.getContext().getService(serviceReference);
 		repositoryService.storeGoalModel(model);
 		
-		// Finds the instances of the tasks that refine the goal "Register call".
+		// Simulates a failure in task "Input Emergency Information".
 		T_InputInfo tII = (T_InputInfo)repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_InputInfo());
-		T_DetectLoc tDL = (T_DetectLoc)repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_DetectLoc());
 		tII.start();
-		tDL.start();
-		
-		// Simulate a failure in one of these tasks so the Zanshin can use an adaptation strategy.
 		tII.fail();
-		
-		// Simulate another failure so the adaptation session can continue trying to solve the problem.
-		tII.fail();
-		
-		// Simulate that the problem has been fixed and the tasks succeeded. 
-		tII.success();
 		tII.end();
-		tDL.success();
-		tDL.end();
 	}
 }

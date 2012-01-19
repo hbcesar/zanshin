@@ -164,15 +164,20 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		// Executes the Retry strategy.
 		strategyName += "(" + copy + "; " + time + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		org.eclipse.emf.ecore.EClass eClass = requirement.eClass();
-		it.unitn.disi.zanshin.model.gore.Requirement newRequirement = controller.newInstance(eClass);
-		if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) 
-			controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
-		controller.terminate(requirement);
-		if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
-			controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
-		controller.waitFor(time);
-		controller.initiate(newRequirement);
+		try {
+			org.eclipse.emf.ecore.EClass eClass = requirement.eClass();
+			it.unitn.disi.zanshin.model.gore.Requirement newRequirement = controller.newInstance(eClass);
+			if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) 
+				controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
+			controller.terminate(requirement);
+			if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
+				controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
+			controller.waitFor(time);
+			controller.initiate(newRequirement);
+		}
+		catch (InstantiationException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("{0} Could not apply strategy {1} because a new instance of the requirement could not be created.", e, session.getId(), strategyName); //$NON-NLS-1$
+		}
 	}
 
 	/**

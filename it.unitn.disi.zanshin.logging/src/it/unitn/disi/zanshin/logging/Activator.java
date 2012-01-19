@@ -28,6 +28,9 @@ public class Activator implements BundleActivator {
 	/** Suffix for the configuration of the logger's message format pattern. */
 	private static final String PROPERTIES_LOGGING_MESSAGE_PATTERN = "messagePattern"; //$NON-NLS-1$
 
+	/** Suffix for the configuration of the logger's level. */
+	private static final String PROPERTIES_LOGGING_LEVEL = "level"; //$NON-NLS-1$
+
 	/** The bundle's context. */
 	private static BundleContext context;
 
@@ -48,10 +51,13 @@ public class Activator implements BundleActivator {
 		if (props != null) {
 			String datePattern = props.getProperty(PROPERTIES_LOGGING_PREFIX + PROPERTIES_LOGGING_DATE_PATTERN);
 			String messagePattern = props.getProperty(PROPERTIES_LOGGING_PREFIX + PROPERTIES_LOGGING_MESSAGE_PATTERN);
+			String levelName = props.getProperty(PROPERTIES_LOGGING_PREFIX + PROPERTIES_LOGGING_LEVEL);
 			if (datePattern != null)
 				logger.changeDatePattern(datePattern);
 			if (messagePattern != null)
 				logger.changeMessagePattern(messagePattern);
+			if (levelName != null)
+				logger.changeLevel(levelName);
 		}
 
 		// Obtains the list of all registered log reader services when this bundle is activated.

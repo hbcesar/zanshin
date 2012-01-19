@@ -126,6 +126,12 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	 * @generated
 	 */
 	public void setState(DefinableRequirementState newState) {
+		// FIXME: possible improvements:
+		// - Check if the change of state is allowed
+		// - Set a default state when the instance is created
+		// - Change the life-cycle methods to check the state and see if the method could really have been called in that state
+		// - Add a SUSPENDED state? Check if other new states are needed?
+		// - What else?
 		DefinableRequirementState oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())

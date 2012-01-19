@@ -113,8 +113,10 @@ public interface ITargetSystemControllerService {
 	 * @param reqClass
 	 *          The requirement class of the instance that should be created.
 	 * @return The newly created requirement instance.
+	 * @throws InstantiationException
+	 *           If the new instance cannot be created.
 	 */
-	Requirement newInstance(EClass reqClass);
+	Requirement newInstance(EClass reqClass) throws InstantiationException;
 
 	/**
 	 * If the specified requirement instance has been previously suspended, the target system should resume pursuing the

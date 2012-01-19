@@ -9,8 +9,9 @@ import org.eclipse.emf.ecore.EClass;
  * Interface that defines the Repository Service. This service is responsible for storing requirements models that are
  * being handled by the other services of the platform and is called by these services when needed.
  * 
- * The requirements repository should provide ways to store, retrieve and dispose a model and to retrieve a particular
- * instance of a requirement in a model, given the requirement's EMF Class or name.
+ * The requirements repository should provide ways to store, retrieve and dispose a model, to retrieve a particular
+ * instance of a requirement in a model, given the requirement's EMF Class or name, and to replace one requirement
+ * instance with another.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -69,4 +70,16 @@ public interface IRepositoryService {
 	 *         contain an instance of the specified requirement.
 	 */
 	Requirement retrieveRequirement(Long modelId, String eClassName);
+
+	/**
+	 * Replaces an instance of a requirement in the model with a new instance.
+	 * 
+	 * @param modelId
+	 *          The id of the model where the replacement should take place.
+	 * @param oldRequirement
+	 *          The requirement to be replaced.
+	 * @param newRequirement
+	 *          The new requirement that should be included in the model.
+	 */
+	void replaceRequirement(Long modelId, Requirement oldRequirement, Requirement newRequirement);
 }

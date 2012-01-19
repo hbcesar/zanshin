@@ -13,6 +13,7 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
+import org.osgi.service.log.LogService;
 
 /**
  * This class is both a log listener and a service listener. As a log listener, it receives log entries and processes
@@ -32,6 +33,9 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 
 	/** Message format for log entries. */
 	private String messagePattern = "{0} [{1}] {2}: {3}"; //$NON-NLS-1$
+	
+	/** Minimum log level for messages to be displayed. */
+	private int minLevel = LogService.LOG_DEBUG;
 
 	/** Log level label array. */
 	private String[] logLevelLabels = new String[] { "UNKNOWN", "ERROR", "WARNING", "INFO", "DEBUG" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
@@ -44,6 +48,17 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 	/** Changes the pattern for log messages. */
 	public void changeMessagePattern(String messagePattern) {
 		this.messagePattern = messagePattern;
+	}
+	
+	/** Changes the minimum log level. */
+	public void changeLevel(String levelName) {
+		int minLevel = 0;
+		for (int i = 0; minLevel == 0 && i < logLevelLabels.length; i++)
+			if (logLevelLabels[i].equals(levelName))
+				minLevel = i;
+		if (minLevel == 0)
+			printLogMessage(formatLogMessage(new Date(System.currentTimeMillis()), Activator.BUNDLE_ID, this.minLevel, "Cannot change logging level. Unknown level: " + levelName)); //$NON-NLS-1$
+		else this.minLevel = minLevel;
 	}
 
 	/** @see org.osgi.framework.ServiceListener#serviceChanged(org.osgi.framework.ServiceEvent) */
@@ -100,8 +115,8 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 		String bundleName = entry.getBundle().getSymbolicName();
 		String message = entry.getMessage();
 
-		// Only shows messages from Zanshin bundles.
-		if ((message != null) && bundleName.startsWith("it.unitn.disi")) { //$NON-NLS-1$
+		// Only shows messages from Zanshin bundles that are at least at the minimum level.
+		if ((message != null) && (entry.getLevel() <= minLevel) && bundleName.startsWith("it.unitn.disi")) { //$NON-NLS-1$
 			// Formats and prints the message.
 			String formattedMessage = formatLogMessage(new Date(entry.getTime()), bundleName, entry.getLevel(), entry.getMessage());
 			printLogMessage(formattedMessage);

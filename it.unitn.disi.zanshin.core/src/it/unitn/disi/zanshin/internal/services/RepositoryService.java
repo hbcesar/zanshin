@@ -1,5 +1,6 @@
 package it.unitn.disi.zanshin.internal.services;
 
+import it.unitn.disi.zanshin.core.CoreUtils;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.IRepositoryService;
@@ -71,5 +72,21 @@ public class RepositoryService implements IRepositoryService {
 
 		// Retrieve the element from the model.
 		return (elements == null) ? null : elements.retrieveRequirementInstance(eClassName);
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IRepositoryService#replaceRequirement(java.lang.Long, it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public void replaceRequirement(Long modelId, Requirement oldRequirement, Requirement newRequirement) {
+		// Obtains the element mapping object from the elements repository.
+		GoalModelElements elements = elementsRepository.get(modelId);
+		
+		// Checks if the requirement instances are the same. Produce a warning if they aren't.
+		EClass reqClass = oldRequirement.eClass();
+		Requirement modelReq = elements.retrieveRequirementInstance(reqClass);
+		if (! oldRequirement.equals(modelReq))
+			CoreUtils.log.warn("Requirement to be replaced is not the same object as the requirement from the same class in the model. Proceeding with replacement anyways...", reqClass); //$NON-NLS-1$
+		
+		// Delegates the replacement to the elements mapping object.
+		elements.replaceRequirement(modelReq, newRequirement);
 	}
 }

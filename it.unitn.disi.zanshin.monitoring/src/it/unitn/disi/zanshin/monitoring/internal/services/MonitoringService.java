@@ -58,6 +58,8 @@ public class MonitoringService implements IMonitoringService {
 		MonitoringUtils.log.info("Monitoring method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
 
 		// Keeps looking up for the adaptivity service, in case it is registered later.
+		// FIXME: possible improvements:
+		// - Is there a way to listen to services being registered in the platform? It would be better than this constant checking... 
 		if (adaptivityService == null)
 			lookupAdaptivityService();
 
