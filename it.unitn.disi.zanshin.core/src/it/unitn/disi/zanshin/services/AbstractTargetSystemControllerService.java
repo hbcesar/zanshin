@@ -1,9 +1,14 @@
 package it.unitn.disi.zanshin.services;
 
 import it.unitn.disi.zanshin.core.Activator;
+import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
+import it.unitn.disi.zanshin.model.gore.QualityConstraint;
 import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import org.eclipse.emf.ecore.EClass;
 import org.osgi.framework.BundleContext;
@@ -16,6 +21,8 @@ import org.osgi.framework.ServiceReference;
  * 
  * The Adaptivity Framework part consists of manipulations on the goal model that can be done in a generic way, i.e.,
  * without knowing any particular characteristics of the target system's requirement.
+ * 
+ * Important note / FIXME: this class is not fully implemented. Only the parts that were used in the simulation were.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -38,11 +45,6 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 */
 	@Override
 	public final void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {
-		// FIXME: possible improvements:
-		// - Replacing the requirement is not enough. If this requirement's failure caused ancestor requirements to fail
-		// also, this should be fixed. Think of a "reset" procedure that investigates if there are any failed goals with no
-		// good reason (no failing children).
-
 		// Replaces the source requirement with the destination requirement in its goal model.
 		Long modelId = srcReq.findGoalModel().getId();
 		repositoryService.replaceRequirement(modelId, srcReq, dstReq);
@@ -56,9 +58,9 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 * adaptation logic related to the copy-data operation.
 	 * 
 	 * @param srcReq
-	 *          The source requirement.
+	 *          The source requirement instance.
 	 * @param dstReq
-	 *          The destination requirement.
+	 *          The destination requirement instance.
 	 */
 	protected abstract void doCopyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq);
 
@@ -97,4 +99,42 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 * @return A new instance of the application requirement model.
 	 */
 	protected abstract GoalModel createNewModel() throws Exception;
+
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#disable(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public final void disable(Requirement req) {
+		// Disabling a requirement instance means removing it from its parent (or from the model itself).
+		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
+		Requirement parent = req.getParent();
+		if (parent != null) {
+			req.setParent(null);
+
+			// Re-evaluates the parent, because the remaining children might all be successful.
+			if (parent instanceof DefinableRequirement)
+				((DefinableRequirement) parent).checkState();
+		}
+		else if ((req instanceof Goal) && (((Goal) req).getGoalModel() != null))
+			((Goal) req).setGoalModel(null);
+		else if ((req instanceof Softgoal) && (((Softgoal) req).getGoalModel() != null))
+			((Softgoal) req).setGoalModel(null);
+		else if ((req instanceof AwReq) && (((AwReq) req).getGoalModel() != null))
+			((AwReq) req).setGoalModel(null);
+		else if (req instanceof QualityConstraint) {
+			Softgoal softgoal = ((QualityConstraint) req).getSoftgoal();
+			if ((softgoal != null) && (softgoal.getGoalModel() != null))
+				softgoal.setGoalModel(null);
+		}
+		
+		// Calls the application-specific implementation.
+		doDisable(req);
+	}
+
+	/**
+	 * Called by disable(), this method should be implemented by the concrete subclass with the application-specific
+	 * adaptation logic related to the disable operation.
+	 * 
+	 * @param req
+	 *          The requirement instance.
+	 */
+	protected abstract void doDisable(Requirement req);
 }

@@ -6,6 +6,8 @@ import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED
 import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED;
 import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE;
 import it.unitn.disi.zanshin.core.CoreUtils;
+import it.unitn.disi.zanshin.model.eca.AdaptationStrategy;
+import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
@@ -76,29 +78,7 @@ public class GoalModelElements {
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(model.getRootGoal()) {
 			@Override
 			protected void visit(Requirement req) {
-				// Checks the element's type and stores it in the appropriate collections.
-				EList<EClass> superTypes = req.eClass().getEAllSuperTypes();
-				int superTypeId = superTypes.get(superTypes.size() - 1).getClassifierID();
-				switch (superTypeId) {
-				case GorePackage.AW_REQ:
-					store((AwReq) req, awReqsMap);
-					break;
-				case GorePackage.DOMAIN_ASSUMPTION:
-					store((DomainAssumption) req, domainAssumptionsMap);
-					break;
-				case GorePackage.GOAL:
-					store((Goal) req, goalsMap);
-					break;
-				case GorePackage.QUALITY_CONSTRAINT:
-					store((QualityConstraint) req, qualityConstraintsMap);
-					break;
-				case GorePackage.SOFTGOAL:
-					store((Softgoal) req, softgoalsMap);
-					break;
-				case GorePackage.TASK:
-					store((Task) req, tasksMap);
-					break;
-				}
+				checkTypeAndStore(req);
 			}
 		};
 
@@ -117,6 +97,36 @@ public class GoalModelElements {
 		// Lastly, goes through the AwReqs list.
 		for (AwReq awreq : model.getAwReqs())
 			store(awreq, awReqsMap);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * @param req
+	 */
+	private final void checkTypeAndStore(Requirement req) {
+		// Checks the element's type and stores it in the appropriate map.
+		EList<EClass> superTypes = req.eClass().getEAllSuperTypes();
+		int superTypeId = superTypes.get(superTypes.size() - 1).getClassifierID();
+		switch (superTypeId) {
+		case GorePackage.AW_REQ:
+			store((AwReq) req, awReqsMap);
+			break;
+		case GorePackage.DOMAIN_ASSUMPTION:
+			store((DomainAssumption) req, domainAssumptionsMap);
+			break;
+		case GorePackage.GOAL:
+			store((Goal) req, goalsMap);
+			break;
+		case GorePackage.QUALITY_CONSTRAINT:
+			store((QualityConstraint) req, qualityConstraintsMap);
+			break;
+		case GorePackage.SOFTGOAL:
+			store((Softgoal) req, softgoalsMap);
+			break;
+		case GorePackage.TASK:
+			store((Task) req, tasksMap);
+			break;
+		}
 	}
 
 	/**
@@ -233,6 +243,8 @@ public class GoalModelElements {
 	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
 		// When elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as
 		// EMF generated code will handle the inverse association automatically.
+		// FIXME: possible improvements:
+		// - Can this be implemented in a more modular way by a Requirement.replace(newReq) method?
 
 		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm).
 		Requirement parent = oldReq.getParent();
@@ -245,8 +257,8 @@ public class GoalModelElements {
 		// If the requirement to replace is a softgoal, replace it in the softgoal list and map.
 		if (oldReq instanceof Softgoal) {
 			Softgoal oldSG = (Softgoal) oldReq, newSG = (Softgoal) newReq;
-			model.getSoftgoals().remove(oldSG);
-			model.getSoftgoals().add(newSG);
+			oldSG.setGoalModel(null);
+			newSG.setGoalModel(model);
 			softgoalsMap.put(newSG.eClass(), newSG);
 		}
 
@@ -262,8 +274,8 @@ public class GoalModelElements {
 		// If the requirement to replace is an AwReq, replace it in the AwReq list and maps.
 		else if (oldReq instanceof AwReq) {
 			AwReq oldAwReq = (AwReq) oldReq, newAwReq = (AwReq) newReq;
-			model.getAwReqs().remove(oldAwReq);
-			model.getAwReqs().add(newAwReq);
+			oldAwReq.setGoalModel(null);
+			newAwReq.setGoalModel(model);
 			awReqsMap.put(newAwReq.eClass(), newAwReq);
 			DefinableRequirement oldTarget = oldAwReq.getTarget();
 			if ((oldTarget != null) && (targetsMap.containsKey(oldTarget.eClass()))) {
@@ -271,13 +283,22 @@ public class GoalModelElements {
 				awreqs.remove(oldAwReq);
 				awreqs.add(newAwReq);
 			}
+			
+			// In particular, if the ECA-based coordination process is being used, replace the references in the strategies.
+			if (newAwReq instanceof EcaAwReq) {
+				for (AdaptationStrategy strategy : ((EcaAwReq) newAwReq).getStrategies())
+					strategy.updateReferences();
+			}
 		}
 
-		// Finally, uses a visitor to replace the requirement and all its descendants as AwReq targets.
+		// Finally, uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override
 			protected void visit(Requirement req) {
 				EClass reqClass = req.eClass();
+				
+				// Replaces the old requirement in the respective map.
+				checkTypeAndStore(req);
 
 				// Checks if the requirement is target of any AwReq.
 				if (targetsMap.containsKey(reqClass)) {

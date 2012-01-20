@@ -9,6 +9,7 @@ import it.unitn.disi.zanshin.monitoring.Activator;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
 import it.unitn.disi.zanshin.services.IAdaptivityService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
+import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -18,7 +19,7 @@ import org.osgi.framework.ServiceReference;
 
 /**
  * TODO: document this type.
- *
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
@@ -28,17 +29,18 @@ public class MonitorThread extends Thread {
 
 	/** The adaptivity service. */
 	private IAdaptivityService adaptivityService;
-	
+
 	/** A queue of life-cycle method calls to process. */
 	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<>(100);
-	
+
 	/** Constructor. */
 	public MonitorThread(IRepositoryService repositoryService) {
 		this.repositoryService = repositoryService;
 	}
-	
+
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param req
 	 * @param method
 	 * @throws InterruptedException
@@ -51,7 +53,7 @@ public class MonitorThread extends Thread {
 	@Override
 	public void run() {
 		MonitoringUtils.log.info("Monitoring thread started..."); //$NON-NLS-1$
-		
+
 		// Runs until interrupted.
 		while (true) {
 			// Takes the next method call in the queue and processes it.
@@ -64,12 +66,13 @@ public class MonitorThread extends Thread {
 				break;
 			}
 		}
-		
+
 		MonitoringUtils.log.info("Monitoring thread has finished."); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param req
 	 * @param method
 	 */
@@ -78,7 +81,8 @@ public class MonitorThread extends Thread {
 
 		// Keeps looking up for the adaptivity service, in case it is registered later.
 		// FIXME: possible improvements:
-		// - Is there a way to listen to services being registered in the platform? It would be better than this constant checking... 
+		// - Is there a way to listen to services being registered in the platform? It would be better than this constant
+		// checking...
 		if (adaptivityService == null)
 			lookupAdaptivityService();
 
@@ -87,7 +91,7 @@ public class MonitorThread extends Thread {
 			// FIXME: really implement this service using AwReqs, Drools, etc.
 			// This is a temporary implementation that triggers AwReq failures by hand for the A-CAD.
 			AwReq awreq = null;
-						
+
 			switch (req.eClass().getName()) {
 			case "G_RegCall": //$NON-NLS-1$
 				try {
@@ -113,6 +117,18 @@ public class MonitorThread extends Thread {
 
 			if (awreq != null) {
 				adaptivityService.processStateChange(awreq);
+
+				// FIXME: temporary implementation.
+				// This temporary implementation asks the Target System Controller Service for a new copy of the AwReq. However,
+				// there should be a better solution for this. Give it more thought and write the definitive version (or wait
+				// for the integration of EEAT/Drools to see how things will change?)
+				BundleContext context = Activator.getContext();
+				ServiceReference<ITargetSystemControllerService> reference = context.getServiceReference(ITargetSystemControllerService.class);
+				if (reference != null) {
+					ITargetSystemControllerService service = context.getService(reference);
+					AwReq newAwReq = service.createNewAwReqInstance(awreq.eClass());
+					repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
+				}
 			}
 		}
 	}

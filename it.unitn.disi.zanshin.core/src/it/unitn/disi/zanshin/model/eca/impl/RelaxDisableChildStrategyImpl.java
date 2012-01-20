@@ -235,7 +235,29 @@ public class RelaxDisableChildStrategyImpl extends AdaptationStrategyImpl implem
 			controller.terminate(child);
 			if (child instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
 				controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) child);
+			controller.disable(child);
 			controller.resume(requirement);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void updateReferences() {
+		// Retrieves the model id and continues only if this requirement is part of a model.
+		if ((getAwReq() != null) && (getAwReq().getGoalModel() != null)) {
+			Long modelId = getAwReq().getGoalModel().getId();
+			
+			// Retrieves the repository service from the platform to be able to update the references.
+			it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();
+			
+			// Updates references to requirement and child.
+			if (requirement != null)
+				setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));
+			if (child != null)
+				setChild(repositoryService.retrieveRequirement(modelId, child.eClass()));
 		}
 	}
 

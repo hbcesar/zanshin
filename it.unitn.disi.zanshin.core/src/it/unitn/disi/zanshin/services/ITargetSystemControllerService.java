@@ -89,6 +89,15 @@ public interface ITargetSystemControllerService {
 	void disable(EClass reqClass);
 
 	/**
+	 * The target system should stop trying to satisfy the specified requirement instance in the current execution. If it
+	 * is an AwReq, the adaptivity framework should ignore its evaluation.
+	 * 
+	 * @param req
+	 *          The requirement instance that should be disabled.
+	 */
+	void disable(Requirement req);
+
+	/**
 	 * From now on, the target system should resume trying to satisfy the specified requirement. If it is an AwReq, the
 	 * adaptivity framework should resume evaluating it.
 	 * 
@@ -96,6 +105,15 @@ public interface ITargetSystemControllerService {
 	 *          The requirement class to enable.
 	 */
 	void enable(EClass reqClass);
+
+	/**
+	 * The target system should resume trying to satisfy the specified requirement instance in the current execution. If it
+	 * is an AwReq, the adaptivity framework should evaluate it.
+	 * 
+	 * @param req
+	 *          The requirement instance that should be enabled.
+	 */
+	void enable(Requirement req);
 
 	/**
 	 * The target system should initialize the components related to the specified requirements instance and start
@@ -183,4 +201,7 @@ public interface ITargetSystemControllerService {
 	 *          The AwReq instance that failed.
 	 */
 	void waitForFix(AwReq awreq);
+
+	/** This is temporary. See the FIXME in class MonitorThread. */
+	AwReq createNewAwReqInstance(EClass eClass);
 }

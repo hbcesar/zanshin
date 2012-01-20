@@ -68,10 +68,22 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 		SimulationUtils.log.info("Instruction received: disable({0})", reqClass.getName()); //$NON-NLS-1$
 	}
 
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doDisable(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	protected void doDisable(Requirement req) {
+		SimulationUtils.log.info("Instruction received: disable(i{0})", req.eClass().getName()); //$NON-NLS-1$
+	}
+
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#enable(java.lang.Class) */
 	@Override
 	public void enable(EClass reqClass) {
 		SimulationUtils.log.info("Instruction received: enable({0})", reqClass.getName()); //$NON-NLS-1$
+	}
+
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#enable(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public void enable(Requirement req) {
+		SimulationUtils.log.info("Instruction received: enable(i{0})", req.eClass().getName()); //$NON-NLS-1$
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
@@ -140,4 +152,21 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 		SimulationUtils.log.info("Instruction received: wait-for-fix(i{0})", awreq.eClass().getName()); //$NON-NLS-1$
 	}
 
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#createNewAwReqInstance(org.eclipse.emf.ecore.EClass) */
+	@Override
+	public AwReq createNewAwReqInstance(EClass eClass) {
+		// This is temporary. See the FIXME in class MonitorThread.
+		try {
+			GoalModel newModel = createNewModel();
+			repositoryService.storeGoalModel(newModel);
+			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), eClass);
+			AwReq newAwReq = (AwReq) newReq;
+			newAwReq.setGoalModel(null);
+			repositoryService.disposeGoalModel(newModel.getId());
+			return newAwReq;
+		}
+		catch (Exception e) {
+			return null;
+		}
+	}
 }

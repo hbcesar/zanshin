@@ -292,6 +292,27 @@ public class RelaxReplaceImpl extends AdaptationStrategyImpl implements RelaxRep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void updateReferences() {
+		// Retrieves the model id and continues only if this requirement is part of a model.
+		if ((getAwReq() != null) && (getAwReq().getGoalModel() != null)) {
+			Long modelId = getAwReq().getGoalModel().getId();
+			
+			// Retrieves the repository service from the platform to be able to update the references.
+			it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();
+			
+			// Updates references to requirement and newRequirement.
+			if (requirement != null)
+				setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));
+			if (newRequirement != null)
+				setNewRequirement(repositoryService.retrieveRequirement(modelId, newRequirement.eClass()));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {

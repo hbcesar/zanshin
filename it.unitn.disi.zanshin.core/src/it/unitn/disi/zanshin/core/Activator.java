@@ -10,12 +10,27 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
+/**
+ * TODO: document this type.
+ * 
+ * FIXME: possible improvements:
+ * - Check all Activators for their class documentation. Describe their bundles in it.
+ * - Revise logging statements, now that DEBUG is working. Add new DEBUG messages where appropriate.
+ * - While revising logging statements, check for the use of apostrophes (') -- they aren't printed...
+ * - Use GitHub's issue tracker to manage the FIXMEs?   
+ *
+ * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
+ * @version 1.0
+ */
 public class Activator implements BundleActivator {
 	/** The bundle's context. */
 	private static BundleContext context;
 	
 	/** The target system controller service, if any is registered. */
 	private static ITargetSystemControllerService controllerService;
+	
+	/** The repository service. */
+	private static IRepositoryService repositoryService;
 	
 	/** Getter for context. */
 	public static BundleContext getContext() {
@@ -24,6 +39,7 @@ public class Activator implements BundleActivator {
 
 	/** Getter for controllerService. */
 	public static ITargetSystemControllerService getControllerService() {
+		// FIXME: possible improvement (lazy loading again).
 		// Lazily initializes this service because it might not be registered when this component is loaded.
 		if (controllerService == null) {
 			ServiceReference<ITargetSystemControllerService> controllerReference = context.getServiceReference(ITargetSystemControllerService.class);
@@ -31,6 +47,11 @@ public class Activator implements BundleActivator {
 		}
 		
 		return controllerService;
+	}
+
+	/** Getter for repositoryService. */
+	public static IRepositoryService getRepositoryService() {
+		return repositoryService;
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */
@@ -44,7 +65,7 @@ public class Activator implements BundleActivator {
 		CoreUtils.log.info("Zanshin Core Component starting..."); //$NON-NLS-1$
 		
 		// Registers the repository service.
-		IRepositoryService repositoryService = new RepositoryService();
+		repositoryService = new RepositoryService();
 		context.registerService(IRepositoryService.class, repositoryService, null);
 	}
 

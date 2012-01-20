@@ -164,6 +164,16 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void updateReferences() {
+		// This method is not supposed to be called.
+		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Method AdaptationStrategyImpl.updateReferences() has been called, indicating it has not been overridden by the subclass {0}. Make sure this is on purpose...", eClass().getName()); //$NON-NLS-1$
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {

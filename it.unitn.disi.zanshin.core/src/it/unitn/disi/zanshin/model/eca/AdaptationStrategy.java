@@ -90,4 +90,12 @@ public interface AdaptationStrategy extends EObject {
 	 */
 	void execute(AdaptationSession session);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method is not supposed to be called.\nit.unitn.disi.zanshin.core.CoreUtils.log.debug(\"Method AdaptationStrategyImpl.updateReferences() has been called, indicating it has not been overridden by the subclass {0}. Make sure this is on purpose...\", eClass().getName()); //$NON-NLS-1$'"
+	 * @generated
+	 */
+	void updateReferences();
+
 } // AdaptationStrategy
