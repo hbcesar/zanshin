@@ -13,7 +13,7 @@ To install the it.unitn.disi.zanshin.core bundle into Eclipse itself, right-clic
 
 To run, create a new OSGi Framework run configuration in Eclipse and configure the items below:
 
-1. In the "Bundles" tab, mark all it.unitn.disi bundles using the following start levels: simulation = 6, adaptivity = 4, core = 3, logging = 2, monitoring = 5. Clique the "Add Required Bundles" button many times, until no more bundles are selected by Eclipse;
+1. In the "Bundles" tab, mark all it.unitn.disi bundles using the following start levels: simulation = 6, adaptation = 4, core = 3, logging = 2, monitoring = 5. Clique the "Add Required Bundles" button many times, until no more bundles are selected by Eclipse;
 
 2. In the "Arguments" tab, add two extra switches to the end of "VM arguments":  -Dosgi.framework.extensions=org.eclipse.equinox.weaving.hook -XX:-UseSplitVerifier
 

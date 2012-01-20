@@ -1,6 +1,6 @@
-package it.unitn.disi.zanshin.adaptivity.internal.services;
+package it.unitn.disi.zanshin.adaptation.internal.services;
 
-import it.unitn.disi.zanshin.adaptivity.AdaptivityUtils;
+import it.unitn.disi.zanshin.adaptation.AdaptivityUtils;
 import it.unitn.disi.zanshin.model.eca.AbortStrategy;
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.AdaptationStrategy;
@@ -10,7 +10,7 @@ import it.unitn.disi.zanshin.model.eca.EcaFactory;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Requirement;
-import it.unitn.disi.zanshin.services.IAdaptivityService;
+import it.unitn.disi.zanshin.services.IAdaptationService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,14 +33,14 @@ import org.eclipse.emf.ecore.EClass;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class EcaBasedAdaptivityService implements IAdaptivityService {
+public class EcaBasedAdaptivityService implements IAdaptationService {
 	/** Repository for active adaptation sessions. */
 	private Map<EClass, AdaptationSession> activeSessions = new HashMap<>();
 
 	/** ECA-based model EMF factory used to create new adaptation sessions. */
 	private EcaFactory ecaFactory = EcaFactory.eINSTANCE;
 
-	/** @see it.unitn.disi.zanshin.services.IAdaptivityService#processStateChange(it.unitn.disi.zanshin.model.gore.AwReq) */
+	/** @see it.unitn.disi.zanshin.services.IAdaptationService#processStateChange(it.unitn.disi.zanshin.model.gore.AwReq) */
 	@Override
 	public void processStateChange(AwReq awreq) {
 		// Checks if the AwReq have been properly supplied.

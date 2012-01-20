@@ -5,7 +5,7 @@ import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 
 /**
  * Interface that defines the Monitoring Service. This service is responsible for processing the target system's log,
- * identifying when there has been a change of state in an Awareness Requirement and notifying the Adaptivity Service
+ * identifying when there has been a change of state in an Awareness Requirement and notifying the Adaptation Service
  * about this change of state.
  * 
  * Monitoring works by processing calls to requirement life-cycle methods (such as start(), end(), success(), etc.) on

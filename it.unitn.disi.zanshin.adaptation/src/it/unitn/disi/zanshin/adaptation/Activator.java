@@ -1,7 +1,7 @@
-package it.unitn.disi.zanshin.adaptivity;
+package it.unitn.disi.zanshin.adaptation;
 
-import it.unitn.disi.zanshin.adaptivity.internal.services.EcaBasedAdaptivityService;
-import it.unitn.disi.zanshin.services.IAdaptivityService;
+import it.unitn.disi.zanshin.adaptation.internal.services.EcaBasedAdaptivityService;
+import it.unitn.disi.zanshin.services.IAdaptationService;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -28,8 +28,8 @@ public class Activator implements BundleActivator {
 		AdaptivityUtils.log.info("Zanshin Adaptivity Component starting..."); //$NON-NLS-1$
 		
 		// Registers the adaptivity service.
-		IAdaptivityService adaptivityService = new EcaBasedAdaptivityService();
-		context.registerService(IAdaptivityService.class, adaptivityService, null);
+		IAdaptationService adaptivityService = new EcaBasedAdaptivityService();
+		context.registerService(IAdaptationService.class, adaptivityService, null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

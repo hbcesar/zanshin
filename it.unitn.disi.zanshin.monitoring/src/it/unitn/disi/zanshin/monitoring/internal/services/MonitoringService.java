@@ -12,7 +12,7 @@ import org.osgi.framework.ServiceReference;
 
 /**
  * Implementation of the monitoring service that uses the Awareness Requirements monitoring infrastructure in order to
- * notify the Adaptivity Service of AwReq state changes.
+ * notify the Adaptation Service of AwReq state changes.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

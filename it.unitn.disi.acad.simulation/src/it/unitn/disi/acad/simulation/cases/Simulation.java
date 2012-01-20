@@ -1,7 +1,7 @@
 package it.unitn.disi.acad.simulation.cases;
 
 /**
- * Interface for simulations of adaptivity scenarios.
+ * Interface for simulations of adaptation scenarios.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

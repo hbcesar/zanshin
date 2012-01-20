@@ -15,11 +15,11 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 /**
- * Abstract class that implements the Adaptivity Framework part of the Target System Controller Service, calling
+ * Abstract class that implements the Adaptation Framework part of the Target System Controller Service, calling
  * abstract methods that should be implemented by application-specific controllers that are responsible for the Target
  * System part. This way, it implements the GoF design pattern "Template Method".
  * 
- * The Adaptivity Framework part consists of manipulations on the goal model that can be done in a generic way, i.e.,
+ * The Adaptation Framework part consists of manipulations on the goal model that can be done in a generic way, i.e.,
  * without knowing any particular characteristics of the target system's requirement.
  * 
  * Important note / FIXME: this class is not fully implemented. Only the parts that were used in the simulation were.
@@ -93,7 +93,7 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 
 	/**
 	 * Called by the newInstance() method, this method should be implemented by the concrete subclass and provide a new
-	 * instance of the application goal model. The Adaptivity Framework is capable to create the new instance of the
+	 * instance of the application goal model. The Adaptation Framework is capable to create the new instance of the
 	 * requirement then, without any application-specific adaptation logic.
 	 * 
 	 * @return A new instance of the application requirement model.

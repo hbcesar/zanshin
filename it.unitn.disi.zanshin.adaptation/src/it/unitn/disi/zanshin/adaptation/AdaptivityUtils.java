@@ -1,4 +1,4 @@
-package it.unitn.disi.zanshin.adaptivity;
+package it.unitn.disi.zanshin.adaptation;
 
 import it.unitn.disi.zanshin.util.EmptyLogger;
 import it.unitn.disi.zanshin.util.ILogger;

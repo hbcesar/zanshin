@@ -7,7 +7,7 @@ import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.monitoring.Activator;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
-import it.unitn.disi.zanshin.services.IAdaptivityService;
+import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
@@ -27,8 +27,8 @@ public class MonitorThread extends Thread {
 	/** The repository service. */
 	private IRepositoryService repositoryService;
 
-	/** The adaptivity service. */
-	private IAdaptivityService adaptivityService;
+	/** The adaptation service. */
+	private IAdaptationService adaptationService;
 
 	/** A queue of life-cycle method calls to process. */
 	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<>(100);
@@ -79,15 +79,15 @@ public class MonitorThread extends Thread {
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
 
-		// Keeps looking up for the adaptivity service, in case it is registered later.
+		// Keeps looking up for the adaptation service, in case it is registered later.
 		// FIXME: possible improvements:
 		// - Is there a way to listen to services being registered in the platform? It would be better than this constant
 		// checking...
-		if (adaptivityService == null)
-			lookupAdaptivityService();
+		if (adaptationService == null)
+			lookupAdaptationService();
 
-		// Proceed only if the adaptivity service has been initialized.
-		if (adaptivityService != null) {
+		// Proceed only if the adaptation service has been initialized.
+		if (adaptationService != null) {
 			// FIXME: really implement this service using AwReqs, Drools, etc.
 			// This is a temporary implementation that triggers AwReq failures by hand for the A-CAD.
 			AwReq awreq = null;
@@ -116,7 +116,7 @@ public class MonitorThread extends Thread {
 			}
 
 			if (awreq != null) {
-				adaptivityService.processStateChange(awreq);
+				adaptationService.processStateChange(awreq);
 
 				// FIXME: temporary implementation.
 				// This temporary implementation asks the Target System Controller Service for a new copy of the AwReq. However,
@@ -134,12 +134,12 @@ public class MonitorThread extends Thread {
 	}
 
 	/**
-	 * Looks up the adaptivity service in the platform.
+	 * Looks up the adaptation service in the platform.
 	 */
-	private void lookupAdaptivityService() {
+	private void lookupAdaptationService() {
 		BundleContext context = Activator.getContext();
-		ServiceReference<IAdaptivityService> adaptivityReference = context.getServiceReference(IAdaptivityService.class);
-		if (adaptivityReference != null)
-			adaptivityService = context.getService(adaptivityReference);
+		ServiceReference<IAdaptationService> adaptationReference = context.getServiceReference(IAdaptationService.class);
+		if (adaptationReference != null)
+			adaptationService = context.getService(adaptationReference);
 	}
 }

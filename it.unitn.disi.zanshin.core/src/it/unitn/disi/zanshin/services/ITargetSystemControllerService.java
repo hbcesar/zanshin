@@ -81,7 +81,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * From now on, the target system should stop trying to satisfy the specified requirement. If it is an AwReq, the
-	 * adaptivity framework should stop evaluating it.
+	 * adaptation framework should stop evaluating it.
 	 * 
 	 * @param reqClass
 	 *          The requirement class to disable.
@@ -90,7 +90,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * The target system should stop trying to satisfy the specified requirement instance in the current execution. If it
-	 * is an AwReq, the adaptivity framework should ignore its evaluation.
+	 * is an AwReq, the adaptation framework should ignore its evaluation.
 	 * 
 	 * @param req
 	 *          The requirement instance that should be disabled.
@@ -99,7 +99,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * From now on, the target system should resume trying to satisfy the specified requirement. If it is an AwReq, the
-	 * adaptivity framework should resume evaluating it.
+	 * adaptation framework should resume evaluating it.
 	 * 
 	 * @param reqClass
 	 *          The requirement class to enable.
@@ -108,7 +108,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * The target system should resume trying to satisfy the specified requirement instance in the current execution. If it
-	 * is an AwReq, the adaptivity framework should evaluate it.
+	 * is an AwReq, the adaptation framework should evaluate it.
 	 * 
 	 * @param req
 	 *          The requirement instance that should be enabled.
@@ -117,7 +117,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * The target system should initialize the components related to the specified requirements instance and start
-	 * pursuing its satisfaction. If the specified requirement is an AwReq instance, the adaptivity frameowrk should
+	 * pursuing its satisfaction. If the specified requirement is an AwReq instance, the adaptation frameowrk should
 	 * immediately evaluate it.
 	 * 
 	 * @param req
@@ -126,7 +126,7 @@ public interface ITargetSystemControllerService {
 	void initiate(Requirement req);
 
 	/**
-	 * The adaptivity framework should create a new instance of the given requirement class.
+	 * The adaptation framework should create a new instance of the given requirement class.
 	 * 
 	 * @param reqClass
 	 *          The requirement class of the instance that should be created.
@@ -175,7 +175,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * The target system should terminate any component related to the specified requirement instance and stop pursuing
-	 * its satisfaction. If the specified requirement is an AwReq instance, the adaptivity framework should no longer
+	 * its satisfaction. If the specified requirement is an AwReq instance, the adaptation framework should no longer
 	 * consider its evaluation.
 	 * 
 	 * @param req
@@ -184,7 +184,7 @@ public interface ITargetSystemControllerService {
 	void terminate(Requirement req);
 
 	/**
-	 * The adaptivity framework should wait for the specified amount of time before continuing with the next instruction.
+	 * The adaptation framework should wait for the specified amount of time before continuing with the next instruction.
 	 * The target system is also informed of the wait in case changes in the user interface are in order during the
 	 * waiting time.
 	 * 
