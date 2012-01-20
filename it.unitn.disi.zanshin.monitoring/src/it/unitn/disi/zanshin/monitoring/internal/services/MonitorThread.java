@@ -11,6 +11,7 @@ import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
+import java.text.MessageFormat;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -78,13 +79,18 @@ public class MonitorThread extends Thread {
 	 */
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
-
+		
 		// Keeps looking up for the adaptation service, in case it is registered later.
 		// FIXME: possible improvements:
 		// - Is there a way to listen to services being registered in the platform? It would be better than this constant
 		// checking...
 		if (adaptationService == null)
 			lookupAdaptationService();
+
+		// FIXME: find a better way to time the adaptation framework?
+		GoalModel model = req.findGoalModel();
+		if ((model != null) && (model.eClass().getName().equals("ScalableGoalModel"))) //$NON-NLS-1$
+			processScalableGoalModelSimulationMethodCall(req, method);
 
 		// Proceed only if the adaptation service has been initialized.
 		if (adaptationService != null) {
@@ -95,7 +101,6 @@ public class MonitorThread extends Thread {
 			switch (req.eClass().getName()) {
 			case "G_RegCall": //$NON-NLS-1$
 				try {
-					GoalModel model = req.findGoalModel();
 					if (model != null) {
 						awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "AR15"); //$NON-NLS-1$
 						switch (method) {
@@ -130,6 +135,43 @@ public class MonitorThread extends Thread {
 					repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
 				}
 			}
+		}
+	}
+
+	long startTimestamp;
+	
+	/**
+	 * TODO: document this method.
+	 * @param req
+	 * @param method
+	 */
+	private void processScalableGoalModelSimulationMethodCall(DefinableRequirement req, MonitorableMethod method) {
+		if (startTimestamp == 0)
+			startTimestamp = System.currentTimeMillis();
+		
+		GoalModel model = req.findGoalModel();
+		AwReq awreq = model.getAwReqs().get(0);
+		DefinableRequirement target = awreq.getTarget();
+		if (req.equals(target)) {
+			switch (method) {
+			case FAIL:
+				awreq.setState(DefinableRequirementState.FAILED);
+				break;
+			case SUCCESS:
+				awreq.setState(DefinableRequirementState.SUCCEEDED);
+				break;
+			default:
+				awreq = null;
+			}
+			if (awreq != null) {
+				adaptationService.processStateChange(awreq);
+			}
+		}
+		
+		else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
+			long modelSize = req.getTime().getTime();
+			long endTimestamp = System.currentTimeMillis();
+			System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Adaptation Framework time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 		}
 	}
 

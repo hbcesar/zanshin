@@ -12,4 +12,10 @@ public interface SimulationPart {
 	 * @throws Exception
 	 */
 	void run() throws Exception;
+	
+	/**
+	 * TODO: document this method.
+	 * @return
+	 */
+	boolean shouldWait();
 }

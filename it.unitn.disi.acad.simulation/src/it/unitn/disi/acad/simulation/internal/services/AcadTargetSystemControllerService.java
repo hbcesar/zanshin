@@ -3,6 +3,7 @@ package it.unitn.disi.acad.simulation.internal.services;
 import it.unitn.disi.acad.model.acad.AcadPackage;
 import it.unitn.disi.acad.simulation.Activator;
 import it.unitn.disi.acad.simulation.SimulationUtils;
+import it.unitn.disi.acad.simulation.cases.ScalableModelSimulation;
 import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.AwReq;
@@ -14,6 +15,7 @@ import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 
 /**
  * Implementation of the Target System Controller Service for the A-CAD simulations present in this bundle.
@@ -92,19 +94,33 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 		EClass reqClass = req.eClass();
 		SimulationUtils.log.info("Instruction received: initiate(i{0})", reqClass.getName()); //$NON-NLS-1$
 		
-		// Perform different application-specific actions depending on the requirement to initiate.
-		switch (reqClass.getClassifierID()) {
-		case AcadPackage.GREG_CALL:
-			// Runs the next part of the AR15 Failure Simulation.
+		// Perform different application-specific actions depending on the simulation.
+		switch (reqClass.getEPackage().getName()) {
+		case "acad": //$NON-NLS-1$
+			// Perform different application-specific actions depending on the requirement.
+			switch (reqClass.getClassifierID()) {
+			case AcadPackage.GREG_CALL:
+				// Runs the next part of the AR15 Failure Simulation.
+				Activator.continueSimulation();
+				break;
+			}
+			break;
+		case "scalable": //$NON-NLS-1$
 			Activator.continueSimulation();
 			break;
 		}
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel() */
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel(org.eclipse.emf.ecore.EPackage) */
 	@Override
-	public GoalModel createNewModel() throws Exception {
-		return SimulationUtils.readDefaultGoalModel();
+	public GoalModel createNewModel(EPackage ePackage) throws Exception {
+		switch (ePackage.getName()) {
+		case "acad": //$NON-NLS-1$
+			return SimulationUtils.readDefaultGoalModel();
+		case "scalable": //$NON-NLS-1$
+			return ScalableModelSimulation.modelCopy;
+		}
+		return null;
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
@@ -157,7 +173,7 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 	public AwReq createNewAwReqInstance(EClass eClass) {
 		// This is temporary. See the FIXME in class MonitorThread.
 		try {
-			GoalModel newModel = createNewModel();
+			GoalModel newModel = createNewModel(eClass.getEPackage());
 			repositoryService.storeGoalModel(newModel);
 			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), eClass);
 			AwReq newAwReq = (AwReq) newReq;

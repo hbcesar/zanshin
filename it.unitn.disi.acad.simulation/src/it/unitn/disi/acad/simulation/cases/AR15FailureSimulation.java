@@ -23,9 +23,9 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 	/** The repository service. */
 	private IRepositoryService repositoryService;
 
-	/** @see it.unitn.disi.acad.simulation.cases.Simulation#init() */
+	/** @see it.unitn.disi.acad.simulation.cases.AbstractSimulation#doInit() */
 	@Override
-	public void init() throws Exception {
+	public void doInit() throws Exception {
 		// Loads the goal model.
 		model = SimulationUtils.readDefaultGoalModel();
 		
@@ -45,6 +45,11 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 				tII.fail();
 				tII.end();
 			}
+
+			@Override
+			public boolean shouldWait() {
+				return true;
+			}
 		});
 		
 		// Adds the second part of the simulation to the list.
@@ -61,6 +66,11 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 				tDL.start();
 				tDL.fail();
 				tDL.end();
+			}
+
+			@Override
+			public boolean shouldWait() {
+				return false;
 			}
 		});
 	}

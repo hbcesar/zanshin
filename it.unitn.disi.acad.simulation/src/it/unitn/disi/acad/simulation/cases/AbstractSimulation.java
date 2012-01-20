@@ -11,10 +11,33 @@ import java.util.List;
  */
 public abstract class AbstractSimulation implements Simulation {
 	/** TODO: document this field. */
+	protected String name; 
+	
+	/** TODO: document this field. */
 	protected List<SimulationPart> parts = new ArrayList<>();
 	
 	/** TODO: document this field. */
 	protected int index = 0;
+	
+	/** TODO: document this field. */
+	protected SimulationPart currentPart;
+	
+	/** @see it.unitn.disi.acad.simulation.cases.Simulation#init(java.lang.String) */
+	@Override
+	public final void init(String name) throws Exception {
+		this.name = name;
+		doInit();
+	}
+	
+	/**
+	 * TODO: document this method.
+	 */
+	protected abstract void doInit() throws Exception;
+
+	/** Getter for name. */
+	public String getName() {
+		return name;
+	}
 
 	/** @see it.unitn.disi.acad.simulation.cases.Simulation#hasFinished() */
 	@Override
@@ -27,7 +50,13 @@ public abstract class AbstractSimulation implements Simulation {
 	@Override
 	public void runNextPart() throws Exception {
 		// Obtains the next part of the simulation and runs it.
-		SimulationPart part = parts.get(index++);
-		part.run();
+		currentPart = parts.get(index++);
+		currentPart.run();
+	}
+
+	/** @see it.unitn.disi.acad.simulation.cases.Simulation#shouldWait() */
+	@Override
+	public boolean shouldWait() {
+		return (currentPart != null) && (currentPart.shouldWait());
 	}
 }
