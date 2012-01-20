@@ -6,6 +6,7 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.RefinementType;
@@ -190,6 +191,30 @@ public class RequirementImpl extends OclAnyImpl implements Requirement {
 		// Returns the found model, or null if no model has been found.
 		return model;
 		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Integer> getChildrenStateCount() {
+		// Counts the number of children in each state and the number of defineable children.
+		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];
+		int defChildrenCount = 0;
+		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {
+			if (child instanceof DefinableRequirement) {
+				defChildrenCount++;
+				stateCount[((DefinableRequirement) child).getState().getValue()]++;
+			}
+		}
+		
+		// Converts to EList so we can return, adding the total number of definable children to the last position.
+		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
+		for (int count : stateCount)
+			stateCountList.add(count);
+		stateCountList.add(defChildrenCount);
+		return stateCountList;
 	}
 
 	/**

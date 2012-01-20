@@ -123,24 +123,18 @@ public class PerformativeRequirementImpl extends DefinableRequirementImpl implem
 	 */
 	public void checkState() {
 		// Counts the number of children in each state and the number of definable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];
-		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {
-			if (child instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement) {
-				defChildrenCount++;
-				stateCount[((it.unitn.disi.zanshin.model.gore.DefinableRequirement) child).getState().getValue()]++;
-			}
-		}
+		org.eclipse.emf.common.util.EList<Integer> stateCount = getChildrenStateCount();
+		int defChildrenCount = stateCount.get(stateCount.size() - 1);
 		
 		// For AND-refined requirements, checks if all children have SUCCEEDED.
 		if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {
-			if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE] == defChildrenCount) success();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE) == defChildrenCount) success();
 		}
 		
 		// For OR-refined requirements, checks if all children have FAILED or have been CANCELED.
 		else {
-			if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE] == defChildrenCount) fail();
-			else if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED_VALUE] == defChildrenCount) cancel();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == defChildrenCount) fail();
+			else if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED_VALUE) == defChildrenCount) cancel();
 		}
 	}
 

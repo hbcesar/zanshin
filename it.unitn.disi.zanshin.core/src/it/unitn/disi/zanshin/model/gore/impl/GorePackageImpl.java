@@ -724,6 +724,8 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		addEOperation(requirementEClass, this.getGoalModel(), "findGoalModel", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		addEOperation(requirementEClass, ecorePackage.getEInt(), "getChildrenStateCount", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		initEClass(definableRequirementEClass, DefinableRequirement.class, "DefinableRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getDefinableRequirement_Time(), ecorePackage.getEDate(), "time", null, 0, 1, DefinableRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getDefinableRequirement_State(), this.getDefinableRequirementState(), "state", "", 0, 1, DefinableRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$

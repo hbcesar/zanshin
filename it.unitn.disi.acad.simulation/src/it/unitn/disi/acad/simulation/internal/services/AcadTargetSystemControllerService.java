@@ -1,5 +1,7 @@
 package it.unitn.disi.acad.simulation.internal.services;
 
+import it.unitn.disi.acad.model.acad.AcadPackage;
+import it.unitn.disi.acad.simulation.Activator;
 import it.unitn.disi.acad.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
@@ -19,7 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class TargetSystemControllerService extends AbstractTargetSystemControllerService {
+public class AcadTargetSystemControllerService extends AbstractTargetSystemControllerService {
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#abort(it.unitn.disi.zanshin.model.gore.AwReq) */
 	@Override
 	public void abort(AwReq awreq) {
@@ -75,11 +77,16 @@ public class TargetSystemControllerService extends AbstractTargetSystemControlle
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public void initiate(Requirement req) {
-		EClass eClass = req.eClass();
-		SimulationUtils.log.info("Instruction received: initiate(i{0})", eClass.getName()); //$NON-NLS-1$
+		EClass reqClass = req.eClass();
+		SimulationUtils.log.info("Instruction received: initiate(i{0})", reqClass.getName()); //$NON-NLS-1$
 		
 		// Perform different application-specific actions depending on the requirement to initiate.
-		
+		switch (reqClass.getClassifierID()) {
+		case AcadPackage.GREG_CALL:
+			// Runs the next part of the AR15 Failure Simulation.
+			Activator.continueSimulation();
+			break;
+		}
 	}
 
 	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel() */
@@ -125,15 +132,6 @@ public class TargetSystemControllerService extends AbstractTargetSystemControlle
 	@Override
 	public void waitFor(long timeInMillis) {
 		SimulationUtils.log.info("Instruction received: wait({0})",timeInMillis); //$NON-NLS-1$
-		
-		// Sleeps for the given time.
-		try {
-			SimulationUtils.log.info("A-CAD Simulation Thread waiting for {0}ms...", timeInMillis); //$NON-NLS-1$
-			Thread.sleep(timeInMillis);
-		}
-		catch (InterruptedException e) {
-			SimulationUtils.log.error("A-CAD Simulation Thread got interrupted while waiting for {0}ms", e, timeInMillis); //$NON-NLS-1$
-		}
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#waitForFix(it.unitn.disi.zanshin.model.gore.AwReq) */

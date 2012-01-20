@@ -1,5 +1,11 @@
 package it.unitn.disi.zanshin.internal.services;
 
+import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED;
+import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE;
+import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED;
+import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED;
+import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE;
+import it.unitn.disi.zanshin.core.CoreUtils;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
@@ -225,15 +231,16 @@ public class GoalModelElements {
 	 *          The new requirement.
 	 */
 	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
-		// Changes the parent-child relationship.
+		// When elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as
+		// EMF generated code will handle the inverse association automatically.
+
+		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm).
 		Requirement parent = oldReq.getParent();
-		newReq.setParent(parent);
 		oldReq.setParent(null);
-		if (parent != null) {
-			EList<Requirement> children = parent.getChildren();
-			children.remove(oldReq);
-			children.add(newReq);
-		}
+		newReq.setParent(parent);
+
+		// Checks if the ancestors should have their status reset.
+		resetAncestors(newReq);
 
 		// If the requirement to replace is a softgoal, replace it in the softgoal list and map.
 		if (oldReq instanceof Softgoal) {
@@ -247,9 +254,8 @@ public class GoalModelElements {
 		else if (oldReq instanceof QualityConstraint) {
 			QualityConstraint oldQC = (QualityConstraint) oldReq, newQC = (QualityConstraint) newReq;
 			Softgoal softgoal = oldQC.getSoftgoal();
-			EList<QualityConstraint> qcs = softgoal.getConstraints();
-			qcs.remove(oldQC);
-			qcs.add(newQC);
+			oldQC.setSoftgoal(null);
+			newQC.setSoftgoal(softgoal);
 			qualityConstraintsMap.put(newQC.eClass(), newQC);
 		}
 
@@ -296,5 +302,58 @@ public class GoalModelElements {
 			}
 		};
 		visitor.parse();
+	}
+
+	/**
+	 * After a piece of the requirements tree gets replaced by new instances (with possible different states), check if
+	 * the ancestors should also have their state reset. For instance, if a failed instance is replaced by a non-failing
+	 * one in an AND-refinement, the parent should change from Failed to Started or Undefined.
+	 * 
+	 * @param replacedReq
+	 *          The requirement that has just been replaced.
+	 */
+	private void resetAncestors(Requirement replacedReq) {
+		// Navigate the tree upwards.
+		Requirement parent = replacedReq.getParent();
+		while (parent != null) {
+			// Only makes sense in definable requirements.
+			if (parent instanceof DefinableRequirement) {
+				DefinableRequirement req = (DefinableRequirement) parent;
+				
+				// Counts the number of children in each state and the number of definable children.
+				EList<Integer> stateCount = req.getChildrenStateCount();
+				int defChildrenCount = stateCount.get(stateCount.size() - 1);
+				
+				// Checks the type of the requirement.
+				switch (req.getRefinementType()) {
+				case AND:
+					// For failed AND-refined requirements, if none of its children failed, reset its state.
+					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) == 0))
+						resetRequirement(stateCount, defChildrenCount, req);
+					break;
+				case OR:
+					// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.
+					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) < defChildrenCount)) 
+						resetRequirement(stateCount, defChildrenCount, req);
+				}
+			}
+			
+			// Next ancestor.
+			parent = parent.getParent();
+		}
+	}
+	
+	/**
+	 * TODO: document this method.
+	 * @param stateCount
+	 * @param defChildrenCount
+	 * @param req
+	 */
+	private void resetRequirement(EList<Integer> stateCount, int defChildrenCount, DefinableRequirement req) {
+		if (stateCount.get(UNDEFINED_VALUE) == defChildrenCount)
+			req.setState(UNDEFINED);
+		else
+			req.setState(STARTED);
+		CoreUtils.log.debug("The status of {0} has been reset to {1}", req.eClass().getName(), req.getState()); //$NON-NLS-1$
 	}
 }

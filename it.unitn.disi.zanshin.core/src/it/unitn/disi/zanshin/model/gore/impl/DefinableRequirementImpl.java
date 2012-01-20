@@ -126,12 +126,6 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	 * @generated
 	 */
 	public void setState(DefinableRequirementState newState) {
-		// FIXME: possible improvements:
-		// - Check if the change of state is allowed
-		// - Set a default state when the instance is created
-		// - Change the life-cycle methods to check the state and see if the method could really have been called in that state
-		// - Add a SUSPENDED state? Check if other new states are needed?
-		// - What else?
 		DefinableRequirementState oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
@@ -201,24 +195,18 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	 * @generated
 	 */
 	public void checkState() {
-		// Counts the number of children in each state and the number of defineable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];
-		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {
-			if (child instanceof DefinableRequirement) {
-				defChildrenCount++;
-				stateCount[((DefinableRequirement) child).getState().getValue()]++;
-			}
-		}
+		// Counts the number of children in each state and the number of definable children.
+		org.eclipse.emf.common.util.EList<Integer> stateCount = getChildrenStateCount();
+		int defChildrenCount = stateCount.get(stateCount.size() - 1);
 		
 		// For AND-refined requirements, checks if all children have SUCCEEDED.
 		if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {
-			if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE] == defChildrenCount) success();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE) == defChildrenCount) success();
 		}
 		
 		// For OR-refined requirements, checks if all children have FAILED.
 		else {
-			if (stateCount[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE] == defChildrenCount) fail();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == defChildrenCount) fail();
 		}
 	}
 

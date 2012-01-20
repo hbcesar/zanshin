@@ -38,6 +38,11 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 */
 	@Override
 	public final void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {
+		// FIXME: possible improvements:
+		// - Replacing the requirement is not enough. If this requirement's failure caused ancestor requirements to fail
+		// also, this should be fixed. Think of a "reset" procedure that investigates if there are any failed goals with no
+		// good reason (no failing children).
+
 		// Replaces the source requirement with the destination requirement in its goal model.
 		Long modelId = srcReq.findGoalModel().getId();
 		repositoryService.replaceRequirement(modelId, srcReq, dstReq);

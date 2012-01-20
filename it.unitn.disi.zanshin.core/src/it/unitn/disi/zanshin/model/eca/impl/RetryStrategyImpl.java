@@ -178,6 +178,7 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		catch (InstantiationException e) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.error("{0} Could not apply strategy {1} because a new instance of the requirement could not be created.", e, session.getId(), strategyName); //$NON-NLS-1$
 		}
+		
 	}
 
 	/**
