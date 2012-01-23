@@ -105,8 +105,8 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#disable(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public final void disable(Requirement req) {
-		// Disabling a requirement instance means removing it from its parent (or from the model itself).
+	public final void suspend(Requirement req) {
+		// Suspending a requirement instance means removing it from its parent (or from the model itself).
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
 		Requirement parent = req.getParent();
 		if (parent != null) {
@@ -129,15 +129,15 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 		}
 		
 		// Calls the application-specific implementation.
-		doDisable(req);
+		doSuspend(req);
 	}
 
 	/**
-	 * Called by disable(), this method should be implemented by the concrete subclass with the application-specific
-	 * adaptation logic related to the disable operation.
+	 * Called by suspend(), this method should be implemented by the concrete subclass with the application-specific
+	 * adaptation logic related to the suspend operation.
 	 * 
 	 * @param req
 	 *          The requirement instance.
 	 */
-	protected abstract void doDisable(Requirement req);
+	protected abstract void doSuspend(Requirement req);
 }

@@ -81,7 +81,7 @@ public interface ITargetSystemControllerService {
 
 	/**
 	 * From now on, the target system should stop trying to satisfy the specified requirement. If it is an AwReq, the
-	 * adaptation framework should stop evaluating it.
+	 * adaptation framework should stop evaluating it. To do this at the instance level, use suspend().
 	 * 
 	 * @param reqClass
 	 *          The requirement class to disable.
@@ -89,31 +89,13 @@ public interface ITargetSystemControllerService {
 	void disable(EClass reqClass);
 
 	/**
-	 * The target system should stop trying to satisfy the specified requirement instance in the current execution. If it
-	 * is an AwReq, the adaptation framework should ignore its evaluation.
-	 * 
-	 * @param req
-	 *          The requirement instance that should be disabled.
-	 */
-	void disable(Requirement req);
-
-	/**
 	 * From now on, the target system should resume trying to satisfy the specified requirement. If it is an AwReq, the
-	 * adaptation framework should resume evaluating it.
+	 * adaptation framework should resume evaluating it. To do this at the instance level, use resume().
 	 * 
 	 * @param reqClass
 	 *          The requirement class to enable.
 	 */
 	void enable(EClass reqClass);
-
-	/**
-	 * The target system should resume trying to satisfy the specified requirement instance in the current execution. If it
-	 * is an AwReq, the adaptation framework should evaluate it.
-	 * 
-	 * @param req
-	 *          The requirement instance that should be enabled.
-	 */
-	void enable(Requirement req);
 
 	/**
 	 * The target system should initialize the components related to the specified requirements instance and start

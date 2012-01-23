@@ -70,22 +70,10 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 		SimulationUtils.log.info("Instruction received: disable({0})", reqClass.getName()); //$NON-NLS-1$
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doDisable(it.unitn.disi.zanshin.model.gore.Requirement) */
-	@Override
-	protected void doDisable(Requirement req) {
-		SimulationUtils.log.info("Instruction received: disable(i{0})", req.eClass().getName()); //$NON-NLS-1$
-	}
-
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#enable(java.lang.Class) */
 	@Override
 	public void enable(EClass reqClass) {
 		SimulationUtils.log.info("Instruction received: enable({0})", reqClass.getName()); //$NON-NLS-1$
-	}
-
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#enable(it.unitn.disi.zanshin.model.gore.Requirement) */
-	@Override
-	public void enable(Requirement req) {
-		SimulationUtils.log.info("Instruction received: enable(i{0})", req.eClass().getName()); //$NON-NLS-1$
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
@@ -144,9 +132,9 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 		SimulationUtils.log.info("Instruction received: send-warning({0}, i{1})", actor.eClass().getName(), awreq.eClass().getName()); //$NON-NLS-1$
 	}
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#suspend(it.unitn.disi.zanshin.model.gore.Requirement) */
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doSuspend(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void suspend(Requirement req) {
+	public void doSuspend(Requirement req) {
 		SimulationUtils.log.info("Instruction received: suspend(i{0})", req.eClass().getName()); //$NON-NLS-1$
 	}
 

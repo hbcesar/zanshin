@@ -235,7 +235,7 @@ public class RelaxDisableChildStrategyImpl extends AdaptationStrategyImpl implem
 			controller.terminate(child);
 			if (child instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
 				controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) child);
-			controller.disable(child);
+			controller.suspend(child);
 			controller.resume(requirement);
 		}
 	}

@@ -233,7 +233,7 @@ public class StrengthenEnableChildStrategyImpl extends AdaptationStrategyImpl im
 		}
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
 			controller.suspend(requirement);
-			controller.enable(child);
+			controller.resume(child);
 			controller.initiate(child);
 			controller.resume(requirement);
 		}
