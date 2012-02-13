@@ -20,9 +20,9 @@ public interface Simulation {
 	public static final String PROPERTIES_CASES_CLASS = ".class"; //$NON-NLS-1$
 
 	/**
-	 * TODO: document this method.
+	 * Returns the name of the simulation, which is used in logging messages.
 	 * 
-	 * @return
+	 * @return The name of the simulation, as specified in the .properties file.
 	 */
 	String getName();
 
@@ -51,10 +51,11 @@ public interface Simulation {
 	 * @return <code>true</code> if there's nothing else to run, <code>false</code> otherwise.
 	 */
 	boolean hasFinished();
-	
+
 	/**
-	 * TODO: document this method.
-	 * @return
+	 * Indicates if the simulation should wait to be awaken by another thread or if it can continue on its own.
+	 * 
+	 * @return <code>true</code> if the simulation should wait, <code>false</code> otherwise.
 	 */
 	boolean shouldWait();
 }

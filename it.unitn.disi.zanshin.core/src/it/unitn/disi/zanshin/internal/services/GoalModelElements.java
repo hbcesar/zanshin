@@ -100,8 +100,10 @@ public class GoalModelElements {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Checks the type of requirement and store it in the appropriate map.
+	 * 
 	 * @param req
+	 *          The requirement to store.
 	 */
 	private final void checkTypeAndStore(Requirement req) {
 		// Checks the element's type and stores it in the appropriate map.
@@ -283,7 +285,7 @@ public class GoalModelElements {
 				awreqs.remove(oldAwReq);
 				awreqs.add(newAwReq);
 			}
-			
+
 			// In particular, if the ECA-based coordination process is being used, replace the references in the strategies.
 			if (newAwReq instanceof EcaAwReq) {
 				for (AdaptationStrategy strategy : ((EcaAwReq) newAwReq).getStrategies())
@@ -291,12 +293,13 @@ public class GoalModelElements {
 			}
 		}
 
-		// Finally, uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
+		// Finally, uses a visitor to replace the requirement and all its descendants as AwReq targets and in their
+		// respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override
 			protected void visit(Requirement req) {
 				EClass reqClass = req.eClass();
-				
+
 				// Replaces the old requirement in the respective map.
 				checkTypeAndStore(req);
 
@@ -340,11 +343,11 @@ public class GoalModelElements {
 			// Only makes sense in definable requirements.
 			if (parent instanceof DefinableRequirement) {
 				DefinableRequirement req = (DefinableRequirement) parent;
-				
+
 				// Counts the number of children in each state and the number of definable children.
 				EList<Integer> stateCount = req.getChildrenStateCount();
 				int defChildrenCount = stateCount.get(stateCount.size() - 1);
-				
+
 				// Checks the type of the requirement.
 				switch (req.getRefinementType()) {
 				case AND:
@@ -354,27 +357,37 @@ public class GoalModelElements {
 					break;
 				case OR:
 					// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.
-					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) < defChildrenCount)) 
+					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) < defChildrenCount))
 						resetRequirement(stateCount, defChildrenCount, req);
 				}
 			}
-			
+
 			// Next ancestor.
 			parent = parent.getParent();
 		}
 	}
-	
+
 	/**
-	 * TODO: document this method.
+	 * In the resetAncestors() method, when a requirement gets some of its children replaced it is possible that it needs
+	 * to be reset (see that method's documentation). When that happens, this method is called to verify if the
+	 * requirement should be reset to "Undefined" or to "Started".
+	 * 
 	 * @param stateCount
+	 *          Counters that represent the number of children in each state.
 	 * @param defChildrenCount
+	 *          The total number of DefinableRequirement children of the requirement that is being reset.
 	 * @param req
+	 *          The parent requirement being reset.
 	 */
 	private void resetRequirement(EList<Integer> stateCount, int defChildrenCount, DefinableRequirement req) {
+		// If no children have yet started, set the requirement also as Undefined.
 		if (stateCount.get(UNDEFINED_VALUE) == defChildrenCount)
 			req.setState(UNDEFINED);
-		else
-			req.setState(STARTED);
+
+		// Otherwise, if at least one child has started, set it also as Started.
+		else req.setState(STARTED);
+
+		// Log what has just happened.
 		CoreUtils.log.debug("The status of {0} has been reset to {1}", req.eClass().getName(), req.getState()); //$NON-NLS-1$
 	}
 }

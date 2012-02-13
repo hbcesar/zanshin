@@ -184,6 +184,6 @@ public interface ITargetSystemControllerService {
 	 */
 	void waitForFix(AwReq awreq);
 
-	/** This is temporary. See the FIXME in class MonitorThread. */
+	/** FIXME: This is temporary. See the FIX-ME in class MonitorThread. */
 	AwReq createNewAwReqInstance(EClass eClass);
 }

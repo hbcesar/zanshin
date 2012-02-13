@@ -4,15 +4,21 @@ import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 
 /**
- * TODO: document this type.
- *
+ * Class that represents a requirement life-cycle method being called.
+ * 
+ * This class is used by the monitoring thread, which uses a queue to store such calls when the monitoring service
+ * receives them and processes them in a FIFO fashion. The monitoring thread's queue contains objects of this class.
+ * 
+ * Life-cycle method calls are simple data structures that store the requirement in which the method was called and the
+ * type of method that was called (e.g. start(), end(), success(), etc.).
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public class LifecycleMethodCall {
 	/** The requirement in which the method was called. */
 	private DefinableRequirement requirement;
-	
+
 	/** The type of method that was called. */
 	private MonitorableMethod method;
 
@@ -31,5 +37,4 @@ public class LifecycleMethodCall {
 	public MonitorableMethod getMethod() {
 		return method;
 	}
-
 }

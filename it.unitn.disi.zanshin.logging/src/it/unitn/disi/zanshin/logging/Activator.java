@@ -12,6 +12,13 @@ import org.osgi.service.log.LogReaderService;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
+/**
+ * Bundle activator for the Logging module of Zanshin. The logging module register a logger that formats log messages
+ * from other components according to the module's configuration (see META-INF/logging.properties).
+ * 
+ * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
+ * @version 1.0
+ */
 public class Activator implements BundleActivator {
 	/** The bundle's id. */
 	public static final String BUNDLE_ID = "it.unitn.disi.zanshin.logging"; //$NON-NLS-1$

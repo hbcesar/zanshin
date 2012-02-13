@@ -159,7 +159,7 @@ public class AcadTargetSystemControllerService extends AbstractTargetSystemContr
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#createNewAwReqInstance(org.eclipse.emf.ecore.EClass) */
 	@Override
 	public AwReq createNewAwReqInstance(EClass eClass) {
-		// This is temporary. See the FIXME in class MonitorThread.
+		// FIXME: This is temporary. See the FIX-ME in class MonitorThread.
 		try {
 			GoalModel newModel = createNewModel(eClass.getEPackage());
 			repositoryService.storeGoalModel(newModel);

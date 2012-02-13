@@ -97,7 +97,7 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 * instance of the application goal model. The Adaptation Framework is capable to create the new instance of the
 	 * requirement then, without any application-specific adaptation logic.
 	 * 
-	 * @param ePackage TODO: document this...
+	 * @param ePackage The EMF package from which to create a new requirements model.
 	 * 
 	 * @return A new instance of the application requirement model.
 	 */

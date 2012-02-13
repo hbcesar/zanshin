@@ -19,7 +19,11 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 /**
- * TODO: document this type.
+ * Thread that processes requirement life-cycle method calls.
+ * 
+ * This thread is used by the monitoring service to separate the adaptivity framework and the target system in different
+ * threads when simulations bundles are used. Calls are placed in synchronized blocking queue and are processed in a
+ * FIFO fashion. When there's an AwReq failure, the thread submits it to the adaptation service.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -40,11 +44,15 @@ public class MonitorThread extends Thread {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Adds a life-cycle method call to the queue for eventual processing. Called by the monitoring service when other
+	 * bundles send method calls to it.
 	 * 
 	 * @param req
+	 *          The requirement instance in which the method was called.
 	 * @param method
+	 *          The method that was called (start(), end(), success(), etc.).
 	 * @throws InterruptedException
+	 *           If the calling thread gets interrupted while waiting for the queue to be released by another thread.
 	 */
 	public void addToQueue(DefinableRequirement req, MonitorableMethod method) throws InterruptedException {
 		queue.put(new LifecycleMethodCall(req, method));
@@ -72,14 +80,18 @@ public class MonitorThread extends Thread {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Processes a life-cycle method call. This method is called by the thread's main procedure (i.e., the run() method),
+	 * which loops forever (i.e., until interrupted), taking the next method call from the queue and process it with this
+	 * method.
 	 * 
 	 * @param req
+	 *          The requirement instance in which the method was called.
 	 * @param method
+	 *          The method that was called (start(), end(), success(), etc.).
 	 */
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
-		
+
 		// Keeps looking up for the adaptation service, in case it is registered later.
 		// FIXME: possible improvements:
 		// - Is there a way to listen to services being registered in the platform? It would be better than this constant
@@ -139,16 +151,18 @@ public class MonitorThread extends Thread {
 	}
 
 	long startTimestamp;
-	
+
 	/**
-	 * TODO: document this method.
-	 * @param req
-	 * @param method
+	 * Temporary method that times the adaptation framework. Since the monitoring thread represents the adaptation
+	 * framework and the simulation (i.e., the target system) is run in a different thread, this method will clock the
+	 * time used by the monitoring thread when processing the scalable goal model simulation. There is a FIX-ME comment in
+	 * processMethodCall() to implement this in a better way, i.e., independent of the simulation, with the ability to
+	 * turn on/off, etc.
 	 */
 	private void processScalableGoalModelSimulationMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		if (startTimestamp == 0)
 			startTimestamp = System.currentTimeMillis();
-		
+
 		GoalModel model = req.findGoalModel();
 		AwReq awreq = model.getAwReqs().get(0);
 		DefinableRequirement target = awreq.getTarget();
@@ -167,7 +181,7 @@ public class MonitorThread extends Thread {
 				adaptationService.processStateChange(awreq);
 			}
 		}
-		
+
 		else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
 			long modelSize = req.getTime().getTime();
 			long endTimestamp = System.currentTimeMillis();
@@ -176,7 +190,9 @@ public class MonitorThread extends Thread {
 	}
 
 	/**
-	 * Looks up the adaptation service in the platform.
+	 * Temporary method that looks up the adaptation service in the platform. There is a FIX-ME in processMethodCall() to
+	 * replace this with a listener that listens to services being registered in the platform. When this is implemented,
+	 * this method can be deleted.
 	 */
 	private void lookupAdaptationService() {
 		BundleContext context = Activator.getContext();

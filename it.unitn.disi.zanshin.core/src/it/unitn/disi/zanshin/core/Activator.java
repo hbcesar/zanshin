@@ -11,27 +11,23 @@ import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * TODO: document this type.
+ * Bundle activator for the Core module of Zanshin. The core module defines all service interfaces and the base EMF
+ * models extended by the target systems. Plus, it registers an implementation for the repository service, which stores
+ * requirement model instances from the target systems that are currently executing.
  * 
- * FIXME: possible improvements:
- * - Check all Activators for their class documentation. Describe their bundles in it.
- * - Revise logging statements, now that DEBUG is working. Add new DEBUG messages where appropriate.
- * - While revising logging statements, check for the use of apostrophes (') -- they aren't printed...
- * - Use GitHub's issue tracker to manage the FIXMEs?   
- *
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public class Activator implements BundleActivator {
 	/** The bundle's context. */
 	private static BundleContext context;
-	
+
 	/** The target system controller service, if any is registered. */
 	private static ITargetSystemControllerService controllerService;
-	
+
 	/** The repository service. */
 	private static IRepositoryService repositoryService;
-	
+
 	/** Getter for context. */
 	public static BundleContext getContext() {
 		return context;
@@ -43,9 +39,10 @@ public class Activator implements BundleActivator {
 		// Lazily initializes this service because it might not be registered when this component is loaded.
 		if (controllerService == null) {
 			ServiceReference<ITargetSystemControllerService> controllerReference = context.getServiceReference(ITargetSystemControllerService.class);
-			if (controllerReference != null) controllerService = context.getService(controllerReference);
+			if (controllerReference != null)
+				controllerService = context.getService(controllerReference);
 		}
-		
+
 		return controllerService;
 	}
 
@@ -57,13 +54,13 @@ public class Activator implements BundleActivator {
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		
+
 		// Initializes the bundle's logger.
 		ServiceTracker<LogService, LogService> logTracker = new ServiceTracker<LogService, LogService>(context, LogService.class, null);
 		logTracker.open();
 		CoreUtils.initialize(logTracker.getService());
 		CoreUtils.log.info("Zanshin Core Component starting..."); //$NON-NLS-1$
-		
+
 		// Registers the repository service.
 		repositoryService = new RepositoryService();
 		context.registerService(IRepositoryService.class, repositoryService, null);
