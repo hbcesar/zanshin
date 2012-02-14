@@ -46,31 +46,33 @@ public class ScalableAwReqsMonitor implements IMonitoringService {
 
 		// If the target element in the goal model has succeeded/failed, trigger a success/failure in the AwReq.
 		GoalModel model = req.findGoalModel();
-		AwReq awreq = model.getAwReqs().get(0);
-		DefinableRequirement target = awreq.getTarget();
-		if (req.equals(target)) {
-			switch (method) {
-			case FAIL:
-				awreq.setState(DefinableRequirementState.FAILED);
-				break;
-			case SUCCESS:
-				awreq.setState(DefinableRequirementState.SUCCEEDED);
-				break;
-			default:
-				awreq = null;
+		if ((model != null) && (model.getAwReqs() != null) && (model.getAwReqs().size() > 0)) {
+			AwReq awreq = model.getAwReqs().get(0);
+			DefinableRequirement target = awreq.getTarget();
+			if (req.equals(target)) {
+				switch (method) {
+				case FAIL:
+					awreq.setState(DefinableRequirementState.FAILED);
+					break;
+				case SUCCESS:
+					awreq.setState(DefinableRequirementState.SUCCEEDED);
+					break;
+				default:
+					awreq = null;
+				}
+				
+				// Notify the adaptation service of the AwReq state change.
+				if (awreq != null) {
+					adaptationService.processStateChange(awreq);
+				}
 			}
-			
-			// Notify the adaptation service of the AwReq state change.
-			if (awreq != null) {
-				adaptationService.processStateChange(awreq);
+	
+			// If it's not the target element, check if it's the root element ending. In that case, calculate and print the time.
+			else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
+				long modelSize = req.getTime().getTime();
+				long endTimestamp = System.currentTimeMillis();
+				System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Adaptation Framework time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 			}
-		}
-
-		// If it's not the target element, check if it's the root element ending. In that case, calculate and print the time.
-		else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
-			long modelSize = req.getTime().getTime();
-			long endTimestamp = System.currentTimeMillis();
-			System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Adaptation Framework time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 		}
 	}
 

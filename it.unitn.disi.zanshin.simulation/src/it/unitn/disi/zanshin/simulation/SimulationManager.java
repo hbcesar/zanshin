@@ -110,7 +110,7 @@ public final class SimulationManager {
 			SimulationUtils.log.error("The simulation thread was interrupted!", e); //$NON-NLS-1$
 		}
 
-		SimulationUtils.log.info("The simulation has finished."); //$NON-NLS-1$
+		SimulationUtils.log.info("Finished running all simulations."); //$NON-NLS-1$
 	}
 
 	/**
@@ -207,6 +207,6 @@ public final class SimulationManager {
 			}
 		}
 
-		SimulationUtils.log.debug("({0}) Simulation has finished (no more parts to run).", name); //$NON-NLS-1$
+		SimulationUtils.log.info("({0}) Simulation has finished (no more parts to run).", name); //$NON-NLS-1$
 	}
 }

@@ -141,11 +141,11 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement started: " + getClass().getSimpleName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);
 		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())
-			if (child instanceof DefinableRequirement) ((DefinableRequirement)child).start();
+			if ((child instanceof DefinableRequirement) && (((DefinableRequirement) child).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))
+				((DefinableRequirement)child).start();
 		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
 		if ((parent != null) && (parent instanceof DefinableRequirement) && (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))
 			((DefinableRequirement) parent).start();
-		
 	}
 
 	/**

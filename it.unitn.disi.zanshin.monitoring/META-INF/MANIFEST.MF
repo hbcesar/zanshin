@@ -12,5 +12,5 @@ Require-Bundle: it.unitn.disi.zanshin.core;bundle-version="1.0.0",
  org.eclipse.osgi;bundle-version="3.7.1",
  org.aspectj.runtime
 Export-Package: it.unitn.disi.zanshin.monitoring.aspects;aspects="AwReqsMonitoringAspect"
-Eclipse-SupplementBundle: it.unitn.disi.zanshin.core, it.unitn.disi.acad.simulation
+Eclipse-SupplementBundle: it.unitn.disi.zanshin.core, it.unitn.disi.zanshin.simulation
 Service-Component: OSGI-INF/*.xml

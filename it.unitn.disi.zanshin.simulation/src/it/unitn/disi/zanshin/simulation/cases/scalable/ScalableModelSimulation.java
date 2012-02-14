@@ -167,6 +167,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 			if (count == targetIndex)
 				target = goal;
 		}
+		SimulationUtils.log.info("Target for goal model of {0} elements: {1}", numElements, target.eClass().getName()); //$NON-NLS-1$
 
 		// Use stacks to know when to move to the next level of the tree.
 		Stack<Goal> levelStack = new Stack<>();
