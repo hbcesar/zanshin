@@ -28,4 +28,9 @@ public interface IMonitoringService {
 	 *          The type of life-cycle method that has been called.
 	 */
 	void monitorMethodCall(DefinableRequirement req, MonitorableMethod method);
+
+	/**
+	 * Stops the monitoring service, giving its implementation a chance to stop any threads, close resources, etc.
+	 */
+	void stop();
 }

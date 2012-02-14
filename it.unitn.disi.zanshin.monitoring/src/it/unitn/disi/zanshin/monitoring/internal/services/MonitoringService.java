@@ -8,6 +8,8 @@ import it.unitn.disi.zanshin.services.IMonitoringService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
+import java.lang.Thread.State;
+
 /**
  * Implementation of the monitoring service that uses the Awareness Requirements monitoring infrastructure in order to
  * notify the Adaptation Service of AwReq state changes.
@@ -96,5 +98,13 @@ public class MonitoringService implements IMonitoringService {
 		catch (InterruptedException e) {
 			MonitoringUtils.log.error("Main thread was interrupted while adding a {1} method call on {0} to the monitoring queue", e, req.eClass().getName(), method); //$NON-NLS-1$
 		}
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IMonitoringService#stop() */
+	@Override
+	public void stop() {
+		// If the monitoring thread hasn't yet terminated, interrupt it.
+		if ((monitorThread != null) && (! monitorThread.getState().equals(State.TERMINATED)))
+			monitorThread.interrupt();
 	}
 }

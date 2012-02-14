@@ -1,10 +1,14 @@
 package it.unitn.disi.acad.simulation;
 
 import it.unitn.disi.acad.simulation.cases.SimulationManager;
+import it.unitn.disi.acad.simulation.internal.services.StartSimulationCommandProvider;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
+import java.io.IOException;
 import java.lang.Thread.State;
+import java.util.Properties;
 
+import org.eclipse.osgi.framework.console.CommandProvider;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.log.LogService;
@@ -64,23 +68,22 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		SimulationUtils.initialize(logTracker.getService());
 		SimulationUtils.log.info("A-CAD Simulation Component starting..."); //$NON-NLS-1$
-		
-		// TODO: delete when done
-		// Registers the target system controller service (the controller at the application side).
-//		ITargetSystemControllerService controllerService = new AcadTargetSystemControllerService();
-//		context.registerService(ITargetSystemControllerService.class, controllerService, null);
 
-		// Reads the simulation properties, creates the simulation manager and starts the simulations.
-		// TODO: reenable when done.
-//		Properties props = SimulationUtils.readSimulationProperties();
-//		simulationManager = new SimulationManager(props);
-//		simulationManager.runSimulations();
+		// Registers the "Start Simulation" command, which is activated by typing "start" in the OSGi command prompt.
+		context.registerService(CommandProvider.class, new StartSimulationCommandProvider(), null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */
 	public void stop(BundleContext bundleContext) throws Exception {
 		SimulationUtils.log.info("A-CAD Simulation Component stopping..."); //$NON-NLS-1$
 		Activator.context = null;
+	}
+
+	public static void startSimulation() throws IOException {
+		// Reads the simulation properties, creates the simulation manager and starts the simulations.
+		Properties props = SimulationUtils.readSimulationProperties();
+		simulationManager = new SimulationManager(props);
+		simulationManager.runSimulations();
 	}
 
 	/**

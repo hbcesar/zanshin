@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  it.unitn.disi.zanshin.core;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"
-Import-Package: it.unitn.disi.zanshin.services
+Import-Package: it.unitn.disi.zanshin.services,
+ org.eclipse.osgi.framework.console
 Bundle-Activator: it.unitn.disi.acad.simulation.Activator
 Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy

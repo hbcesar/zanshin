@@ -70,6 +70,7 @@ public class Activator implements BundleActivator {
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */
 	public void stop(BundleContext bundleContext) throws Exception {
 		MonitoringUtils.log.info("Zanshin Monitoring Component stopping..."); //$NON-NLS-1$
+		if (monitoringService != null) monitoringService.stop();
 		Activator.context = null;
 	}
 }
