@@ -34,11 +34,6 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		AdaptivityUtils.initialize(logTracker.getService());
 		AdaptivityUtils.log.info("Zanshin Adaptivity Component starting..."); //$NON-NLS-1$
-
-		// TODO: delete when done
-		// Registers the adaptivity service.
-//		IAdaptationService adaptivityService = new EcaBasedAdaptationService();
-//		context.registerService(IAdaptationService.class, adaptivityService, null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

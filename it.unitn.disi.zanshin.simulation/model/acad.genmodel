@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.unitn.disi.zanshin.simulation/src"
+    modelPluginID="it.unitn.disi.zanshin.simulation" modelName="Acad" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false" usedGenPackages="platform:/plugin/it.unitn.disi.zanshin.core/model/zanshin.genmodel#//eca platform:/plugin/it.unitn.disi.zanshin.core/model/zanshin.genmodel#//gore platform:/plugin/it.unitn.disi.zanshin.core/model/zanshin.genmodel#//LTL">
+  <foreignModel>acad.ecore</foreignModel>
+  <genPackages prefix="Acad" basePackage="it.unitn.disi.zanshin.simulation.model" disposableProviderFactory="true"
+      ecorePackage="acad.ecore#/">
+    <genClasses ecoreClass="acad.ecore#//G_GenDispatch"/>
+    <genClasses ecoreClass="acad.ecore#//G_CallTaking"/>
+    <genClasses ecoreClass="acad.ecore#//D_DataUpd"/>
+    <genClasses ecoreClass="acad.ecore#//G_ResourceId"/>
+    <genClasses ecoreClass="acad.ecore#//G_ResourceMob"/>
+    <genClasses ecoreClass="acad.ecore#//G_ObtainMap"/>
+    <genClasses ecoreClass="acad.ecore#//G_IncidentUpd"/>
+    <genClasses ecoreClass="acad.ecore#//D_MaxCalls"/>
+    <genClasses ecoreClass="acad.ecore#//G_RegCall"/>
+    <genClasses ecoreClass="acad.ecore#//T_ConfirmCall"/>
+    <genClasses ecoreClass="acad.ecore#//G_AssignIncident"/>
+    <genClasses ecoreClass="acad.ecore#//T_SearchDuplic"/>
+    <genClasses ecoreClass="acad.ecore#//T_CreateOrAssign"/>
+    <genClasses ecoreClass="acad.ecore#//T_InputInfo"/>
+    <genClasses ecoreClass="acad.ecore#//T_DetectLoc"/>
+    <genClasses ecoreClass="acad.ecore#//T_SpecConfig"/>
+    <genClasses ecoreClass="acad.ecore#//T_ConfIncident"/>
+    <genClasses ecoreClass="acad.ecore#//T_DetBestAmb"/>
+    <genClasses ecoreClass="acad.ecore#//T_InformStat"/>
+    <genClasses ecoreClass="acad.ecore#//G_RouteAssist"/>
+    <genClasses ecoreClass="acad.ecore#//D_DriverKnows"/>
+    <genClasses ecoreClass="acad.ecore#//T_AcadAssists"/>
+    <genClasses ecoreClass="acad.ecore#//T_StaffAssists"/>
+    <genClasses ecoreClass="acad.ecore#//T_Feedback"/>
+    <genClasses ecoreClass="acad.ecore#//D_GazetUpd"/>
+    <genClasses ecoreClass="acad.ecore#//G_ManualMap"/>
+    <genClasses ecoreClass="acad.ecore#//T_CheckGazet"/>
+    <genClasses ecoreClass="acad.ecore#//T_CheckPaper"/>
+    <genClasses ecoreClass="acad.ecore#//G_DispExcept"/>
+    <genClasses ecoreClass="acad.ecore#//G_MonitorRes"/>
+    <genClasses ecoreClass="acad.ecore#//G_UpdPosition"/>
+    <genClasses ecoreClass="acad.ecore#//D_MDTPos"/>
+    <genClasses ecoreClass="acad.ecore#//T_RadioPos"/>
+    <genClasses ecoreClass="acad.ecore#//D_MDTUse"/>
+    <genClasses ecoreClass="acad.ecore#//T_MonitorStatus"/>
+    <genClasses ecoreClass="acad.ecore#//T_DispStatus"/>
+    <genClasses ecoreClass="acad.ecore#//T_DispDepArriv"/>
+    <genClasses ecoreClass="acad.ecore#//T_ReplAmb"/>
+    <genClasses ecoreClass="acad.ecore#//T_Except"/>
+    <genClasses ecoreClass="acad.ecore#//T_ExceptQueue"/>
+    <genClasses ecoreClass="acad.ecore#//T_CloseIncident"/>
+    <genClasses ecoreClass="acad.ecore#//S_FastDispatch"/>
+    <genClasses ecoreClass="acad.ecore#//Q_Dispatch"/>
+    <genClasses ecoreClass="acad.ecore#//S_FastAssist"/>
+    <genClasses ecoreClass="acad.ecore#//Q_IncidResolv"/>
+    <genClasses ecoreClass="acad.ecore#//S_FastArriv"/>
+    <genClasses ecoreClass="acad.ecore#//Q_AmbArriv"/>
+    <genClasses ecoreClass="acad.ecore#//S_LowCost"/>
+    <genClasses ecoreClass="acad.ecore#//Q_MaxCost"/>
+    <genClasses ecoreClass="acad.ecore#//S_UserFriendly"/>
+    <genClasses ecoreClass="acad.ecore#//Q_MaxTimeMsg"/>
+    <genClasses ecoreClass="acad.ecore#//AR1"/>
+    <genClasses ecoreClass="acad.ecore#//AR2"/>
+    <genClasses ecoreClass="acad.ecore#//AR3"/>
+    <genClasses ecoreClass="acad.ecore#//AR4"/>
+    <genClasses ecoreClass="acad.ecore#//AR5"/>
+    <genClasses ecoreClass="acad.ecore#//AR6"/>
+    <genClasses ecoreClass="acad.ecore#//AR7"/>
+    <genClasses ecoreClass="acad.ecore#//AR8"/>
+    <genClasses ecoreClass="acad.ecore#//AR9"/>
+    <genClasses ecoreClass="acad.ecore#//AR10"/>
+    <genClasses ecoreClass="acad.ecore#//AR11"/>
+    <genClasses ecoreClass="acad.ecore#//AR12"/>
+    <genClasses ecoreClass="acad.ecore#//AR13"/>
+    <genClasses ecoreClass="acad.ecore#//AR14"/>
+    <genClasses ecoreClass="acad.ecore#//AR15"/>
+    <genClasses ecoreClass="acad.ecore#//AcadGoalModel"/>
+  </genPackages>
+</genmodel:GenModel>

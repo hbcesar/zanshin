@@ -60,11 +60,6 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		MonitoringUtils.initialize(logTracker.getService());
 		MonitoringUtils.log.info("Zanshin Monitoring Component starting..."); //$NON-NLS-1$
-
-		// Registers the monitoring service.
-		// TODO: delete when done
-//		IMonitoringService monitoringService = new MonitoringService();
-//		context.registerService(IMonitoringService.class, monitoringService, null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

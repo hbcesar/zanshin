@@ -26,18 +26,6 @@ import org.eclipse.emf.ecore.EPackage;
  * @version 1.0
  */
 public abstract class AbstractTargetSystemControllerService implements ITargetSystemControllerService {
-	// TODO: delete when done
-	// /** The repository service. */
-	// protected IRepositoryService repositoryService;
-	//
-	// /** Constructor. */
-	// public AbstractTargetSystemControllerService() {
-	// // Initializes the repository service using the registered service in the platform.
-	// BundleContext context = Activator.getContext();
-	// ServiceReference<IRepositoryService> repositoryReference = context.getServiceReference(IRepositoryService.class);
-	// repositoryService = context.getService(repositoryReference);
-	// }
-
 	/**
 	 * Abstract method that provides the repository service. Should be implemented by concrete subclasses.
 	 * 

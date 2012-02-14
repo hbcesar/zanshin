@@ -33,4 +33,7 @@ public interface IMonitoringService {
 	 * Stops the monitoring service, giving its implementation a chance to stop any threads, close resources, etc.
 	 */
 	void stop();
+	
+	/** FIXME: delete once monitoring is properly implemented. */
+	void setSimulatedMonitor(IMonitoringService simulatedMonitor);
 }

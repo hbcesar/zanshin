@@ -4,7 +4,4 @@
    <service>
       <provide interface="it.unitn.disi.zanshin.services.IMonitoringService" />
    </service>
-   <reference bind="setAdaptationService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.IAdaptationService" name="IAdaptationService" policy="dynamic" unbind="unsetAdaptationService" />
-   <reference bind="setRepositoryService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.IRepositoryService" name="IRepositoryService" policy="dynamic" unbind="unsetRepositoryService" />
-   <reference bind="setControllerService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.ITargetSystemControllerService" name="ITargetSystemControllerService" policy="dynamic" unbind="unsetControllerService" />
 </scr:component>
