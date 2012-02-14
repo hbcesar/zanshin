@@ -1,6 +1,9 @@
 package it.unitn.disi.acad.simulation.cases;
 
-import static it.unitn.disi.acad.simulation.cases.Simulation.*;
+import static it.unitn.disi.acad.simulation.cases.Simulation.PROPERTIES_CASES_CLASS;
+import static it.unitn.disi.acad.simulation.cases.Simulation.PROPERTIES_CASES_NAME;
+import static it.unitn.disi.acad.simulation.cases.Simulation.PROPERTIES_CASES_PACKAGE;
+import static it.unitn.disi.acad.simulation.cases.Simulation.PROPERTIES_CASES_PREFIX;
 import it.unitn.disi.acad.simulation.SimulationUtils;
 
 import java.util.ArrayList;

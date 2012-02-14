@@ -7,9 +7,6 @@ import it.unitn.disi.zanshin.monitoring.Activator;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
 import it.unitn.disi.zanshin.services.IMonitoringService;
 
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
-
 /**
  * Aspect that intercepts calls to life-cicle methods of definable and performative requirements and sends them to the
  * monitoring service in this bundle.
@@ -27,10 +24,8 @@ public aspect AwReqsMonitoringAspect {
 
 	/** Constructor. */
 	public AwReqsMonitoringAspect() {
-		// Initializes the monitoring service using the registered service in the platform.
-		BundleContext context = Activator.getContext();
-		ServiceReference<IMonitoringService> reference = context.getServiceReference(IMonitoringService.class);
-		monitoringService = context.getService(reference);
+		// Obtains the monitoring service from the bundle's activator.
+		monitoringService = Activator.getMonitoringService();
 	}
 
 	/** Defines a point-cut for calls to definable requirements' methods. */

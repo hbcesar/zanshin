@@ -1,12 +1,10 @@
 package it.unitn.disi.zanshin.core;
 
-import it.unitn.disi.zanshin.internal.services.RepositoryService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -35,20 +33,36 @@ public class Activator implements BundleActivator {
 
 	/** Getter for controllerService. */
 	public static ITargetSystemControllerService getControllerService() {
-		// FIXME: possible improvement (lazy loading again).
-		// Lazily initializes this service because it might not be registered when this component is loaded.
-		if (controllerService == null) {
-			ServiceReference<ITargetSystemControllerService> controllerReference = context.getServiceReference(ITargetSystemControllerService.class);
-			if (controllerReference != null)
-				controllerService = context.getService(controllerReference);
-		}
-
 		return controllerService;
+	}
+
+	/** Setter for controllerService. */
+	public static void setControllerService(ITargetSystemControllerService controllerService) {
+		Activator.controllerService = controllerService;
+		CoreUtils.log.info("Target System Controller Service injected in the activator"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for controllerService (required by OSGi Declarative Services). */
+	public static void unsetControllerService(ITargetSystemControllerService controllerService) {
+		Activator.controllerService = null;
+		CoreUtils.log.info("Target System Controller Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** Getter for repositoryService. */
 	public static IRepositoryService getRepositoryService() {
 		return repositoryService;
+	}
+
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		Activator.repositoryService = repositoryService;
+		CoreUtils.log.info("Repository Service injected in the activator"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		Activator.repositoryService = null;
+		CoreUtils.log.info("Repository Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */
@@ -60,10 +74,6 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		CoreUtils.initialize(logTracker.getService());
 		CoreUtils.log.info("Zanshin Core Component starting..."); //$NON-NLS-1$
-
-		// Registers the repository service.
-		repositoryService = new RepositoryService();
-		context.registerService(IRepositoryService.class, repositoryService, null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

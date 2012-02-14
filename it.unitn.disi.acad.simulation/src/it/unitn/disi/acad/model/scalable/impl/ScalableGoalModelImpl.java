@@ -8,7 +8,6 @@ package it.unitn.disi.acad.model.scalable.impl;
 
 import it.unitn.disi.acad.model.scalable.ScalableGoalModel;
 import it.unitn.disi.acad.model.scalable.ScalablePackage;
-
 import it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl;
 
 import org.eclipse.emf.ecore.EClass;

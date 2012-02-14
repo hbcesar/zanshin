@@ -1,11 +1,9 @@
 package it.unitn.disi.acad.simulation;
 
 import it.unitn.disi.acad.simulation.cases.SimulationManager;
-import it.unitn.disi.acad.simulation.internal.services.AcadTargetSystemControllerService;
-import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import java.lang.Thread.State;
-import java.util.Properties;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -25,6 +23,9 @@ public class Activator implements BundleActivator {
 	/** The bundle's context. */
 	private static BundleContext context;
 
+	/** The repository service. */
+	private static IRepositoryService repositoryService;
+
 	/** The simulation (main) thread. */
 	private static Thread simulationThread;
 
@@ -34,6 +35,23 @@ public class Activator implements BundleActivator {
 	/** Getter for context. */
 	public static BundleContext getContext() {
 		return context;
+	}
+
+	/** Getter for repositoryService. */
+	public static IRepositoryService getRepositoryService() {
+		return repositoryService;
+	}
+
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		Activator.repositoryService = repositoryService;
+		SimulationUtils.log.info("Repository Service injected in the activator"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		Activator.repositoryService = null;
+		SimulationUtils.log.info("Repository Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */
@@ -46,15 +64,17 @@ public class Activator implements BundleActivator {
 		logTracker.open();
 		SimulationUtils.initialize(logTracker.getService());
 		SimulationUtils.log.info("A-CAD Simulation Component starting..."); //$NON-NLS-1$
-
+		
+		// TODO: delete when done
 		// Registers the target system controller service (the controller at the application side).
-		ITargetSystemControllerService controllerService = new AcadTargetSystemControllerService();
-		context.registerService(ITargetSystemControllerService.class, controllerService, null);
+//		ITargetSystemControllerService controllerService = new AcadTargetSystemControllerService();
+//		context.registerService(ITargetSystemControllerService.class, controllerService, null);
 
 		// Reads the simulation properties, creates the simulation manager and starts the simulations.
-		Properties props = SimulationUtils.readSimulationProperties();
-		simulationManager = new SimulationManager(props);
-		simulationManager.runSimulations();
+		// TODO: reenable when done.
+//		Properties props = SimulationUtils.readSimulationProperties();
+//		simulationManager = new SimulationManager(props);
+//		simulationManager.runSimulations();
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

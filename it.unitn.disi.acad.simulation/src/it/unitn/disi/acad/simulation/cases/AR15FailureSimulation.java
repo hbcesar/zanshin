@@ -8,8 +8,6 @@ import it.unitn.disi.acad.simulation.Activator;
 import it.unitn.disi.acad.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
-import org.osgi.framework.ServiceReference;
-
 /**
  * Simulation of the failure of AR15 during an execution of the A-CAD.
  *
@@ -23,6 +21,16 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 	/** The repository service. */
 	private IRepositoryService repositoryService;
 
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = repositoryService;
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = null;
+	}
+
 	/** @see it.unitn.disi.acad.simulation.cases.AbstractSimulation#doInit() */
 	@Override
 	public void doInit() throws Exception {
@@ -30,8 +38,7 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 		model = SimulationUtils.readDefaultGoalModel();
 		
 		// Obtains the repository service and registers the goal model there.
-		ServiceReference<IRepositoryService> serviceReference = Activator.getContext().getServiceReference(IRepositoryService.class);
-		repositoryService = Activator.getContext().getService(serviceReference);
+		repositoryService = Activator.getRepositoryService();
 		repositoryService.storeGoalModel(model);
 		
 		// Adds the first part of the simulation to the list.
@@ -40,10 +47,11 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 			public void run() throws Exception {
 				// Simulates a failure in task "Input Emergency Information".
 				SimulationUtils.log.info("Staff member tries to Input Emergency Information but it fails!"); //$NON-NLS-1$
-				T_InputInfo tII = (T_InputInfo)repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_InputInfo());
-				tII.start();
-				tII.fail();
-				tII.end();
+				// TODO: reenable when done.
+//				T_InputInfo tII = (T_InputInfo)repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_InputInfo());
+//				tII.start();
+//				tII.fail();
+//				tII.end();
 			}
 
 			@Override

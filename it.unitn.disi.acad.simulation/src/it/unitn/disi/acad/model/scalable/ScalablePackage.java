@@ -7,7 +7,6 @@
 package it.unitn.disi.acad.model.scalable;
 
 import it.unitn.disi.zanshin.model.eca.EcaPackage;
-
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 
 import org.eclipse.emf.ecore.EClass;

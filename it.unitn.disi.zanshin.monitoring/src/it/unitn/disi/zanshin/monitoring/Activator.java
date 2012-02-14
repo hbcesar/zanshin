@@ -1,6 +1,5 @@
 package it.unitn.disi.zanshin.monitoring;
 
-import it.unitn.disi.zanshin.monitoring.internal.services.MonitoringService;
 import it.unitn.disi.zanshin.services.IMonitoringService;
 
 import org.osgi.framework.BundleActivator;
@@ -26,10 +25,30 @@ import org.osgi.util.tracker.ServiceTracker;
 public class Activator implements BundleActivator {
 	/** The bundle's context. */
 	private static BundleContext context;
+	
+	/** The monitoring service registered in the platform. */
+	private static IMonitoringService monitoringService;
 
 	/** Getter for context. */
 	public static BundleContext getContext() {
 		return context;
+	}
+
+	/** Getter for monitoringService. */
+	public static IMonitoringService getMonitoringService() {
+		return monitoringService;
+	}
+
+	/** Setter for monitoringService. */
+	public void setMonitoringService(IMonitoringService monitoringService) {
+		Activator.monitoringService = monitoringService;
+		MonitoringUtils.log.info("Monitoring Service injected in the activator"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for monitoringService (required by OSGi Declarative Services). */
+	public void unsetMonitoringService(IMonitoringService monitoringService) {
+		Activator.monitoringService = null;
+		MonitoringUtils.log.info("Monitoring Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */
@@ -43,8 +62,9 @@ public class Activator implements BundleActivator {
 		MonitoringUtils.log.info("Zanshin Monitoring Component starting..."); //$NON-NLS-1$
 
 		// Registers the monitoring service.
-		IMonitoringService monitoringService = new MonitoringService();
-		context.registerService(IMonitoringService.class, monitoringService, null);
+		// TODO: delete when done
+//		IMonitoringService monitoringService = new MonitoringService();
+//		context.registerService(IMonitoringService.class, monitoringService, null);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */

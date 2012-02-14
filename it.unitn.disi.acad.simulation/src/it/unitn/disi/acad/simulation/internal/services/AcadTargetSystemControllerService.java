@@ -13,6 +13,7 @@ import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,6 +25,25 @@ import org.eclipse.emf.ecore.EPackage;
  * @version 1.0
  */
 public class AcadTargetSystemControllerService extends AbstractTargetSystemControllerService {
+	/** The Repository Service implementation. */
+	private IRepositoryService repositoryService;
+
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#getRepositoryService() */
+	@Override
+	protected IRepositoryService getRepositoryService() {
+		return repositoryService;
+	}
+
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = repositoryService;
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = null;
+	}
+	
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#abort(it.unitn.disi.zanshin.model.gore.AwReq) */
 	@Override
 	public void abort(AwReq awreq) {

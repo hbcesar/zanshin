@@ -24,8 +24,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Stack;
 
-import org.osgi.framework.ServiceReference;
-
 /**
  * Simulation that mimics systems of different sizes being made adaptive using the adaptation framework, testing the
  * scalability of the framework to different system sizes. System size here is measured in the number of elements in its
@@ -62,9 +60,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		// Initializes the random number generator.
 		random = new Random(System.currentTimeMillis());
 
-		// Obtains the repository service and registers the goal model there.
-		ServiceReference<IRepositoryService> serviceReference = Activator.getContext().getServiceReference(IRepositoryService.class);
-		repositoryService = Activator.getContext().getService(serviceReference);
+		// Obtains the repository service.
+		repositoryService = Activator.getRepositoryService();
 
 		// Creates a simulation part for each goal model size.
 		for (final int modelSize : GOAL_MODEL_SIZES) {

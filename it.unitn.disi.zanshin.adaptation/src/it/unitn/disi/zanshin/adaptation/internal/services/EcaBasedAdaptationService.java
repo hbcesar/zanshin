@@ -133,6 +133,17 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 		else AdaptivityUtils.log.warn("AwReq {0} is not an ECA-based AwReq. Zanshin's adaptivity bundle registered the ECA-based adaptivity service.", awreqName); //$NON-NLS-1$
 	}
 
+	/**
+	 * Verifies if the problem being dealt by the adaptation session has been solved.
+	 * 
+	 * @param session
+	 *          The adaptation session which is handling the problem.
+	 * @param condition
+	 *          The resolution condition that establishes if the problem has been solved.
+	 * @param awreqClass
+	 *          The class of the AwReq that represents the problem (the failed AwReq).
+	 * @return <code>true</code> if the problem has been solved, <code>false</code> otherwise.
+	 */
 	private boolean verifyResolution(AdaptationSession session, ResolutionCondition condition, EClass awreqClass) {
 		// If the resolution condition is true, deactivate the session and remove it from the active sessions map.
 		if (condition.evaluate(session)) {

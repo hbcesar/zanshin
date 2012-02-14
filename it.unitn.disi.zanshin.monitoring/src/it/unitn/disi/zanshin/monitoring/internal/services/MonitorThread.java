@@ -5,7 +5,6 @@ import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
-import it.unitn.disi.zanshin.monitoring.Activator;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
 import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
@@ -14,9 +13,6 @@ import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 import java.text.MessageFormat;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 
 /**
  * Thread that processes requirement life-cycle method calls.
@@ -34,13 +30,32 @@ public class MonitorThread extends Thread {
 
 	/** The adaptation service. */
 	private IAdaptationService adaptationService;
+	
+	/** The Target System Controller Service implementation. */
+	private ITargetSystemControllerService targetSystemControllerService;
 
 	/** A queue of life-cycle method calls to process. */
 	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<>(100);
 
 	/** Constructor. */
-	public MonitorThread(IRepositoryService repositoryService) {
+	// TODO: delete when done
+	// public MonitorThread(IRepositoryService repositoryService) {
+	// this.repositoryService = repositoryService;
+	// }
+
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
 		this.repositoryService = repositoryService;
+	}
+
+	/** Setter for adaptationService. */
+	public void setAdaptationService(IAdaptationService adaptationService) {
+		this.adaptationService = adaptationService;
+	}
+
+	/** Setter for targetSystemControllerService. */
+	public void setTargetSystemControllerService(ITargetSystemControllerService targetSystemControllerService) {
+		this.targetSystemControllerService = targetSystemControllerService;
 	}
 
 	/**
@@ -92,62 +107,68 @@ public class MonitorThread extends Thread {
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
 
+		// TODO: delete when done
 		// Keeps looking up for the adaptation service, in case it is registered later.
 		// FIXME: possible improvements:
 		// - Is there a way to listen to services being registered in the platform? It would be better than this constant
 		// checking...
-		if (adaptationService == null)
-			lookupAdaptationService();
+		// if (adaptationService == null)
+		// lookupAdaptationService();
+
+		// The monitoring component is only operational if the adaptation and repository services have been injected.
+		if (adaptationService == null) {
+			MonitoringUtils.log.warn("The adaptation service has not been properly injected by OSGi. Monitoring will not work. Please check your configuration."); //$NON-NLS-1$
+			return;
+		}
+		if (repositoryService == null) {
+			MonitoringUtils.log.warn("The repository service has not been properly injected by OSGi. Monitoring will not work. Please check your configuration."); //$NON-NLS-1$
+			return;
+		}
 
 		// FIXME: find a better way to time the adaptation framework?
 		GoalModel model = req.findGoalModel();
 		if ((model != null) && (model.eClass().getName().equals("ScalableGoalModel"))) //$NON-NLS-1$
 			processScalableGoalModelSimulationMethodCall(req, method);
 
-		// Proceed only if the adaptation service has been initialized.
-		if (adaptationService != null) {
-			// FIXME: really implement this service using AwReqs, Drools, etc.
-			// This is a temporary implementation that triggers AwReq failures by hand for the A-CAD.
-			AwReq awreq = null;
+		// FIXME: really implement this service using AwReqs, Drools, etc.
+		// This is a temporary implementation that triggers AwReq failures by hand for the A-CAD.
+		AwReq awreq = null;
 
-			switch (req.eClass().getName()) {
-			case "G_RegCall": //$NON-NLS-1$
-				try {
-					if (model != null) {
-						awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "AR15"); //$NON-NLS-1$
-						switch (method) {
-						case FAIL:
-							awreq.setState(DefinableRequirementState.FAILED);
-							break;
-						case SUCCESS:
-							awreq.setState(DefinableRequirementState.SUCCEEDED);
-							break;
-						default:
-							awreq = null;
-						}
+		switch (req.eClass().getName()) {
+		case "G_RegCall": //$NON-NLS-1$
+			try {
+				if (model != null) {
+					awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "AR15"); //$NON-NLS-1$
+					switch (method) {
+					case FAIL:
+						awreq.setState(DefinableRequirementState.FAILED);
+						break;
+					case SUCCESS:
+						awreq.setState(DefinableRequirementState.SUCCEEDED);
+						break;
+					default:
+						awreq = null;
 					}
 				}
-				catch (Exception e) {
-					MonitoringUtils.log.error("Cannot instantiate AR15: {0}", e, e.getMessage()); //$NON-NLS-1$
-				}
 			}
-
-			if (awreq != null) {
-				adaptationService.processStateChange(awreq);
-
-				// FIXME: temporary implementation.
-				// This temporary implementation asks the Target System Controller Service for a new copy of the AwReq. However,
-				// there should be a better solution for this. Give it more thought and write the definitive version (or wait
-				// for the integration of EEAT/Drools to see how things will change?)
-				BundleContext context = Activator.getContext();
-				ServiceReference<ITargetSystemControllerService> reference = context.getServiceReference(ITargetSystemControllerService.class);
-				if (reference != null) {
-					ITargetSystemControllerService service = context.getService(reference);
-					AwReq newAwReq = service.createNewAwReqInstance(awreq.eClass());
-					repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
-				}
+			catch (Exception e) {
+				MonitoringUtils.log.error("Cannot instantiate AR15: {0}", e, e.getMessage()); //$NON-NLS-1$
 			}
 		}
+
+		if (awreq != null) {
+			adaptationService.processStateChange(awreq);
+
+			// FIXME: temporary implementation.
+			// This temporary implementation asks the Target System Controller Service for a new copy of the AwReq. However,
+			// there should be a better solution for this. Give it more thought and write the definitive version (or wait
+			// for the integration of EEAT/Drools to see how things will change?)
+			if (targetSystemControllerService != null) {
+				AwReq newAwReq = targetSystemControllerService.createNewAwReqInstance(awreq.eClass());
+				repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
+			}
+		}
+
 	}
 
 	long startTimestamp;
@@ -194,10 +215,11 @@ public class MonitorThread extends Thread {
 	 * replace this with a listener that listens to services being registered in the platform. When this is implemented,
 	 * this method can be deleted.
 	 */
-	private void lookupAdaptationService() {
-		BundleContext context = Activator.getContext();
-		ServiceReference<IAdaptationService> adaptationReference = context.getServiceReference(IAdaptationService.class);
-		if (adaptationReference != null)
-			adaptationService = context.getService(adaptationReference);
-	}
+	// TODO: delete when done
+//	private void lookupAdaptationService() {
+//		BundleContext context = Activator.getContext();
+//		ServiceReference<IAdaptationService> adaptationReference = context.getServiceReference(IAdaptationService.class);
+//		if (adaptationReference != null)
+//			adaptationService = context.getService(adaptationReference);
+//	}
 }

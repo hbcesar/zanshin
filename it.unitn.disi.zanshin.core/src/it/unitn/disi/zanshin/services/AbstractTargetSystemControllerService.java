@@ -1,6 +1,5 @@
 package it.unitn.disi.zanshin.services;
 
-import it.unitn.disi.zanshin.core.Activator;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.Goal;
@@ -12,8 +11,6 @@ import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 
 /**
  * Abstract class that implements the Adaptation Framework part of the Target System Controller Service, calling
@@ -29,16 +26,24 @@ import org.osgi.framework.ServiceReference;
  * @version 1.0
  */
 public abstract class AbstractTargetSystemControllerService implements ITargetSystemControllerService {
-	/** The repository service. */
-	protected IRepositoryService repositoryService;
+	// TODO: delete when done
+	// /** The repository service. */
+	// protected IRepositoryService repositoryService;
+	//
+	// /** Constructor. */
+	// public AbstractTargetSystemControllerService() {
+	// // Initializes the repository service using the registered service in the platform.
+	// BundleContext context = Activator.getContext();
+	// ServiceReference<IRepositoryService> repositoryReference = context.getServiceReference(IRepositoryService.class);
+	// repositoryService = context.getService(repositoryReference);
+	// }
 
-	/** Constructor. */
-	public AbstractTargetSystemControllerService() {
-		// Initializes the repository service using the registered service in the platform.
-		BundleContext context = Activator.getContext();
-		ServiceReference<IRepositoryService> repositoryReference = context.getServiceReference(IRepositoryService.class);
-		repositoryService = context.getService(repositoryReference);
-	}
+	/**
+	 * Abstract method that provides the repository service. Should be implemented by concrete subclasses.
+	 * 
+	 * @return The repository service that is registered in the platform.
+	 */
+	protected abstract IRepositoryService getRepositoryService();
 
 	/**
 	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#copyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement,
@@ -48,7 +53,7 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	public final void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {
 		// Replaces the source requirement with the destination requirement in its goal model.
 		Long modelId = srcReq.findGoalModel().getId();
-		repositoryService.replaceRequirement(modelId, srcReq, dstReq);
+		getRepositoryService().replaceRequirement(modelId, srcReq, dstReq);
 
 		// Calls the application-specific implementation.
 		doCopyData(srcReq, dstReq);
@@ -68,6 +73,8 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#newInstance(org.eclipse.emf.ecore.EClass) */
 	@Override
 	public final Requirement newInstance(EClass reqClass) throws InstantiationException {
+		IRepositoryService repositoryService = getRepositoryService();
+		
 		try {
 			// Creates a new copy of the entire application goal model and retrieve the new instance from it.
 			GoalModel newModel = createNewModel(reqClass.getEPackage());
@@ -97,7 +104,8 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 * instance of the application goal model. The Adaptation Framework is capable to create the new instance of the
 	 * requirement then, without any application-specific adaptation logic.
 	 * 
-	 * @param ePackage The EMF package from which to create a new requirements model.
+	 * @param ePackage
+	 *          The EMF package from which to create a new requirements model.
 	 * 
 	 * @return A new instance of the application requirement model.
 	 */
@@ -127,7 +135,7 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 			if ((softgoal != null) && (softgoal.getGoalModel() != null))
 				softgoal.setGoalModel(null);
 		}
-		
+
 		// Calls the application-specific implementation.
 		doSuspend(req);
 	}

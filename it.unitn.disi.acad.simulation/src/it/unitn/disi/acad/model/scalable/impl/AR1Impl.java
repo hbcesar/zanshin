@@ -8,7 +8,6 @@ package it.unitn.disi.acad.model.scalable.impl;
 
 import it.unitn.disi.acad.model.scalable.AR1;
 import it.unitn.disi.acad.model.scalable.ScalablePackage;
-
 import it.unitn.disi.zanshin.model.eca.impl.EcaAwReqImpl;
 
 import org.eclipse.emf.ecore.EClass;
