@@ -12,8 +12,6 @@ import org.osgi.util.tracker.ServiceTracker;
  * requirements instances for calls to their life-cycle methods, reporting such calls to the monitoring service. Also,
  * this module offers an implementation of the monitoring service.
  * 
- * FIXME: replace current implementation of the monitoring service with a one based on EEAT.
- * 
  * The current implementation of the monitoring service just simulates a real monitoring service, depending on what is
  * required by the simulation being ran. In the future, the EEAT-based implementation created for the AwReqs experiment
  * should be integrated in this module. When Zanshin was created, that experiment had already been conducted and so the

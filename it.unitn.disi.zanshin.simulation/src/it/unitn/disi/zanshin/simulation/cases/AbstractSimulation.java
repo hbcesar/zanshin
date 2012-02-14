@@ -25,7 +25,7 @@ public abstract class AbstractSimulation implements Simulation {
 	/** Simulation's controller. */
 	protected Controller controller;
 	
-	/** Simulation's monitor. FIXME: delete once monitoring is properly implemented. */
+	/** Simulation's monitor. */
 	protected IMonitoringService simulatedMonitor;
 
 	/** List of parts that compose the simulation. */

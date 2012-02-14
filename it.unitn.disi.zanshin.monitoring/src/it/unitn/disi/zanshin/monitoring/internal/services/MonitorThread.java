@@ -22,7 +22,7 @@ public class MonitorThread extends Thread {
 	/** A queue of life-cycle method calls to process. */
 	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<>(100);
 
-	/** FIXME: temporary solution. A "simulated" monitor is injected by the simulation. */
+	/** Temporary solution. A "simulated" monitor is injected by the simulation. */
 	private IMonitoringService simulatedMonitor;
 
 	/** Setter for simulatedMonitor. */
@@ -79,9 +79,7 @@ public class MonitorThread extends Thread {
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
 
-		// FIXME: really implement this service using AwReqs, Drools, etc.
-		// This is a temporary implementation that uses a "simulated" monitor which is injected by the simulation. Each
-		// simulation has its own.
+		// This is a temporary implementation. See https://github.com/vitorsouza/Zanshin/issues/1
 		if (simulatedMonitor == null) {
 			MonitoringUtils.log.warn("The simulated monitor has not been injected by the current simulation. Monitoring will not work. Please check your configuration."); //$NON-NLS-1$
 			return;

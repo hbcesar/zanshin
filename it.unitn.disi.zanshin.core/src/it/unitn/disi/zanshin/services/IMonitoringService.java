@@ -34,6 +34,6 @@ public interface IMonitoringService {
 	 */
 	void stop();
 	
-	/** FIXME: delete once monitoring is properly implemented. */
+	/** Temporary solution: allows for the monitoring service to receive the simulated monitor. */
 	void setSimulatedMonitor(IMonitoringService simulatedMonitor);
 }

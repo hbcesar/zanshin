@@ -41,7 +41,7 @@ public interface Simulation {
 	Controller getController();
 
 	/**
-	 * Returns the simulated monitor. FIXME: delete once monitoring is properly implemented.
+	 * Returns the simulated monitor.
 	 * 
 	 * @return The simulated monitor for this simulation.
 	 */
@@ -56,7 +56,7 @@ public interface Simulation {
 	 *          The controller instance for this simulation.
 	 * 
 	 * @param simulatedMonitor
-	 *          The simulated monitor for this simulation. FIXME: delete once monitoring is properly implemented.
+	 *          The simulated monitor for this simulation.
 	 * 
 	 * @throws Exception
 	 *           If anything goes wrong during the initialization.

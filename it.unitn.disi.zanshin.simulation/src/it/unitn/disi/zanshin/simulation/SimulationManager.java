@@ -49,7 +49,7 @@ public final class SimulationManager {
 			String name = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_NAME);
 			String simulationClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_SIMULATION_CLASS);
 			String controllerClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_CONTROLLER_CLASS);
-			String monitorClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_MONITOR_CLASS); // FIXME: delete once monitoring is properly implemented.
+			String monitorClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_MONITOR_CLASS);
 
 			if ((name != null) && (simulationClass != null) && (controllerClass != null)) {
 				SimulationUtils.log.debug("Loading simulation # {0}: {1}", num, simulationClass); //$NON-NLS-1$
