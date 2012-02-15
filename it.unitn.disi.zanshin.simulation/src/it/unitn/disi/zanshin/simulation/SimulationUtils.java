@@ -79,9 +79,9 @@ public final class SimulationUtils {
 	 * @throws URISyntaxException
 	 *           If the file cannot be found at the specified location.
 	 */
-	public static AcadGoalModel readDefaultGoalModel() throws URISyntaxException {
+	public static AcadGoalModel readDefaultAcadGoalModel() throws URISyntaxException {
 		Bundle bundle = Activator.getContext().getBundle();
-		return readGoalModel(bundle.getEntry(DEFAULT_GOAL_MODEL_PATH));
+		return readAcadGoalModel(bundle.getEntry(DEFAULT_GOAL_MODEL_PATH));
 	}
 
 	/**
@@ -91,7 +91,7 @@ public final class SimulationUtils {
 	 *          The URL pointing to the location of the goal model file in the bundle.
 	 * @return An instance of AcadGoalModel, which represents the goal model written in the file.
 	 */
-	public static AcadGoalModel readGoalModel(URL modelFileUrl) {
+	public static AcadGoalModel readAcadGoalModel(URL modelFileUrl) {
 		// Initializes the EMF model.
 		AcadPackage.eINSTANCE.eClass();
 

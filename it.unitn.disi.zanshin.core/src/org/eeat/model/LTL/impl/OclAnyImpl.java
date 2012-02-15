@@ -17,18 +17,16 @@ import org.eeat.model.LTL.PropertyEvent;
 import org.eeat.model.LTL.Timeout;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ocl Any</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ocl Any</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class OclAnyImpl extends EObjectImpl implements OclAny {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OclAnyImpl() {
@@ -36,8 +34,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -46,8 +44,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean after(Boolean exp1, Boolean exp2, Timeout timeout) {
@@ -57,8 +55,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean after(Boolean exp1, Boolean exp2) {
@@ -68,8 +66,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean between(Boolean exp1, Boolean exp2, Boolean exp3) {
@@ -79,8 +77,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean always(Boolean expression) {
@@ -90,8 +88,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean always(Boolean expression, Timeout timeout) {
@@ -101,8 +99,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean before(Boolean exp1, Boolean exp2, Timeout timeout) {
@@ -112,8 +110,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean before(Boolean exp1, Boolean exp2) {
@@ -123,8 +121,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean eventually(Boolean expression) {
@@ -134,8 +132,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean never(Boolean expression) {
@@ -145,8 +143,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean never(Boolean expression, Timeout timeout) {
@@ -156,8 +154,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean responds(Boolean stimulus, Boolean response) {
@@ -167,8 +165,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean responds(Boolean stimulus, Boolean response, Timeout timeout) {
@@ -178,8 +176,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean unless(Boolean expression) {
@@ -189,8 +187,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean until(Boolean expression) {
@@ -200,8 +198,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean sequence(EList<Boolean> expression) {
@@ -211,8 +209,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean sequence(EList<Boolean> expression, Timeout timeout) {
@@ -222,8 +220,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Timeout timeout(String spec) {
@@ -233,8 +231,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<OclMessage> receivedMessages(String methodName) {
@@ -244,8 +242,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OclMessage receivedMessage(String methodName) {
@@ -255,8 +253,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OclMessage receivedMessage(String className, String methodName) {
@@ -266,8 +264,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean newPEval(Boolean expression) {
@@ -277,8 +275,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean after(Boolean exp1, Boolean exp2, String timeout) {
@@ -288,8 +286,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean before(Boolean exp1, Boolean exp2, String timeout) {
@@ -299,8 +297,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean eventually(Boolean expression, String timeout) {
@@ -310,8 +308,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean always(Boolean expression, String timeout) {
@@ -321,8 +319,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean never(Boolean expression, String timeout) {
@@ -332,8 +330,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean responds(Boolean stimulus, Boolean response, String timeout) {
@@ -343,8 +341,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean unless(Boolean expression, String timeout) {
@@ -354,8 +352,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean until(Boolean expression, String timeout) {
@@ -365,8 +363,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PropertyEvent> receivedProperties(String name) {
@@ -376,8 +374,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PropertyEvent receivedProperty(String name) {
@@ -387,8 +385,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Event receivedEvent(String expression) {
@@ -398,8 +396,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Event> receivedEvents(String expression) {
@@ -409,8 +407,8 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<OclMessage> receivedMessages(String className, String methodName) {
@@ -419,4 +417,4 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 		throw new UnsupportedOperationException();
 	}
 
-} //OclAnyImpl
+} // OclAnyImpl

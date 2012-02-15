@@ -10,7 +10,6 @@ import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * TODO: document this type. Add warning messages saying the empty controller is being used.
@@ -106,9 +105,9 @@ public class EmptyController implements Controller {
 		throw new UnsupportedOperationException();
 	}
 
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.Controller#createNewModel(org.eclipse.emf.ecore.EPackage) */
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.Controller#createNewModel() */
 	@Override
-	public GoalModel createNewModel(EPackage ePackage) throws Exception {
+	public GoalModel createNewModel() throws Exception {
 		throw new UnsupportedOperationException();
 	}
 }

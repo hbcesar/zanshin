@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.model.eca.SimpleApplicabilityCondition;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Simple Applicability Condition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Simple Applicability Condition</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl implements SimpleApplicabilityCondition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SimpleApplicabilityConditionImpl() {
@@ -32,8 +31,8 @@ public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -42,12 +41,12 @@ public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
 		return true;
 	}
 
-} //SimpleApplicabilityConditionImpl
+} // SimpleApplicabilityConditionImpl

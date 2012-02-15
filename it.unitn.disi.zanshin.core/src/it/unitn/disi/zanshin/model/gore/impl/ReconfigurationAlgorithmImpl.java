@@ -13,18 +13,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Reconfiguration Algorithm</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Reconfiguration Algorithm</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ReconfigurationAlgorithmImpl extends EObjectImpl implements ReconfigurationAlgorithm {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ReconfigurationAlgorithmImpl() {
@@ -32,8 +31,8 @@ public class ReconfigurationAlgorithmImpl extends EObjectImpl implements Reconfi
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class ReconfigurationAlgorithmImpl extends EObjectImpl implements Reconfi
 		return GorePackage.Literals.RECONFIGURATION_ALGORITHM;
 	}
 
-} //ReconfigurationAlgorithmImpl
+} // ReconfigurationAlgorithmImpl

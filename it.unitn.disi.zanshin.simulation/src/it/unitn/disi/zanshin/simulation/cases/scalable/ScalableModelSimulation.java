@@ -13,6 +13,7 @@ import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.simulation.cases.AbstractSimulation;
 import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
+import it.unitn.disi.zanshin.simulation.internal.services.Controller;
 import it.unitn.disi.zanshin.simulation.model.scalable.AR1;
 import it.unitn.disi.zanshin.simulation.model.scalable.G00000;
 import it.unitn.disi.zanshin.simulation.model.scalable.ScalableFactory;
@@ -50,9 +51,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 	/** The generated goal model for the current simulation part. */
 	private ScalableGoalModel model;
 
-	/** Copy of the generated goal model, used by the simulation to replace model elements when necessary. */
-	public static ScalableGoalModel modelCopy;
-
 	/** The starting timestamp, used when the simulation part ends to calculate the time taken to perform it. */
 	private long startTimestamp;
 
@@ -75,8 +73,10 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					model = createRandomModel(modelSize);
 					repositoryService.storeGoalModel(model);
 
-					// Creates an exact copy of the model.
-					modelCopy = createCopy(model);
+					// Creates an exact copy of the model and injects it in the controller.
+					ScalableGoalModel modelCopy = createCopy(model);
+					Controller controller = getController();
+					if (controller instanceof ScalableController) ((ScalableController) controller).setModelCopy(modelCopy);
 
 					// Writes the model size in the date attribute of the root.
 					model.getRootGoal().setTime(new Date(modelSize));

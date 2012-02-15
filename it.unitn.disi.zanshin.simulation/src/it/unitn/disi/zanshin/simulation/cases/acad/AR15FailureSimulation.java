@@ -37,7 +37,7 @@ public final class AR15FailureSimulation extends AbstractSimulation {
 	@Override
 	public void doInit() throws Exception {
 		// Loads the goal model.
-		model = SimulationUtils.readDefaultGoalModel();
+		model = SimulationUtils.readDefaultAcadGoalModel();
 
 		// Obtains the repository service and registers the goal model there.
 		repositoryService = Activator.getRepositoryService();

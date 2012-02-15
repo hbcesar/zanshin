@@ -33,7 +33,7 @@ public interface IMonitoringService {
 	 * Stops the monitoring service, giving its implementation a chance to stop any threads, close resources, etc.
 	 */
 	void stop();
-	
+
 	/** Temporary solution: allows for the monitoring service to receive the simulated monitor. */
 	void setSimulatedMonitor(IMonitoringService simulatedMonitor);
 }

@@ -13,7 +13,6 @@ import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * Implementation of the Target System Controller Service for the A-CAD simulations present in this bundle.
@@ -114,11 +113,11 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		controller.initiate(req);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel(org.eclipse.emf.ecore.EPackage) */
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel() */
 	@Override
-	public GoalModel createNewModel(EPackage ePackage) throws Exception {
-		SimulationUtils.log.info("New model creation requested for package ", ePackage.getName()); //$NON-NLS-1$
-		return controller.createNewModel(ePackage);
+	public GoalModel createNewModel() throws Exception {
+		SimulationUtils.log.info("Creating a new model to retrieve the new instance..."); //$NON-NLS-1$
+		return controller.createNewModel();
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
@@ -178,7 +177,7 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 	public AwReq createNewAwReqInstance(EClass eClass) {
 		// FIXME: This is temporary. See the FIX-ME in class MonitorThread.
 		try {
-			GoalModel newModel = createNewModel(eClass.getEPackage());
+			GoalModel newModel = createNewModel();
 			repositoryService.storeGoalModel(newModel);
 			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), eClass);
 			AwReq newAwReq = (AwReq) newReq;

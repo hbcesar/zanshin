@@ -1,13 +1,5 @@
 package it.unitn.disi.zanshin.internal.services;
 
-import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED;
-import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE;
-import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED;
-import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED;
-import static it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE;
-import it.unitn.disi.zanshin.core.CoreUtils;
-import it.unitn.disi.zanshin.model.eca.AdaptationStrategy;
-import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
@@ -170,19 +162,20 @@ public class GoalModelElements {
 	 *          The AwReq to be added to the targets map.
 	 */
 	private void addToTargetMap(DefinableRequirement target, AwReq awreq) {
-		// Checks if this class is already present in the map.
+		// Always creates a new AwReq set, even when one already exists, to deal with replacements.
+		Set<AwReq> awreqs = new HashSet<>();
+
+		// If there's already an AwReq set for this target in the map, add the AwReqs to the new set.
 		EClass reqClass = target.eClass();
-		if (targetsMap.containsKey(reqClass)) {
-			// If already present, add the AwReq to the set of targets.
-			Set<AwReq> awreqs = targetsMap.get(reqClass);
-			awreqs.add(awreq);
-		}
-		else {
-			// If not present, create a new set of AwReqs for this target and place it in the map.
-			Set<AwReq> awreqs = new HashSet<>();
-			awreqs.add(awreq);
-			targetsMap.put(reqClass, awreqs);
-		}
+		if (targetsMap.containsKey(reqClass))
+			for (AwReq mappedAwReq : awreqs)
+				// Does not add AwReqs of the same EMF class as the new one in order to replace it.
+				if (!mappedAwReq.eClass().equals(awreq.eClass()))
+					awreqs.add(mappedAwReq);
+
+		// Finally, adds the new AwReq to the set and places the set in the targets map.
+		awreqs.add(awreq);
+		targetsMap.put(reqClass, awreqs);
 	}
 
 	/**
@@ -243,58 +236,7 @@ public class GoalModelElements {
 	 *          The new requirement.
 	 */
 	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
-		// When elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as
-		// EMF generated code will handle the inverse association automatically.
-		// FIXME: possible improvements:
-		// - Can this be implemented in a more modular way by a Requirement.replace(newReq) method?
-
-		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm).
-		Requirement parent = oldReq.getParent();
-		oldReq.setParent(null);
-		newReq.setParent(parent);
-
-		// Checks if the ancestors should have their status reset.
-		resetAncestors(newReq);
-
-		// If the requirement to replace is a softgoal, replace it in the softgoal list and map.
-		if (oldReq instanceof Softgoal) {
-			Softgoal oldSG = (Softgoal) oldReq, newSG = (Softgoal) newReq;
-			oldSG.setGoalModel(null);
-			newSG.setGoalModel(model);
-			softgoalsMap.put(newSG.eClass(), newSG);
-		}
-
-		// If the requirement to replace is a quality constraint, replace it in the softgoal and the QC map.
-		else if (oldReq instanceof QualityConstraint) {
-			QualityConstraint oldQC = (QualityConstraint) oldReq, newQC = (QualityConstraint) newReq;
-			Softgoal softgoal = oldQC.getSoftgoal();
-			oldQC.setSoftgoal(null);
-			newQC.setSoftgoal(softgoal);
-			qualityConstraintsMap.put(newQC.eClass(), newQC);
-		}
-
-		// If the requirement to replace is an AwReq, replace it in the AwReq list and maps.
-		else if (oldReq instanceof AwReq) {
-			AwReq oldAwReq = (AwReq) oldReq, newAwReq = (AwReq) newReq;
-			oldAwReq.setGoalModel(null);
-			newAwReq.setGoalModel(model);
-			awReqsMap.put(newAwReq.eClass(), newAwReq);
-			DefinableRequirement oldTarget = oldAwReq.getTarget();
-			if ((oldTarget != null) && (targetsMap.containsKey(oldTarget.eClass()))) {
-				Set<AwReq> awreqs = targetsMap.get(oldTarget.eClass());
-				awreqs.remove(oldAwReq);
-				awreqs.add(newAwReq);
-			}
-
-			// In particular, if the ECA-based coordination process is being used, replace the references in the strategies.
-			if (newAwReq instanceof EcaAwReq) {
-				for (AdaptationStrategy strategy : ((EcaAwReq) newAwReq).getStrategies())
-					strategy.updateReferences();
-			}
-		}
-
-		// Finally, uses a visitor to replace the requirement and all its descendants as AwReq targets and in their
-		// respective maps.
+		// Uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override
 			protected void visit(Requirement req) {
@@ -326,68 +268,5 @@ public class GoalModelElements {
 			}
 		};
 		visitor.parse();
-	}
-
-	/**
-	 * After a piece of the requirements tree gets replaced by new instances (with possible different states), check if
-	 * the ancestors should also have their state reset. For instance, if a failed instance is replaced by a non-failing
-	 * one in an AND-refinement, the parent should change from Failed to Started or Undefined.
-	 * 
-	 * @param replacedReq
-	 *          The requirement that has just been replaced.
-	 */
-	private void resetAncestors(Requirement replacedReq) {
-		// Navigate the tree upwards.
-		Requirement parent = replacedReq.getParent();
-		while (parent != null) {
-			// Only makes sense in definable requirements.
-			if (parent instanceof DefinableRequirement) {
-				DefinableRequirement req = (DefinableRequirement) parent;
-
-				// Counts the number of children in each state and the number of definable children.
-				EList<Integer> stateCount = req.getChildrenStateCount();
-				int defChildrenCount = stateCount.get(stateCount.size() - 1);
-
-				// Checks the type of the requirement.
-				switch (req.getRefinementType()) {
-				case AND:
-					// For failed AND-refined requirements, if none of its children failed, reset its state.
-					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) == 0))
-						resetRequirement(stateCount, defChildrenCount, req);
-					break;
-				case OR:
-					// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.
-					if ((req.getState() == FAILED) && (stateCount.get(FAILED_VALUE) < defChildrenCount))
-						resetRequirement(stateCount, defChildrenCount, req);
-				}
-			}
-
-			// Next ancestor.
-			parent = parent.getParent();
-		}
-	}
-
-	/**
-	 * In the resetAncestors() method, when a requirement gets some of its children replaced it is possible that it needs
-	 * to be reset (see that method's documentation). When that happens, this method is called to verify if the
-	 * requirement should be reset to "Undefined" or to "Started".
-	 * 
-	 * @param stateCount
-	 *          Counters that represent the number of children in each state.
-	 * @param defChildrenCount
-	 *          The total number of DefinableRequirement children of the requirement that is being reset.
-	 * @param req
-	 *          The parent requirement being reset.
-	 */
-	private void resetRequirement(EList<Integer> stateCount, int defChildrenCount, DefinableRequirement req) {
-		// If no children have yet started, set the requirement also as Undefined.
-		if (stateCount.get(UNDEFINED_VALUE) == defChildrenCount)
-			req.setState(UNDEFINED);
-
-		// Otherwise, if at least one child has started, set it also as Started.
-		else req.setState(STARTED);
-
-		// Log what has just happened.
-		CoreUtils.log.debug("The status of {0} has been reset to {1}", req.eClass().getName(), req.getState()); //$NON-NLS-1$
 	}
 }

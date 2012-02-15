@@ -1,14 +1,13 @@
 package it.unitn.disi.zanshin.simulation.cases.acad;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.simulation.internal.services.EmptyController;
 import it.unitn.disi.zanshin.simulation.model.acad.AcadPackage;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * TODO: document this type.
@@ -31,10 +30,10 @@ public class AcadController extends EmptyController {
 		}
 	}
 
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptyController#createNewModel(org.eclipse.emf.ecore.EPackage) */
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptyController#createNewModel() */
 	@Override
-	public GoalModel createNewModel(EPackage ePackage) throws Exception {
-		// FIXME: is there a better solution than calling a static method?
-		return SimulationUtils.readDefaultGoalModel();
+	public GoalModel createNewModel() throws Exception {
+		// Reads the A-CAD model again from the file.
+		return SimulationUtils.readDefaultAcadGoalModel();
 	}
 }

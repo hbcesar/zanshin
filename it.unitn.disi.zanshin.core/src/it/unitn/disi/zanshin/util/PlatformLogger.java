@@ -82,11 +82,10 @@ public final class PlatformLogger implements ILogger {
 	private void log(int level, String message, Throwable error, Object ... params) {
 		// Formats the message with the given parameters.
 		String formattedMessage = MessageFormat.format(message, params);
-		
+
 		// Logs the message using the platform, checking if an error was provided or not.
 		if (error == null)
 			logService.log(level, formattedMessage);
-		else
-			logService.log(level, formattedMessage, error);
+		else logService.log(level, formattedMessage, error);
 	}
 }

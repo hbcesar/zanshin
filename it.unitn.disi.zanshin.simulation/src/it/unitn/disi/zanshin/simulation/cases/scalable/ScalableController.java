@@ -1,11 +1,10 @@
 package it.unitn.disi.zanshin.simulation.cases.scalable;
 
-import org.eclipse.emf.ecore.EPackage;
-
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.internal.services.EmptyController;
+import it.unitn.disi.zanshin.simulation.model.scalable.ScalableGoalModel;
 
 /**
  * TODO: document this type.
@@ -14,6 +13,13 @@ import it.unitn.disi.zanshin.simulation.internal.services.EmptyController;
  * @version 1.0
  */
 public class ScalableController extends EmptyController {
+	private ScalableGoalModel modelCopy;
+	
+	/** Setter for modelCopy. */
+	protected void setModelCopy(ScalableGoalModel modelCopy) {
+		this.modelCopy = modelCopy;
+	}
+
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptyController#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public void initiate(Requirement req) {
@@ -23,8 +29,8 @@ public class ScalableController extends EmptyController {
 
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptyController#createNewModel(org.eclipse.emf.ecore.EPackage) */
 	@Override
-	public GoalModel createNewModel(EPackage ePackage) throws Exception {
-		// FIXME: is there a better solution than accessing a static public attribute?
-		return ScalableModelSimulation.modelCopy;
+	public GoalModel createNewModel() {
+		// Returns the copy of the model that has been injected by the scalability simulation.
+		return modelCopy;
 	}
 }

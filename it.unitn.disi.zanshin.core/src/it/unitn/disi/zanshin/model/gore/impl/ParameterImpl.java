@@ -19,22 +19,20 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getGoalModel <em>Goal Model</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getGoalModel <em>Goal Model</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ParameterImpl extends EObjectImpl implements Parameter {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ParameterImpl() {
@@ -42,8 +40,8 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -52,28 +50,29 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public GoalModel getGoalModel() {
-		if (eContainerFeatureID() != GorePackage.PARAMETER__GOAL_MODEL) return null;
-		return (GoalModel)eContainer();
+		if (eContainerFeatureID() != GorePackage.PARAMETER__GOAL_MODEL)
+			return null;
+		return (GoalModel) eContainer();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetGoalModel(GoalModel newGoalModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.PARAMETER__GOAL_MODEL, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newGoalModel, GorePackage.PARAMETER__GOAL_MODEL, msgs);
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setGoalModel(GoalModel newGoalModel) {
@@ -84,114 +83,115 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newGoalModel != null)
-				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__PARAMETERS, GoalModel.class, msgs);
+				msgs = ((InternalEObject) newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__PARAMETERS, GoalModel.class, msgs);
 			msgs = basicSetGoalModel(newGoalModel, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.PARAMETER__GOAL_MODEL, newGoalModel, newGoalModel));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetGoalModel((GoalModel)otherEnd, msgs);
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetGoalModel((GoalModel) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				return basicSetGoalModel(null, msgs);
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			return basicSetGoalModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__PARAMETERS, GoalModel.class, msgs);
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__PARAMETERS, GoalModel.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				return getGoalModel();
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			return getGoalModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				setGoalModel((GoalModel)newValue);
-				return;
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			setGoalModel((GoalModel) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				setGoalModel((GoalModel)null);
-				return;
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			setGoalModel((GoalModel) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.PARAMETER__GOAL_MODEL:
-				return getGoalModel() != null;
+		case GorePackage.PARAMETER__GOAL_MODEL:
+			return getGoalModel() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ParameterImpl
+} // ParameterImpl

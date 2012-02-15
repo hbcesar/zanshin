@@ -10,7 +10,6 @@ import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * Abstract class that implements the Adaptation Framework part of the Target System Controller Service, calling
@@ -62,10 +61,10 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	@Override
 	public final Requirement newInstance(EClass reqClass) throws InstantiationException {
 		IRepositoryService repositoryService = getRepositoryService();
-		
+
 		try {
 			// Creates a new copy of the entire application goal model and retrieve the new instance from it.
-			GoalModel newModel = createNewModel(reqClass.getEPackage());
+			GoalModel newModel = createNewModel();
 			repositoryService.storeGoalModel(newModel);
 			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), reqClass);
 
@@ -92,12 +91,9 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 * instance of the application goal model. The Adaptation Framework is capable to create the new instance of the
 	 * requirement then, without any application-specific adaptation logic.
 	 * 
-	 * @param ePackage
-	 *          The EMF package from which to create a new requirements model.
-	 * 
 	 * @return A new instance of the application requirement model.
 	 */
-	protected abstract GoalModel createNewModel(EPackage ePackage) throws Exception;
+	protected abstract GoalModel createNewModel() throws Exception;
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#disable(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override

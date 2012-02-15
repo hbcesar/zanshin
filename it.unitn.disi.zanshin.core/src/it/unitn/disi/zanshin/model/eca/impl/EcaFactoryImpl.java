@@ -34,24 +34,20 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static EcaFactory init() {
 		try {
-			EcaFactory theEcaFactory = (EcaFactory)EPackage.Registry.INSTANCE.getEFactory("http://zanshin.disi.unitn.it/1.0/eca");  //$NON-NLS-1$
-			if (theEcaFactory != null) {
-				return theEcaFactory;
-			}
+			EcaFactory theEcaFactory = (EcaFactory) EPackage.Registry.INSTANCE.getEFactory("http://zanshin.disi.unitn.it/1.0/eca"); //$NON-NLS-1$
+			if (theEcaFactory != null) { return theEcaFactory; }
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
@@ -60,9 +56,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaFactoryImpl() {
@@ -70,39 +65,57 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EcaPackage.ECA_AW_REQ: return createEcaAwReq();
-			case EcaPackage.EVENT: return createEvent();
-			case EcaPackage.ADAPTATION_SESSION: return createAdaptationSession();
-			case EcaPackage.SIMPLE_RESOLUTION_CONDITION: return createSimpleResolutionCondition();
-			case EcaPackage.AND_REFINED_RESOLUTION_CONDITION: return createAndRefinedResolutionCondition();
-			case EcaPackage.OR_REFINED_RESOLUTION_CONDITION: return createOrRefinedResolutionCondition();
-			case EcaPackage.SIMPLE_APPLICABILITY_CONDITION: return createSimpleApplicabilityCondition();
-			case EcaPackage.MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION: return createMaxExecutionsPerSessionApplicabilityCondition();
-			case EcaPackage.AND_REFINED_APPLICABILITY_CONDITION: return createAndRefinedApplicabilityCondition();
-			case EcaPackage.OR_REFINED_APPLICABILITY_CONDITION: return createOrRefinedApplicabilityCondition();
-			case EcaPackage.ABORT_STRATEGY: return createAbortStrategy();
-			case EcaPackage.DELEGATE_STRATEGY: return createDelegateStrategy();
-			case EcaPackage.RELAX_DISABLE_CHILD_STRATEGY: return createRelaxDisableChildStrategy();
-			case EcaPackage.RELAX_REPLACE: return createRelaxReplace();
-			case EcaPackage.RETRY_STRATEGY: return createRetryStrategy();
-			case EcaPackage.STRENGTHEN_ENABLE_CHILD_STRATEGY: return createStrengthenEnableChildStrategy();
-			case EcaPackage.STRENGTHEN_REPLACE: return createStrengthenReplace();
-			case EcaPackage.WARNING_STRATEGY: return createWarningStrategy();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		case EcaPackage.ECA_AW_REQ:
+			return createEcaAwReq();
+		case EcaPackage.EVENT:
+			return createEvent();
+		case EcaPackage.ADAPTATION_SESSION:
+			return createAdaptationSession();
+		case EcaPackage.SIMPLE_RESOLUTION_CONDITION:
+			return createSimpleResolutionCondition();
+		case EcaPackage.AND_REFINED_RESOLUTION_CONDITION:
+			return createAndRefinedResolutionCondition();
+		case EcaPackage.OR_REFINED_RESOLUTION_CONDITION:
+			return createOrRefinedResolutionCondition();
+		case EcaPackage.SIMPLE_APPLICABILITY_CONDITION:
+			return createSimpleApplicabilityCondition();
+		case EcaPackage.MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION:
+			return createMaxExecutionsPerSessionApplicabilityCondition();
+		case EcaPackage.AND_REFINED_APPLICABILITY_CONDITION:
+			return createAndRefinedApplicabilityCondition();
+		case EcaPackage.OR_REFINED_APPLICABILITY_CONDITION:
+			return createOrRefinedApplicabilityCondition();
+		case EcaPackage.ABORT_STRATEGY:
+			return createAbortStrategy();
+		case EcaPackage.DELEGATE_STRATEGY:
+			return createDelegateStrategy();
+		case EcaPackage.RELAX_DISABLE_CHILD_STRATEGY:
+			return createRelaxDisableChildStrategy();
+		case EcaPackage.RELAX_REPLACE:
+			return createRelaxReplace();
+		case EcaPackage.RETRY_STRATEGY:
+			return createRetryStrategy();
+		case EcaPackage.STRENGTHEN_ENABLE_CHILD_STRATEGY:
+			return createStrengthenEnableChildStrategy();
+		case EcaPackage.STRENGTHEN_REPLACE:
+			return createStrengthenReplace();
+		case EcaPackage.WARNING_STRATEGY:
+			return createWarningStrategy();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaAwReq createEcaAwReq() {
@@ -111,8 +124,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Event createEvent() {
@@ -121,8 +134,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdaptationSession createAdaptationSession() {
@@ -131,8 +144,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimpleResolutionCondition createSimpleResolutionCondition() {
@@ -141,8 +154,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AndRefinedResolutionCondition createAndRefinedResolutionCondition() {
@@ -151,8 +164,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OrRefinedResolutionCondition createOrRefinedResolutionCondition() {
@@ -161,8 +174,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimpleApplicabilityCondition createSimpleApplicabilityCondition() {
@@ -171,8 +184,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MaxExecutionsPerSessionApplicabilityCondition createMaxExecutionsPerSessionApplicabilityCondition() {
@@ -181,8 +194,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AndRefinedApplicabilityCondition createAndRefinedApplicabilityCondition() {
@@ -191,8 +204,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OrRefinedApplicabilityCondition createOrRefinedApplicabilityCondition() {
@@ -201,8 +214,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RetryStrategy createRetryStrategy() {
@@ -211,8 +224,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StrengthenEnableChildStrategy createStrengthenEnableChildStrategy() {
@@ -221,8 +234,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StrengthenReplace createStrengthenReplace() {
@@ -231,8 +244,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public WarningStrategy createWarningStrategy() {
@@ -241,8 +254,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AbortStrategy createAbortStrategy() {
@@ -251,8 +264,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DelegateStrategy createDelegateStrategy() {
@@ -261,8 +274,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RelaxDisableChildStrategy createRelaxDisableChildStrategy() {
@@ -271,8 +284,8 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RelaxReplace createRelaxReplace() {
@@ -281,17 +294,17 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaPackage getEcaPackage() {
-		return (EcaPackage)getEPackage();
+		return (EcaPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -300,4 +313,4 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 		return EcaPackage.eINSTANCE;
 	}
 
-} //EcaFactoryImpl
+} // EcaFactoryImpl

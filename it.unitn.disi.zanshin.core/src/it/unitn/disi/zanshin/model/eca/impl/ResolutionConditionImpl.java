@@ -20,22 +20,21 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resolution Condition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Resolution Condition</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.ResolutionConditionImpl#getAwReq <em>Aw Req</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.eca.impl.ResolutionConditionImpl#getAwReq <em>Aw Req</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class ResolutionConditionImpl extends EObjectImpl implements ResolutionCondition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResolutionConditionImpl() {
@@ -43,8 +42,8 @@ public abstract class ResolutionConditionImpl extends EObjectImpl implements Res
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -53,28 +52,29 @@ public abstract class ResolutionConditionImpl extends EObjectImpl implements Res
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaAwReq getAwReq() {
-		if (eContainerFeatureID() != EcaPackage.RESOLUTION_CONDITION__AW_REQ) return null;
-		return (EcaAwReq)eContainer();
+		if (eContainerFeatureID() != EcaPackage.RESOLUTION_CONDITION__AW_REQ)
+			return null;
+		return (EcaAwReq) eContainer();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetAwReq(EcaAwReq newAwReq, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newAwReq, EcaPackage.RESOLUTION_CONDITION__AW_REQ, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newAwReq, EcaPackage.RESOLUTION_CONDITION__AW_REQ, msgs);
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAwReq(EcaAwReq newAwReq) {
@@ -85,17 +85,18 @@ public abstract class ResolutionConditionImpl extends EObjectImpl implements Res
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newAwReq != null)
-				msgs = ((InternalEObject)newAwReq).eInverseAdd(this, EcaPackage.ECA_AW_REQ__CONDITION, EcaAwReq.class, msgs);
+				msgs = ((InternalEObject) newAwReq).eInverseAdd(this, EcaPackage.ECA_AW_REQ__CONDITION, EcaAwReq.class, msgs);
 			msgs = basicSetAwReq(newAwReq, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.RESOLUTION_CONDITION__AW_REQ, newAwReq, newAwReq));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
@@ -105,105 +106,105 @@ public abstract class ResolutionConditionImpl extends EObjectImpl implements Res
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetAwReq((EcaAwReq)otherEnd, msgs);
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetAwReq((EcaAwReq) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				return basicSetAwReq(null, msgs);
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			return basicSetAwReq(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				return eInternalContainer().eInverseRemove(this, EcaPackage.ECA_AW_REQ__CONDITION, EcaAwReq.class, msgs);
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			return eInternalContainer().eInverseRemove(this, EcaPackage.ECA_AW_REQ__CONDITION, EcaAwReq.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				return getAwReq();
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			return getAwReq();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				setAwReq((EcaAwReq)newValue);
-				return;
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			setAwReq((EcaAwReq) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				setAwReq((EcaAwReq)null);
-				return;
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			setAwReq((EcaAwReq) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
-				return getAwReq() != null;
+		case EcaPackage.RESOLUTION_CONDITION__AW_REQ:
+			return getAwReq() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ResolutionConditionImpl
+} // ResolutionConditionImpl

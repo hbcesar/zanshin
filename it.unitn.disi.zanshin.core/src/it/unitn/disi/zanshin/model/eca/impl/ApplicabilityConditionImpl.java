@@ -20,22 +20,21 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Applicability Condition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Applicability Condition</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl#getStrategy <em>Strategy</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl#getStrategy <em>Strategy</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class ApplicabilityConditionImpl extends EObjectImpl implements ApplicabilityCondition {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ApplicabilityConditionImpl() {
@@ -43,8 +42,8 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -53,28 +52,29 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdaptationStrategy getStrategy() {
-		if (eContainerFeatureID() != EcaPackage.APPLICABILITY_CONDITION__STRATEGY) return null;
-		return (AdaptationStrategy)eContainer();
+		if (eContainerFeatureID() != EcaPackage.APPLICABILITY_CONDITION__STRATEGY)
+			return null;
+		return (AdaptationStrategy) eContainer();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetStrategy(AdaptationStrategy newStrategy, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newStrategy, EcaPackage.APPLICABILITY_CONDITION__STRATEGY, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newStrategy, EcaPackage.APPLICABILITY_CONDITION__STRATEGY, msgs);
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStrategy(AdaptationStrategy newStrategy) {
@@ -85,17 +85,18 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStrategy != null)
-				msgs = ((InternalEObject)newStrategy).eInverseAdd(this, EcaPackage.ADAPTATION_STRATEGY__CONDITION, AdaptationStrategy.class, msgs);
+				msgs = ((InternalEObject) newStrategy).eInverseAdd(this, EcaPackage.ADAPTATION_STRATEGY__CONDITION, AdaptationStrategy.class, msgs);
 			msgs = basicSetStrategy(newStrategy, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.APPLICABILITY_CONDITION__STRATEGY, newStrategy, newStrategy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
@@ -105,105 +106,105 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetStrategy((AdaptationStrategy)otherEnd, msgs);
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetStrategy((AdaptationStrategy) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				return basicSetStrategy(null, msgs);
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			return basicSetStrategy(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				return eInternalContainer().eInverseRemove(this, EcaPackage.ADAPTATION_STRATEGY__CONDITION, AdaptationStrategy.class, msgs);
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			return eInternalContainer().eInverseRemove(this, EcaPackage.ADAPTATION_STRATEGY__CONDITION, AdaptationStrategy.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				return getStrategy();
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			return getStrategy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				setStrategy((AdaptationStrategy)newValue);
-				return;
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			setStrategy((AdaptationStrategy) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				setStrategy((AdaptationStrategy)null);
-				return;
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			setStrategy((AdaptationStrategy) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
-				return getStrategy() != null;
+		case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
+			return getStrategy() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ApplicabilityConditionImpl
+} // ApplicabilityConditionImpl

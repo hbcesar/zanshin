@@ -1,7 +1,5 @@
 package it.unitn.disi.zanshin.simulation.internal.services;
 
-import org.eclipse.emf.ecore.EPackage;
-
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
@@ -14,9 +12,8 @@ import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 public interface Controller extends ITargetSystemControllerService {
 	/**
 	 * TODO: document this method.
-	 * @param ePackage
 	 * @return
 	 * @throws Exception
 	 */
-	GoalModel createNewModel(EPackage ePackage) throws Exception;
+	GoalModel createNewModel() throws Exception;
 }
