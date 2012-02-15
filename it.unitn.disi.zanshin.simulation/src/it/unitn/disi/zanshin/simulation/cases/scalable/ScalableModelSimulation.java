@@ -13,7 +13,7 @@ import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.simulation.cases.AbstractSimulation;
 import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
-import it.unitn.disi.zanshin.simulation.internal.services.Controller;
+import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 import it.unitn.disi.zanshin.simulation.model.scalable.AR1;
 import it.unitn.disi.zanshin.simulation.model.scalable.G00000;
 import it.unitn.disi.zanshin.simulation.model.scalable.ScalableFactory;
@@ -75,8 +75,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 
 					// Creates an exact copy of the model and injects it in the controller.
 					ScalableGoalModel modelCopy = createCopy(model);
-					Controller controller = getController();
-					if (controller instanceof ScalableController) ((ScalableController) controller).setModelCopy(modelCopy);
+					SimulatedController controller = getController();
+					if (controller instanceof ScalableSimulatedController) ((ScalableSimulatedController) controller).setModelCopy(modelCopy);
 
 					// Writes the model size in the date attribute of the root.
 					model.getRootGoal().setTime(new Date(modelSize));

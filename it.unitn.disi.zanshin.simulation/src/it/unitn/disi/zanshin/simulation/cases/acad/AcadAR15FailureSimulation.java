@@ -16,7 +16,7 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_InputInfo;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public final class AR15FailureSimulation extends AbstractSimulation {
+public final class AcadAR15FailureSimulation extends AbstractSimulation {
 	/** The A-CAD goal model. */
 	private AcadGoalModel model;
 

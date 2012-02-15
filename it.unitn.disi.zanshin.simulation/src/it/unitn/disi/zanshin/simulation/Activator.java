@@ -30,7 +30,7 @@ public class Activator implements BundleActivator {
 
 	/** The repository service. */
 	private static IRepositoryService repositoryService;
-	
+
 	/** The target system controller service. */
 	private static ITargetSystemControllerService controllerService;
 
@@ -68,15 +68,17 @@ public class Activator implements BundleActivator {
 	/** Setter for controllerService. */
 	public void setControllerService(ITargetSystemControllerService controllerService) {
 		Activator.controllerService = controllerService;
-		if (simulationManager != null) simulationManager.setControllerService(controllerService);
-		SimulationUtils.log.info("Target System Controller Service injected in the activator"); //$NON-NLS-1$
+		if (simulationManager != null)
+			simulationManager.setControllerService(controllerService);
+		SimulationUtils.log.info("Target System SimulatedController Service injected in the activator"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for controllerService (required by OSGi Declarative Services). */
 	public void unsetControllerService(ITargetSystemControllerService controllerService) {
 		Activator.controllerService = null;
-		if (simulationManager != null) simulationManager.setControllerService(null);
-		SimulationUtils.log.info("Target System Controller Service disposed from the activator"); //$NON-NLS-1$
+		if (simulationManager != null)
+			simulationManager.setControllerService(null);
+		SimulationUtils.log.info("Target System SimulatedController Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** Setter for monitoringService. */
@@ -116,10 +118,11 @@ public class Activator implements BundleActivator {
 		SimulationUtils.log.info("A-CAD Simulation Component stopping..."); //$NON-NLS-1$
 		Activator.context = null;
 	}
-	
+
 	/**
-	 * TODO: document this method.
-	 * @return
+	 * Creates a new simulation manager, reading its configuration from the properties file.
+	 * 
+	 * @return A new simulation manager, ready to run the configured simulations.
 	 */
 	public static SimulationManager createSimulationManager() throws IOException {
 		// Reads the simulation properties, creates the simulation manager and returns.

@@ -1,7 +1,7 @@
 package it.unitn.disi.zanshin.simulation.cases;
 
 import it.unitn.disi.zanshin.services.IMonitoringService;
-import it.unitn.disi.zanshin.simulation.internal.services.Controller;
+import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public abstract class AbstractSimulation implements Simulation {
 	protected String name;
 	
 	/** Simulation's controller. */
-	protected Controller controller;
+	protected SimulatedController controller;
 	
 	/** Simulation's monitor. */
 	protected IMonitoringService simulatedMonitor;
@@ -37,9 +37,9 @@ public abstract class AbstractSimulation implements Simulation {
 	/** Stores the part of the simulation that is currently being run. */
 	protected SimulationPart currentPart;
 
-	/** @see it.unitn.disi.zanshin.simulation.cases.Simulation#init(java.lang.String, it.unitn.disi.zanshin.simulation.internal.services.Controller) */
+	/** @see it.unitn.disi.zanshin.simulation.cases.Simulation#init(java.lang.String, it.unitn.disi.zanshin.simulation.internal.services.SimulatedController) */
 	@Override
-	public final void init(String name, Controller controller, IMonitoringService simulatedMonitor) throws Exception {
+	public final void init(String name, SimulatedController controller, IMonitoringService simulatedMonitor) throws Exception {
 		this.name = name;
 		this.controller = controller;
 		this.simulatedMonitor = simulatedMonitor;
@@ -59,7 +59,7 @@ public abstract class AbstractSimulation implements Simulation {
 
 	/** @see it.unitn.disi.zanshin.simulation.cases.Simulation#getController() */
 	@Override
-	public Controller getController() {
+	public SimulatedController getController() {
 		return controller;
 	}
 

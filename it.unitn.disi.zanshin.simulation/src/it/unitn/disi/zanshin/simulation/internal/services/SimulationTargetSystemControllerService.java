@@ -15,14 +15,14 @@ import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * Implementation of the Target System Controller Service for the A-CAD simulations present in this bundle.
+ * Implementation of the Target System SimulatedController Service for the A-CAD simulations present in this bundle.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public class SimulationTargetSystemControllerService extends AbstractTargetSystemControllerService {
 	/** The controller simulation that will actually perform the actions, depending on the simulation being executed. */
-	private Controller controller = new EmptyController();
+	private SimulatedController controller = new EmptySimulatedController();
 	
 	/** The Repository Service implementation. */
 	private IRepositoryService repositoryService;
@@ -44,7 +44,7 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 	}
 	
 	/** Setter for controller. */
-	public void setController(Controller controller) {
+	public void setController(SimulatedController controller) {
 		this.controller = controller;
 	}
 

@@ -16,20 +16,22 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 /**
- * TODO: document this type.
+ * Simulated AwReqs monitor for the A-CAD simulations. The simulated monitor is a temporary replacement for the real
+ * AwReqs monitor that will eventually be integrated in Zanshin. The definitive implementation is able to handle any
+ * system and there's no need for a simulated controller for each simulation.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class AcadAwReqsMonitor implements IMonitoringService {
+public class AcadSimulatedAwReqsMonitor implements IMonitoringService {
 	/** The repository service. */
 	private IRepositoryService repositoryService;
 
 	/** The adaptation service. */
 	private IAdaptationService adaptationService;
-	
+
 	/** Constructor. */
-	public AcadAwReqsMonitor() {
+	public AcadSimulatedAwReqsMonitor() {
 		BundleContext context = Activator.getContext();
 		ServiceReference<IAdaptationService> adaptationReference = context.getServiceReference(IAdaptationService.class);
 		adaptationService = context.getService(adaptationReference);
@@ -71,13 +73,13 @@ public class AcadAwReqsMonitor implements IMonitoringService {
 
 		if (awreq != null) {
 			adaptationService.processStateChange(awreq);
-			
+
 			// Creates a copy of the failed AwReq, puts it in Undecided state and replaces the old one in the model.
-		  EcoreUtil.Copier copier = new EcoreUtil.Copier();
-		  AwReq newAwReq = (AwReq) copier.copy(awreq);
-		  copier.copyReferences();
-		  newAwReq.setState(DefinableRequirementState.UNDEFINED);
-		  repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
+			EcoreUtil.Copier copier = new EcoreUtil.Copier();
+			AwReq newAwReq = (AwReq) copier.copy(awreq);
+			copier.copyReferences();
+			newAwReq.setState(DefinableRequirementState.UNDEFINED);
+			repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
 		}
 	}
 

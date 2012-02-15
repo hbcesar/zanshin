@@ -1,7 +1,7 @@
 package it.unitn.disi.zanshin.simulation.cases;
 
 import it.unitn.disi.zanshin.services.IMonitoringService;
-import it.unitn.disi.zanshin.simulation.internal.services.Controller;
+import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 
 /**
  * Interface for simulations of adaptation scenarios.
@@ -38,7 +38,7 @@ public interface Simulation {
 	 * 
 	 * @return The instance of the controller.
 	 */
-	Controller getController();
+	SimulatedController getController();
 
 	/**
 	 * Returns the simulated monitor.
@@ -61,7 +61,7 @@ public interface Simulation {
 	 * @throws Exception
 	 *           If anything goes wrong during the initialization.
 	 */
-	void init(String name, Controller controller, IMonitoringService simulatedMonitor) throws Exception;
+	void init(String name, SimulatedController controller, IMonitoringService simulatedMonitor) throws Exception;
 
 	/**
 	 * Runs the next part of the simulation.

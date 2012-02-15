@@ -15,20 +15,22 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 /**
- * TODO: document this type.
+ * Simulated AwReqs monitor for the scalable simulations. The simulated monitor is a temporary replacement for the real
+ * AwReqs monitor that will eventually be integrated in Zanshin. The definitive implementation is able to handle any
+ * system and there's no need for a simulated controller for each simulation.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class ScalableAwReqsMonitor implements IMonitoringService {
+public class ScalableSimulatedAwReqsMonitor implements IMonitoringService {
 	/** The adaptation service. */
 	private IAdaptationService adaptationService;
-	
+
 	/** Timestamp of when the simulation started. */
 	private long startTimestamp;
-	
+
 	/** Constructor. */
-	public ScalableAwReqsMonitor() {
+	public ScalableSimulatedAwReqsMonitor() {
 		BundleContext context = Activator.getContext();
 		ServiceReference<IAdaptationService> adaptationReference = context.getServiceReference(IAdaptationService.class);
 		adaptationService = context.getService(adaptationReference);
@@ -60,14 +62,15 @@ public class ScalableAwReqsMonitor implements IMonitoringService {
 				default:
 					awreq = null;
 				}
-				
+
 				// Notify the adaptation service of the AwReq state change.
 				if (awreq != null) {
 					adaptationService.processStateChange(awreq);
 				}
 			}
-	
-			// If it's not the target element, check if it's the root element ending. In that case, calculate and print the time.
+
+			// If it's not the target element, check if it's the root element ending. In that case, calculate and print the
+			// time.
 			else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
 				long modelSize = req.getTime().getTime();
 				long endTimestamp = System.currentTimeMillis();

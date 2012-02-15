@@ -8,7 +8,7 @@ import static it.unitn.disi.zanshin.simulation.cases.Simulation.PROPERTIES_CASES
 import it.unitn.disi.zanshin.services.IMonitoringService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 import it.unitn.disi.zanshin.simulation.cases.Simulation;
-import it.unitn.disi.zanshin.simulation.internal.services.Controller;
+import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 import it.unitn.disi.zanshin.simulation.internal.services.SimulationTargetSystemControllerService;
 
 import java.util.Map;
@@ -62,8 +62,8 @@ public final class SimulationManager {
 					
 					// Loads the controller class given its name and creates a new instance.
 					@SuppressWarnings("unchecked")
-					Class<? extends Controller> controllerClazz = (Class<? extends Controller>) Class.forName(controllerClass);
-					Controller controller = controllerClazz.newInstance();
+					Class<? extends SimulatedController> controllerClazz = (Class<? extends SimulatedController>) Class.forName(controllerClass);
+					SimulatedController controller = controllerClazz.newInstance();
 					
 					// Loads the monitor class given its name and creates a new instance.
 					@SuppressWarnings("unchecked")
@@ -152,7 +152,7 @@ public final class SimulationManager {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: the controller service has not been set in the simulation manager.", name); //$NON-NLS-1$
 			return;
 		}
-		Controller controller = simulation.getController();
+		SimulatedController controller = simulation.getController();
 		if (controller == null) {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: a controller was not set for this simulation.", name); //$NON-NLS-1$
 			return;
