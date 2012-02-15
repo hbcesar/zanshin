@@ -1,4 +1,4 @@
-package it.unitn.disi.zanshin.internal.services;
+package it.unitn.disi.zanshin.core.internal.services;
 
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
