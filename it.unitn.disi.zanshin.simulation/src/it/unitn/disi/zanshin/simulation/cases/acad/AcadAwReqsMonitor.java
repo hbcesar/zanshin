@@ -8,10 +8,10 @@ import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IMonitoringService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
-import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
@@ -28,9 +28,6 @@ public class AcadAwReqsMonitor implements IMonitoringService {
 	/** The adaptation service. */
 	private IAdaptationService adaptationService;
 	
-	/** The Target System Controller Service implementation. */
-	private ITargetSystemControllerService controllerService;
-	
 	/** Constructor. */
 	public AcadAwReqsMonitor() {
 		BundleContext context = Activator.getContext();
@@ -38,8 +35,6 @@ public class AcadAwReqsMonitor implements IMonitoringService {
 		adaptationService = context.getService(adaptationReference);
 		ServiceReference<IRepositoryService> repositoryReference = context.getServiceReference(IRepositoryService.class);
 		repositoryService = context.getService(repositoryReference);
-		ServiceReference<ITargetSystemControllerService> controllerReference = context.getServiceReference(ITargetSystemControllerService.class);
-		controllerService = context.getService(controllerReference);
 	}
 
 	/**
@@ -76,15 +71,13 @@ public class AcadAwReqsMonitor implements IMonitoringService {
 
 		if (awreq != null) {
 			adaptationService.processStateChange(awreq);
-
-			// FIXME: temporary implementation.
-			// This temporary implementation asks the Target System Controller Service for a new copy of the AwReq. However,
-			// there should be a better solution for this. Give it more thought and write the definitive version (or wait
-			// for the integration of EEAT/Drools to see how things will change?)
-			if (controllerService != null) {
-				AwReq newAwReq = controllerService.createNewAwReqInstance(awreq.eClass());
-				repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
-			}
+			
+			// Creates a copy of the failed AwReq, puts it in Undecided state and replaces the old one in the model.
+		  EcoreUtil.Copier copier = new EcoreUtil.Copier();
+		  AwReq newAwReq = (AwReq) copier.copy(awreq);
+		  copier.copyReferences();
+		  newAwReq.setState(DefinableRequirementState.UNDEFINED);
+		  repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
 		}
 	}
 

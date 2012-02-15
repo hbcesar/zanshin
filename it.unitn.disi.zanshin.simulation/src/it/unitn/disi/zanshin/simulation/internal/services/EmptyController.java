@@ -99,12 +99,6 @@ public class EmptyController implements Controller {
 	@Override
 	public void waitForFix(AwReq awreq) {}
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#createNewAwReqInstance(org.eclipse.emf.ecore.EClass) */
-	@Override
-	public AwReq createNewAwReqInstance(EClass eClass) {
-		throw new UnsupportedOperationException();
-	}
-
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.Controller#createNewModel() */
 	@Override
 	public GoalModel createNewModel() throws Exception {

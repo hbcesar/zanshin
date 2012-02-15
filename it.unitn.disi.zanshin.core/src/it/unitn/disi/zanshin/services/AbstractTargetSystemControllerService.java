@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EClass;
  * The Adaptation Framework part consists of manipulations on the goal model that can be done in a generic way, i.e.,
  * without knowing any particular characteristics of the target system's requirement.
  * 
- * Important note / FIXME: this class is not fully implemented. Only the parts that were used in the simulation were.
+ * Important note: this class is not fully implemented. Only the parts that were used in the simulation were. New
+ * implementations might require new code in this abstract controller service.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0

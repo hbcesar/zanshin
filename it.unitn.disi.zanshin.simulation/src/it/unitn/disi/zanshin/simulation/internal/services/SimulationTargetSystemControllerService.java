@@ -171,22 +171,4 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		SimulationUtils.log.info("Instruction received: wait-for-fix(i{0})", awreq.eClass().getName()); //$NON-NLS-1$
 		controller.waitForFix(awreq);
 	}
-
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#createNewAwReqInstance(org.eclipse.emf.ecore.EClass) */
-	@Override
-	public AwReq createNewAwReqInstance(EClass eClass) {
-		// FIXME: This is temporary. See the FIX-ME in class MonitorThread.
-		try {
-			GoalModel newModel = createNewModel();
-			repositoryService.storeGoalModel(newModel);
-			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), eClass);
-			AwReq newAwReq = (AwReq) newReq;
-			newAwReq.setGoalModel(null);
-			repositoryService.disposeGoalModel(newModel.getId());
-			return newAwReq;
-		}
-		catch (Exception e) {
-			return null;
-		}
-	}
 }
