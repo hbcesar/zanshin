@@ -79,10 +79,7 @@ public class AcadSimulatedAwReqsMonitor implements IMonitoringService {
 			AwReq newAwReq = (AwReq) copier.copy(awreq);
 			copier.copyReferences();
 			newAwReq.setState(DefinableRequirementState.UNDEFINED);
-			if (awreq.getGoalModel() != null)
-				repositoryService.replaceRequirement(awreq.getGoalModel().getId(), awreq, newAwReq);
-			
-			System.out.println("Wait");
+			repositoryService.replaceRequirement(model.getId(), awreq, newAwReq);
 		}
 	}
 

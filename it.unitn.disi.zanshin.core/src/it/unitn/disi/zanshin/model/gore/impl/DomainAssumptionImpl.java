@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 public class DomainAssumptionImpl extends DefinableRequirementImpl implements DomainAssumption {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DomainAssumptionImpl() {
@@ -30,6 +31,7 @@ public class DomainAssumptionImpl extends DefinableRequirementImpl implements Do
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

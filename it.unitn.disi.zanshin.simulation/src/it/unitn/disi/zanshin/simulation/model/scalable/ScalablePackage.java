@@ -80,24 +80,6 @@ public interface ScalablePackage extends EPackage {
 	int SCALABLE_GOAL_MODEL__ROOT_GOAL = GorePackage.GOAL_MODEL__ROOT_GOAL;
 
 	/**
-	 * The feature id for the '<em><b>Softgoals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALABLE_GOAL_MODEL__SOFTGOALS = GorePackage.GOAL_MODEL__SOFTGOALS;
-
-	/**
-	 * The feature id for the '<em><b>Aw Reqs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALABLE_GOAL_MODEL__AW_REQS = GorePackage.GOAL_MODEL__AW_REQS;
-
-	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,15 +196,6 @@ public interface ScalablePackage extends EPackage {
 	 * @ordered
 	 */
 	int AR1__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR1__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.

@@ -98,7 +98,7 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	 */
 	public static AcadFactory init() {
 		try {
-			AcadFactory theAcadFactory = (AcadFactory)EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0"); 
+			AcadFactory theAcadFactory = (AcadFactory)EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0");  //$NON-NLS-1$
 			if (theAcadFactory != null) {
 				return theAcadFactory;
 			}
@@ -196,7 +196,7 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 			case AcadPackage.ACAD_GOAL_MODEL: return createAcadGoalModel();
 			case AcadPackage.CV_MST: return createCV_MST();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 

@@ -46,152 +46,174 @@ import org.eeat.model.LTL.impl.LTLPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass ecaAwReqEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass adaptationStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass applicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass eventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass adaptationSessionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass simpleResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass andRefinedResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass orRefinedResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass simpleApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass maxExecutionsPerSessionApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass andRefinedApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass orRefinedApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass retryStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass strengthenEnableChildStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass strengthenReplaceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass warningStrategyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationResolutionConditionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationStrategyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass abortStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass delegateStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relaxDisableChildStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relaxReplaceEClass = null;
@@ -215,6 +237,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -222,26 +245,28 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link EcaPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link EcaPackage#eINSTANCE} when that field is accessed. Clients should not
+	 * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static EcaPackage init() {
-		if (isInited) return (EcaPackage)EPackage.Registry.INSTANCE.getEPackage(EcaPackage.eNS_URI);
+		if (isInited)
+			return (EcaPackage) EPackage.Registry.INSTANCE.getEPackage(EcaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EcaPackageImpl theEcaPackage = (EcaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcaPackageImpl());
+		EcaPackageImpl theEcaPackage = (EcaPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcaPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		GorePackageImpl theGorePackage = (GorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) instanceof GorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) : GorePackage.eINSTANCE);
-		LTLPackageImpl theLTLPackage = (LTLPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) instanceof LTLPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) : LTLPackage.eINSTANCE);
+		GorePackageImpl theGorePackage = (GorePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) instanceof GorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) : GorePackage.eINSTANCE);
+		LTLPackageImpl theLTLPackage = (LTLPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) instanceof LTLPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) : LTLPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEcaPackage.createPackageContents();
@@ -256,7 +281,6 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		// Mark meta-data to indicate it can't be changed
 		theEcaPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(EcaPackage.eNS_URI, theEcaPackage);
 		return theEcaPackage;
@@ -264,6 +288,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEcaAwReq() {
@@ -272,30 +297,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_Condition() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(0);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_Strategies() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(1);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_SelectedStrategy() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(2);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResolutionCondition() {
@@ -304,14 +333,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResolutionCondition_AwReq() {
-		return (EReference)resolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) resolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAdaptationStrategy() {
@@ -320,22 +351,25 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationStrategy_AwReq() {
-		return (EReference)adaptationStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) adaptationStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationStrategy_Condition() {
-		return (EReference)adaptationStrategyEClass.getEStructuralFeatures().get(1);
+		return (EReference) adaptationStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getApplicabilityCondition() {
@@ -344,14 +378,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getApplicabilityCondition_Strategy() {
-		return (EReference)applicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) applicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEvent() {
@@ -360,30 +396,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEvent_Session() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(0);
+		return (EReference) eventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEvent_AwReq() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(1);
+		return (EReference) eventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEvent_Time() {
-		return (EAttribute)eventEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) eventEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAdaptationSession() {
@@ -392,30 +432,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationSession_Events() {
-		return (EReference)adaptationSessionEClass.getEStructuralFeatures().get(0);
+		return (EReference) adaptationSessionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdaptationSession_Active() {
-		return (EAttribute)adaptationSessionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) adaptationSessionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdaptationSession_Id() {
-		return (EAttribute)adaptationSessionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) adaptationSessionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSimpleResolutionCondition() {
@@ -424,6 +468,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAndRefinedResolutionCondition() {
@@ -432,14 +477,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAndRefinedResolutionCondition_Children() {
-		return (EReference)andRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) andRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOrRefinedResolutionCondition() {
@@ -448,14 +495,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOrRefinedResolutionCondition_Children() {
-		return (EReference)orRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) orRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSimpleApplicabilityCondition() {
@@ -464,6 +513,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMaxExecutionsPerSessionApplicabilityCondition() {
@@ -472,14 +522,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions() {
-		return (EAttribute)maxExecutionsPerSessionApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) maxExecutionsPerSessionApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAndRefinedApplicabilityCondition() {
@@ -488,14 +540,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAndRefinedApplicabilityCondition_Children() {
-		return (EReference)andRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) andRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOrRefinedApplicabilityCondition() {
@@ -504,14 +558,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOrRefinedApplicabilityCondition_Children() {
-		return (EReference)orRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) orRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRetryStrategy() {
@@ -520,22 +576,25 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRetryStrategy_Copy() {
-		return (EAttribute)retryStrategyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) retryStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRetryStrategy_Time() {
-		return (EAttribute)retryStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) retryStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStrengthenEnableChildStrategy() {
@@ -544,30 +603,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenEnableChildStrategy_Requirement() {
-		return (EReference)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenEnableChildStrategy_Level() {
-		return (EAttribute)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenEnableChildStrategy_Child() {
-		return (EReference)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(2);
+		return (EReference) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStrengthenReplace() {
@@ -576,38 +639,43 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenReplace_Requirement() {
-		return (EReference)strengthenReplaceEClass.getEStructuralFeatures().get(0);
+		return (EReference) strengthenReplaceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenReplace_Copy() {
-		return (EAttribute)strengthenReplaceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) strengthenReplaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenReplace_Level() {
-		return (EAttribute)strengthenReplaceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) strengthenReplaceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenReplace_NewRequirement() {
-		return (EReference)strengthenReplaceEClass.getEStructuralFeatures().get(3);
+		return (EReference) strengthenReplaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getWarningStrategy() {
@@ -616,15 +684,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getWarningStrategy_Actor() {
-		return (EReference)warningStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) warningStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationResolutionCondition() {
@@ -632,26 +701,26 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReconfigurationResolutionCondition_AlgorithmId() {
-		return (EAttribute)reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReconfigurationResolutionCondition_WrappedCondition() {
-		return (EReference)reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(1);
+		return (EReference) reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationStrategy() {
@@ -659,17 +728,17 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReconfigurationStrategy_AlgorithmId() {
-		return (EAttribute)reconfigurationStrategyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) reconfigurationStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationApplicabilityCondition() {
@@ -677,16 +746,17 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReconfigurationApplicabilityCondition_WrappedCondition() {
-		return (EReference)reconfigurationApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) reconfigurationApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAbortStrategy() {
@@ -695,6 +765,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDelegateStrategy() {
@@ -703,14 +774,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDelegateStrategy_Actor() {
-		return (EReference)delegateStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) delegateStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRelaxDisableChildStrategy() {
@@ -719,30 +792,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxDisableChildStrategy_Requirement() {
-		return (EReference)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxDisableChildStrategy_Level() {
-		return (EAttribute)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxDisableChildStrategy_Child() {
-		return (EReference)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(2);
+		return (EReference) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRelaxReplace() {
@@ -751,58 +828,65 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxReplace_Requirement() {
-		return (EReference)relaxReplaceEClass.getEStructuralFeatures().get(0);
+		return (EReference) relaxReplaceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxReplace_Copy() {
-		return (EAttribute)relaxReplaceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) relaxReplaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxReplace_Level() {
-		return (EAttribute)relaxReplaceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) relaxReplaceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxReplace_NewRequirement() {
-		return (EReference)relaxReplaceEClass.getEStructuralFeatures().get(3);
+		return (EReference) relaxReplaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaFactory getEcaFactory() {
-		return (EcaFactory)getEFactoryInstance();
+		return (EcaFactory) getEFactoryInstance();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
+	 * first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -897,18 +981,20 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
+	 * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -917,7 +1003,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		GorePackage theGorePackage = (GorePackage)EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI);
+		GorePackage theGorePackage = (GorePackage) EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -945,174 +1031,174 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		reconfigurationApplicabilityConditionEClass.getESuperTypes().add(this.getApplicabilityCondition());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(ecaAwReqEClass, EcaAwReq.class, "EcaAwReq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEcaAwReq_Condition(), this.getResolutionCondition(), this.getResolutionCondition_AwReq(), "condition", null, 0, 1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEcaAwReq_Strategies(), this.getAdaptationStrategy(), this.getAdaptationStrategy_AwReq(), "strategies", null, 0, -1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEcaAwReq_SelectedStrategy(), this.getAdaptationStrategy(), null, "selectedStrategy", null, 0, 1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(ecaAwReqEClass, EcaAwReq.class, "EcaAwReq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getEcaAwReq_Condition(), this.getResolutionCondition(), this.getResolutionCondition_AwReq(), "condition", null, 0, 1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEcaAwReq_Strategies(), this.getAdaptationStrategy(), this.getAdaptationStrategy_AwReq(), "strategies", null, 0, -1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEcaAwReq_SelectedStrategy(), this.getAdaptationStrategy(), null, "selectedStrategy", null, 0, 1, EcaAwReq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		EOperation op = addEOperation(ecaAwReqEClass, null, "replaceWith", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theGorePackage.getRequirement(), "newRequirement", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(ecaAwReqEClass, null, "replaceWith", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theGorePackage.getRequirement(), "newRequirement", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(resolutionConditionEClass, ResolutionCondition.class, "ResolutionCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResolutionCondition_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Condition(), "awReq", null, 0, 1, ResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resolutionConditionEClass, ResolutionCondition.class, "ResolutionCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getResolutionCondition_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Condition(), "awReq", null, 0, 1, ResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(resolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(resolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(adaptationStrategyEClass, AdaptationStrategy.class, "AdaptationStrategy", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAdaptationStrategy_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Strategies(), "awReq", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAdaptationStrategy_Condition(), this.getApplicabilityCondition(), this.getApplicabilityCondition_Strategy(), "condition", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(adaptationStrategyEClass, AdaptationStrategy.class, "AdaptationStrategy", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getAdaptationStrategy_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Strategies(), "awReq", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAdaptationStrategy_Condition(), this.getApplicabilityCondition(), this.getApplicabilityCondition_Strategy(), "condition", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(adaptationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(adaptationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(adaptationStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(adaptationStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(applicabilityConditionEClass, ApplicabilityCondition.class, "ApplicabilityCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getApplicabilityCondition_Strategy(), this.getAdaptationStrategy(), this.getAdaptationStrategy_Condition(), "strategy", null, 0, 1, ApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(applicabilityConditionEClass, ApplicabilityCondition.class, "ApplicabilityCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getApplicabilityCondition_Strategy(), this.getAdaptationStrategy(), this.getAdaptationStrategy_Condition(), "strategy", null, 0, 1, ApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(applicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(applicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEvent_Session(), this.getAdaptationSession(), this.getAdaptationSession_Events(), "session", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEvent_AwReq(), this.getEcaAwReq(), null, "awReq", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEvent_Time(), ecorePackage.getEDate(), "time", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getEvent_Session(), this.getAdaptationSession(), this.getAdaptationSession_Events(), "session", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEvent_AwReq(), this.getEcaAwReq(), null, "awReq", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getEvent_Time(), ecorePackage.getEDate(), "time", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(adaptationSessionEClass, AdaptationSession.class, "AdaptationSession", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAdaptationSession_Events(), this.getEvent(), this.getEvent_Session(), "events", null, 0, -1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAdaptationSession_Active(), ecorePackage.getEBoolean(), "active", null, 0, 1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAdaptationSession_Id(), ecorePackage.getEString(), "id", null, 0, 1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(adaptationSessionEClass, AdaptationSession.class, "AdaptationSession", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getAdaptationSession_Events(), this.getEvent(), this.getEvent_Session(), "events", null, 0, -1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getAdaptationSession_Active(), ecorePackage.getEBoolean(), "active", null, 0, 1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getAdaptationSession_Id(), ecorePackage.getEString(), "id", null, 0, 1, AdaptationSession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(adaptationSessionEClass, null, "addEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getEcaAwReq(), "awreq", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(adaptationSessionEClass, null, "addEvent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getEcaAwReq(), "awreq", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(adaptationSessionEClass, null, "terminate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(adaptationSessionEClass, null, "terminate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(simpleResolutionConditionEClass, SimpleResolutionCondition.class, "SimpleResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(simpleResolutionConditionEClass, SimpleResolutionCondition.class, "SimpleResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		op = addEOperation(simpleResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(simpleResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(andRefinedResolutionConditionEClass, AndRefinedResolutionCondition.class, "AndRefinedResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAndRefinedResolutionCondition_Children(), this.getResolutionCondition(), null, "children", null, 0, -1, AndRefinedResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(andRefinedResolutionConditionEClass, AndRefinedResolutionCondition.class, "AndRefinedResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getAndRefinedResolutionCondition_Children(), this.getResolutionCondition(), null, "children", null, 0, -1, AndRefinedResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(andRefinedResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(andRefinedResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(orRefinedResolutionConditionEClass, OrRefinedResolutionCondition.class, "OrRefinedResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrRefinedResolutionCondition_Children(), this.getResolutionCondition(), null, "children", null, 0, -1, OrRefinedResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(orRefinedResolutionConditionEClass, OrRefinedResolutionCondition.class, "OrRefinedResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getOrRefinedResolutionCondition_Children(), this.getResolutionCondition(), null, "children", null, 0, -1, OrRefinedResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(orRefinedResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(orRefinedResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(simpleApplicabilityConditionEClass, SimpleApplicabilityCondition.class, "SimpleApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(simpleApplicabilityConditionEClass, SimpleApplicabilityCondition.class, "SimpleApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		op = addEOperation(simpleApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(simpleApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(maxExecutionsPerSessionApplicabilityConditionEClass, MaxExecutionsPerSessionApplicabilityCondition.class, "MaxExecutionsPerSessionApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions(), ecorePackage.getEIntegerObject(), "maxExecutions", null, 0, 1, MaxExecutionsPerSessionApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(maxExecutionsPerSessionApplicabilityConditionEClass, MaxExecutionsPerSessionApplicabilityCondition.class, "MaxExecutionsPerSessionApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions(), ecorePackage.getEIntegerObject(), "maxExecutions", null, 0, 1, MaxExecutionsPerSessionApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(maxExecutionsPerSessionApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(maxExecutionsPerSessionApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(andRefinedApplicabilityConditionEClass, AndRefinedApplicabilityCondition.class, "AndRefinedApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAndRefinedApplicabilityCondition_Children(), this.getApplicabilityCondition(), null, "children", null, 0, -1, AndRefinedApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(andRefinedApplicabilityConditionEClass, AndRefinedApplicabilityCondition.class, "AndRefinedApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getAndRefinedApplicabilityCondition_Children(), this.getApplicabilityCondition(), null, "children", null, 0, -1, AndRefinedApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(andRefinedApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(andRefinedApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(orRefinedApplicabilityConditionEClass, OrRefinedApplicabilityCondition.class, "OrRefinedApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrRefinedApplicabilityCondition_Children(), this.getApplicabilityCondition(), null, "children", null, 0, -1, OrRefinedApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(orRefinedApplicabilityConditionEClass, OrRefinedApplicabilityCondition.class, "OrRefinedApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getOrRefinedApplicabilityCondition_Children(), this.getApplicabilityCondition(), null, "children", null, 0, -1, OrRefinedApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(orRefinedApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(orRefinedApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(abortStrategyEClass, AbortStrategy.class, "AbortStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(abortStrategyEClass, AbortStrategy.class, "AbortStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		op = addEOperation(abortStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(abortStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(delegateStrategyEClass, DelegateStrategy.class, "DelegateStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDelegateStrategy_Actor(), theGorePackage.getActor(), null, "actor", null, 0, 1, DelegateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(delegateStrategyEClass, DelegateStrategy.class, "DelegateStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getDelegateStrategy_Actor(), theGorePackage.getActor(), null, "actor", null, 0, 1, DelegateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(delegateStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(delegateStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(relaxDisableChildStrategyEClass, RelaxDisableChildStrategy.class, "RelaxDisableChildStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelaxDisableChildStrategy_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelaxDisableChildStrategy_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelaxDisableChildStrategy_Child(), theGorePackage.getRequirement(), null, "child", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(relaxDisableChildStrategyEClass, RelaxDisableChildStrategy.class, "RelaxDisableChildStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getRelaxDisableChildStrategy_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRelaxDisableChildStrategy_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getRelaxDisableChildStrategy_Child(), theGorePackage.getRequirement(), null, "child", null, 0, 1, RelaxDisableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(relaxDisableChildStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(relaxDisableChildStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(relaxDisableChildStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(relaxDisableChildStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(relaxReplaceEClass, RelaxReplace.class, "RelaxReplace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelaxReplace_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelaxReplace_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelaxReplace_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelaxReplace_NewRequirement(), theGorePackage.getRequirement(), null, "newRequirement", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(relaxReplaceEClass, RelaxReplace.class, "RelaxReplace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getRelaxReplace_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRelaxReplace_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRelaxReplace_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getRelaxReplace_NewRequirement(), theGorePackage.getRequirement(), null, "newRequirement", null, 0, 1, RelaxReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(relaxReplaceEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(relaxReplaceEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(relaxReplaceEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(relaxReplaceEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(retryStrategyEClass, RetryStrategy.class, "RetryStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRetryStrategy_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, RetryStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRetryStrategy_Time(), ecorePackage.getELongObject(), "time", null, 0, 1, RetryStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(retryStrategyEClass, RetryStrategy.class, "RetryStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getRetryStrategy_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, RetryStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRetryStrategy_Time(), ecorePackage.getELongObject(), "time", null, 0, 1, RetryStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(retryStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(retryStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(strengthenEnableChildStrategyEClass, StrengthenEnableChildStrategy.class, "StrengthenEnableChildStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStrengthenEnableChildStrategy_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStrengthenEnableChildStrategy_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStrengthenEnableChildStrategy_Child(), theGorePackage.getRequirement(), null, "child", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(strengthenEnableChildStrategyEClass, StrengthenEnableChildStrategy.class, "StrengthenEnableChildStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getStrengthenEnableChildStrategy_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getStrengthenEnableChildStrategy_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStrengthenEnableChildStrategy_Child(), theGorePackage.getRequirement(), null, "child", null, 0, 1, StrengthenEnableChildStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(strengthenEnableChildStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(strengthenEnableChildStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(strengthenEnableChildStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(strengthenEnableChildStrategyEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(strengthenReplaceEClass, StrengthenReplace.class, "StrengthenReplace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStrengthenReplace_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStrengthenReplace_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStrengthenReplace_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStrengthenReplace_NewRequirement(), theGorePackage.getRequirement(), null, "newRequirement", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(strengthenReplaceEClass, StrengthenReplace.class, "StrengthenReplace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getStrengthenReplace_Requirement(), theGorePackage.getRequirement(), null, "requirement", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getStrengthenReplace_Copy(), ecorePackage.getEBooleanObject(), "copy", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getStrengthenReplace_Level(), theGorePackage.getAggregationLevel(), "level", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStrengthenReplace_NewRequirement(), theGorePackage.getRequirement(), null, "newRequirement", null, 0, 1, StrengthenReplace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(strengthenReplaceEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(strengthenReplaceEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(strengthenReplaceEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(strengthenReplaceEClass, null, "updateReferences", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(warningStrategyEClass, WarningStrategy.class, "WarningStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWarningStrategy_Actor(), theGorePackage.getActor(), null, "actor", null, 0, 1, WarningStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(warningStrategyEClass, WarningStrategy.class, "WarningStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getWarningStrategy_Actor(), theGorePackage.getActor(), null, "actor", null, 0, 1, WarningStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(warningStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(warningStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(reconfigurationResolutionConditionEClass, ReconfigurationResolutionCondition.class, "ReconfigurationResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReconfigurationResolutionCondition_AlgorithmId(), ecorePackage.getEString(), "algorithmId", null, 0, 1, ReconfigurationResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReconfigurationResolutionCondition_WrappedCondition(), this.getResolutionCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(reconfigurationResolutionConditionEClass, ReconfigurationResolutionCondition.class, "ReconfigurationResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getReconfigurationResolutionCondition_AlgorithmId(), ecorePackage.getEString(), "algorithmId", null, 0, 1, ReconfigurationResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getReconfigurationResolutionCondition_WrappedCondition(), this.getResolutionCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(reconfigurationResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(reconfigurationResolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(reconfigurationStrategyEClass, ReconfigurationStrategy.class, "ReconfigurationStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReconfigurationStrategy_AlgorithmId(), ecorePackage.getEString(), "algorithmId", null, 0, 1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(reconfigurationStrategyEClass, ReconfigurationStrategy.class, "ReconfigurationStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getReconfigurationStrategy_AlgorithmId(), ecorePackage.getEString(), "algorithmId", null, 0, 1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(reconfigurationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(reconfigurationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(reconfigurationApplicabilityConditionEClass, ReconfigurationApplicabilityCondition.class, "ReconfigurationApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReconfigurationApplicabilityCondition_WrappedCondition(), this.getApplicabilityCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(reconfigurationApplicabilityConditionEClass, ReconfigurationApplicabilityCondition.class, "ReconfigurationApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getReconfigurationApplicabilityCondition_WrappedCondition(), this.getApplicabilityCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(reconfigurationApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(reconfigurationApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);

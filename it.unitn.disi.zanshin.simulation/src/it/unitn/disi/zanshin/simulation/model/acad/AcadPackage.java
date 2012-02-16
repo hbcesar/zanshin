@@ -3154,22 +3154,13 @@ public interface AcadPackage extends EPackage {
 	int SFAST_DISPATCH__PARENT = GorePackage.SOFTGOAL__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SFAST_DISPATCH__CONSTRAINTS = GorePackage.SOFTGOAL__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SFAST_DISPATCH__GOAL_MODEL = GorePackage.SOFTGOAL__GOAL_MODEL;
 
 	/**
 	 * The number of structural features of the '<em>SFast Dispatch</em>' class.
@@ -3236,7 +3227,7 @@ public interface AcadPackage extends EPackage {
 	int QDISPATCH__STATE = GorePackage.QUALITY_CONSTRAINT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Softgoal</b></em>' container reference.
+	 * The feature id for the '<em><b>Softgoal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3291,22 +3282,13 @@ public interface AcadPackage extends EPackage {
 	int SFAST_ASSIST__PARENT = GorePackage.SOFTGOAL__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SFAST_ASSIST__CONSTRAINTS = GorePackage.SOFTGOAL__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SFAST_ASSIST__GOAL_MODEL = GorePackage.SOFTGOAL__GOAL_MODEL;
 
 	/**
 	 * The number of structural features of the '<em>SFast Assist</em>' class.
@@ -3373,7 +3355,7 @@ public interface AcadPackage extends EPackage {
 	int QINCID_RESOLV__STATE = GorePackage.QUALITY_CONSTRAINT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Softgoal</b></em>' container reference.
+	 * The feature id for the '<em><b>Softgoal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3428,22 +3410,13 @@ public interface AcadPackage extends EPackage {
 	int SFAST_ARRIV__PARENT = GorePackage.SOFTGOAL__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SFAST_ARRIV__CONSTRAINTS = GorePackage.SOFTGOAL__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SFAST_ARRIV__GOAL_MODEL = GorePackage.SOFTGOAL__GOAL_MODEL;
 
 	/**
 	 * The number of structural features of the '<em>SFast Arriv</em>' class.
@@ -3510,7 +3483,7 @@ public interface AcadPackage extends EPackage {
 	int QAMB_ARRIV__STATE = GorePackage.QUALITY_CONSTRAINT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Softgoal</b></em>' container reference.
+	 * The feature id for the '<em><b>Softgoal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3565,22 +3538,13 @@ public interface AcadPackage extends EPackage {
 	int SLOW_COST__PARENT = GorePackage.SOFTGOAL__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SLOW_COST__CONSTRAINTS = GorePackage.SOFTGOAL__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLOW_COST__GOAL_MODEL = GorePackage.SOFTGOAL__GOAL_MODEL;
 
 	/**
 	 * The number of structural features of the '<em>SLow Cost</em>' class.
@@ -3647,7 +3611,7 @@ public interface AcadPackage extends EPackage {
 	int QMAX_COST__STATE = GorePackage.QUALITY_CONSTRAINT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Softgoal</b></em>' container reference.
+	 * The feature id for the '<em><b>Softgoal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3702,22 +3666,13 @@ public interface AcadPackage extends EPackage {
 	int SUSER_FRIENDLY__PARENT = GorePackage.SOFTGOAL__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SUSER_FRIENDLY__CONSTRAINTS = GorePackage.SOFTGOAL__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUSER_FRIENDLY__GOAL_MODEL = GorePackage.SOFTGOAL__GOAL_MODEL;
 
 	/**
 	 * The number of structural features of the '<em>SUser Friendly</em>' class.
@@ -3784,7 +3739,7 @@ public interface AcadPackage extends EPackage {
 	int QMAX_TIME_MSG__STATE = GorePackage.QUALITY_CONSTRAINT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Softgoal</b></em>' container reference.
+	 * The feature id for the '<em><b>Softgoal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3873,15 +3828,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR1__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR1__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -4002,15 +3948,6 @@ public interface AcadPackage extends EPackage {
 	int AR2__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR2__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4127,15 +4064,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR3__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR3__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -4256,15 +4184,6 @@ public interface AcadPackage extends EPackage {
 	int AR4__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR4__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4381,15 +4300,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR5__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR5__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -4510,15 +4420,6 @@ public interface AcadPackage extends EPackage {
 	int AR6__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR6__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4635,15 +4536,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR7__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR7__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -4764,15 +4656,6 @@ public interface AcadPackage extends EPackage {
 	int AR8__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR8__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4889,15 +4772,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR9__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR9__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -5018,15 +4892,6 @@ public interface AcadPackage extends EPackage {
 	int AR10__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR10__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5143,15 +5008,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR11__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR11__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -5272,15 +5128,6 @@ public interface AcadPackage extends EPackage {
 	int AR12__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR12__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5397,15 +5244,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR13__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR13__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -5526,15 +5364,6 @@ public interface AcadPackage extends EPackage {
 	int AR14__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR14__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5653,15 +5482,6 @@ public interface AcadPackage extends EPackage {
 	int AR15__TARGET = EcaPackage.ECA_AW_REQ__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AR15__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5725,24 +5545,6 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACAD_GOAL_MODEL__ROOT_GOAL = GorePackage.GOAL_MODEL__ROOT_GOAL;
-
-	/**
-	 * The feature id for the '<em><b>Softgoals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACAD_GOAL_MODEL__SOFTGOALS = GorePackage.GOAL_MODEL__SOFTGOALS;
-
-	/**
-	 * The feature id for the '<em><b>Aw Reqs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACAD_GOAL_MODEL__AW_REQS = GorePackage.GOAL_MODEL__AW_REQS;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -5835,6 +5637,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int CV_MST__VALUE = GorePackage.PARAMETER__VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Metric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST__METRIC = GorePackage.PARAMETER__METRIC;
 
 	/**
 	 * The number of structural features of the '<em>CV MST</em>' class.

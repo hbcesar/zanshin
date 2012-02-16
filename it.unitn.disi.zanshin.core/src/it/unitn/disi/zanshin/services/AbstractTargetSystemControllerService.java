@@ -1,13 +1,9 @@
 package it.unitn.disi.zanshin.services;
 
-import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
-import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
-import it.unitn.disi.zanshin.model.gore.QualityConstraint;
 import it.unitn.disi.zanshin.model.gore.Requirement;
-import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -96,10 +92,10 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 */
 	protected abstract GoalModel createNewModel() throws Exception;
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#disable(it.unitn.disi.zanshin.model.gore.Requirement) */
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#suspend(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public final void suspend(Requirement req) {
-		// Suspending a requirement instance means removing it from its parent (or from the model itself).
+		// Suspending a requirement instance means removing it from its parent.
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
 		Requirement parent = req.getParent();
 		if (parent != null) {
@@ -108,17 +104,6 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 			// Re-evaluates the parent, because the remaining children might all be successful.
 			if (parent instanceof DefinableRequirement)
 				((DefinableRequirement) parent).checkState();
-		}
-		else if ((req instanceof Goal) && (((Goal) req).getGoalModel() != null))
-			((Goal) req).setGoalModel(null);
-		else if ((req instanceof Softgoal) && (((Softgoal) req).getGoalModel() != null))
-			((Softgoal) req).setGoalModel(null);
-		else if ((req instanceof AwReq) && (((AwReq) req).getGoalModel() != null))
-			((AwReq) req).setGoalModel(null);
-		else if (req instanceof QualityConstraint) {
-			Softgoal softgoal = ((QualityConstraint) req).getSoftgoal();
-			if ((softgoal != null) && (softgoal.getGoalModel() != null))
-				softgoal.setGoalModel(null);
 		}
 
 		// Calls the application-specific implementation.
@@ -133,4 +118,22 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 *          The requirement instance.
 	 */
 	protected abstract void doSuspend(Requirement req);
+
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public final void resume(Requirement req, Requirement parent) {
+		// Resuming a requirement instance means attaching it back to its parent.
+		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
+		req.setParent(parent);
+		
+		// Calls the application-specific implementation.
+		doResume(req, parent);
+	}
+	
+	/**
+	 * TODO: document this method.
+	 * @param req
+	 * @param parent
+	 */
+	protected abstract void doResume(Requirement req, Requirement parent);
 }

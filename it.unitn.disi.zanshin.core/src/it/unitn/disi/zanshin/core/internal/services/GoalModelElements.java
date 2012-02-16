@@ -55,6 +55,27 @@ public class GoalModelElements {
 
 	/** The targets map, mapping EMF Classes to AwReqs that target them. */
 	private Map<EClass, Set<AwReq>> targetsMap = new HashMap<>();
+	
+	/** TODO: document this field. */
+	private GorePackage gorePackage = GorePackage.eINSTANCE;
+	
+	/** TODO: document this field. */
+	private EClass eAwReq = gorePackage.getAwReq();
+	
+	/** TODO: document this field. */
+	private EClass eDomainAssumption = gorePackage.getDomainAssumption();
+	
+	/** TODO: document this field. */
+	private EClass eGoal = gorePackage.getGoal();
+	
+	/** TODO: document this field. */
+	private EClass eQualityConstraint = gorePackage.getQualityConstraint();
+	
+	/** TODO: document this field. */
+	private EClass eSoftgoal = gorePackage.getSoftgoal();
+	
+	/** TODO: document this field. */
+	private EClass eTask = gorePackage.getTask();
 
 	/** Constructor. */
 	protected GoalModelElements(GoalModel model) {
@@ -76,19 +97,6 @@ public class GoalModelElements {
 
 		// Parses the tree with the visitor.
 		visitor.parse();
-
-		// Goes through the softgoal list.
-		for (Softgoal sg : model.getSoftgoals()) {
-			store(sg, softgoalsMap);
-
-			// Goes through the softgoal's quality constraint list.
-			for (QualityConstraint qc : sg.getConstraints())
-				store(qc, qualityConstraintsMap);
-		}
-
-		// Lastly, goes through the AwReqs list.
-		for (AwReq awreq : model.getAwReqs())
-			store(awreq, awReqsMap);
 	}
 
 	/**
@@ -99,28 +107,18 @@ public class GoalModelElements {
 	 */
 	private final void checkTypeAndStore(Requirement req) {
 		// Checks the element's type and stores it in the appropriate map.
-		EList<EClass> superTypes = req.eClass().getEAllSuperTypes();
-		int superTypeId = superTypes.get(superTypes.size() - 1).getClassifierID();
-		switch (superTypeId) {
-		case GorePackage.AW_REQ:
+		if (eAwReq.isInstance(req))
 			store((AwReq) req, awReqsMap);
-			break;
-		case GorePackage.DOMAIN_ASSUMPTION:
+		else if (eDomainAssumption.isInstance(req))
 			store((DomainAssumption) req, domainAssumptionsMap);
-			break;
-		case GorePackage.GOAL:
+		else if (eGoal.isInstance(req))
 			store((Goal) req, goalsMap);
-			break;
-		case GorePackage.QUALITY_CONSTRAINT:
+		else if (eQualityConstraint.isInstance(req))
 			store((QualityConstraint) req, qualityConstraintsMap);
-			break;
-		case GorePackage.SOFTGOAL:
+		else if (eSoftgoal.isInstance(req))
 			store((Softgoal) req, softgoalsMap);
-			break;
-		case GorePackage.TASK:
+		else if (eTask.isInstance(req))
 			store((Task) req, tasksMap);
-			break;
-		}
 	}
 
 	/**
@@ -238,7 +236,7 @@ public class GoalModelElements {
 	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
 		// Replaces the requirement.
 		oldReq.replaceWith(newReq);
-		
+
 		// Uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override

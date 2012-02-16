@@ -124,8 +124,10 @@ public interface ITargetSystemControllerService {
 	 * 
 	 * @param req
 	 *          The requirement instance to be resumed.
+	 * @param parent
+	 *          The former parent of the requirement instance to be resumed.
 	 */
-	void resume(Requirement req);
+	void resume(Requirement req, Requirement parent);
 
 	/**
 	 * The target system should undo any partial changes that might have been effected while the satisfaction of the

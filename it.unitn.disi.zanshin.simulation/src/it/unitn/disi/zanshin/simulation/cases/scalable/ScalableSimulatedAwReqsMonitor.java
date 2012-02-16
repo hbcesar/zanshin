@@ -5,6 +5,7 @@ import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
+import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IMonitoringService;
 import it.unitn.disi.zanshin.simulation.Activator;
@@ -46,35 +47,41 @@ public class ScalableSimulatedAwReqsMonitor implements IMonitoringService {
 		if (startTimestamp == 0)
 			startTimestamp = System.currentTimeMillis();
 
-		// If the target element in the goal model has succeeded/failed, trigger a success/failure in the AwReq.
+		// Obtains the goal model from the requirement.
 		GoalModel model = req.findGoalModel();
-		if ((model != null) && (model.getAwReqs() != null) && (model.getAwReqs().size() > 0)) {
-			AwReq awreq = model.getAwReqs().get(0);
-			DefinableRequirement target = awreq.getTarget();
-			if (req.equals(target)) {
-				switch (method) {
-				case FAIL:
-					awreq.setState(DefinableRequirementState.FAILED);
-					break;
-				case SUCCESS:
-					awreq.setState(DefinableRequirementState.SUCCEEDED);
-					break;
-				default:
-					awreq = null;
+		if (model != null) {
+			Requirement firstChild = model.getRootGoal().getChildren().get(0);
+	
+			// Continue only if the AwReq was found.
+			if ((firstChild != null) && (firstChild instanceof AwReq)) {
+				AwReq awreq = (AwReq) firstChild;
+				// If the target element in the goal model has succeeded/failed, trigger a success/failure in the AwReq.
+				DefinableRequirement target = awreq.getTarget();
+				if (req.equals(target)) {
+					switch (method) {
+					case FAIL:
+						awreq.setState(DefinableRequirementState.FAILED);
+						break;
+					case SUCCESS:
+						awreq.setState(DefinableRequirementState.SUCCEEDED);
+						break;
+					default:
+						awreq = null;
+					}
+	
+					// Notify the adaptation service of the AwReq state change.
+					if (awreq != null) {
+						adaptationService.processStateChange(awreq);
+					}
 				}
-
-				// Notify the adaptation service of the AwReq state change.
-				if (awreq != null) {
-					adaptationService.processStateChange(awreq);
+	
+				// If it's not the target element, check if it's the root element ending. In that case, calculate and print the
+				// time.
+				else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
+					long modelSize = req.getTime().getTime();
+					long endTimestamp = System.currentTimeMillis();
+					System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Adaptation Framework time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 				}
-			}
-
-			// If it's not the target element, check if it's the root element ending. In that case, calculate and print the
-			// time.
-			else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$
-				long modelSize = req.getTime().getTime();
-				long endTimestamp = System.currentTimeMillis();
-				System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Adaptation Framework time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 			}
 		}
 	}

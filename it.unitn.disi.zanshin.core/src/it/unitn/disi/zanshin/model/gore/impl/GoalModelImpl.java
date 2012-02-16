@@ -7,13 +7,11 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.Actor;
-import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
-import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 
@@ -33,23 +31,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRootGoal <em>Root Goal</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getSoftgoals <em>Softgoals</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getAwReqs <em>Aw Reqs</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getActors <em>Actors</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getInternalId <em>Internal Id</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getConfiguration <em>Configuration</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRelations <em>Relations</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRootGoal <em>Root Goal</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getActors <em>Actors</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getInternalId <em>Internal Id</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getConfiguration <em>Configuration</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRelations <em>Relations</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	/**
-	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getRootGoal()
 	 * @generated
 	 * @ordered
@@ -57,29 +53,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected Goal rootGoal;
 
 	/**
-	 * The cached value of the '{@link #getSoftgoals() <em>Softgoals</em>}' containment reference list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
-	 * @see #getSoftgoals()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Softgoal> softgoals;
-
-	/**
-	 * The cached value of the '{@link #getAwReqs() <em>Aw Reqs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAwReqs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AwReq> awReqs;
-
-	/**
-	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @see #getActors()
 	 * @generated
 	 * @ordered
@@ -87,9 +63,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected EList<Actor> actors;
 
 	/**
-	 * The default value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getInternalId()
 	 * @generated
 	 * @ordered
@@ -97,9 +73,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected static final Long INTERNAL_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getInternalId()
 	 * @generated
 	 * @ordered
@@ -107,9 +83,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected Long internalId = INTERNAL_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConfiguration()
 	 * @generated
 	 * @ordered
@@ -117,9 +93,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected Configuration configuration;
 
 	/**
-	 * The cached value of the '{@link #getRelations() <em>Relations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRelations() <em>Relations</em>}' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getRelations()
 	 * @generated
 	 * @ordered
@@ -128,6 +104,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GoalModelImpl() {
@@ -136,6 +113,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,6 +123,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Goal getRootGoal() {
@@ -153,6 +132,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetRootGoal(Goal newRootGoal, NotificationChain msgs) {
@@ -160,24 +140,28 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		rootGoal = newRootGoal;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_MODEL__ROOT_GOAL, oldRootGoal, newRootGoal);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			if (msgs == null)
+				msgs = notification;
+			else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRootGoal(Goal newRootGoal) {
 		if (newRootGoal != rootGoal) {
 			NotificationChain msgs = null;
 			if (rootGoal != null)
-				msgs = ((InternalEObject)rootGoal).eInverseRemove(this, GorePackage.GOAL__GOAL_MODEL, Goal.class, msgs);
+				msgs = ((InternalEObject) rootGoal).eInverseRemove(this, GorePackage.GOAL__GOAL_MODEL, Goal.class, msgs);
 			if (newRootGoal != null)
-				msgs = ((InternalEObject)newRootGoal).eInverseAdd(this, GorePackage.GOAL__GOAL_MODEL, Goal.class, msgs);
+				msgs = ((InternalEObject) newRootGoal).eInverseAdd(this, GorePackage.GOAL__GOAL_MODEL, Goal.class, msgs);
 			msgs = basicSetRootGoal(newRootGoal, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_MODEL__ROOT_GOAL, newRootGoal, newRootGoal));
@@ -185,28 +169,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Softgoal> getSoftgoals() {
-		if (softgoals == null) {
-			softgoals = new EObjectContainmentWithInverseEList<Softgoal>(Softgoal.class, this, GorePackage.GOAL_MODEL__SOFTGOALS, GorePackage.SOFTGOAL__GOAL_MODEL);
-		}
-		return softgoals;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<AwReq> getAwReqs() {
-		if (awReqs == null) {
-			awReqs = new EObjectContainmentWithInverseEList<AwReq>(AwReq.class, this, GorePackage.GOAL_MODEL__AW_REQS, GorePackage.AW_REQ__GOAL_MODEL);
-		}
-		return awReqs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Actor> getActors() {
@@ -218,6 +181,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Long getInternalId() {
@@ -225,8 +189,8 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Configuration getConfiguration() {
@@ -234,8 +198,8 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetConfiguration(Configuration newConfiguration, NotificationChain msgs) {
@@ -243,33 +207,36 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		configuration = newConfiguration;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_MODEL__CONFIGURATION, oldConfiguration, newConfiguration);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			if (msgs == null)
+				msgs = notification;
+			else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConfiguration(Configuration newConfiguration) {
 		if (newConfiguration != configuration) {
 			NotificationChain msgs = null;
 			if (configuration != null)
-				msgs = ((InternalEObject)configuration).eInverseRemove(this, GorePackage.CONFIGURATION__GOAL_MODEL, Configuration.class, msgs);
+				msgs = ((InternalEObject) configuration).eInverseRemove(this, GorePackage.CONFIGURATION__GOAL_MODEL, Configuration.class, msgs);
 			if (newConfiguration != null)
-				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, GorePackage.CONFIGURATION__GOAL_MODEL, Configuration.class, msgs);
+				msgs = ((InternalEObject) newConfiguration).eInverseAdd(this, GorePackage.CONFIGURATION__GOAL_MODEL, Configuration.class, msgs);
 			msgs = basicSetConfiguration(newConfiguration, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_MODEL__CONFIGURATION, newConfiguration, newConfiguration));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<DifferentialRelation> getRelations() {
@@ -281,183 +248,163 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Long getId() {
-		if (internalId == null) internalId = System.currentTimeMillis();
+		if (internalId == null)
+			internalId = System.currentTimeMillis();
 		return internalId;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				if (rootGoal != null)
-					msgs = ((InternalEObject)rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
-				return basicSetRootGoal((Goal)otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSoftgoals()).basicAdd(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAwReqs()).basicAdd(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__ACTORS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActors()).basicAdd(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				if (configuration != null)
-					msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__CONFIGURATION, null, msgs);
-				return basicSetConfiguration((Configuration)otherEnd, msgs);
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			if (rootGoal != null)
+				msgs = ((InternalEObject) rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
+			return basicSetRootGoal((Goal) otherEnd, msgs);
+		case GorePackage.GOAL_MODEL__ACTORS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getActors()).basicAdd(otherEnd, msgs);
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			if (configuration != null)
+				msgs = ((InternalEObject) configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__CONFIGURATION, null, msgs);
+			return basicSetConfiguration((Configuration) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return basicSetRootGoal(null, msgs);
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				return ((InternalEList<?>)getSoftgoals()).basicRemove(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				return ((InternalEList<?>)getAwReqs()).basicRemove(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__ACTORS:
-				return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				return basicSetConfiguration(null, msgs);
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			return basicSetRootGoal(null, msgs);
+		case GorePackage.GOAL_MODEL__ACTORS:
+			return ((InternalEList<?>) getActors()).basicRemove(otherEnd, msgs);
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			return basicSetConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return getRootGoal();
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				return getSoftgoals();
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				return getAwReqs();
-			case GorePackage.GOAL_MODEL__ACTORS:
-				return getActors();
-			case GorePackage.GOAL_MODEL__INTERNAL_ID:
-				return getInternalId();
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				return getConfiguration();
-			case GorePackage.GOAL_MODEL__RELATIONS:
-				return getRelations();
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			return getRootGoal();
+		case GorePackage.GOAL_MODEL__ACTORS:
+			return getActors();
+		case GorePackage.GOAL_MODEL__INTERNAL_ID:
+			return getInternalId();
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			return getConfiguration();
+		case GorePackage.GOAL_MODEL__RELATIONS:
+			return getRelations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				setRootGoal((Goal)newValue);
-				return;
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				getSoftgoals().clear();
-				getSoftgoals().addAll((Collection<? extends Softgoal>)newValue);
-				return;
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				getAwReqs().clear();
-				getAwReqs().addAll((Collection<? extends AwReq>)newValue);
-				return;
-			case GorePackage.GOAL_MODEL__ACTORS:
-				getActors().clear();
-				getActors().addAll((Collection<? extends Actor>)newValue);
-				return;
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				setConfiguration((Configuration)newValue);
-				return;
-			case GorePackage.GOAL_MODEL__RELATIONS:
-				getRelations().clear();
-				getRelations().addAll((Collection<? extends DifferentialRelation>)newValue);
-				return;
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			setRootGoal((Goal) newValue);
+			return;
+		case GorePackage.GOAL_MODEL__ACTORS:
+			getActors().clear();
+			getActors().addAll((Collection<? extends Actor>) newValue);
+			return;
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			setConfiguration((Configuration) newValue);
+			return;
+		case GorePackage.GOAL_MODEL__RELATIONS:
+			getRelations().clear();
+			getRelations().addAll((Collection<? extends DifferentialRelation>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				setRootGoal((Goal)null);
-				return;
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				getSoftgoals().clear();
-				return;
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				getAwReqs().clear();
-				return;
-			case GorePackage.GOAL_MODEL__ACTORS:
-				getActors().clear();
-				return;
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				setConfiguration((Configuration)null);
-				return;
-			case GorePackage.GOAL_MODEL__RELATIONS:
-				getRelations().clear();
-				return;
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			setRootGoal((Goal) null);
+			return;
+		case GorePackage.GOAL_MODEL__ACTORS:
+			getActors().clear();
+			return;
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			setConfiguration((Configuration) null);
+			return;
+		case GorePackage.GOAL_MODEL__RELATIONS:
+			getRelations().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return rootGoal != null;
-			case GorePackage.GOAL_MODEL__SOFTGOALS:
-				return softgoals != null && !softgoals.isEmpty();
-			case GorePackage.GOAL_MODEL__AW_REQS:
-				return awReqs != null && !awReqs.isEmpty();
-			case GorePackage.GOAL_MODEL__ACTORS:
-				return actors != null && !actors.isEmpty();
-			case GorePackage.GOAL_MODEL__INTERNAL_ID:
-				return INTERNAL_ID_EDEFAULT == null ? internalId != null : !INTERNAL_ID_EDEFAULT.equals(internalId);
-			case GorePackage.GOAL_MODEL__CONFIGURATION:
-				return configuration != null;
-			case GorePackage.GOAL_MODEL__RELATIONS:
-				return relations != null && !relations.isEmpty();
+		case GorePackage.GOAL_MODEL__ROOT_GOAL:
+			return rootGoal != null;
+		case GorePackage.GOAL_MODEL__ACTORS:
+			return actors != null && !actors.isEmpty();
+		case GorePackage.GOAL_MODEL__INTERNAL_ID:
+			return INTERNAL_ID_EDEFAULT == null ? internalId != null : !INTERNAL_ID_EDEFAULT.equals(internalId);
+		case GorePackage.GOAL_MODEL__CONFIGURATION:
+			return configuration != null;
+		case GorePackage.GOAL_MODEL__RELATIONS:
+			return relations != null && !relations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (internalId: ");
+		result.append(" (internalId: "); //$NON-NLS-1$
 		result.append(internalId);
 		result.append(')');
 		return result.toString();

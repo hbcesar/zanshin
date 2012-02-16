@@ -16,12 +16,13 @@ import org.eeat.model.LTL.OclMessage;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ocl Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class OclMessageImpl extends EventImpl implements OclMessage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OclMessageImpl() {
@@ -30,6 +31,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -39,6 +41,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OclAny argument(String expression) {
@@ -49,6 +52,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OclAny argument(int expression) {
@@ -59,6 +63,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<OclAny> arguments() {
@@ -69,6 +74,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String className() {
@@ -79,6 +85,7 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String methodName() {

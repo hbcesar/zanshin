@@ -93,9 +93,9 @@ public class EmptySimulatedController implements SimulatedController {
 		throw new UnsupportedOperationException();
 	}
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
+	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void resume(Requirement req) {
+	public void resume(Requirement req, Requirement parent) {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
 	}
 

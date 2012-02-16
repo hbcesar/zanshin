@@ -19187,7 +19187,7 @@ public class ScalablePackageImpl extends EPackageImpl implements ScalablePackage
 
 		URL url = getClass().getResource(packageFilename);
 		if (url == null) {
-			throw new RuntimeException("Missing serialized package: " + packageFilename);
+			throw new RuntimeException("Missing serialized package: " + packageFilename); //$NON-NLS-1$
 		}
 		URI uri = URI.createURI(url.toString());
 		Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
@@ -19229,7 +19229,7 @@ public class ScalablePackageImpl extends EPackageImpl implements ScalablePackage
 	 */
 	protected void fixInstanceClass(EClassifier eClassifier) {
 		if (eClassifier.getInstanceClassName() == null) {
-			eClassifier.setInstanceClassName("it.unitn.disi.zanshin.simulation.model.scalable." + eClassifier.getName());
+			eClassifier.setInstanceClassName("it.unitn.disi.zanshin.simulation.model.scalable." + eClassifier.getName()); //$NON-NLS-1$
 			setGeneratedClassName(eClassifier);
 		}
 	}

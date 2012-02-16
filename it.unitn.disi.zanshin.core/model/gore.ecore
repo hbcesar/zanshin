@@ -6,7 +6,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="LTL.ecore#//OclAny">
     <eOperations name="findGoalModel" eType="#//GoalModel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="GoalModel model = null;&#xA;&#xA;// First look if the object has a direct relation to the goal model instance.&#xA;if (it.unitn.disi.zanshin.model.gore.Goal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.Softgoal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Softgoal) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.AwReq.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.AwReq) this).getGoalModel();&#xA;else if (it.unitn.disi.zanshin.model.gore.QualityConstraint.class.isAssignableFrom(getClass())) {&#xA;&#x9;it.unitn.disi.zanshin.model.gore.Softgoal softgoal = ((it.unitn.disi.zanshin.model.gore.QualityConstraint) this).getSoftgoal();&#xA;&#x9;if (softgoal != null) model = softgoal.getGoalModel();&#xA;}&#xA;&#xA;// If the goal model is not directly related, it should still be null. Then, checks the parent (if there is one).&#xA;if ((model == null) &amp;&amp; (getParent() != null))&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;&#xA;"/>
+        <details key="body" value="GoalModel model = null;&#xA;&#xA;// If it's the root goal, return the goal model.&#xA;if (it.unitn.disi.zanshin.model.gore.Goal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;&#xA;// Otherwise, move up the requirement tree looking for the root goal.&#xA;else if (getParent() != null)&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getChildrenStateCount" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
@@ -57,16 +57,8 @@
         defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//Requirement">
-    <eOperations name="replaceWith">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Performs the replacement as a normal requirement first.&#xA;super.replaceWith(newRequirement);&#xA;&#xA;// Then, replace the relationship softgoals have with the goal model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getGoalModel();&#xA;setGoalModel(null);&#xA;((Softgoal) newRequirement).setGoalModel(model);"/>
-      </eAnnotations>
-      <eParameters name="newRequirement" eType="#//Requirement"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-        eType="#//QualityConstraint" containment="true" eOpposite="#//QualityConstraint/softgoal"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
-        eOpposite="#//GoalModel/softgoals"/>
+        eType="#//QualityConstraint" eOpposite="#//QualityConstraint/softgoal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" eSuperTypes="#//DefinableRequirement">
     <eOperations name="cancel">
@@ -92,18 +84,10 @@
         eType="#//Softgoal" eOpposite="#//Softgoal/constraints"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AwReq" eSuperTypes="#//DefinableRequirement">
-    <eOperations name="replaceWith">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Performs the replacement as a normal requirement first.&#xA;super.replaceWith(newRequirement);&#xA;&#xA;// Then, replace the relationship AwReqs have with the goal model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getGoalModel();&#xA;setGoalModel(null);&#xA;((AwReq) newRequirement).setGoalModel(model);"/>
-      </eAnnotations>
-      <eParameters name="newRequirement" eType="#//Requirement"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherTargets" upperBound="-1"
         eType="#//DefinableRequirement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//DefinableRequirement"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
-        eOpposite="#//GoalModel/awReqs"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementCoefficient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1.0"/>
   </eClassifiers>
@@ -177,10 +161,6 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" lowerBound="1"
         eType="#//Goal" containment="true" eOpposite="#//Goal/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="softgoals" upperBound="-1"
-        eType="#//Softgoal" containment="true" eOpposite="#//Softgoal/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="awReqs" upperBound="-1"
-        eType="#//AwReq" containment="true" eOpposite="#//AwReq/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
         eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"

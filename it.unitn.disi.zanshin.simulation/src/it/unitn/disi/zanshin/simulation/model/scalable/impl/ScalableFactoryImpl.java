@@ -29,7 +29,7 @@ public class ScalableFactoryImpl extends EFactoryImpl implements ScalableFactory
 	 */
 	public static ScalableFactory init() {
 		try {
-			ScalableFactory theScalableFactory = (ScalableFactory)EPackage.Registry.INSTANCE.getEFactory("http://scalable/1.0"); 
+			ScalableFactory theScalableFactory = (ScalableFactory)EPackage.Registry.INSTANCE.getEFactory("http://scalable/1.0");  //$NON-NLS-1$
 			if (theScalableFactory != null) {
 				return theScalableFactory;
 			}
@@ -1061,7 +1061,7 @@ public class ScalableFactoryImpl extends EFactoryImpl implements ScalableFactory
 			case ScalablePackage.G00999: return createG00999();
 			case ScalablePackage.G01000: return createG01000();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 

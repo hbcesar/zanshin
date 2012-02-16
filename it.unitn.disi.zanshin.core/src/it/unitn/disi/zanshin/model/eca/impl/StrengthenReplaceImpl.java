@@ -34,9 +34,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements StrengthenReplace {
 	/**
-	 * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' reference.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getRequirement()
 	 * @generated
 	 * @ordered
@@ -54,8 +54,8 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 	protected static final Boolean COPY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCopy() <em>Copy</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCopy() <em>Copy</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCopy()
 	 * @generated
 	 * @ordered
@@ -83,9 +83,9 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 	protected AggregationLevel level = LEVEL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getNewRequirement() <em>New Requirement</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getNewRequirement() <em>New Requirement</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getNewRequirement()
 	 * @generated
 	 * @ordered
@@ -94,6 +94,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StrengthenReplaceImpl() {
@@ -102,6 +103,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,12 +113,13 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Requirement getRequirement() {
 		if (requirement != null && requirement.eIsProxy()) {
-			InternalEObject oldRequirement = (InternalEObject)requirement;
-			requirement = (Requirement)eResolveProxy(oldRequirement);
+			InternalEObject oldRequirement = (InternalEObject) requirement;
+			requirement = (Requirement) eResolveProxy(oldRequirement);
 			if (requirement != oldRequirement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT, oldRequirement, requirement));
@@ -127,6 +130,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Requirement basicGetRequirement() {
@@ -135,6 +139,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRequirement(Requirement newRequirement) {
@@ -146,6 +151,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Boolean getCopy() {
@@ -154,6 +160,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCopy(Boolean newCopy) {
@@ -165,6 +172,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AggregationLevel getLevel() {
@@ -173,6 +181,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLevel(AggregationLevel newLevel) {
@@ -184,12 +193,13 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Requirement getNewRequirement() {
 		if (newRequirement != null && newRequirement.eIsProxy()) {
-			InternalEObject oldNewRequirement = (InternalEObject)newRequirement;
-			newRequirement = (Requirement)eResolveProxy(oldNewRequirement);
+			InternalEObject oldNewRequirement = (InternalEObject) newRequirement;
+			newRequirement = (Requirement) eResolveProxy(oldNewRequirement);
 			if (newRequirement != oldNewRequirement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT, oldNewRequirement, newRequirement));
@@ -200,6 +210,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Requirement basicGetNewRequirement() {
@@ -208,6 +219,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setNewRequirement(Requirement newNewRequirement) {
@@ -219,21 +231,22 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void execute(AdaptationSession session) {
 		String strategyName = getClass().getInterfaces()[0].getSimpleName();
-		
+
 		// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).
 		it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();
 		if (controller == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to apply {0}, but the target system's controller has not yet been registered!", strategyName); //$NON-NLS-1$
 			return;
 		}
-		
+
 		// Retrieve the strategy's attributes.
 		it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();
-		
+
 		// Attribute requirement defaults to the AwReq's target.
 		if (requirement == null) {
 			setRequirement(awreq.getTarget());
@@ -242,19 +255,21 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 				return;
 			}
 		}
-		
+
 		// Attribute copy defaults to TRUE.
-		if (copy == null) copy = Boolean.TRUE;
-		
+		if (copy == null)
+			copy = Boolean.TRUE;
+
 		// Attribute level defaults to INSTANCE.
-		if (level == null) level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;
-		
+		if (level == null)
+			level = it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE;
+
 		// Attribute newRequirement is mandatory.
 		if (newRequirement == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Strategy {0} is missing mandatory attribute \"newRequirement\" and cannot be executed.", strategyName); //$NON-NLS-1$
 			return;
 		}
-		
+
 		// Executes the Strengthen by Replacing strategy.
 		strategyName += "(" + requirement.eClass().getName() + "; " + copy + "; " + level + "; " + newRequirement.eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
@@ -263,7 +278,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 			controller.enable(newRequirement.eClass());
 		}
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
-			if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)) 
+			if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement))
 				controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
 			controller.terminate(requirement);
 			if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
@@ -274,16 +289,18 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void updateReferences() {
 		// Retrieves the model id and continues only if this requirement is part of a model.
-		if ((getAwReq() != null) && (getAwReq().getGoalModel() != null)) {
-			Long modelId = getAwReq().getGoalModel().getId();
-			
+		it.unitn.disi.zanshin.model.gore.GoalModel model = getAwReq().findGoalModel();
+		if (model != null) {
+			Long modelId = model.getId();
+
 			// Retrieves the repository service from the platform to be able to update the references.
 			it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();
-			
+
 			// Updates references to requirement and newRequirement.
 			if (requirement != null)
 				setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));
@@ -294,102 +311,110 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
-				if (resolve) return getRequirement();
-				return basicGetRequirement();
-			case EcaPackage.STRENGTHEN_REPLACE__COPY:
-				return getCopy();
-			case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
-				return getLevel();
-			case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
-				if (resolve) return getNewRequirement();
-				return basicGetNewRequirement();
+		case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
+			if (resolve)
+				return getRequirement();
+			return basicGetRequirement();
+		case EcaPackage.STRENGTHEN_REPLACE__COPY:
+			return getCopy();
+		case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
+			return getLevel();
+		case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
+			if (resolve)
+				return getNewRequirement();
+			return basicGetNewRequirement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
-				setRequirement((Requirement)newValue);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__COPY:
-				setCopy((Boolean)newValue);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
-				setLevel((AggregationLevel)newValue);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
-				setNewRequirement((Requirement)newValue);
-				return;
+		case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
+			setRequirement((Requirement) newValue);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__COPY:
+			setCopy((Boolean) newValue);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
+			setLevel((AggregationLevel) newValue);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
+			setNewRequirement((Requirement) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
-				setRequirement((Requirement)null);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__COPY:
-				setCopy(COPY_EDEFAULT);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
-				setLevel(LEVEL_EDEFAULT);
-				return;
-			case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
-				setNewRequirement((Requirement)null);
-				return;
+		case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
+			setRequirement((Requirement) null);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__COPY:
+			setCopy(COPY_EDEFAULT);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
+			setLevel(LEVEL_EDEFAULT);
+			return;
+		case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
+			setNewRequirement((Requirement) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
-				return requirement != null;
-			case EcaPackage.STRENGTHEN_REPLACE__COPY:
-				return COPY_EDEFAULT == null ? copy != null : !COPY_EDEFAULT.equals(copy);
-			case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
-				return level != LEVEL_EDEFAULT;
-			case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
-				return newRequirement != null;
+		case EcaPackage.STRENGTHEN_REPLACE__REQUIREMENT:
+			return requirement != null;
+		case EcaPackage.STRENGTHEN_REPLACE__COPY:
+			return COPY_EDEFAULT == null ? copy != null : !COPY_EDEFAULT.equals(copy);
+		case EcaPackage.STRENGTHEN_REPLACE__LEVEL:
+			return level != LEVEL_EDEFAULT;
+		case EcaPackage.STRENGTHEN_REPLACE__NEW_REQUIREMENT:
+			return newRequirement != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (copy: ");
+		result.append(" (copy: "); //$NON-NLS-1$
 		result.append(copy);
-		result.append(", level: ");
+		result.append(", level: "); //$NON-NLS-1$
 		result.append(level);
 		result.append(')');
 		return result.toString();

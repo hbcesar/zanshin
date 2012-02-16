@@ -82,7 +82,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					model.getRootGoal().setTime(new Date(modelSize));
 
 					// Obtains the element that is going to fail.
-					AwReq awreq = model.getAwReqs().get(0);
+					AwReq awreq = (AwReq) model.getRootGoal().getChildren().get(0);
 					DefinableRequirement target = awreq.getTarget();
 
 					// Prints the elapsed amount of time.
@@ -105,7 +105,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 			parts.add(new SimulationPart() {
 				@Override
 				public void run() throws Exception {
-					AwReq awreq = model.getAwReqs().get(0);
+					AwReq awreq = (AwReq) model.getRootGoal().getChildren().get(0);
 					DefinableRequirement target = awreq.getTarget();
 					target.start();
 					target.success();
@@ -145,6 +145,10 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		ScalableGoalModel model = factory.createScalableGoalModel();
 		G00000 root = factory.createG00000();
 		model.setRootGoal(root);
+		
+		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
+		AR1 awreq = factory.createAR1();
+		awreq.setParent(root);
 
 		// Objects needed for generating the names of the classes that implement the different goals.
 		String factoryMethodPrefix = "createG"; //$NON-NLS-1$
@@ -210,10 +214,9 @@ public class ScalableModelSimulation extends AbstractSimulation {
 			levelCount++;
 		}
 
-		// Adds an ECA-based AwReq targeting a randomly selected goal with strategy Retry.
+		// Configures the ECA-based AwReq to target the randomly selected goal with strategy Retry.
 		SimulationUtils.log.debug("Creating AwReq AR1 targeting {0} with a Retry strategy applicable once per session", target.eClass().getName()); //$NON-NLS-1$
 		EcaFactory ecaFactory = EcaFactory.eINSTANCE;
-		AR1 awreq = factory.createAR1();
 		awreq.setTarget(target);
 		SimpleResolutionCondition resolutionCondition = ecaFactory.createSimpleResolutionCondition();
 		awreq.setCondition(resolutionCondition);
@@ -223,7 +226,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		strategy.setCondition(applicabilityCondition);
 		strategy.setAwReq(awreq);
 		strategy.setTime(3000l);
-		awreq.setGoalModel(model);
 
 		// Returns the scalable model.
 		SimulationUtils.log.debug("Random goal model with {0} elements created successfully.", numElements); //$NON-NLS-1$
@@ -252,9 +254,13 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		ScalableGoalModel newModel = factory.createScalableGoalModel();
 		G00000 root = factory.createG00000();
 		newModel.setRootGoal(root);
+		
+		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
+		AR1 awreq = factory.createAR1();
+		awreq.setParent(root);
 
 		// To identify the target...
-		DefinableRequirement target = model.getAwReqs().get(0).getTarget();
+		DefinableRequirement target = ((AwReq) model.getRootGoal().getChildren().get(0)).getTarget();
 		DefinableRequirement newTarget = null;
 
 		// Objects needed for generating the names of the classes that implement the different goals.
@@ -273,20 +279,21 @@ public class ScalableModelSimulation extends AbstractSimulation {
 				newTarget = newGoal;
 
 			for (Requirement req : goal.getChildren()) {
-				Goal child = (Goal) req;
-				Method method = factory.getClass().getMethod(factoryMethodPrefix + child.eClass().getName());
-				Goal newChild = (Goal) method.invoke(factory);
-				newChild.setParent(newGoal);
-
-				stack.push(child);
-				newStack.push(newChild);
+				if (req instanceof Goal) {
+					Goal child = (Goal) req;
+					Method method = factory.getClass().getMethod(factoryMethodPrefix + child.eClass().getName());
+					Goal newChild = (Goal) method.invoke(factory);
+					newChild.setParent(newGoal);
+	
+					stack.push(child);
+					newStack.push(newChild);
+				}
 			}
 		}
 
-		// Adds an ECA-based AwReq targeting a randomly selected goal with strategy Retry.
+		// Configures the ECA-based AwReq to target the randomly selected goal with strategy Retry.
 		SimulationUtils.log.debug("Like in the original, creating AwReq AR1 targeting {0} with a Retry strategy applicable once per session", newTarget.eClass().getName()); //$NON-NLS-1$
 		EcaFactory ecaFactory = EcaFactory.eINSTANCE;
-		AR1 awreq = factory.createAR1();
 		awreq.setTarget(newTarget);
 		SimpleResolutionCondition resolutionCondition = ecaFactory.createSimpleResolutionCondition();
 		awreq.setCondition(resolutionCondition);
@@ -296,7 +303,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		strategy.setCondition(applicabilityCondition);
 		strategy.setAwReq(awreq);
 		strategy.setTime(3000l);
-		awreq.setGoalModel(newModel);
 
 		// Returns the scalable model.
 		SimulationUtils.log.debug("Copy of goal model created successfully."); //$NON-NLS-1$

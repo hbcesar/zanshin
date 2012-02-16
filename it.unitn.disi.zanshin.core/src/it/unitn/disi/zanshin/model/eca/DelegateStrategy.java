@@ -25,12 +25,12 @@ import it.unitn.disi.zanshin.model.gore.Actor;
  */
 public interface DelegateStrategy extends AdaptationStrategy {
 	/**
-	 * Returns the value of the '<em><b>Actor</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Actor</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actor</em>' reference isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Actor</em>' reference.
 	 * @see #setActor(Actor)
 	 * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getDelegateStrategy_Actor()
@@ -42,7 +42,9 @@ public interface DelegateStrategy extends AdaptationStrategy {
 	/**
 	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.DelegateStrategy#getActor <em>Actor</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Actor</em>' reference.
+	 * 
+	 * @param value
+	 *          the new value of the '<em>Actor</em>' reference.
 	 * @see #getActor()
 	 * @generated
 	 */
@@ -50,7 +52,9 @@ public interface DelegateStrategy extends AdaptationStrategy {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='String strategyName = getClass().getInterfaces()[0].getSimpleName();\n\n// Obtains a reference to the target system\'s controller and checks if it exists (if it has been registered).\nit.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();\nif (controller == null) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.warn(\"Attempting to apply {0}, but the target system\'s controller has not yet been registered!\", strategyName); //$NON-NLS-1$\n\treturn;\n}\n\n// Retrieve the strategy\'s attributes.\nit.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();\n\n// Attribute actor is mandatory.\nif (actor == null) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.warn(\"Strategy {0} is missing mandatory attribute \\\"actor\\\" and cannot be executed.\", strategyName); //$NON-NLS-1$\n\treturn;\n}\n\n// Executes the Delegate strategy.\nstrategyName += \"(\" + actor.getClass().getInterfaces()[0].getSimpleName() + \")\"; //$NON-NLS-1$ //$NON-NLS-2$\nit.unitn.disi.zanshin.core.CoreUtils.log.info(\"{0} Applying strategy {1}...\", session.getId(), strategyName); //$NON-NLS-1$\ncontroller.sendWarning(actor, awreq);\ncontroller.waitForFix(awreq);'"
+	 * 
+	 * @model annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='String strategyName = getClass().getInterfaces()[0].getSimpleName();\n\n// Obtains a reference to the target system\'s controller and checks if it exists (if it has been registered).\nit.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();\nif (controller == null) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.warn(\"Attempting to apply {0}, but the target system\'s controller has not yet been registered!\", strategyName); //$NON-NLS-1$\n\treturn;\n}\n\n// Retrieve the strategy\'s attributes.\nit.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();\n\n// Attribute actor is mandatory.\nif (actor == null) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.warn(\"Strategy {0} is missing mandatory attribute \\\"actor\\\" and cannot be executed.\", strategyName); //$NON-NLS-1$\n\treturn;\n}\n\n// Executes the Delegate strategy.\nstrategyName += \"(\" + actor.getClass().getInterfaces()[0].getSimpleName() + \")\"; //$NON-NLS-1$ //$NON-NLS-2$\nit.unitn.disi.zanshin.core.CoreUtils.log.info(\"{0} Applying strategy {1}...\", session.getId(), strategyName); //$NON-NLS-1$\ncontroller.sendWarning(actor, awreq);\ncontroller.waitForFix(awreq);'"
 	 * @generated
 	 */
 	void execute(AdaptationSession session);

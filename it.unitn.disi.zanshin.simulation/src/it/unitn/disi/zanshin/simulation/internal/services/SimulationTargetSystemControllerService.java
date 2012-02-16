@@ -120,11 +120,11 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		return controller.createNewModel();
 	}
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
+	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doResume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void resume(Requirement req) {
+	public void doResume(Requirement req, Requirement parent) {
 		SimulationUtils.log.info("Instruction received: resume(i{0})", req.eClass().getName()); //$NON-NLS-1$
-		controller.resume(req);
+		controller.resume(req, parent);
 	}
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#rollback(it.unitn.disi.zanshin.model.gore.PerformativeRequirement) */

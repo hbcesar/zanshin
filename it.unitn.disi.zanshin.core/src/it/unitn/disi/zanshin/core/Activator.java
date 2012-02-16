@@ -29,7 +29,7 @@ public class Activator implements BundleActivator {
 
 	/** The repository service. */
 	private static IRepositoryService repositoryService;
-	
+
 	/** The map of reconfiguration services available. */
 	private static Map<String, IReconfigurationService> reconfigurationServices = new HashMap<>();
 
@@ -85,9 +85,10 @@ public class Activator implements BundleActivator {
 		reconfigurationServices.remove(id);
 		CoreUtils.log.info("Reconfiguration Service removed from from this bundle: {0}", id); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param id
 	 * @return
 	 */

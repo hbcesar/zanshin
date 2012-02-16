@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getSession <em>Session</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getAwReq <em>Aw Req</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getTime <em>Time</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getSession <em>Session</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getAwReq <em>Aw Req</em>}</li>
+ * <li>{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl#getTime <em>Time</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class EventImpl extends EObjectImpl implements Event {
@@ -56,8 +56,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	protected static final Date TIME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTime()
 	 * @generated
 	 * @ordered
@@ -66,6 +66,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EventImpl() {
@@ -74,6 +75,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,37 +85,42 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AdaptationSession getSession() {
-		if (eContainerFeatureID() != EcaPackage.EVENT__SESSION) return null;
-		return (AdaptationSession)eContainer();
+		if (eContainerFeatureID() != EcaPackage.EVENT__SESSION)
+			return null;
+		return (AdaptationSession) eContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSession(AdaptationSession newSession, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newSession, EcaPackage.EVENT__SESSION, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newSession, EcaPackage.EVENT__SESSION, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSession(AdaptationSession newSession) {
 		if (newSession != eInternalContainer() || (eContainerFeatureID() != EcaPackage.EVENT__SESSION && newSession != null)) {
 			if (EcoreUtil.isAncestor(this, newSession))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSession != null)
-				msgs = ((InternalEObject)newSession).eInverseAdd(this, EcaPackage.ADAPTATION_SESSION__EVENTS, AdaptationSession.class, msgs);
+				msgs = ((InternalEObject) newSession).eInverseAdd(this, EcaPackage.ADAPTATION_SESSION__EVENTS, AdaptationSession.class, msgs);
 			msgs = basicSetSession(newSession, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null)
+				msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.EVENT__SESSION, newSession, newSession));
@@ -121,12 +128,13 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaAwReq getAwReq() {
 		if (awReq != null && awReq.eIsProxy()) {
-			InternalEObject oldAwReq = (InternalEObject)awReq;
-			awReq = (EcaAwReq)eResolveProxy(oldAwReq);
+			InternalEObject oldAwReq = (InternalEObject) awReq;
+			awReq = (EcaAwReq) eResolveProxy(oldAwReq);
 			if (awReq != oldAwReq) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcaPackage.EVENT__AW_REQ, oldAwReq, awReq));
@@ -137,6 +145,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaAwReq basicGetAwReq() {
@@ -145,6 +154,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAwReq(EcaAwReq newAwReq) {
@@ -156,6 +166,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getTime() {
@@ -164,6 +175,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTime(Date newTime) {
@@ -175,130 +187,140 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetSession((AdaptationSession)otherEnd, msgs);
+		case EcaPackage.EVENT__SESSION:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetSession((AdaptationSession) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				return basicSetSession(null, msgs);
+		case EcaPackage.EVENT__SESSION:
+			return basicSetSession(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case EcaPackage.EVENT__SESSION:
-				return eInternalContainer().eInverseRemove(this, EcaPackage.ADAPTATION_SESSION__EVENTS, AdaptationSession.class, msgs);
+		case EcaPackage.EVENT__SESSION:
+			return eInternalContainer().eInverseRemove(this, EcaPackage.ADAPTATION_SESSION__EVENTS, AdaptationSession.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				return getSession();
-			case EcaPackage.EVENT__AW_REQ:
-				if (resolve) return getAwReq();
-				return basicGetAwReq();
-			case EcaPackage.EVENT__TIME:
-				return getTime();
+		case EcaPackage.EVENT__SESSION:
+			return getSession();
+		case EcaPackage.EVENT__AW_REQ:
+			if (resolve)
+				return getAwReq();
+			return basicGetAwReq();
+		case EcaPackage.EVENT__TIME:
+			return getTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				setSession((AdaptationSession)newValue);
-				return;
-			case EcaPackage.EVENT__AW_REQ:
-				setAwReq((EcaAwReq)newValue);
-				return;
-			case EcaPackage.EVENT__TIME:
-				setTime((Date)newValue);
-				return;
+		case EcaPackage.EVENT__SESSION:
+			setSession((AdaptationSession) newValue);
+			return;
+		case EcaPackage.EVENT__AW_REQ:
+			setAwReq((EcaAwReq) newValue);
+			return;
+		case EcaPackage.EVENT__TIME:
+			setTime((Date) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				setSession((AdaptationSession)null);
-				return;
-			case EcaPackage.EVENT__AW_REQ:
-				setAwReq((EcaAwReq)null);
-				return;
-			case EcaPackage.EVENT__TIME:
-				setTime(TIME_EDEFAULT);
-				return;
+		case EcaPackage.EVENT__SESSION:
+			setSession((AdaptationSession) null);
+			return;
+		case EcaPackage.EVENT__AW_REQ:
+			setAwReq((EcaAwReq) null);
+			return;
+		case EcaPackage.EVENT__TIME:
+			setTime(TIME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcaPackage.EVENT__SESSION:
-				return getSession() != null;
-			case EcaPackage.EVENT__AW_REQ:
-				return awReq != null;
-			case EcaPackage.EVENT__TIME:
-				return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
+		case EcaPackage.EVENT__SESSION:
+			return getSession() != null;
+		case EcaPackage.EVENT__AW_REQ:
+			return awReq != null;
+		case EcaPackage.EVENT__TIME:
+			return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (time: ");
+		result.append(" (time: "); //$NON-NLS-1$
 		result.append(time);
 		result.append(')');
 		return result.toString();

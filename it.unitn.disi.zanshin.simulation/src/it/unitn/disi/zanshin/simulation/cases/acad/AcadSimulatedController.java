@@ -23,7 +23,7 @@ public class AcadSimulatedController extends EmptySimulatedController {
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public void initiate(Requirement req) {
-		System.out.println("############### initiate: " + req);
+		System.out.println("############### initiate: " + req); //$NON-NLS-1$
 		EClass reqClass = req.eClass();
 
 		// Perform different application-specific actions depending on the requirement.
@@ -53,16 +53,16 @@ public class AcadSimulatedController extends EmptySimulatedController {
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#terminate(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public void terminate(Requirement req) {
-		System.out.println("############### terminate: " + req);
+		System.out.println("############### terminate: " + req); //$NON-NLS-1$
 	}
 
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#waitFor(long) */
 	@Override
 	public void waitFor(long timeInMillis) {}
 
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#resume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void resume(Requirement req) {}
+	public void resume(Requirement req, Requirement parent) {}
 
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#suspend(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
