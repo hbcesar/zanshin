@@ -16,13 +16,12 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Abort Strategy</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class AbortStrategyImpl extends AdaptationStrategyImpl implements AbortStrategy {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected AbortStrategyImpl() {
@@ -31,7 +30,6 @@ public class AbortStrategyImpl extends AdaptationStrategyImpl implements AbortSt
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,19 +39,18 @@ public class AbortStrategyImpl extends AdaptationStrategyImpl implements AbortSt
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void execute(AdaptationSession session) {
 		String strategyName = getClass().getInterfaces()[0].getSimpleName();
-
+		
 		// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).
 		it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();
 		if (controller == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to apply {0}, but the target system's controller has not yet been registered!", strategyName); //$NON-NLS-1$
 			return;
 		}
-
+		
 		// Executes the Abort strategy.
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
 		controller.abort(getAwReq());

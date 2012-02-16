@@ -244,4 +244,36 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actor" eType="ecore:EClass gore.ecore#//Actor"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationResolutionCondition"
+      eSuperTypes="#//ResolutionCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// If the current evaluation is Success, the problem is solved. &#xA;it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();&#xA;if ((awreq != null) &amp;&amp; (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED)) return true;&#xA;&#xA;// Otherwise, if the last applied strategy was &quot;abort&quot;, the problem is also solved.&#xA;else if (session.getEvents().size() > 0) {&#xA;&#x9;it.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);&#xA;&#x9;it.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();&#xA;&#x9;it.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();&#xA;&#x9;if ((lastStrategy != null) &amp;&amp; (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))&#xA;&#x9;&#x9;return true;&#xA;}&#xA;&#xA;// If none of the above, the problem is not yet solved.&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedCondition" eType="#//ResolutionCondition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationStrategy" eSuperTypes="#//AdaptationStrategy">
+    <eOperations name="execute">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="String strategyName = getClass().getInterfaces()[0].getSimpleName();&#xA;&#xA;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationApplicabilityCondition"
+      eSuperTypes="#//ApplicabilityCondition">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return true;"/>
+      </eAnnotations>
+      <eParameters name="session" eType="#//AdaptationSession"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedCondition" eType="#//ApplicabilityCondition"
+        containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

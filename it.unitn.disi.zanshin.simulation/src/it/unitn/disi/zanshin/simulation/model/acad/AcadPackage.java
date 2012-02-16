@@ -3884,6 +3884,15 @@ public interface AcadPackage extends EPackage {
 	int AR1__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR1__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4000,6 +4009,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR2__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR2__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -4120,6 +4138,15 @@ public interface AcadPackage extends EPackage {
 	int AR3__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR3__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4236,6 +4263,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR4__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR4__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -4356,6 +4392,15 @@ public interface AcadPackage extends EPackage {
 	int AR5__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR5__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4472,6 +4517,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR6__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR6__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -4592,6 +4646,15 @@ public interface AcadPackage extends EPackage {
 	int AR7__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR7__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4708,6 +4771,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR8__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR8__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -4828,6 +4900,15 @@ public interface AcadPackage extends EPackage {
 	int AR9__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR9__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4944,6 +5025,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR10__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR10__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -5064,6 +5154,15 @@ public interface AcadPackage extends EPackage {
 	int AR11__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR11__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5180,6 +5279,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR12__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR12__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -5300,6 +5408,15 @@ public interface AcadPackage extends EPackage {
 	int AR13__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR13__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5416,6 +5533,15 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int AR14__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR14__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -5536,6 +5662,15 @@ public interface AcadPackage extends EPackage {
 	int AR15__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
 
 	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR15__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5619,15 +5754,6 @@ public interface AcadPackage extends EPackage {
 	int ACAD_GOAL_MODEL__ACTORS = GorePackage.GOAL_MODEL__ACTORS;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACAD_GOAL_MODEL__PARAMETERS = GorePackage.GOAL_MODEL__PARAMETERS;
-
-	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5637,6 +5763,24 @@ public interface AcadPackage extends EPackage {
 	int ACAD_GOAL_MODEL__INTERNAL_ID = GorePackage.GOAL_MODEL__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACAD_GOAL_MODEL__CONFIGURATION = GorePackage.GOAL_MODEL__CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Relations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACAD_GOAL_MODEL__RELATIONS = GorePackage.GOAL_MODEL__RELATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Goal Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5644,6 +5788,62 @@ public interface AcadPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACAD_GOAL_MODEL_FEATURE_COUNT = GorePackage.GOAL_MODEL_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.simulation.model.acad.impl.CV_MSTImpl <em>CV MST</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.simulation.model.acad.impl.CV_MSTImpl
+	 * @see it.unitn.disi.zanshin.simulation.model.acad.impl.AcadPackageImpl#getCV_MST()
+	 * @generated
+	 */
+	int CV_MST = 67;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST__CONFIGURATION = GorePackage.PARAMETER__CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST__TYPE = GorePackage.PARAMETER__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST__UNIT = GorePackage.PARAMETER__UNIT;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST__VALUE = GorePackage.PARAMETER__VALUE;
+
+	/**
+	 * The number of structural features of the '<em>CV MST</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CV_MST_FEATURE_COUNT = GorePackage.PARAMETER_FEATURE_COUNT + 0;
 
 
 	/**
@@ -6315,6 +6515,16 @@ public interface AcadPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAcadGoalModel();
+
+	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.simulation.model.acad.CV_MST <em>CV MST</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>CV MST</em>'.
+	 * @see it.unitn.disi.zanshin.simulation.model.acad.CV_MST
+	 * @generated
+	 */
+	EClass getCV_MST();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -7007,6 +7217,16 @@ public interface AcadPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACAD_GOAL_MODEL = eINSTANCE.getAcadGoalModel();
+
+		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.simulation.model.acad.impl.CV_MSTImpl <em>CV MST</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.simulation.model.acad.impl.CV_MSTImpl
+		 * @see it.unitn.disi.zanshin.simulation.model.acad.impl.AcadPackageImpl#getCV_MST()
+		 * @generated
+		 */
+		EClass CV_MST = eINSTANCE.getCV_MST();
 
 	}
 

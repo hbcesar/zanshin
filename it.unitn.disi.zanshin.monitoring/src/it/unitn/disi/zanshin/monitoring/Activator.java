@@ -40,13 +40,13 @@ public class Activator implements BundleActivator {
 	/** Setter for monitoringService. */
 	public void setMonitoringService(IMonitoringService monitoringService) {
 		Activator.monitoringService = monitoringService;
-		MonitoringUtils.log.info("Monitoring Service injected in the activator"); //$NON-NLS-1$
+		MonitoringUtils.log.info("Monitoring Service injected in this bundle"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for monitoringService (required by OSGi Declarative Services). */
 	public void unsetMonitoringService(IMonitoringService monitoringService) {
 		Activator.monitoringService = null;
-		MonitoringUtils.log.info("Monitoring Service disposed from the activator"); //$NON-NLS-1$
+		MonitoringUtils.log.info("Monitoring Service disposed from this bundle"); //$NON-NLS-1$
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */

@@ -12,12 +12,12 @@ import org.osgi.service.log.LogService;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public final class AdaptivityUtils {
+public final class AdaptationUtils {
 	/** The logger. */
 	public static ILogger log = new EmptyLogger();
 
 	/** This class is not meant to have objects. */
-	private AdaptivityUtils() {}
+	private AdaptationUtils() {}
 
 	/**
 	 * Initialization method that should be called by the bundle's activator.

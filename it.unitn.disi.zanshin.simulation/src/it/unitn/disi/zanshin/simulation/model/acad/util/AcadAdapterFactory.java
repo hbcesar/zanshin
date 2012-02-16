@@ -12,11 +12,13 @@ import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
+import it.unitn.disi.zanshin.simulation.model.acad.*;
 import it.unitn.disi.zanshin.simulation.model.acad.AR1;
 import it.unitn.disi.zanshin.simulation.model.acad.AR10;
 import it.unitn.disi.zanshin.simulation.model.acad.AR11;
@@ -349,6 +351,9 @@ public class AcadAdapterFactory extends AdapterFactoryImpl {
 			public Object caseAcadGoalModel(AcadGoalModel object) {
 				return createAcadGoalModelAdapter();
 			}
+			public Object caseCV_MST(CV_MST object) {
+				return createCV_MSTAdapter();
+			}
 			public Object caseOclAny(OclAny object) {
 				return createOclAnyAdapter();
 			}
@@ -384,6 +389,9 @@ public class AcadAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseGoalModel(GoalModel object) {
 				return createGoalModelAdapter();
+			}
+			public Object caseParameter(Parameter object) {
+				return createParameterAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -1343,6 +1351,20 @@ public class AcadAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.simulation.model.acad.CV_MST <em>CV MST</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.simulation.model.acad.CV_MST
+	 * @generated
+	 */
+	public Adapter createCV_MSTAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eeat.model.LTL.OclAny <em>Ocl Any</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1507,6 +1529,20 @@ public class AcadAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGoalModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.gore.Parameter
+	 * @generated
+	 */
+	public Adapter createParameterAdapter() {
 		return null;
 	}
 

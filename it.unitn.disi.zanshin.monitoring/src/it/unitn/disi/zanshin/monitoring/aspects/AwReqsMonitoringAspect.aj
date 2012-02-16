@@ -40,7 +40,7 @@ public aspect AwReqsMonitoringAspect {
 	pointcut performative(PerformativeRequirement req): target(req) && call(void cancel());
 
 	/** Defines an aspect to be applied at the definable point-cut. */
-	after(DefinableRequirement req): definable(req) {
+	before(DefinableRequirement req): definable(req) {
 		// Obtains the name of the method that was called.
 		String methodName = thisJoinPoint.getSignature().getName();
 
@@ -53,7 +53,7 @@ public aspect AwReqsMonitoringAspect {
 	}
 
 	/** Defines an aspect to be applied at the performative point-cut. */
-	after(PerformativeRequirement req): performative(req) {
+	before(PerformativeRequirement req): performative(req) {
 		// Process the cancel method (only possibility here).
 		processMethodCall(req, MonitorableMethod.CANCEL);
 	}

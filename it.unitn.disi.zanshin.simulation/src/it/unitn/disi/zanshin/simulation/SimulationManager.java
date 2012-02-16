@@ -35,59 +35,83 @@ public final class SimulationManager {
 
 	/** The monitoring service registered in the platform. */
 	private IMonitoringService monitoringService;
-	
+
 	/** Map of simulations, indexed by their numbers. */
 	private Map<Integer, Simulation> simulations = new TreeMap<>();
 
-	/** Constructor. Receives the simulation properties with the name of the simulation classes to load. */
+	/**
+	 * Constructor. Receives the simulation properties with the name of the simulation classes to load and loads all
+	 * configured simulations.
+	 */
 	public SimulationManager(Properties props, ITargetSystemControllerService controllerService, IMonitoringService monitoringService) {
 		this.controllerService = controllerService;
 		this.monitoringService = monitoringService;
-		
+
 		// Loads all simulations listed in the properties and place them in the list.
 		for (int num = 1; true; num++) {
-			String name = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_NAME);
-			String simulationClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_SIMULATION_CLASS);
-			String controllerClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_CONTROLLER_CLASS);
-			String monitorClass = props.getProperty(PROPERTIES_CASES_PREFIX + num + PROPERTIES_CASES_MONITOR_CLASS);
-
-			if ((name != null) && (simulationClass != null) && (controllerClass != null)) {
-				SimulationUtils.log.debug("Loading simulation # {0}: {1}", num, simulationClass); //$NON-NLS-1$
-				
-				try {
-					// Loads the simulation class given its name and creates a new instance.
-					@SuppressWarnings("unchecked")
-					Class<? extends Simulation> simulationClazz = (Class<? extends Simulation>) Class.forName(simulationClass);
-					Simulation simulation = simulationClazz.newInstance();
-					
-					// Loads the controller class given its name and creates a new instance.
-					@SuppressWarnings("unchecked")
-					Class<? extends SimulatedController> controllerClazz = (Class<? extends SimulatedController>) Class.forName(controllerClass);
-					SimulatedController controller = controllerClazz.newInstance();
-					
-					// Loads the monitor class given its name and creates a new instance.
-					@SuppressWarnings("unchecked")
-					Class<? extends IMonitoringService> monitorClazz = (Class<? extends IMonitoringService>) Class.forName(monitorClass);
-					IMonitoringService simulatedMonitor = monitorClazz.newInstance();
-
-					// Initializes the simulation.
-					SimulationUtils.log.debug("Initializing simulation # {0}: {1}", num, simulation); //$NON-NLS-1$
-					simulation.init(name, controller, simulatedMonitor);
-
-					// Adds the simulation instance to the map of simulations, indexed by their number.
-					simulations.put(num, simulation);
-					SimulationUtils.log.info("Simulation # {0} loaded successfully: {1}", num, name); //$NON-NLS-1$
-				}
-
-				// In case of problems, display an error message but proceed with the other simulations.
-				catch (Exception e) {
-					SimulationUtils.log.error("Could not load simulation # {0}: {1}", e, num, name); //$NON-NLS-1$
-				}
+			try {
+				loadSimulation(num, props);
 			}
 
-			// When the property associated with the specified number is not found, break out of the loop.
-			else break;
+			// When the configuration key for the current number doesn't exist, stop loading.
+			catch (IllegalArgumentException e) {
+				break;
+			}
 		}
+	}
+
+	/**
+	 * Constructor. Receives the simulation properties with the name of the simulation classes to load and the number of
+	 * the simulation to load.
+	 */
+	public SimulationManager(Integer simulationNumber, Properties props, ITargetSystemControllerService controllerService, IMonitoringService monitoringService) {
+		this.controllerService = controllerService;
+		this.monitoringService = monitoringService;
+		loadSimulation(simulationNumber, props);
+	}
+
+	private void loadSimulation(Integer simulationNumber, Properties props) {
+		String name = props.getProperty(PROPERTIES_CASES_PREFIX + simulationNumber + PROPERTIES_CASES_NAME);
+		String simulationClass = props.getProperty(PROPERTIES_CASES_PREFIX + simulationNumber + PROPERTIES_CASES_SIMULATION_CLASS);
+		String controllerClass = props.getProperty(PROPERTIES_CASES_PREFIX + simulationNumber + PROPERTIES_CASES_CONTROLLER_CLASS);
+		String monitorClass = props.getProperty(PROPERTIES_CASES_PREFIX + simulationNumber + PROPERTIES_CASES_MONITOR_CLASS);
+
+		if ((name != null) && (simulationClass != null) && (controllerClass != null)) {
+			SimulationUtils.log.debug("Loading simulation # {0}: {1}", simulationNumber, simulationClass); //$NON-NLS-1$
+
+			try {
+				// Loads the simulation class given its name and creates a new instance.
+				@SuppressWarnings("unchecked")
+				Class<? extends Simulation> simulationClazz = (Class<? extends Simulation>) Class.forName(simulationClass);
+				Simulation simulation = simulationClazz.newInstance();
+
+				// Loads the controller class given its name and creates a new instance.
+				@SuppressWarnings("unchecked")
+				Class<? extends SimulatedController> controllerClazz = (Class<? extends SimulatedController>) Class.forName(controllerClass);
+				SimulatedController controller = controllerClazz.newInstance();
+
+				// Loads the monitor class given its name and creates a new instance.
+				@SuppressWarnings("unchecked")
+				Class<? extends IMonitoringService> monitorClazz = (Class<? extends IMonitoringService>) Class.forName(monitorClass);
+				IMonitoringService simulatedMonitor = monitorClazz.newInstance();
+
+				// Initializes the simulation.
+				SimulationUtils.log.debug("Initializing simulation # {0}: {1}", simulationNumber, simulation); //$NON-NLS-1$
+				simulation.init(name, controller, simulatedMonitor);
+
+				// Adds the simulation instance to the map of simulations, indexed by their number.
+				simulations.put(simulationNumber, simulation);
+				SimulationUtils.log.info("Simulation # {0} loaded successfully: {1}", simulationNumber, name); //$NON-NLS-1$
+			}
+
+			// In case of problems, display an error message but proceed with the other simulations.
+			catch (Exception e) {
+				SimulationUtils.log.error("Could not load simulation # {0}: {1}", e, simulationNumber, name); //$NON-NLS-1$
+			}
+		}
+
+		// When the property associated with the specified number is not found, throw an exception.
+		else throw new IllegalArgumentException();
 	}
 
 	/** Setter for controllerService. */
@@ -123,8 +147,9 @@ public final class SimulationManager {
 	 */
 	public void run(Integer simulationNumber) throws IllegalArgumentException {
 		// Checks if there is a simulation with this number.
-		if (! simulations.containsKey(simulationNumber)) throw new IllegalArgumentException("" + simulationNumber); //$NON-NLS-1$
-		
+		if (!simulations.containsKey(simulationNumber))
+			throw new IllegalArgumentException("" + simulationNumber); //$NON-NLS-1$
+
 		// Obtains the simulation from the map and runs it.
 		Simulation simulation = simulations.get(simulationNumber);
 		try {
@@ -146,7 +171,7 @@ public final class SimulationManager {
 	private void run(Simulation simulation) throws InterruptedException {
 		String name = simulation.getName();
 		SimulationUtils.log.info("Running simulation: {0}", name); //$NON-NLS-1$
-		
+
 		// Checks if everything is OK to run this simulation.
 		if (controllerService == null) {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: the controller service has not been set in the simulation manager.", name); //$NON-NLS-1$
@@ -157,7 +182,7 @@ public final class SimulationManager {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: a controller was not set for this simulation.", name); //$NON-NLS-1$
 			return;
 		}
-		if (! (controllerService instanceof SimulationTargetSystemControllerService)) {
+		if (!(controllerService instanceof SimulationTargetSystemControllerService)) {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: the target system controller service from the simulation bundle is not being used.", name); //$NON-NLS-1$
 			return;
 		}
@@ -170,16 +195,16 @@ public final class SimulationManager {
 			SimulationUtils.log.error("({0}) Cannot execute simulation: a simulated monitor was not set for this simulation.", name); //$NON-NLS-1$
 			return;
 		}
-		
+
 		// Changes the specific controller in the target system controller with the one that belongs to this simulation.
 		SimulationUtils.log.info("Changing the controller to: {0}", controller.getClass().getCanonicalName()); //$NON-NLS-1$
 		SimulationTargetSystemControllerService service = (SimulationTargetSystemControllerService) controllerService;
 		service.setController(controller);
-		
+
 		// Changes the simulated monitor in the monitoring service with the one that belongs to this simulation.
 		SimulationUtils.log.info("Changing the simulated monitoring to: {0}", simulatedMonitor.getClass().getCanonicalName()); //$NON-NLS-1$
 		monitoringService.setSimulatedMonitor(simulatedMonitor);
-		
+
 		// Runs the simulation until it has finished or until an error is found.
 		while (!simulation.hasFinished()) {
 			// When activated, runs the next part of the current simulation.

@@ -38,12 +38,15 @@ public class StartSimulationCommandProvider implements CommandProvider {
 		SimulationManager manager = null;
 		try {
 			interpreter.println("\n\nCreating the simulation manager..."); //$NON-NLS-1$
-			manager = Activator.createSimulationManager();
+			if (simNum == null)
+				manager = Activator.createSimulationManager();
+			else manager = Activator.createSimulationManager(simNum);
+
 		}
 		catch (IOException e) {
 			interpreter.println("\n\nCould not configure the simulation, check the configuration file. Exception message: " + e.getMessage()); //$NON-NLS-1$
 		}
-		
+
 		// Continues only when the simulation manager was created successfully.
 		if (manager != null) {
 			// If no specific simulation was selected, run all simulations.
@@ -51,7 +54,7 @@ public class StartSimulationCommandProvider implements CommandProvider {
 				interpreter.println("\nRunning all simulations...\n"); //$NON-NLS-1$
 				manager.runAll();
 			}
-			
+
 			// Otherwise, run only the specific simulation.
 			else try {
 				interpreter.println("\nRunning simulation # " + simNum + "\n"); //$NON-NLS-1$ //$NON-NLS-2$

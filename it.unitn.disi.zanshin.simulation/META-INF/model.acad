@@ -79,17 +79,30 @@
   <awReqs xsi:type="acad:AR8"/>
   <awReqs xsi:type="acad:AR9"/>
   <awReqs xsi:type="acad:AR10"/>
-  <awReqs xsi:type="acad:AR11"/>
+  <awReqs xsi:type="acad:AR11" target="//@softgoals.1/@constraints.0" incrementCoefficient="2">
+    <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationResolutionCondition" algorithmId="qualia">
+      <wrappedCondition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
+    </condition>
+    <strategies xsi:type="it.unitn.disi.zanshin.model:ReconfigurationStrategy" algorithmId="qualia">
+      <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationApplicabilityCondition">
+        <wrappedCondition xsi:type="it.unitn.disi.zanshin.model:SimpleApplicabilityCondition"/>
+      </condition>
+    </strategies>
+  </awReqs>
   <awReqs xsi:type="acad:AR12"/>
   <awReqs xsi:type="acad:AR13"/>
   <awReqs xsi:type="acad:AR14"/>
   <awReqs xsi:type="acad:AR15" target="//@rootGoal/@children.0/@children.1">
     <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
     <strategies xsi:type="it.unitn.disi.zanshin.model:RetryStrategy" time="5000">
-    	<condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+      <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
     </strategies>
     <strategies xsi:type="it.unitn.disi.zanshin.model:RelaxDisableChildStrategy" child="//@rootGoal/@children.0/@children.1/@children.1">
-    	<condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+      <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
     </strategies>
   </awReqs>
+  <configuration>
+  	<parameters xsi:type="acad:CV_MST" type="ECV" unit="10" value="60" metric="Integer"/>
+  </configuration>
+  <relations indicator="//@awReqs.10" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="FT" />
 </acad:AcadGoalModel>

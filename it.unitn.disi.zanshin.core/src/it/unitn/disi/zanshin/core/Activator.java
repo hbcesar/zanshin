@@ -1,7 +1,11 @@
 package it.unitn.disi.zanshin.core;
 
+import it.unitn.disi.zanshin.services.IReconfigurationService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -25,6 +29,9 @@ public class Activator implements BundleActivator {
 
 	/** The repository service. */
 	private static IRepositoryService repositoryService;
+	
+	/** The map of reconfiguration services available. */
+	private static Map<String, IReconfigurationService> reconfigurationServices = new HashMap<>();
 
 	/** Getter for context. */
 	public static BundleContext getContext() {
@@ -39,13 +46,13 @@ public class Activator implements BundleActivator {
 	/** Setter for controllerService. */
 	public static void setControllerService(ITargetSystemControllerService controllerService) {
 		Activator.controllerService = controllerService;
-		CoreUtils.log.info("Target System Controller Service injected in the activator"); //$NON-NLS-1$
+		CoreUtils.log.info("Target System Controller Service injected in this bundle"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for controllerService (required by OSGi Declarative Services). */
 	public static void unsetControllerService(ITargetSystemControllerService controllerService) {
 		Activator.controllerService = null;
-		CoreUtils.log.info("Target System Controller Service disposed from the activator"); //$NON-NLS-1$
+		CoreUtils.log.info("Target System Controller Service disposed from this bundle"); //$NON-NLS-1$
 	}
 
 	/** Getter for repositoryService. */
@@ -63,6 +70,29 @@ public class Activator implements BundleActivator {
 	public void unsetRepositoryService(IRepositoryService repositoryService) {
 		Activator.repositoryService = null;
 		CoreUtils.log.info("Repository Service disposed from the activator"); //$NON-NLS-1$
+	}
+
+	/** Adds a reconfiguration service to the map (used by OSGi Declarative Services). */
+	public void addReconfigurationService(IReconfigurationService reconfigurationService) {
+		String id = reconfigurationService.getId();
+		reconfigurationServices.put(id, reconfigurationService);
+		CoreUtils.log.info("Reconfiguration Service added to this bundle: {0}", id); //$NON-NLS-1$
+	}
+
+	/** Removes a reconfiguration service from the map (used by OSGi Declarative Services). */
+	public void removeReconfigurationService(IReconfigurationService reconfigurationService) {
+		String id = reconfigurationService.getId();
+		reconfigurationServices.remove(id);
+		CoreUtils.log.info("Reconfiguration Service removed from from this bundle: {0}", id); //$NON-NLS-1$
+	}
+	
+	/**
+	 * TODO: document this method.
+	 * @param id
+	 * @return
+	 */
+	public static IReconfigurationService retrieveReconfigurationService(String id) {
+		return reconfigurationServices.get(id);
 	}
 
 	/** @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext) */

@@ -77,7 +77,7 @@ public class MonitorThread extends Thread {
 	 *          The method that was called (start(), end(), success(), etc.).
 	 */
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
-		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.getClass().getSimpleName() }); //$NON-NLS-1$
+		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.eClass().getName() }); //$NON-NLS-1$
 
 		// This is a temporary implementation. See https://github.com/vitorsouza/Zanshin/issues/1
 		if (simulatedMonitor == null) {

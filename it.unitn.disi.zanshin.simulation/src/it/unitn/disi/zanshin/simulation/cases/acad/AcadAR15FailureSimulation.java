@@ -52,7 +52,6 @@ public final class AcadAR15FailureSimulation extends AbstractSimulation {
 				T_InputInfo tII = (T_InputInfo) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_InputInfo());
 				tII.start();
 				tII.fail();
-				tII.end();
 			}
 
 			@Override
@@ -69,12 +68,10 @@ public final class AcadAR15FailureSimulation extends AbstractSimulation {
 				T_InputInfo tII = (T_InputInfo) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_InputInfo());
 				tII.start();
 				tII.success();
-				tII.end();
 
 				T_DetectLoc tDL = (T_DetectLoc) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getT_DetectLoc());
 				tDL.start();
 				tDL.fail();
-				tDL.end();
 			}
 
 			@Override

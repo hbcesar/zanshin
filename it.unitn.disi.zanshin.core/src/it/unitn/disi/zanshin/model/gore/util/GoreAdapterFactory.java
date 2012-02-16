@@ -6,10 +6,12 @@
  */
 package it.unitn.disi.zanshin.model.gore.util;
 
+import it.unitn.disi.zanshin.model.gore.*;
 import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
@@ -17,7 +19,6 @@ import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
-import it.unitn.disi.zanshin.model.gore.ReconfigurationAlgorithm;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
@@ -31,21 +32,20 @@ import org.eeat.model.LTL.OclAny;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
  * method for each class of the model. <!-- end-user-doc -->
- * 
  * @see it.unitn.disi.zanshin.model.gore.GorePackage
  * @generated
  */
 public class GoreAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static GorePackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the adapter factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public GoreAdapterFactory() {
@@ -55,125 +55,112 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This implementation
+	 * Returns whether this factory is applicable for the type of the object.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns <code>true</code> if the object is either the model's package or is an instance object of the model. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage) { return true; }
-		if (object instanceof EObject) { return ((EObject) object).eClass().getEPackage() == modelPackage; }
+		if (object == modelPackage) {
+			return true;
+		}
+		if (object instanceof EObject) {
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
+		}
 		return false;
 	}
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The switch that delegates to the <code>createXXX</code> methods.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected GoreSwitch<Adapter> modelSwitch = new GoreSwitch<Adapter>() {
-		@Override
-		public Adapter caseRequirement(Requirement object) {
-			return createRequirementAdapter();
-		}
-
-		@Override
-		public Adapter caseDefinableRequirement(DefinableRequirement object) {
-			return createDefinableRequirementAdapter();
-		}
-
-		@Override
-		public Adapter caseSoftgoal(Softgoal object) {
-			return createSoftgoalAdapter();
-		}
-
-		@Override
-		public Adapter casePerformativeRequirement(PerformativeRequirement object) {
-			return createPerformativeRequirementAdapter();
-		}
-
-		@Override
-		public Adapter caseQualityConstraint(QualityConstraint object) {
-			return createQualityConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseAwReq(AwReq object) {
-			return createAwReqAdapter();
-		}
-
-		@Override
-		public Adapter caseDomainAssumption(DomainAssumption object) {
-			return createDomainAssumptionAdapter();
-		}
-
-		@Override
-		public Adapter caseGoal(Goal object) {
-			return createGoalAdapter();
-		}
-
-		@Override
-		public Adapter caseTask(Task object) {
-			return createTaskAdapter();
-		}
-
-		@Override
-		public Adapter caseActor(Actor object) {
-			return createActorAdapter();
-		}
-
-		@Override
-		public Adapter caseConfiguration(Configuration object) {
-			return createConfigurationAdapter();
-		}
-
-		@Override
-		public Adapter caseGoalModel(GoalModel object) {
-			return createGoalModelAdapter();
-		}
-
-		@Override
-		public Adapter caseParameter(Parameter object) {
-			return createParameterAdapter();
-		}
-
-		@Override
-		public Adapter caseReconfigurationAlgorithm(ReconfigurationAlgorithm object) {
-			return createReconfigurationAlgorithmAdapter();
-		}
-
-		@Override
-		public Adapter caseOclAny(OclAny object) {
-			return createOclAnyAdapter();
-		}
-
-		@Override
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseRequirement(Requirement object) {
+				return createRequirementAdapter();
+			}
+			@Override
+			public Adapter caseDefinableRequirement(DefinableRequirement object) {
+				return createDefinableRequirementAdapter();
+			}
+			@Override
+			public Adapter caseSoftgoal(Softgoal object) {
+				return createSoftgoalAdapter();
+			}
+			@Override
+			public Adapter casePerformativeRequirement(PerformativeRequirement object) {
+				return createPerformativeRequirementAdapter();
+			}
+			@Override
+			public Adapter caseQualityConstraint(QualityConstraint object) {
+				return createQualityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseAwReq(AwReq object) {
+				return createAwReqAdapter();
+			}
+			@Override
+			public Adapter caseDomainAssumption(DomainAssumption object) {
+				return createDomainAssumptionAdapter();
+			}
+			@Override
+			public Adapter caseGoal(Goal object) {
+				return createGoalAdapter();
+			}
+			@Override
+			public Adapter caseTask(Task object) {
+				return createTaskAdapter();
+			}
+			@Override
+			public Adapter caseActor(Actor object) {
+				return createActorAdapter();
+			}
+			@Override
+			public Adapter caseConfiguration(Configuration object) {
+				return createConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseDifferentialRelation(DifferentialRelation object) {
+				return createDifferentialRelationAdapter();
+			}
+			@Override
+			public Adapter caseGoalModel(GoalModel object) {
+				return createGoalModelAdapter();
+			}
+			@Override
+			public Adapter caseParameter(Parameter object) {
+				return createParameterAdapter();
+			}
+			@Override
+			public Adapter caseOclAny(OclAny object) {
+				return createOclAnyAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *          the object to adapt.
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Requirement
-	 * <em>Requirement</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Requirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily
 	 * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.Requirement
 	 * @generated
@@ -183,11 +170,10 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.DefinableRequirement
-	 * <em>Definable Requirement</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.DefinableRequirement <em>Definable Requirement</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can
 	 * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.DefinableRequirement
 	 * @generated
@@ -200,7 +186,6 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Softgoal <em>Softgoal</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
 	 * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.Softgoal
 	 * @generated
@@ -210,11 +195,10 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement
-	 * <em>Performative Requirement</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement <em>Performative Requirement</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we
 	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.PerformativeRequirement
 	 * @generated
@@ -224,11 +208,10 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint
-	 * <em>Quality Constraint</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint <em>Quality Constraint</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can
 	 * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint
 	 * @generated
@@ -251,11 +234,10 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption
-	 * <em>Domain Assumption</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption <em>Domain Assumption</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can
 	 * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.DomainAssumption
 	 * @generated
@@ -304,10 +286,9 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Configuration
-	 * <em>Configuration</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Configuration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily
 	 * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.Configuration
 	 * @generated
@@ -317,10 +298,23 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.GoalModel
-	 * <em>Goal Model</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation <em>Differential Relation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.gore.DifferentialRelation
+	 * @generated
+	 */
+	public Adapter createDifferentialRelationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily
 	 * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
 	 * @generated
@@ -330,29 +324,14 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Parameter <em>Parameter</em>}
-	 * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
 	 * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see it.unitn.disi.zanshin.model.gore.Parameter
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.ReconfigurationAlgorithm
-	 * <em>Reconfiguration Algorithm</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
-	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-	 * end-user-doc -->
-	 * 
-	 * @return the new adapter.
-	 * @see it.unitn.disi.zanshin.model.gore.ReconfigurationAlgorithm
-	 * @generated
-	 */
-	public Adapter createReconfigurationAlgorithmAdapter() {
 		return null;
 	}
 
@@ -370,9 +349,9 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null. <!--
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc --> This default implementation returns null. <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Qualia - Qualitative Adaptation Zanshin plug-in
+Bundle-SymbolicName: it.unitn.disi.zanshin.adaptation.qualia
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: it.unitn.disi.zanshin.adaptation.qualia.Activator
+Bundle-Vendor: it.unitn.disi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.3.0"
+Require-Bundle: it.unitn.disi.zanshin.core;bundle-version="1.0.0"
+Service-Component: OSGI-INF/*.xml

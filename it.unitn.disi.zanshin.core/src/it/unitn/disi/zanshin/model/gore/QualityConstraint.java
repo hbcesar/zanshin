@@ -23,14 +23,14 @@ package it.unitn.disi.zanshin.model.gore;
  */
 public interface QualityConstraint extends DefinableRequirement {
 	/**
-	 * Returns the value of the '<em><b>Softgoal</b></em>' container reference. It is bidirectional and its opposite is '
-	 * {@link it.unitn.disi.zanshin.model.gore.Softgoal#getConstraints <em>Constraints</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Softgoal</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.Softgoal#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Softgoal</em>' container reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Softgoal</em>' container reference.
 	 * @see #setSoftgoal(Softgoal)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getQualityConstraint_Softgoal()
@@ -41,11 +41,9 @@ public interface QualityConstraint extends DefinableRequirement {
 	Softgoal getSoftgoal();
 
 	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getSoftgoal <em>Softgoal</em>}'
-	 * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Softgoal</em>' container reference.
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getSoftgoal <em>Softgoal</em>}' container reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Softgoal</em>' container reference.
 	 * @see #getSoftgoal()
 	 * @generated
 	 */
@@ -53,9 +51,7 @@ public interface QualityConstraint extends DefinableRequirement {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel body='// Performs the replacement as a normal requirement first.\nsuper.replaceWith(newRequirement);\n\n// Then, replace the relationship quality constraints have with softgoals.\nit.unitn.disi.zanshin.model.gore.Softgoal softgoal = getSoftgoal();\nsetSoftgoal(null);\n((QualityConstraint) newRequirement).setSoftgoal(softgoal);'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// Performs the replacement as a normal requirement first.\nsuper.replaceWith(newRequirement);\n\n// Then, replace the relationship quality constraints have with softgoals.\nit.unitn.disi.zanshin.model.gore.Softgoal softgoal = getSoftgoal();\nsetSoftgoal(null);\n((QualityConstraint) newRequirement).setSoftgoal(softgoal);'"
 	 * @generated
 	 */
 	void replaceWith(Requirement newRequirement);

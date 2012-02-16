@@ -1,6 +1,6 @@
 package it.unitn.disi.zanshin.adaptation.internal.services;
 
-import it.unitn.disi.zanshin.adaptation.AdaptivityUtils;
+import it.unitn.disi.zanshin.adaptation.AdaptationUtils;
 import it.unitn.disi.zanshin.model.eca.AbortStrategy;
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.AdaptationStrategy;
@@ -45,7 +45,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 	public void processStateChange(AwReq awreq) {
 		// Checks if the AwReq have been properly supplied.
 		if (awreq == null) {
-			AdaptivityUtils.log.warn("The adaptivity service has been called, but no AwReq has been supplied. Please check your model or file a bug."); //$NON-NLS-1$			
+			AdaptationUtils.log.warn("The adaptivity service has been called, but no AwReq has been supplied. Please check your model or file a bug."); //$NON-NLS-1$			
 			return;
 		}
 
@@ -56,13 +56,13 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 
 		// Checks if the AwReq's target has been properly set.
 		if (target == null) {
-			AdaptivityUtils.log.warn("AwReq {0} does not have a target, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
+			AdaptationUtils.log.warn("AwReq {0} does not have a target, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
 			return;
 		}
 
-		// Retrieves information on the target and logs a proper
+		// Retrieves information on the target and logs about its state change.
 		String targetName = target.eClass().getName();
-		AdaptivityUtils.log.info("Processing state change: {0} (ref. {1}) -> {2}", awreqName, targetName, awreq.getState()); //$NON-NLS-1$
+		AdaptationUtils.log.info("Processing state change: {0} (ref. {1}) -> {2}", awreqName, targetName, awreq.getState()); //$NON-NLS-1$
 
 		// This process is available only for ECA-based AwReqs.
 		if (awreq instanceof EcaAwReq) {
@@ -72,7 +72,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 			ResolutionCondition awreqCondition = ecaAwReq.getCondition();
 			if (awreqCondition == null) {
 				// If the AwReq is not complete, log a warning and stop here.
-				AdaptivityUtils.log.warn("AwReq {0} does not have a resolution condition, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
+				AdaptationUtils.log.warn("AwReq {0} does not have a resolution condition, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
 				return;
 			}
 
@@ -82,12 +82,12 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 				session = ecaFactory.createAdaptationSession();
 				session.addEvent(ecaAwReq);
 				activeSessions.put(awreqClass, session);
-				AdaptivityUtils.log.info("{0} Created new session for {1}", session.getId(), awreqName); //$NON-NLS-1$
+				AdaptationUtils.log.info("{0} Created new session for {1}", session.getId(), awreqName); //$NON-NLS-1$
 			}
 
 			// If there is, adds the current AwReq's evaluation to the session.
 			else {
-				AdaptivityUtils.log.info("{0} Retrieved existing session for {1}, {2,choice,0#no events|1#one event|1<{2} events} already in the timeline", session.getId(), awreqName, session.getEvents().size()); //$NON-NLS-1$
+				AdaptationUtils.log.info("{0} Retrieved existing session for {1}, {2,choice,0#no events|1#one event|1<{2} events} already in the timeline", session.getId(), awreqName, session.getEvents().size()); //$NON-NLS-1$
 				session.addEvent(ecaAwReq);
 			}
 
@@ -108,7 +108,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 				}
 
 				// If the strategy has no applicability condition, log a warning.
-				else AdaptivityUtils.log.warn("AwReq {0} has an adaptation strategy ({1}) without an applicability condition. Please provide one in the goal model.", awreqName, strategy); //$NON-NLS-1$
+				else AdaptationUtils.log.warn("AwReq {0} has an adaptation strategy ({1}) without an applicability condition. Please provide one in the goal model.", awreqName, strategy); //$NON-NLS-1$
 			}
 
 			// If no applicable strategy was found, selects the Abort strategy.
@@ -121,7 +121,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 
 			// Applies the selected strategy and registers it in the event timeline.
 			String strategyName = selectedStrategy.getClass().getInterfaces()[0].getSimpleName();
-			AdaptivityUtils.log.info("{0} Selected adaptation strategy: {1}", session.getId(), strategyName); //$NON-NLS-1$
+			AdaptationUtils.log.info("{0} Selected adaptation strategy: {1}", session.getId(), strategyName); //$NON-NLS-1$
 			selectedStrategy.execute(session);
 			ecaAwReq.setSelectedStrategy(selectedStrategy);
 
@@ -130,7 +130,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 		}
 
 		// If AwReq is not ECA-based, log a warning.
-		else AdaptivityUtils.log.warn("AwReq {0} is not an ECA-based AwReq. Zanshin's adaptivity bundle registered the ECA-based adaptivity service.", awreqName); //$NON-NLS-1$
+		else AdaptationUtils.log.warn("AwReq {0} is not an ECA-based AwReq. Zanshin's adaptivity bundle registered the ECA-based adaptivity service.", awreqName); //$NON-NLS-1$
 	}
 
 	/**
@@ -147,14 +147,14 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 	private boolean verifyResolution(AdaptationSession session, ResolutionCondition condition, EClass awreqClass) {
 		// If the resolution condition is true, deactivate the session and remove it from the active sessions map.
 		if (condition.evaluate(session)) {
-			AdaptivityUtils.log.info("{0} The problem has been solved or there is nothing else to try. Adaptation session will be terminated.", session.getId()); //$NON-NLS-1$
+			AdaptationUtils.log.info("{0} The problem has been solved or there is nothing else to try. Adaptation session will be terminated.", session.getId()); //$NON-NLS-1$
 			session.terminate();
 			activeSessions.remove(awreqClass);
 			return true;
 		}
 
 		// Otherwise, don't do anything.
-		AdaptivityUtils.log.info("{0} The problem has not yet been solved...", session.getId()); //$NON-NLS-1$
+		AdaptationUtils.log.info("{0} The problem has not yet been solved...", session.getId()); //$NON-NLS-1$
 		return false;
 	}
 }

@@ -39,9 +39,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSession {
 	/**
-	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getEvents()
 	 * @generated
 	 * @ordered
@@ -69,8 +69,8 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 	protected boolean active = ACTIVE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -78,8 +78,8 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected AdaptationSessionImpl() {
@@ -97,7 +96,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -107,7 +105,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Event> getEvents() {
@@ -119,7 +116,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isActive() {
@@ -128,7 +124,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setActive(boolean newActive) {
@@ -140,7 +135,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -149,7 +143,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -161,7 +154,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void addEvent(EcaAwReq awreq) {
@@ -170,7 +162,7 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 		event.setTime(new java.util.Date(System.currentTimeMillis()));
 		event.setAwReq(awreq);
 		getEvents().add(event);
-
+		
 		// If this is the first event of the session, produce its id.
 		if (getEvents().size() == 1) {
 			StringBuilder builder = new StringBuilder();
@@ -183,7 +175,6 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void terminate() {
@@ -192,127 +183,119 @@ public class AdaptationSessionImpl extends EObjectImpl implements AdaptationSess
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getEvents()).basicAdd(otherEnd, msgs);
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getEvents()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			return ((InternalEList<?>) getEvents()).basicRemove(otherEnd, msgs);
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			return getEvents();
-		case EcaPackage.ADAPTATION_SESSION__ACTIVE:
-			return isActive();
-		case EcaPackage.ADAPTATION_SESSION__ID:
-			return getId();
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				return getEvents();
+			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
+				return isActive();
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			getEvents().clear();
-			getEvents().addAll((Collection<? extends Event>) newValue);
-			return;
-		case EcaPackage.ADAPTATION_SESSION__ACTIVE:
-			setActive((Boolean) newValue);
-			return;
-		case EcaPackage.ADAPTATION_SESSION__ID:
-			setId((String) newValue);
-			return;
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				getEvents().clear();
+				getEvents().addAll((Collection<? extends Event>)newValue);
+				return;
+			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
+				setActive((Boolean)newValue);
+				return;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				setId((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			getEvents().clear();
-			return;
-		case EcaPackage.ADAPTATION_SESSION__ACTIVE:
-			setActive(ACTIVE_EDEFAULT);
-			return;
-		case EcaPackage.ADAPTATION_SESSION__ID:
-			setId(ID_EDEFAULT);
-			return;
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				getEvents().clear();
+				return;
+			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
+				setActive(ACTIVE_EDEFAULT);
+				return;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				setId(ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EcaPackage.ADAPTATION_SESSION__EVENTS:
-			return events != null && !events.isEmpty();
-		case EcaPackage.ADAPTATION_SESSION__ACTIVE:
-			return active != ACTIVE_EDEFAULT;
-		case EcaPackage.ADAPTATION_SESSION__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case EcaPackage.ADAPTATION_SESSION__EVENTS:
+				return events != null && !events.isEmpty();
+			case EcaPackage.ADAPTATION_SESSION__ACTIVE:
+				return active != ACTIVE_EDEFAULT;
+			case EcaPackage.ADAPTATION_SESSION__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (active: "); //$NON-NLS-1$
+		result.append(" (active: ");
 		result.append(active);
-		result.append(", id: "); //$NON-NLS-1$
+		result.append(", id: ");
 		result.append(id);
 		result.append(')');
 		return result.toString();

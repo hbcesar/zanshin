@@ -16,7 +16,7 @@
     </eOperations>
     <eOperations name="replaceWith">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Cannot replace a requirement instance with null.&#xA;if (newRequirement == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.error(&quot;Cannot replace a requirement instance with null. A proper requirement instance should be provided.&quot;); //$NON-NLS-1$&#xA;&#x9;throw new IllegalArgumentException();&#xA;}&#xA;&#xA;// Can only replace requirements of the same class.&#xA;if (! newRequirement.eClass().equals(eClass())) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.error(&quot;Cannot replace a requirement instance of class {0} with one of class {1}. Instances should be of the same class.&quot;, eClass().getName(), newRequirement.eClass().getName()); //$NON-NLS-1$&#xA;&#x9;throw new IllegalArgumentException();&#xA;}&#xA;&#xA;// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm). When&#xA;// elements have many-to-one bilateral associations, only the &quot;one&quot; side is manipulated. This is on purpose, as EMF&#xA;// generated code will handle the inverse association automatically.&#xA;Requirement parent = getParent();&#xA;setParent(null);&#xA;newRequirement.setParent(parent);&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement requirement instances of class {0} ({1} -> {2})&quot;, eClass().getName(), this, newRequirement); //$NON-NLS-1$&#xA;&#xA;// After a piece of the requirements tree gets replaced by new instances (with possible different states), check if&#xA;// the ancestors should also have their state reset. For instance, if a failed instance is replaced by a non-failing&#xA;// one in an AND-refinement, the parent should change from Failed to Started or Undefined. Navigate up the tree.&#xA;while (parent != null) {&#xA;&#x9;// This procedure only makes sense in definable requirements.&#xA;&#x9;if (parent instanceof DefinableRequirement) {&#xA;&#x9;&#x9;DefinableRequirement req = (DefinableRequirement) parent;&#xA;&#xA;&#x9;&#x9;// Counts the number of children in each state and the number of definable children.&#xA;&#x9;&#x9;EList&lt;Integer> stateCount = req.getChildrenStateCount();&#xA;&#x9;&#x9;int defChildrenCount = stateCount.get(stateCount.size() - 1);&#xA;&#x9;&#x9;boolean doReset = false;&#xA;&#xA;&#x9;&#x9;// Checks the type of the requirement.&#xA;&#x9;&#x9;switch (req.getRefinementType()) {&#xA;&#x9;&#x9;case AND:&#xA;&#x9;&#x9;&#x9;// For failed AND-refined requirements, if none of its children failed, reset its state.&#xA;&#x9;&#x9;&#x9;doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) &amp;&amp; (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == 0);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;case OR:&#xA;&#x9;&#x9;&#x9;// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.&#xA;&#x9;&#x9;&#x9;doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) &amp;&amp; (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) &lt; defChildrenCount);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// Checks if a reset is in order.&#xA;&#x9;&#x9;if (doReset) {&#xA;&#x9;&#x9;&#x9;// If no children have yet started, set the requirement also as Undefined.&#xA;&#x9;&#x9;&#x9;if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE) == defChildrenCount)&#xA;&#x9;&#x9;&#x9;&#x9;req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED);&#xA;&#xA;&#x9;&#x9;&#x9;// Otherwise, if at least one child has started, set it also as Started.&#xA;&#x9;&#x9;&#x9;else req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;&#xA;&#x9;&#x9;&#x9;// Log what has just happened.&#xA;&#x9;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;The status of {0} has been reset to {1}&quot;, req.eClass().getName(), req.getState()); //$NON-NLS-1$&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;// Next ancestor.&#xA;&#x9;parent = parent.getParent();&#xA;}"/>
+        <details key="body" value="// Cannot replace a requirement instance with null.&#xA;if (newRequirement == null) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.error(&quot;Cannot replace a requirement instance with null. A proper requirement instance should be provided.&quot;); //$NON-NLS-1$&#xA;&#x9;throw new IllegalArgumentException();&#xA;}&#xA;&#xA;// Can only replace requirements of the same class.&#xA;if (! newRequirement.eClass().equals(eClass())) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.error(&quot;Cannot replace a requirement instance of class {0} with one of class {1}. Instances should be of the same class.&quot;, eClass().getName(), newRequirement.eClass().getName()); //$NON-NLS-1$&#xA;&#x9;throw new IllegalArgumentException();&#xA;}&#xA;&#xA;// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm). When&#xA;// elements have many-to-one bilateral associations, only the &quot;one&quot; side is manipulated. This is on purpose, as EMF&#xA;// generated code will handle the inverse association automatically.&#xA;Requirement parent = getParent();&#xA;setParent(null);&#xA;newRequirement.setParent(parent);&#xA;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Replacing requirement instances of class {0} ({1} -> {2})&quot;, eClass().getName(), this, newRequirement); //$NON-NLS-1$&#xA;&#xA;// After a piece of the requirements tree gets replaced by new instances (with possible different states), check if&#xA;// the ancestors should also have their state reset. For instance, if a failed instance is replaced by a non-failing&#xA;// one in an AND-refinement, the parent should change from Failed to Started or Undefined. Navigate up the tree.&#xA;while (parent != null) {&#xA;&#x9;// This procedure only makes sense in definable requirements.&#xA;&#x9;if (parent instanceof DefinableRequirement) {&#xA;&#x9;&#x9;DefinableRequirement req = (DefinableRequirement) parent;&#xA;&#xA;&#x9;&#x9;// Counts the number of children in each state and the number of definable children.&#xA;&#x9;&#x9;EList&lt;Integer> stateCount = req.getChildrenStateCount();&#xA;&#x9;&#x9;int defChildrenCount = stateCount.get(stateCount.size() - 1);&#xA;&#x9;&#x9;boolean doReset = false;&#xA;&#xA;&#x9;&#x9;// Checks the type of the requirement.&#xA;&#x9;&#x9;switch (req.getRefinementType()) {&#xA;&#x9;&#x9;case AND:&#xA;&#x9;&#x9;&#x9;// For failed AND-refined requirements, if none of its children failed, reset its state.&#xA;&#x9;&#x9;&#x9;doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) &amp;&amp; (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == 0);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;case OR:&#xA;&#x9;&#x9;&#x9;// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.&#xA;&#x9;&#x9;&#x9;doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) &amp;&amp; (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) &lt; defChildrenCount);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// Checks if a reset is in order.&#xA;&#x9;&#x9;if (doReset) {&#xA;&#x9;&#x9;&#x9;// If no children have yet started, set the requirement also as Undefined.&#xA;&#x9;&#x9;&#x9;if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE) == defChildrenCount)&#xA;&#x9;&#x9;&#x9;&#x9;req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED);&#xA;&#xA;&#x9;&#x9;&#x9;// Otherwise, if at least one child has started, set it also as Started.&#xA;&#x9;&#x9;&#x9;else req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;&#xA;&#x9;&#x9;&#x9;// Log what has just happened.&#xA;&#x9;&#x9;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;The status of {0} has been reset to {1}&quot;, req.eClass().getName(), req.getState()); //$NON-NLS-1$&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;// Next ancestor.&#xA;&#x9;parent = parent.getParent();&#xA;}"/>
       </eAnnotations>
       <eParameters name="newRequirement" eType="#//Requirement"/>
     </eOperations>
@@ -29,22 +29,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="DefinableRequirement" eSuperTypes="#//Requirement">
     <eOperations name="start">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())&#xA;&#x9;if ((child instanceof DefinableRequirement) &amp;&amp; (((DefinableRequirement) child).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))&#xA;&#x9;&#x9;((DefinableRequirement)child).start();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement) &amp;&amp; (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))&#xA;&#x9;((DefinableRequirement) parent).start();"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement) &amp;&amp; (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))&#xA;&#x9;((DefinableRequirement) parent).start();"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="end">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement ended: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement ended: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="success">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement succeeded: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((DefinableRequirement) parent).success();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement succeeded: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((DefinableRequirement) parent).success();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="fail">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement failed: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement failed: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED);&#xA;end();&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="checkState">
@@ -71,7 +71,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" eSuperTypes="#//DefinableRequirement">
     <eOperations name="cancel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Only process the cancellation if the requirement has not yet been canceled.&#xA;if (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement canceled: &quot; + getClass().getSimpleName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;&#x9;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);&#xA;&#x9;end();&#xA;&#x9;&#xA;&#x9;// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.&#xA;&#x9;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;&#x9;if ((parent != null) &amp;&amp; (parent instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement)) {&#xA;&#x9;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).checkState();&#xA;&#x9;&#x9;else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();&#xA;&#x9;&#x9;else ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).fail();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;// Also propagate the cancellation to the children if and-refined and the children are performative.&#xA;&#x9;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)&#xA;&#x9;&#x9;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())&#xA;&#x9;&#x9;&#x9;if (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();&#xA;}"/>
+        <details key="body" value="// Only process the cancellation if the requirement has not yet been canceled.&#xA;if (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement canceled: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;&#x9;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);&#xA;&#x9;end();&#xA;&#x9;&#xA;&#x9;// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.&#xA;&#x9;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;&#x9;if ((parent != null) &amp;&amp; (parent instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement)) {&#xA;&#x9;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).checkState();&#xA;&#x9;&#x9;else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();&#xA;&#x9;&#x9;else ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).fail();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;// Also propagate the cancellation to the children if and-refined and the children are performative.&#xA;&#x9;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)&#xA;&#x9;&#x9;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())&#xA;&#x9;&#x9;&#x9;if (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();&#xA;}"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="checkState">
@@ -104,6 +104,8 @@
         eType="#//DefinableRequirement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
         eOpposite="#//GoalModel/awReqs"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementCoefficient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//DefinableRequirement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//PerformativeRequirement">
@@ -123,12 +125,26 @@
     <eLiterals name="FAILED" value="3" literal="Failed"/>
     <eLiterals name="CANCELED" value="4" literal="Canceled"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DifferentialRelationOperator">
+    <eLiterals name="GREATER_THAN" literal="GT"/>
+    <eLiterals name="FEWER_THAN" literal="FT"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MonitorableMethod">
     <eLiterals name="START" literal="Start"/>
     <eLiterals name="END" value="1" literal="End"/>
     <eLiterals name="SUCCESS" value="2" literal="Success"/>
     <eLiterals name="FAIL" value="3" literal="Fail"/>
     <eLiterals name="CANCEL" value="4" literal="Cancel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterMetric">
+    <eLiterals name="ENUMERATED" literal="Enumerated"/>
+    <eLiterals name="INTEGER" value="1" literal="Integer"/>
+    <eLiterals name="REAL" value="2" literal="Real"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterType">
+    <eLiterals name="VARIATION_POINT" literal="VP"/>
+    <eLiterals name="ENUMERATED_CONTROL_VARIABLE" value="1" literal="ECV"/>
+    <eLiterals name="NUMERIC_CONTROL_VARIABLE" value="2" literal="NCV"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RefinementType">
     <eLiterals name="AND" literal="And"/>
@@ -138,7 +154,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
         eOpposite="#//GoalModel/actors"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Configuration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true" eOpposite="#//Parameter/configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/configuration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DifferentialRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indicator" eType="#//AwReq"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//Parameter"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//DifferentialRelationOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0.0"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalModel">
     <eOperations name="getId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -153,8 +183,6 @@
         eType="#//AwReq" containment="true" eOpposite="#//AwReq/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
         eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//Parameter" containment="true" eOpposite="#//Parameter/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
         changeable="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -164,10 +192,19 @@
         <details key="suppressedSetVisibility" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
+        containment="true" eOpposite="#//Configuration/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+        eType="#//DifferentialRelation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
-        eOpposite="#//GoalModel/parameters"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
+        eOpposite="#//Configuration/parameters"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ParameterType"
+        defaultValueLiteral="VP"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" lowerBound="1"
+        eType="#//ParameterMetric" defaultValueLiteral="Enumerated"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationAlgorithm"/>
 </ecore:EPackage>

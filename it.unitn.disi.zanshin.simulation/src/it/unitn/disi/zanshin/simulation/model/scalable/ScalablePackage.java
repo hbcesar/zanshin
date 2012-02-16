@@ -107,15 +107,6 @@ public interface ScalablePackage extends EPackage {
 	int SCALABLE_GOAL_MODEL__ACTORS = GorePackage.GOAL_MODEL__ACTORS;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALABLE_GOAL_MODEL__PARAMETERS = GorePackage.GOAL_MODEL__PARAMETERS;
-
-	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,6 +114,24 @@ public interface ScalablePackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALABLE_GOAL_MODEL__INTERNAL_ID = GorePackage.GOAL_MODEL__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALABLE_GOAL_MODEL__CONFIGURATION = GorePackage.GOAL_MODEL__CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Relations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALABLE_GOAL_MODEL__RELATIONS = GorePackage.GOAL_MODEL__RELATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Goal Model</em>' class.
@@ -214,6 +223,15 @@ public interface ScalablePackage extends EPackage {
 	 * @ordered
 	 */
 	int AR1__GOAL_MODEL = EcaPackage.ECA_AW_REQ__GOAL_MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AR1__INCREMENT_COEFFICIENT = EcaPackage.ECA_AW_REQ__INCREMENT_COEFFICIENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.

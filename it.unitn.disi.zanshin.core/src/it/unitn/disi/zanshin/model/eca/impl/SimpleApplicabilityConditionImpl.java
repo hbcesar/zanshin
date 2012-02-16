@@ -17,13 +17,12 @@ import org.eclipse.emf.ecore.EClass;
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl implements SimpleApplicabilityCondition {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected SimpleApplicabilityConditionImpl() {
@@ -32,7 +31,6 @@ public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -42,7 +40,6 @@ public class SimpleApplicabilityConditionImpl extends ApplicabilityConditionImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {

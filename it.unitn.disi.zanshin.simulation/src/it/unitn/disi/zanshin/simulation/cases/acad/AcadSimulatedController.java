@@ -1,6 +1,7 @@
 package it.unitn.disi.zanshin.simulation.cases.acad;
 
 import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
@@ -22,6 +23,7 @@ public class AcadSimulatedController extends EmptySimulatedController {
 	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#initiate(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
 	public void initiate(Requirement req) {
+		System.out.println("############### initiate: " + req);
 		EClass reqClass = req.eClass();
 
 		// Perform different application-specific actions depending on the requirement.
@@ -39,4 +41,30 @@ public class AcadSimulatedController extends EmptySimulatedController {
 		// Reads the A-CAD model again from the file.
 		return SimulationUtils.readDefaultAcadGoalModel();
 	}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#copyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement, it.unitn.disi.zanshin.model.gore.PerformativeRequirement) */
+	@Override
+	public void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#rollback(it.unitn.disi.zanshin.model.gore.PerformativeRequirement) */
+	@Override
+	public void rollback(PerformativeRequirement req) {}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#terminate(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public void terminate(Requirement req) {
+		System.out.println("############### terminate: " + req);
+	}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#waitFor(long) */
+	@Override
+	public void waitFor(long timeInMillis) {}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#resume(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public void resume(Requirement req) {}
+
+	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#suspend(it.unitn.disi.zanshin.model.gore.Requirement) */
+	@Override
+	public void suspend(Requirement req) {}
 }

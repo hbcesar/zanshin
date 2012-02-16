@@ -629,6 +629,15 @@ public interface AcadFactory extends EFactory {
 	AcadGoalModel createAcadGoalModel();
 
 	/**
+	 * Returns a new object of class '<em>CV MST</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>CV MST</em>'.
+	 * @generated
+	 */
+	CV_MST createCV_MST();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

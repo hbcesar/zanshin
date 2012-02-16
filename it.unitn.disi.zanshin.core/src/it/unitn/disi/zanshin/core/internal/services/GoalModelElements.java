@@ -236,6 +236,9 @@ public class GoalModelElements {
 	 *          The new requirement.
 	 */
 	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
+		// Replaces the requirement.
+		oldReq.replaceWith(newReq);
+		
 		// Uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override

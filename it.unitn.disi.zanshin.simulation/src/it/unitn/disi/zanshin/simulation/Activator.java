@@ -56,13 +56,13 @@ public class Activator implements BundleActivator {
 	/** Setter for repositoryService. */
 	public void setRepositoryService(IRepositoryService repositoryService) {
 		Activator.repositoryService = repositoryService;
-		SimulationUtils.log.info("Repository Service injected in the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Repository Service injected in this bundle"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
 	public void unsetRepositoryService(IRepositoryService repositoryService) {
 		Activator.repositoryService = null;
-		SimulationUtils.log.info("Repository Service disposed from the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Repository Service disposed from this bundle"); //$NON-NLS-1$
 	}
 
 	/** Setter for controllerService. */
@@ -70,7 +70,7 @@ public class Activator implements BundleActivator {
 		Activator.controllerService = controllerService;
 		if (simulationManager != null)
 			simulationManager.setControllerService(controllerService);
-		SimulationUtils.log.info("Target System SimulatedController Service injected in the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Target System SimulatedController Service injected in this bundle"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for controllerService (required by OSGi Declarative Services). */
@@ -78,19 +78,19 @@ public class Activator implements BundleActivator {
 		Activator.controllerService = null;
 		if (simulationManager != null)
 			simulationManager.setControllerService(null);
-		SimulationUtils.log.info("Target System SimulatedController Service disposed from the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Target System SimulatedController Service disposed from this bundle"); //$NON-NLS-1$
 	}
 
 	/** Setter for monitoringService. */
 	public void setMonitoringService(IMonitoringService monitoringService) {
 		Activator.monitoringService = monitoringService;
-		SimulationUtils.log.info("Monitoring Service injected in the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Monitoring Service injected in this bundle"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for monitoringService (required by OSGi Declarative Services). */
 	public void unsetMonitoringService(IMonitoringService monitoringService) {
 		Activator.monitoringService = null;
-		SimulationUtils.log.info("Monitoring Service disposed from the activator"); //$NON-NLS-1$
+		SimulationUtils.log.info("Monitoring Service disposed from this bundle"); //$NON-NLS-1$
 	}
 
 	/** Getter for simulationManager. */
@@ -120,7 +120,7 @@ public class Activator implements BundleActivator {
 	}
 
 	/**
-	 * Creates a new simulation manager, reading its configuration from the properties file.
+	 * Creates a new simulation manager to run all simulations, reading its configuration from the properties file.
 	 * 
 	 * @return A new simulation manager, ready to run the configured simulations.
 	 */
@@ -128,6 +128,13 @@ public class Activator implements BundleActivator {
 		// Reads the simulation properties, creates the simulation manager and returns.
 		Properties props = SimulationUtils.readSimulationProperties();
 		simulationManager = new SimulationManager(props, controllerService, monitoringService);
+		return simulationManager;
+	}
+	
+	public static SimulationManager createSimulationManager(Integer simulationNumber) throws IOException {
+		// Reads the simulation properties, creates the simulation manager for a specific simulation and returns.
+		Properties props = SimulationUtils.readSimulationProperties();
+		simulationManager = new SimulationManager(simulationNumber, props, controllerService, monitoringService);
 		return simulationManager;
 	}
 

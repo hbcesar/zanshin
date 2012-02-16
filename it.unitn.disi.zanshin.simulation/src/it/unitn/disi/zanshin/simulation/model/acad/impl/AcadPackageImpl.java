@@ -545,6 +545,13 @@ public class AcadPackageImpl extends EPackageImpl implements AcadPackage {
 	private EClass acadGoalModelEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cV_MSTEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -1218,6 +1225,15 @@ public class AcadPackageImpl extends EPackageImpl implements AcadPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCV_MST() {
+		return cV_MSTEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AcadFactory getAcadFactory() {
 		return (AcadFactory)getEFactoryInstance();
 	}
@@ -1374,6 +1390,8 @@ public class AcadPackageImpl extends EPackageImpl implements AcadPackage {
 		ar15EClass = createEClass(AR15);
 
 		acadGoalModelEClass = createEClass(ACAD_GOAL_MODEL);
+
+		cV_MSTEClass = createEClass(CV_MST);
 	}
 
 	/**
@@ -1471,141 +1489,144 @@ public class AcadPackageImpl extends EPackageImpl implements AcadPackage {
 		ar14EClass.getESuperTypes().add(theEcaPackage.getEcaAwReq());
 		ar15EClass.getESuperTypes().add(theEcaPackage.getEcaAwReq());
 		acadGoalModelEClass.getESuperTypes().add(theGorePackage.getGoalModel());
+		cV_MSTEClass.getESuperTypes().add(theGorePackage.getParameter());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(g_GenDispatchEClass, G_GenDispatch.class, "G_GenDispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_GenDispatchEClass, G_GenDispatch.class, "G_GenDispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_CallTakingEClass, G_CallTaking.class, "G_CallTaking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_CallTakingEClass, G_CallTaking.class, "G_CallTaking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_DataUpdEClass, D_DataUpd.class, "D_DataUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_DataUpdEClass, D_DataUpd.class, "D_DataUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_ResourceIdEClass, G_ResourceId.class, "G_ResourceId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_ResourceIdEClass, G_ResourceId.class, "G_ResourceId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_ResourceMobEClass, G_ResourceMob.class, "G_ResourceMob", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_ResourceMobEClass, G_ResourceMob.class, "G_ResourceMob", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_ObtainMapEClass, G_ObtainMap.class, "G_ObtainMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_ObtainMapEClass, G_ObtainMap.class, "G_ObtainMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_IncidentUpdEClass, G_IncidentUpd.class, "G_IncidentUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_IncidentUpdEClass, G_IncidentUpd.class, "G_IncidentUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_MaxCallsEClass, D_MaxCalls.class, "D_MaxCalls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_MaxCallsEClass, D_MaxCalls.class, "D_MaxCalls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_RegCallEClass, G_RegCall.class, "G_RegCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_RegCallEClass, G_RegCall.class, "G_RegCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_ConfirmCallEClass, T_ConfirmCall.class, "T_ConfirmCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_ConfirmCallEClass, T_ConfirmCall.class, "T_ConfirmCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_AssignIncidentEClass, G_AssignIncident.class, "G_AssignIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_AssignIncidentEClass, G_AssignIncident.class, "G_AssignIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_SearchDuplicEClass, T_SearchDuplic.class, "T_SearchDuplic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_SearchDuplicEClass, T_SearchDuplic.class, "T_SearchDuplic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_CreateOrAssignEClass, T_CreateOrAssign.class, "T_CreateOrAssign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_CreateOrAssignEClass, T_CreateOrAssign.class, "T_CreateOrAssign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_InputInfoEClass, T_InputInfo.class, "T_InputInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_InputInfoEClass, T_InputInfo.class, "T_InputInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_DetectLocEClass, T_DetectLoc.class, "T_DetectLoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_DetectLocEClass, T_DetectLoc.class, "T_DetectLoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_SpecConfigEClass, T_SpecConfig.class, "T_SpecConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_SpecConfigEClass, T_SpecConfig.class, "T_SpecConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_ConfIncidentEClass, T_ConfIncident.class, "T_ConfIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_ConfIncidentEClass, T_ConfIncident.class, "T_ConfIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_DetBestAmbEClass, T_DetBestAmb.class, "T_DetBestAmb", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_DetBestAmbEClass, T_DetBestAmb.class, "T_DetBestAmb", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_InformStatEClass, T_InformStat.class, "T_InformStat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_InformStatEClass, T_InformStat.class, "T_InformStat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_RouteAssistEClass, G_RouteAssist.class, "G_RouteAssist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_RouteAssistEClass, G_RouteAssist.class, "G_RouteAssist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_DriverKnowsEClass, D_DriverKnows.class, "D_DriverKnows", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_DriverKnowsEClass, D_DriverKnows.class, "D_DriverKnows", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_AcadAssistsEClass, T_AcadAssists.class, "T_AcadAssists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_AcadAssistsEClass, T_AcadAssists.class, "T_AcadAssists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_StaffAssistsEClass, T_StaffAssists.class, "T_StaffAssists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_StaffAssistsEClass, T_StaffAssists.class, "T_StaffAssists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_FeedbackEClass, T_Feedback.class, "T_Feedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_FeedbackEClass, T_Feedback.class, "T_Feedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_GazetUpdEClass, D_GazetUpd.class, "D_GazetUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_GazetUpdEClass, D_GazetUpd.class, "D_GazetUpd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_ManualMapEClass, G_ManualMap.class, "G_ManualMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_ManualMapEClass, G_ManualMap.class, "G_ManualMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_CheckGazetEClass, T_CheckGazet.class, "T_CheckGazet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_CheckGazetEClass, T_CheckGazet.class, "T_CheckGazet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_CheckPaperEClass, T_CheckPaper.class, "T_CheckPaper", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_CheckPaperEClass, T_CheckPaper.class, "T_CheckPaper", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_DispExceptEClass, G_DispExcept.class, "G_DispExcept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_DispExceptEClass, G_DispExcept.class, "G_DispExcept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_MonitorResEClass, G_MonitorRes.class, "G_MonitorRes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_MonitorResEClass, G_MonitorRes.class, "G_MonitorRes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(g_UpdPositionEClass, G_UpdPosition.class, "G_UpdPosition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(g_UpdPositionEClass, G_UpdPosition.class, "G_UpdPosition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_MDTPosEClass, D_MDTPos.class, "D_MDTPos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_MDTPosEClass, D_MDTPos.class, "D_MDTPos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_RadioPosEClass, T_RadioPos.class, "T_RadioPos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_RadioPosEClass, T_RadioPos.class, "T_RadioPos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(d_MDTUseEClass, D_MDTUse.class, "D_MDTUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(d_MDTUseEClass, D_MDTUse.class, "D_MDTUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_MonitorStatusEClass, T_MonitorStatus.class, "T_MonitorStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_MonitorStatusEClass, T_MonitorStatus.class, "T_MonitorStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_DispStatusEClass, T_DispStatus.class, "T_DispStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_DispStatusEClass, T_DispStatus.class, "T_DispStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_DispDepArrivEClass, T_DispDepArriv.class, "T_DispDepArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_DispDepArrivEClass, T_DispDepArriv.class, "T_DispDepArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_ReplAmbEClass, T_ReplAmb.class, "T_ReplAmb", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_ReplAmbEClass, T_ReplAmb.class, "T_ReplAmb", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_ExceptEClass, T_Except.class, "T_Except", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_ExceptEClass, T_Except.class, "T_Except", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_ExceptQueueEClass, T_ExceptQueue.class, "T_ExceptQueue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_ExceptQueueEClass, T_ExceptQueue.class, "T_ExceptQueue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(t_CloseIncidentEClass, T_CloseIncident.class, "T_CloseIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(t_CloseIncidentEClass, T_CloseIncident.class, "T_CloseIncident", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(s_FastDispatchEClass, S_FastDispatch.class, "S_FastDispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(s_FastDispatchEClass, S_FastDispatch.class, "S_FastDispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(q_DispatchEClass, Q_Dispatch.class, "Q_Dispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(q_DispatchEClass, Q_Dispatch.class, "Q_Dispatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(s_FastAssistEClass, S_FastAssist.class, "S_FastAssist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(s_FastAssistEClass, S_FastAssist.class, "S_FastAssist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(q_IncidResolvEClass, Q_IncidResolv.class, "Q_IncidResolv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(q_IncidResolvEClass, Q_IncidResolv.class, "Q_IncidResolv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(s_FastArrivEClass, S_FastArriv.class, "S_FastArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(s_FastArrivEClass, S_FastArriv.class, "S_FastArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(q_AmbArrivEClass, Q_AmbArriv.class, "Q_AmbArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(q_AmbArrivEClass, Q_AmbArriv.class, "Q_AmbArriv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(s_LowCostEClass, S_LowCost.class, "S_LowCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(s_LowCostEClass, S_LowCost.class, "S_LowCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(q_MaxCostEClass, Q_MaxCost.class, "Q_MaxCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(q_MaxCostEClass, Q_MaxCost.class, "Q_MaxCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(s_UserFriendlyEClass, S_UserFriendly.class, "S_UserFriendly", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(s_UserFriendlyEClass, S_UserFriendly.class, "S_UserFriendly", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(q_MaxTimeMsgEClass, Q_MaxTimeMsg.class, "Q_MaxTimeMsg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(q_MaxTimeMsgEClass, Q_MaxTimeMsg.class, "Q_MaxTimeMsg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar1EClass, it.unitn.disi.zanshin.simulation.model.acad.AR1.class, "AR1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar1EClass, it.unitn.disi.zanshin.simulation.model.acad.AR1.class, "AR1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar2EClass, it.unitn.disi.zanshin.simulation.model.acad.AR2.class, "AR2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar2EClass, it.unitn.disi.zanshin.simulation.model.acad.AR2.class, "AR2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar3EClass, it.unitn.disi.zanshin.simulation.model.acad.AR3.class, "AR3", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar3EClass, it.unitn.disi.zanshin.simulation.model.acad.AR3.class, "AR3", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar4EClass, it.unitn.disi.zanshin.simulation.model.acad.AR4.class, "AR4", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar4EClass, it.unitn.disi.zanshin.simulation.model.acad.AR4.class, "AR4", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar5EClass, it.unitn.disi.zanshin.simulation.model.acad.AR5.class, "AR5", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar5EClass, it.unitn.disi.zanshin.simulation.model.acad.AR5.class, "AR5", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar6EClass, it.unitn.disi.zanshin.simulation.model.acad.AR6.class, "AR6", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar6EClass, it.unitn.disi.zanshin.simulation.model.acad.AR6.class, "AR6", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar7EClass, it.unitn.disi.zanshin.simulation.model.acad.AR7.class, "AR7", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar7EClass, it.unitn.disi.zanshin.simulation.model.acad.AR7.class, "AR7", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar8EClass, it.unitn.disi.zanshin.simulation.model.acad.AR8.class, "AR8", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar8EClass, it.unitn.disi.zanshin.simulation.model.acad.AR8.class, "AR8", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar9EClass, it.unitn.disi.zanshin.simulation.model.acad.AR9.class, "AR9", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar9EClass, it.unitn.disi.zanshin.simulation.model.acad.AR9.class, "AR9", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar10EClass, it.unitn.disi.zanshin.simulation.model.acad.AR10.class, "AR10", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar10EClass, it.unitn.disi.zanshin.simulation.model.acad.AR10.class, "AR10", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar11EClass, it.unitn.disi.zanshin.simulation.model.acad.AR11.class, "AR11", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar11EClass, it.unitn.disi.zanshin.simulation.model.acad.AR11.class, "AR11", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar12EClass, it.unitn.disi.zanshin.simulation.model.acad.AR12.class, "AR12", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar12EClass, it.unitn.disi.zanshin.simulation.model.acad.AR12.class, "AR12", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar13EClass, it.unitn.disi.zanshin.simulation.model.acad.AR13.class, "AR13", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar13EClass, it.unitn.disi.zanshin.simulation.model.acad.AR13.class, "AR13", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar14EClass, it.unitn.disi.zanshin.simulation.model.acad.AR14.class, "AR14", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar14EClass, it.unitn.disi.zanshin.simulation.model.acad.AR14.class, "AR14", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ar15EClass, it.unitn.disi.zanshin.simulation.model.acad.AR15.class, "AR15", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(ar15EClass, it.unitn.disi.zanshin.simulation.model.acad.AR15.class, "AR15", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(acadGoalModelEClass, AcadGoalModel.class, "AcadGoalModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(acadGoalModelEClass, AcadGoalModel.class, "AcadGoalModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(cV_MSTEClass, it.unitn.disi.zanshin.simulation.model.acad.CV_MST.class, "CV_MST", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

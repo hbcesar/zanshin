@@ -26,14 +26,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AdaptationStrategy extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Aw Req</b></em>' container reference. It is bidirectional and its opposite is '
-	 * {@link it.unitn.disi.zanshin.model.eca.EcaAwReq#getStrategies <em>Strategies</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Aw Req</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.eca.EcaAwReq#getStrategies <em>Strategies</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Aw Req</em>' container reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Aw Req</em>' container reference.
 	 * @see #setAwReq(EcaAwReq)
 	 * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getAdaptationStrategy_AwReq()
@@ -44,26 +44,24 @@ public interface AdaptationStrategy extends EObject {
 	EcaAwReq getAwReq();
 
 	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getAwReq <em>Aw Req</em>}'
-	 * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Aw Req</em>' container reference.
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getAwReq <em>Aw Req</em>}' container reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Aw Req</em>' container reference.
 	 * @see #getAwReq()
 	 * @generated
 	 */
 	void setAwReq(EcaAwReq value);
 
 	/**
-	 * Returns the value of the '<em><b>Condition</b></em>' containment reference. It is bidirectional and its opposite is
-	 * '{@link it.unitn.disi.zanshin.model.eca.ApplicabilityCondition#getStrategy <em>Strategy</em>}'. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.eca.ApplicabilityCondition#getStrategy <em>Strategy</em>}'.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Condition</em>' containment reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(ApplicabilityCondition)
 	 * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getAdaptationStrategy_Condition()
@@ -74,11 +72,9 @@ public interface AdaptationStrategy extends EObject {
 	ApplicabilityCondition getCondition();
 
 	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getCondition <em>Condition</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Condition</em>' containment reference.
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getCondition <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Condition</em>' containment reference.
 	 * @see #getCondition()
 	 * @generated
 	 */
@@ -86,18 +82,14 @@ public interface AdaptationStrategy extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel body='// This method is not supposed to be called.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method AdaptationStrategyImpl.execute() has been called, but this method is not meant to be called!\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method is not supposed to be called.\nit.unitn.disi.zanshin.core.CoreUtils.log.error(\"Method AdaptationStrategyImpl.execute() has been called, but this method is not meant to be called!\"); //$NON-NLS-1$\nthrow new UnsupportedOperationException();'"
 	 * @generated
 	 */
 	void execute(AdaptationSession session);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel body='// This method is not supposed to be called.\nit.unitn.disi.zanshin.core.CoreUtils.log.debug(\"Method AdaptationStrategyImpl.updateReferences() has been called, indicating it has not been overridden by the subclass {0}. Make sure this is on purpose...\", eClass().getName()); //$NON-NLS-1$'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// This method is not supposed to be called.\nit.unitn.disi.zanshin.core.CoreUtils.log.debug(\"Method AdaptationStrategyImpl.updateReferences() has been called, indicating it has not been overridden by the subclass {0}. Make sure this is on purpose...\", eClass().getName()); //$NON-NLS-1$'"
 	 * @generated
 	 */
 	void updateReferences();

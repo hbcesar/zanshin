@@ -6,6 +6,7 @@
  */
 package it.unitn.disi.zanshin.simulation.model.acad.impl;
 
+import it.unitn.disi.zanshin.simulation.model.acad.*;
 import it.unitn.disi.zanshin.simulation.model.acad.AR1;
 import it.unitn.disi.zanshin.simulation.model.acad.AR10;
 import it.unitn.disi.zanshin.simulation.model.acad.AR11;
@@ -97,7 +98,7 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	 */
 	public static AcadFactory init() {
 		try {
-			AcadFactory theAcadFactory = (AcadFactory)EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0");  //$NON-NLS-1$
+			AcadFactory theAcadFactory = (AcadFactory)EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0"); 
 			if (theAcadFactory != null) {
 				return theAcadFactory;
 			}
@@ -193,8 +194,9 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 			case AcadPackage.AR14: return createAR14();
 			case AcadPackage.AR15: return createAR15();
 			case AcadPackage.ACAD_GOAL_MODEL: return createAcadGoalModel();
+			case AcadPackage.CV_MST: return createCV_MST();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -866,6 +868,16 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	public AcadGoalModel createAcadGoalModel() {
 		AcadGoalModelImpl acadGoalModel = new AcadGoalModelImpl();
 		return acadGoalModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CV_MST createCV_MST() {
+		CV_MSTImpl cV_MST = new CV_MSTImpl();
+		return cV_MST;
 	}
 
 	/**

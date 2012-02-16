@@ -12,11 +12,13 @@ import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
+import it.unitn.disi.zanshin.simulation.model.acad.*;
 import it.unitn.disi.zanshin.simulation.model.acad.AR1;
 import it.unitn.disi.zanshin.simulation.model.acad.AR10;
 import it.unitn.disi.zanshin.simulation.model.acad.AR11;
@@ -876,6 +878,13 @@ public class AcadSwitch  {
 				AcadGoalModel acadGoalModel = (AcadGoalModel)theEObject;
 				Object result = caseAcadGoalModel(acadGoalModel);
 				if (result == null) result = caseGoalModel(acadGoalModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AcadPackage.CV_MST: {
+				CV_MST cV_MST = (CV_MST)theEObject;
+				Object result = caseCV_MST(cV_MST);
+				if (result == null) result = caseParameter(cV_MST);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1889,6 +1898,21 @@ public class AcadSwitch  {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>CV MST</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>CV MST</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseCV_MST(CV_MST object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Ocl Any</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -2065,6 +2089,21 @@ public class AcadSwitch  {
 	 * @generated
 	 */
 	public Object caseGoalModel(GoalModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseParameter(Parameter object) {
 		return null;
 	}
 

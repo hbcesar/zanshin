@@ -70,4 +70,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="AR14" eSuperTypes="platform:/plugin/it.unitn.disi.zanshin.core/model/eca.ecore#//EcaAwReq"/>
   <eClassifiers xsi:type="ecore:EClass" name="AR15" eSuperTypes="platform:/plugin/it.unitn.disi.zanshin.core/model/eca.ecore#//EcaAwReq"/>
   <eClassifiers xsi:type="ecore:EClass" name="AcadGoalModel" eSuperTypes="platform:/plugin/it.unitn.disi.zanshin.core/model/gore.ecore#//GoalModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CV_MST" eSuperTypes="platform:/plugin/it.unitn.disi.zanshin.core/model/gore.ecore#//Parameter"/>
 </ecore:EPackage>
