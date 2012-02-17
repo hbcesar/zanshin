@@ -6,7 +6,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="LTL.ecore#//OclAny">
     <eOperations name="findGoalModel" eType="#//GoalModel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="GoalModel model = null;&#xA;&#xA;// If it's the root goal, return the goal model.&#xA;if (it.unitn.disi.zanshin.model.gore.Goal.class.isAssignableFrom(getClass()))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;&#xA;// Otherwise, move up the requirement tree looking for the root goal.&#xA;else if (getParent() != null)&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;"/>
+        <details key="body" value="GoalModel model = null;&#xA;&#xA;// If it's the root goal, return the goal model.&#xA;if (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;&#xA;// Otherwise, move up the requirement tree looking for the root goal.&#xA;else if (getParent() != null)&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getChildrenStateCount" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">

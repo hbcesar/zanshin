@@ -234,7 +234,7 @@ public class RelaxReplaceImpl extends AdaptationStrategyImpl implements RelaxRep
 	 * @generated
 	 */
 	public void execute(AdaptationSession session) {
-		String strategyName = getClass().getInterfaces()[0].getSimpleName();
+		String strategyName = eClass().getName();
 
 		// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).
 		it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();

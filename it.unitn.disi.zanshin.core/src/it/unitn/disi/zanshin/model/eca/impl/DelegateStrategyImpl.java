@@ -102,7 +102,7 @@ public class DelegateStrategyImpl extends AdaptationStrategyImpl implements Dele
 	 * @generated
 	 */
 	public void execute(AdaptationSession session) {
-		String strategyName = getClass().getInterfaces()[0].getSimpleName();
+		String strategyName = eClass().getName();
 
 		// Obtains a reference to the target system's controller and checks if it exists (if it has been registered).
 		it.unitn.disi.zanshin.services.ITargetSystemControllerService controller = it.unitn.disi.zanshin.core.Activator.getControllerService();
@@ -121,7 +121,7 @@ public class DelegateStrategyImpl extends AdaptationStrategyImpl implements Dele
 		}
 
 		// Executes the Delegate strategy.
-		strategyName += "(" + actor.getClass().getInterfaces()[0].getSimpleName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+		strategyName += "(" + actor.eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
 		controller.sendWarning(actor, awreq);
 		controller.waitForFix(awreq);

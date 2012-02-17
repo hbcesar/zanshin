@@ -56,7 +56,7 @@ public class SimpleResolutionConditionImpl extends ResolutionConditionImpl imple
 			it.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);
 			it.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();
 			it.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();
-			if ((lastStrategy != null) && (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))
+			if ((lastStrategy != null) && (it.unitn.disi.zanshin.model.eca.EcaPackage.eINSTANCE.getAbortStrategy().isInstance(lastStrategy)))
 				return true;
 		}
 
