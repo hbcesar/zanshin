@@ -171,15 +171,15 @@ public class RequirementImpl extends OclAnyImpl implements Requirement {
 	 */
 	public GoalModel findGoalModel() {
 		GoalModel model = null;
-
+		
 		// If it's the root goal, return the goal model.
 		if (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))
 			model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();
-
-		// Otherwise, move up the requirement tree looking for the root goal.
-		else if (getParent() != null)
+		
+		// If the model is not found in the root goal, move up the requirement tree looking for the root goal.
+		if ((model == null) && (getParent() != null))
 			model = getParent().findGoalModel();
-
+		
 		// Returns the found model, or null if no model has been found.
 		return model;
 	}

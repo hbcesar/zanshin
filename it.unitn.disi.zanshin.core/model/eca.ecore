@@ -265,6 +265,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"
         defaultValueLiteral="class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="procedureIds" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReconfigurationApplicabilityCondition"
       eSuperTypes="#//ApplicabilityCondition">
