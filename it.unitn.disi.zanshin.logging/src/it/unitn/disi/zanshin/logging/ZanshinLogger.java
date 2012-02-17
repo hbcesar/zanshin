@@ -137,7 +137,7 @@ public class ZanshinLogger implements LogListener, ServiceListener {
 	 * @return The formatted log message.
 	 */
 	protected String formatLogMessage(Date time, String bundleName, int level, String message) {
-		String formattedBundleName = (bundleName.substring(14) + "                     ").substring(0, 18); //$NON-NLS-1$
+		String formattedBundleName = (bundleName.substring(14) + "                            ").substring(0, 25); //$NON-NLS-1$
 		return MessageFormat.format(messagePattern, dateFormat.format(time), formattedBundleName, logLevelLabels[level], message);
 	}
 

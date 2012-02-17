@@ -1,11 +1,14 @@
 package it.unitn.disi.zanshin.adaptation.qualia.internal.services;
 
+import it.unitn.disi.zanshin.adaptation.qualia.model.AdaptationAlgorithm;
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.ApplicabilityCondition;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.services.IReconfigurationService;
+
+import java.util.List;
 
 /**
  * TODO: document this type.
@@ -23,23 +26,34 @@ public class QualiaReconfigurationService implements IReconfigurationService {
 		return ID;
 	}
 
-	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#checkApplicability(it.unitn.disi.zanshin.model.gore.AwReq, it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ApplicabilityCondition) */
+	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#checkApplicability(java.util.List, it.unitn.disi.zanshin.model.gore.AwReq, it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ApplicabilityCondition) */
 	@Override
-	public boolean checkApplicability(AwReq awreq, AdaptationSession session, ApplicabilityCondition wrappedCondition) {
-		// TODO Auto-generated method stub
+	public boolean checkApplicability(List<String> procedureIds, AwReq awreq, AdaptationSession session, ApplicabilityCondition wrappedCondition) {
+		// Creates the adaptation algorithm given the procedures.
+		AdaptationAlgorithm algorithm = new AdaptationAlgorithm(procedureIds);
+		
+		// FIXME: implement this
 		return wrappedCondition.evaluate(session);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#findConfiguration(it.unitn.disi.zanshin.model.gore.AwReq) */
+	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#findConfiguration(java.util.List, it.unitn.disi.zanshin.model.gore.AwReq) */
 	@Override
-	public Configuration findConfiguration(AwReq awreq) {
-		// TODO Auto-generated method stub
+	public Configuration findConfiguration(List<String> procedureIds, AwReq awreq) {
+		// Creates the adaptation algorithm given the procedures.
+		AdaptationAlgorithm algorithm = new AdaptationAlgorithm(procedureIds);
+		
+		// FIXME: implement this
+		for (String id : procedureIds) System.out.println("############# " + id);
 		return null;
 	}
 
-	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#checkResolution(it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ResolutionCondition) */
+	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#checkResolution(java.util.List, it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ResolutionCondition) */
 	@Override
-	public boolean checkResolution(AdaptationSession session, ResolutionCondition wrappedCondition) {
+	public boolean checkResolution(List<String> procedureIds, AdaptationSession session, ResolutionCondition wrappedCondition) {
+		// Creates the adaptation algorithm given the procedures.
+		AdaptationAlgorithm algorithm = new AdaptationAlgorithm(procedureIds);
+		
+		// FIXME: implement this
 		return wrappedCondition.evaluate(session);
 	}
 }

@@ -1,4 +1,4 @@
-package it.unitn.disi.zanshin.adaptation;
+package it.unitn.disi.zanshin.adaptation.qualia;
 
 import it.unitn.disi.zanshin.util.EmptyLogger;
 import it.unitn.disi.zanshin.util.ILogger;
@@ -7,17 +7,17 @@ import it.unitn.disi.zanshin.util.PlatformLogger;
 import org.osgi.service.log.LogService;
 
 /**
- * Internal utilities for the Monitoring Component.
+ * Internal utilities for the Core Component.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public final class AdaptationUtils {
+public final class QualiaUtils {
 	/** The logger. */
 	public static ILogger log = new EmptyLogger();
 
 	/** This class is not meant to have objects. */
-	private AdaptationUtils() {}
+	private QualiaUtils() {}
 
 	/**
 	 * Initialization method that should be called by the bundle's activator.

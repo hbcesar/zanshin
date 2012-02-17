@@ -185,7 +185,7 @@ public class ReconfigurationStrategyImpl extends AdaptationStrategyImpl implemen
 		// Executes the reconfiguration strategy.
 		strategyName += "(" + algorithmId + "; " + level + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		it.unitn.disi.zanshin.model.gore.Configuration newConfig = reconfigService.findConfiguration(getAwReq());
+		it.unitn.disi.zanshin.model.gore.Configuration newConfig = reconfigService.findConfiguration(procedureIds, getAwReq());
 		controller.applyConfig(newConfig, level);
 	}
 

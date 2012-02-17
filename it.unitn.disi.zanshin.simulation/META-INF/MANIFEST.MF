@@ -10,7 +10,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: it.unitn.disi.zanshin.simulation.model.acad,
  it.unitn.disi.zanshin.simulation.model.acad.impl,
  it.unitn.disi.zanshin.simulation.model.acad.util
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.osgi;bundle-version="3.7.1",
  org.eclipse.emf.ecore;visibility:=reexport,
  it.unitn.disi.zanshin.core;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"

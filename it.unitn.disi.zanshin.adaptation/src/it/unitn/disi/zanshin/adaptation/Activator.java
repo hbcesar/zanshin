@@ -33,12 +33,12 @@ public class Activator implements BundleActivator {
 		ServiceTracker<LogService, LogService> logTracker = new ServiceTracker<LogService, LogService>(context, LogService.class, null);
 		logTracker.open();
 		AdaptationUtils.initialize(logTracker.getService());
-		AdaptationUtils.log.info("Zanshin Adaptivity Component starting..."); //$NON-NLS-1$
+		AdaptationUtils.log.info("Zanshin Adaptation Component starting..."); //$NON-NLS-1$
 	}
 
 	/** @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext) */
 	public void stop(BundleContext bundleContext) throws Exception {
-		AdaptationUtils.log.info("Zanshin Adaptivity Component stopping..."); //$NON-NLS-1$
+		AdaptationUtils.log.info("Zanshin Adaptation Component stopping..."); //$NON-NLS-1$
 		Activator.context = null;
 	}
 

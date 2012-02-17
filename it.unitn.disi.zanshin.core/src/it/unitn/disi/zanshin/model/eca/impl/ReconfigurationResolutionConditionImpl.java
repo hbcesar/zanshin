@@ -115,27 +115,30 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 		// If the wrapped resolution condition wasn't specified, it defaults to a SimpleResolutionCondition.
 		if (wrappedCondition == null)
 			wrappedCondition = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createSimpleResolutionCondition();
-
+		
 		// Checks if this reconfiguration algorithm has been used before and retrieve the algorithm id.
 		String algorithmId = null;
+		java.util.List<String> procedureIds = null;
 		for (it.unitn.disi.zanshin.model.eca.Event event : session.getEvents()) {
 			it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = (event == null) ? null : event.getAwReq();
 			it.unitn.disi.zanshin.model.eca.AdaptationStrategy strategy = (awreq == null) ? null : awreq.getSelectedStrategy();
-			if (strategy instanceof it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy)
+			if (strategy instanceof it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) {
 				algorithmId = ((it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) strategy).getAlgorithmId();
+				procedureIds = ((it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) strategy).getProcedureIds();
+			}
 		}
-
+		
 		// If it hasn't been used, just use the wrapped condition to evaluate resolution.
 		if (algorithmId == null)
 			return wrappedCondition.evaluate(session);
-
+		
 		// Otherwise, retrieve the reconfiguration service and delegate the evaluation to it.
 		it.unitn.disi.zanshin.services.IReconfigurationService reconfigService = it.unitn.disi.zanshin.core.Activator.retrieveReconfigurationService(algorithmId);
 		if (reconfigService == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to evaluate resolution with Reconfiguration Resolution Condition, but an algorithm with id \"{0}\" is not registered! Falling back to the wrapped condition.", algorithmId); //$NON-NLS-1$
 			return wrappedCondition.evaluate(session);
 		}
-		return reconfigService.checkResolution(session, wrappedCondition);
+		return reconfigService.checkResolution(procedureIds, session, wrappedCondition);
 	}
 
 	/**

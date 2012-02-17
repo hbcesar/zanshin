@@ -45,7 +45,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 	public void processStateChange(AwReq awreq) {
 		// Checks if the AwReq have been properly supplied.
 		if (awreq == null) {
-			AdaptationUtils.log.warn("The adaptivity service has been called, but no AwReq has been supplied. Please check your model or file a bug."); //$NON-NLS-1$			
+			AdaptationUtils.log.warn("The adaptation service has been called, but no AwReq has been supplied. Please check your model or file a bug."); //$NON-NLS-1$			
 			return;
 		}
 
@@ -56,7 +56,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 
 		// Checks if the AwReq's target has been properly set.
 		if (target == null) {
-			AdaptationUtils.log.warn("AwReq {0} does not have a target, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
+			AdaptationUtils.log.warn("AwReq {0} does not have a target, therefore the adaptation cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
 			return;
 		}
 
@@ -72,7 +72,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 			ResolutionCondition awreqCondition = ecaAwReq.getCondition();
 			if (awreqCondition == null) {
 				// If the AwReq is not complete, log a warning and stop here.
-				AdaptationUtils.log.warn("AwReq {0} does not have a resolution condition, therefore the adaptivity cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
+				AdaptationUtils.log.warn("AwReq {0} does not have a resolution condition, therefore the adaptation cannot proceed. Please provide one in the goal model.", awreqName); //$NON-NLS-1$
 				return;
 			}
 
@@ -120,7 +120,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 			}
 
 			// Applies the selected strategy and registers it in the event timeline.
-			String strategyName = selectedStrategy.getClass().getInterfaces()[0].getSimpleName();
+			String strategyName = selectedStrategy.eClass().getName();
 			AdaptationUtils.log.info("{0} Selected adaptation strategy: {1}", session.getId(), strategyName); //$NON-NLS-1$
 			selectedStrategy.execute(session);
 			ecaAwReq.setSelectedStrategy(selectedStrategy);
@@ -130,7 +130,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 		}
 
 		// If AwReq is not ECA-based, log a warning.
-		else AdaptationUtils.log.warn("AwReq {0} is not an ECA-based AwReq. Zanshin's adaptivity bundle registered the ECA-based adaptivity service.", awreqName); //$NON-NLS-1$
+		else AdaptationUtils.log.warn("AwReq {0} is not an ECA-based AwReq. Zanshin's adaptation bundle registered the ECA-based adaptation service.", awreqName); //$NON-NLS-1$
 	}
 
 	/**

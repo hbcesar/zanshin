@@ -1,5 +1,7 @@
 package it.unitn.disi.zanshin.services;
 
+import java.util.List;
+
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.ApplicabilityCondition;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
@@ -23,27 +25,30 @@ public interface IReconfigurationService {
 	/**
 	 * TODO: document this method.
 	 * 
+	 * @param procedureIds
 	 * @param awreq
 	 * @param session
 	 * @param wrappedCondition
 	 * @return
 	 */
-	boolean checkApplicability(AwReq awreq, AdaptationSession session, ApplicabilityCondition wrappedCondition);
+	boolean checkApplicability(List<String> procedureIds, AwReq awreq, AdaptationSession session, ApplicabilityCondition wrappedCondition);
 
 	/**
 	 * TODO: document this method.
 	 * 
+	 * @param procedureIds
 	 * @param awreq
 	 * @return
 	 */
-	Configuration findConfiguration(AwReq awreq);
+	Configuration findConfiguration(List<String> procedureIds, AwReq awreq);
 
 	/**
 	 * TODO: document this method.
 	 * 
+	 * @param procedureIds
 	 * @param session
 	 * @param wrappedCondition
 	 * @return
 	 */
-	boolean checkResolution(AdaptationSession session, ResolutionCondition wrappedCondition);
+	boolean checkResolution(List<String> procedureIds, AdaptationSession session, ResolutionCondition wrappedCondition);
 }

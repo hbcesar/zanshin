@@ -45,7 +45,6 @@ public aspect AwReqsMonitoringAspect {
 		String methodName = thisJoinPoint.getSignature().getName();
 
 		// Converts it to one of the literals in MonitorableMethod and gets the enumerated value.
-		methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
 		MonitorableMethod method = MonitorableMethod.get(methodName);
 
 		// Processes the method.

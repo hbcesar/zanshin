@@ -11,7 +11,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * Thread that processes requirement life-cycle method calls.
  * 
- * This thread is used by the monitoring service to separate the adaptivity framework and the target system in different
+ * This thread is used by the monitoring service to separate the adaptation framework and the target system in different
  * threads when simulations bundles are used. Calls are placed in synchronized blocking queue and are processed in a
  * FIFO fashion. When there's an AwReq failure, the thread submits it to the adaptation service.
  * 
