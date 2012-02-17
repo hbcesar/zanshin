@@ -1,12 +1,12 @@
 package it.unitn.disi.zanshin.services;
 
-import java.util.List;
-
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.ApplicabilityCondition;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
+
+import java.util.List;
 
 /**
  * TODO: document this type.

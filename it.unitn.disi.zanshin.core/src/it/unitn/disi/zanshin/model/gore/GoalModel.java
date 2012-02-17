@@ -130,4 +130,20 @@ public interface GoalModel extends EObject {
 	 */
 	Long getId();
 
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model
+	 * @generated
+	 */
+	EList<DifferentialRelation> filterRelations(AwReq indicator);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model
+	 * @generated
+	 */
+	EList<DifferentialRelation> filterRelations(Parameter parameter);
+
 } // GoalModel

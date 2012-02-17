@@ -2,12 +2,16 @@ package it.unitn.disi.zanshin.adaptation.qualia.model;
 
 import it.unitn.disi.zanshin.adaptation.qualia.Activator;
 import it.unitn.disi.zanshin.adaptation.qualia.QualiaUtils;
+import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.Configuration;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.Parameter;
 
 import java.util.List;
 
 /**
  * TODO: document this type.
- * 
+ *
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
@@ -177,22 +181,40 @@ public class AdaptationAlgorithm {
 		this.algorithmReassessmentProcedure = algorithmReassessmentProcedure;
 	}
 
+	/**
+	 * TODO: document this method.
+	 * @param model
+	 * @param awreq
+	 * @return
+	 */
+	public List<Parameter> chooseParameters(GoalModel model, AwReq awreq) {
+		return parameterChoiceProcedure.chooseParameters(model, awreq);
+	}
 
+	/**
+	 * TODO: document this method.
+	 * @param model
+	 * @param parameters
+	 * @return
+	 */
+	public List<String> calculateValues(GoalModel model, List<Parameter> parameters) {
+		return valueCalculationProcedure.calculateValues(model, parameters);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * @param parameters
+	 * @param values
+	 * @return
+	 */
+	public Configuration changeParameters(List<Parameter> parameters, List<String> values) {
+		return parameterChangeProcedure.changeParameters(parameters, values);
+	}
+
+	
 	
 	
 	// FIXME: implement the methods below. Will require the definition of their signatures (depending on the procedures).
-
-	public void chooseParameters() {
-		System.out.println(parameterChoiceProcedure);
-	}
-
-	public void calculateValues() {
-		System.out.println(valueCalculationProcedure);
-	}
-
-	public void changeParameters() {
-		System.out.println(parameterChangeProcedure);
-	}
 
 	public void waitForEvaluation() {
 		System.out.println(waitingProcedure);

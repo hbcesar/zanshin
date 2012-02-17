@@ -1,11 +1,14 @@
 package it.unitn.disi.zanshin.adaptation.qualia.internal.services;
 
+import it.unitn.disi.zanshin.adaptation.qualia.QualiaUtils;
 import it.unitn.disi.zanshin.adaptation.qualia.model.AdaptationAlgorithm;
 import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.eca.ApplicabilityCondition;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.services.IReconfigurationService;
 
 import java.util.List;
@@ -42,9 +45,22 @@ public class QualiaReconfigurationService implements IReconfigurationService {
 		// Creates the adaptation algorithm given the procedures.
 		AdaptationAlgorithm algorithm = new AdaptationAlgorithm(procedureIds);
 		
-		// FIXME: implement this
-		for (String id : procedureIds) System.out.println("############# " + id);
-		return null;
+		// Retrieves the model to which the AwReq belongs.
+		GoalModel model = awreq.findGoalModel();
+		
+		// 1 - Chooses the parameters to change.
+		List<Parameter> params = algorithm.chooseParameters(model, awreq);
+		QualiaUtils.log.info("Parameters chosen: {0}", QualiaUtils.convertToString(params)); //$NON-NLS-1$
+		
+		// 2 - Calculates how much to change in each parameter.
+		List<String> values = algorithm.calculateValues(model, params);
+		QualiaUtils.log.info("Values to increment in the chosen parameters: {0}", values); //$NON-NLS-1$
+		
+		// 3 - Changes the parameters, creating the new configuration.
+		Configuration config = algorithm.changeParameters(params, values);
+		
+		// Returns the new configuration.
+		return config;
 	}
 
 	/** @see it.unitn.disi.zanshin.services.IReconfigurationService#checkResolution(java.util.List, it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ResolutionCondition) */

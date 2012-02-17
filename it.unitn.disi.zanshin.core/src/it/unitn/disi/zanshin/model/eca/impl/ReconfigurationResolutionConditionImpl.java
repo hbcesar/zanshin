@@ -115,7 +115,7 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 		// If the wrapped resolution condition wasn't specified, it defaults to a SimpleResolutionCondition.
 		if (wrappedCondition == null)
 			wrappedCondition = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createSimpleResolutionCondition();
-		
+
 		// Checks if this reconfiguration algorithm has been used before and retrieve the algorithm id.
 		String algorithmId = null;
 		java.util.List<String> procedureIds = null;
@@ -127,11 +127,11 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 				procedureIds = ((it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) strategy).getProcedureIds();
 			}
 		}
-		
+
 		// If it hasn't been used, just use the wrapped condition to evaluate resolution.
 		if (algorithmId == null)
 			return wrappedCondition.evaluate(session);
-		
+
 		// Otherwise, retrieve the reconfiguration service and delegate the evaluation to it.
 		it.unitn.disi.zanshin.services.IReconfigurationService reconfigService = it.unitn.disi.zanshin.core.Activator.retrieveReconfigurationService(algorithmId);
 		if (reconfigService == null) {

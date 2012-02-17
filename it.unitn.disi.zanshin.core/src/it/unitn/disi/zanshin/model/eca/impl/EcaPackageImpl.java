@@ -46,149 +46,174 @@ import org.eeat.model.LTL.impl.LTLPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass ecaAwReqEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass resolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass adaptationStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass applicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass eventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass adaptationSessionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass simpleResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass andRefinedResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass orRefinedResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass simpleApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass maxExecutionsPerSessionApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass andRefinedApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass orRefinedApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass retryStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass strengthenEnableChildStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass strengthenReplaceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass warningStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationResolutionConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass reconfigurationApplicabilityConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass abortStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass delegateStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relaxDisableChildStrategyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relaxReplaceEClass = null;
@@ -212,6 +237,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -219,26 +245,28 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link EcaPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link EcaPackage#eINSTANCE} when that field is accessed. Clients should not
+	 * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static EcaPackage init() {
-		if (isInited) return (EcaPackage)EPackage.Registry.INSTANCE.getEPackage(EcaPackage.eNS_URI);
+		if (isInited)
+			return (EcaPackage) EPackage.Registry.INSTANCE.getEPackage(EcaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EcaPackageImpl theEcaPackage = (EcaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcaPackageImpl());
+		EcaPackageImpl theEcaPackage = (EcaPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcaPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		GorePackageImpl theGorePackage = (GorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) instanceof GorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) : GorePackage.eINSTANCE);
-		LTLPackageImpl theLTLPackage = (LTLPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) instanceof LTLPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) : LTLPackage.eINSTANCE);
+		GorePackageImpl theGorePackage = (GorePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) instanceof GorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI) : GorePackage.eINSTANCE);
+		LTLPackageImpl theLTLPackage = (LTLPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) instanceof LTLPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LTLPackage.eNS_URI) : LTLPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEcaPackage.createPackageContents();
@@ -253,7 +281,6 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		// Mark meta-data to indicate it can't be changed
 		theEcaPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(EcaPackage.eNS_URI, theEcaPackage);
 		return theEcaPackage;
@@ -261,6 +288,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEcaAwReq() {
@@ -269,30 +297,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_Condition() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(0);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_Strategies() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(1);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEcaAwReq_SelectedStrategy() {
-		return (EReference)ecaAwReqEClass.getEStructuralFeatures().get(2);
+		return (EReference) ecaAwReqEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getResolutionCondition() {
@@ -301,14 +333,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getResolutionCondition_AwReq() {
-		return (EReference)resolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) resolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAdaptationStrategy() {
@@ -317,22 +351,25 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationStrategy_AwReq() {
-		return (EReference)adaptationStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) adaptationStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationStrategy_Condition() {
-		return (EReference)adaptationStrategyEClass.getEStructuralFeatures().get(1);
+		return (EReference) adaptationStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getApplicabilityCondition() {
@@ -341,14 +378,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getApplicabilityCondition_Strategy() {
-		return (EReference)applicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) applicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getEvent() {
@@ -357,30 +396,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEvent_Session() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(0);
+		return (EReference) eventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getEvent_AwReq() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(1);
+		return (EReference) eventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getEvent_Time() {
-		return (EAttribute)eventEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) eventEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAdaptationSession() {
@@ -389,30 +432,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAdaptationSession_Events() {
-		return (EReference)adaptationSessionEClass.getEStructuralFeatures().get(0);
+		return (EReference) adaptationSessionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdaptationSession_Active() {
-		return (EAttribute)adaptationSessionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) adaptationSessionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getAdaptationSession_Id() {
-		return (EAttribute)adaptationSessionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) adaptationSessionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSimpleResolutionCondition() {
@@ -421,6 +468,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAndRefinedResolutionCondition() {
@@ -429,14 +477,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAndRefinedResolutionCondition_Children() {
-		return (EReference)andRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) andRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOrRefinedResolutionCondition() {
@@ -445,14 +495,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOrRefinedResolutionCondition_Children() {
-		return (EReference)orRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) orRefinedResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getSimpleApplicabilityCondition() {
@@ -461,6 +513,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMaxExecutionsPerSessionApplicabilityCondition() {
@@ -469,14 +522,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMaxExecutionsPerSessionApplicabilityCondition_MaxExecutions() {
-		return (EAttribute)maxExecutionsPerSessionApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) maxExecutionsPerSessionApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAndRefinedApplicabilityCondition() {
@@ -485,14 +540,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getAndRefinedApplicabilityCondition_Children() {
-		return (EReference)andRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) andRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getOrRefinedApplicabilityCondition() {
@@ -501,14 +558,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getOrRefinedApplicabilityCondition_Children() {
-		return (EReference)orRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) orRefinedApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRetryStrategy() {
@@ -517,22 +576,25 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRetryStrategy_Copy() {
-		return (EAttribute)retryStrategyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) retryStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRetryStrategy_Time() {
-		return (EAttribute)retryStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) retryStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStrengthenEnableChildStrategy() {
@@ -541,30 +603,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenEnableChildStrategy_Requirement() {
-		return (EReference)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenEnableChildStrategy_Level() {
-		return (EAttribute)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenEnableChildStrategy_Child() {
-		return (EReference)strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(2);
+		return (EReference) strengthenEnableChildStrategyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getStrengthenReplace() {
@@ -573,38 +639,43 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenReplace_Requirement() {
-		return (EReference)strengthenReplaceEClass.getEStructuralFeatures().get(0);
+		return (EReference) strengthenReplaceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenReplace_Copy() {
-		return (EAttribute)strengthenReplaceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) strengthenReplaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getStrengthenReplace_Level() {
-		return (EAttribute)strengthenReplaceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) strengthenReplaceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getStrengthenReplace_NewRequirement() {
-		return (EReference)strengthenReplaceEClass.getEStructuralFeatures().get(3);
+		return (EReference) strengthenReplaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getWarningStrategy() {
@@ -613,14 +684,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getWarningStrategy_Actor() {
-		return (EReference)warningStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) warningStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationResolutionCondition() {
@@ -629,14 +702,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReconfigurationResolutionCondition_WrappedCondition() {
-		return (EReference)reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) reconfigurationResolutionConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationStrategy() {
@@ -645,31 +720,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReconfigurationStrategy_AlgorithmId() {
-		return (EAttribute)reconfigurationStrategyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) reconfigurationStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReconfigurationStrategy_Level() {
-		return (EAttribute)reconfigurationStrategyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getReconfigurationStrategy_ProcedureIds() {
-		return (EAttribute)reconfigurationStrategyEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) reconfigurationStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getReconfigurationStrategy_ProcedureIds() {
+		return (EAttribute) reconfigurationStrategyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getReconfigurationApplicabilityCondition() {
@@ -678,14 +756,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getReconfigurationApplicabilityCondition_WrappedCondition() {
-		return (EReference)reconfigurationApplicabilityConditionEClass.getEStructuralFeatures().get(0);
+		return (EReference) reconfigurationApplicabilityConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getAbortStrategy() {
@@ -694,6 +774,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDelegateStrategy() {
@@ -702,14 +783,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDelegateStrategy_Actor() {
-		return (EReference)delegateStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) delegateStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRelaxDisableChildStrategy() {
@@ -718,30 +801,34 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxDisableChildStrategy_Requirement() {
-		return (EReference)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(0);
+		return (EReference) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxDisableChildStrategy_Level() {
-		return (EAttribute)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxDisableChildStrategy_Child() {
-		return (EReference)relaxDisableChildStrategyEClass.getEStructuralFeatures().get(2);
+		return (EReference) relaxDisableChildStrategyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRelaxReplace() {
@@ -750,58 +837,65 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxReplace_Requirement() {
-		return (EReference)relaxReplaceEClass.getEStructuralFeatures().get(0);
+		return (EReference) relaxReplaceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxReplace_Copy() {
-		return (EAttribute)relaxReplaceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) relaxReplaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getRelaxReplace_Level() {
-		return (EAttribute)relaxReplaceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) relaxReplaceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRelaxReplace_NewRequirement() {
-		return (EReference)relaxReplaceEClass.getEStructuralFeatures().get(3);
+		return (EReference) relaxReplaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EcaFactory getEcaFactory() {
-		return (EcaFactory)getEFactoryInstance();
+		return (EcaFactory) getEFactoryInstance();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
+	 * first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -897,18 +991,20 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
+	 * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -917,7 +1013,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		GorePackage theGorePackage = (GorePackage)EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI);
+		GorePackage theGorePackage = (GorePackage) EPackage.Registry.INSTANCE.getEPackage(GorePackage.eNS_URI);
 
 		// Create type parameters
 

@@ -1,9 +1,12 @@
 package it.unitn.disi.zanshin.adaptation.qualia;
 
+import java.util.Collection;
+
 import it.unitn.disi.zanshin.util.EmptyLogger;
 import it.unitn.disi.zanshin.util.ILogger;
 import it.unitn.disi.zanshin.util.PlatformLogger;
 
+import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.log.LogService;
 
 /**
@@ -27,5 +30,21 @@ public final class QualiaUtils {
 	 */
 	static void initialize(LogService logService) {
 		log = new PlatformLogger(logService);
+	}
+	
+	/**
+	 * TODO: document this method.
+	 * @param eCollection
+	 * @return
+	 */
+	public static String convertToString(Collection<? extends EObject> eCollection) {
+		StringBuilder builder = new StringBuilder();
+		builder.append('[');
+		for (EObject eObj : eCollection) 
+			builder.append(eObj.eClass().getName()).append(',').append(' ');
+		builder.deleteCharAt(builder.length() - 1);
+		builder.deleteCharAt(builder.length() - 1);
+		builder.append(']');
+		return builder.toString();
 	}
 }

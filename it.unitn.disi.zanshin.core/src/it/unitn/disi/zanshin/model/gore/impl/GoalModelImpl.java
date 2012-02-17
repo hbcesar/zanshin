@@ -7,11 +7,13 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.Actor;
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
+import it.unitn.disi.zanshin.model.gore.Parameter;
 
 import java.util.Collection;
 
@@ -255,6 +257,40 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		if (internalId == null)
 			internalId = System.currentTimeMillis();
 		return internalId;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EList<DifferentialRelation> filterRelations(AwReq indicator) {
+		// Returns a list of relations associated with the given indicator.
+		EList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();
+		if (indicator != null)
+			for (DifferentialRelation relation : relations) {
+				AwReq relationIndicator = relation.getIndicator(); 
+				if ((relationIndicator != null) && (relationIndicator.eClass().equals(indicator.eClass())))
+					filteredRelations.add(relation);
+			}
+		return filteredRelations;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EList<DifferentialRelation> filterRelations(Parameter parameter) {
+		// Returns a list of relations associated with the given parameter.
+		EList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();
+		if (parameter != null)
+			for (DifferentialRelation relation : relations) {
+				Parameter relationParameter = relation.getParameter(); 
+				if ((relationParameter != null) && (relationParameter.eClass().equals(parameter.eClass())))
+					filteredRelations.add(relation);
+			}
+		return filteredRelations;
 	}
 
 	/**
