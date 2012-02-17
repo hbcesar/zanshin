@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.scalable.ScalablePackage;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>G00652</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>G00652</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G00652Impl extends GoalImpl implements G00652 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G00652Impl() {
@@ -32,12 +30,12 @@ public class G00652Impl extends GoalImpl implements G00652 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
 		return ScalablePackage.eINSTANCE.getG00652();
 	}
 
-} //G00652Impl
+} // G00652Impl

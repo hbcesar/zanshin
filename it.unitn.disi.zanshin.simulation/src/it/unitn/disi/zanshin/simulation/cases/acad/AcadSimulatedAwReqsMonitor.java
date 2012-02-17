@@ -51,24 +51,12 @@ public class AcadSimulatedAwReqsMonitor implements IMonitoringService {
 		// When the goal "Register Call" fails, we should trigger the failure of AwReq AR15.
 		switch (req.eClass().getName()) {
 		case "G_RegCall": //$NON-NLS-1$
-			try {
-				if (model != null) {
-					awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), "AR15"); //$NON-NLS-1$
-					switch (method) {
-					case FAIL:
-						awreq.setState(DefinableRequirementState.FAILED);
-						break;
-					case SUCCESS:
-						awreq.setState(DefinableRequirementState.SUCCEEDED);
-						break;
-					default:
-						awreq = null;
-					}
-				}
-			}
-			catch (Exception e) {
-				SimulationUtils.log.error("Cannot instantiate AR15: {0}", e, e.getMessage()); //$NON-NLS-1$
-			}
+			awreq = simulateNeverFailAwReqEvaluation(model, "AR15", method); //$NON-NLS-1$
+			break;
+
+		case "Q_Dispatch": //$NON-NLS-1$
+			awreq = simulateNeverFailAwReqEvaluation(model, "AR11", method); //$NON-NLS-1$
+			break;
 		}
 
 		if (awreq != null) {
@@ -81,6 +69,37 @@ public class AcadSimulatedAwReqsMonitor implements IMonitoringService {
 			newAwReq.setState(DefinableRequirementState.UNDEFINED);
 			repositoryService.replaceRequirement(model.getId(), awreq, newAwReq);
 		}
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param model
+	 * @param awReqName
+	 * @param method
+	 * @return
+	 */
+	private AwReq simulateNeverFailAwReqEvaluation(GoalModel model, String awReqName, MonitorableMethod method) {
+		AwReq awreq = null;
+		try {
+			if (model != null) {
+				awreq = (AwReq) repositoryService.retrieveRequirement(model.getId(), awReqName);
+				switch (method) {
+				case FAIL:
+					awreq.setState(DefinableRequirementState.FAILED);
+					break;
+				case SUCCESS:
+					awreq.setState(DefinableRequirementState.SUCCEEDED);
+					break;
+				default:
+					awreq = null;
+				}
+			}
+		}
+		catch (Exception e) {
+			SimulationUtils.log.error("Cannot instantiate {0}: {1}", e, awReqName, e.getMessage()); //$NON-NLS-1$
+		}
+		return awreq;
 	}
 
 	/** @see it.unitn.disi.zanshin.services.IMonitoringService#stop() */

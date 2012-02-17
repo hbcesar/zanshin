@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.S_UserFriendly;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>SUser Friendly</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>SUser Friendly</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class S_UserFriendlyImpl extends SoftgoalImpl implements S_UserFriendly {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected S_UserFriendlyImpl() {
@@ -32,8 +30,8 @@ public class S_UserFriendlyImpl extends SoftgoalImpl implements S_UserFriendly {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class S_UserFriendlyImpl extends SoftgoalImpl implements S_UserFriendly {
 		return AcadPackage.Literals.SUSER_FRIENDLY;
 	}
 
-} //S_UserFriendlyImpl
+} // S_UserFriendlyImpl

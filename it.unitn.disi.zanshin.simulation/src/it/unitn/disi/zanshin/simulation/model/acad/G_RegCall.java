@@ -9,14 +9,11 @@ package it.unitn.disi.zanshin.simulation.model.acad;
 import it.unitn.disi.zanshin.model.gore.Goal;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>GReg Call</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>GReg Call</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
  * @see it.unitn.disi.zanshin.simulation.model.acad.AcadPackage#getG_RegCall()
  * @model
  * @generated
  */
-public interface G_RegCall extends Goal {
-} // G_RegCall
+public interface G_RegCall extends Goal {} // G_RegCall

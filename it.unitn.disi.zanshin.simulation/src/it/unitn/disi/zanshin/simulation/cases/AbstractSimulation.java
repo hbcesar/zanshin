@@ -21,10 +21,10 @@ import java.util.List;
 public abstract class AbstractSimulation implements Simulation {
 	/** Name of the simulation. */
 	protected String name;
-	
+
 	/** Simulation's controller. */
 	protected SimulatedController controller;
-	
+
 	/** Simulation's monitor. */
 	protected IMonitoringService simulatedMonitor;
 
@@ -37,7 +37,10 @@ public abstract class AbstractSimulation implements Simulation {
 	/** Stores the part of the simulation that is currently being run. */
 	protected SimulationPart currentPart;
 
-	/** @see it.unitn.disi.zanshin.simulation.cases.Simulation#init(java.lang.String, it.unitn.disi.zanshin.simulation.internal.services.SimulatedController) */
+	/**
+	 * @see it.unitn.disi.zanshin.simulation.cases.Simulation#init(java.lang.String,
+	 *      it.unitn.disi.zanshin.simulation.internal.services.SimulatedController)
+	 */
 	@Override
 	public final void init(String name, SimulatedController controller, IMonitoringService simulatedMonitor) throws Exception {
 		this.name = name;

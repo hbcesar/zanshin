@@ -13,7 +13,6 @@ package it.unitn.disi.zanshin.model.eca;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getAlgorithmId <em>Algorithm Id</em>}</li>
  * <li>{@link it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getWrappedCondition <em>Wrapped
  * Condition</em>}</li>
  * </ul>
@@ -24,33 +23,6 @@ package it.unitn.disi.zanshin.model.eca;
  * @generated
  */
 public interface ReconfigurationResolutionCondition extends ResolutionCondition {
-	/**
-	 * Returns the value of the '<em><b>Algorithm Id</b></em>' attribute. <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Algorithm Id</em>' attribute isn't clear, there really should be more of a description
-	 * here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Algorithm Id</em>' attribute.
-	 * @see #setAlgorithmId(String)
-	 * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getReconfigurationResolutionCondition_AlgorithmId()
-	 * @model
-	 * @generated
-	 */
-	String getAlgorithmId();
-
-	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getAlgorithmId
-	 * <em>Algorithm Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *          the new value of the '<em>Algorithm Id</em>' attribute.
-	 * @see #getAlgorithmId()
-	 * @generated
-	 */
-	void setAlgorithmId(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Wrapped Condition</b></em>' containment reference. <!-- begin-user-doc -->
 	 * <p>
@@ -83,7 +55,7 @@ public interface ReconfigurationResolutionCondition extends ResolutionCondition 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @model annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel body='// If the current evaluation is Success, the problem is solved. \nit.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();\nif ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED)) return true;\n\n// Otherwise, if the last applied strategy was \"abort\", the problem is also solved.\nelse if (session.getEvents().size() > 0) {\n\tit.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);\n\tit.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();\n\tit.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();\n\tif ((lastStrategy != null) && (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))\n\t\treturn true;\n}\n\n// If none of the above, the problem is not yet solved.\nreturn false;'"
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='// If the wrapped resolution condition wasn\'t specified, it defaults to a SimpleResolutionCondition.\nif (wrappedCondition == null)\n\twrappedCondition = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createSimpleResolutionCondition();\n\n// Checks if this reconfiguration algorithm has been used before and retrieve the algorithm id.\nString algorithmId = null;\nfor (it.unitn.disi.zanshin.model.eca.Event event : session.getEvents()) {\n\tit.unitn.disi.zanshin.model.eca.EcaAwReq awreq = (event == null) ? null : event.getAwReq();\n\tit.unitn.disi.zanshin.model.eca.AdaptationStrategy strategy = (awreq == null) ? null : awreq.getSelectedStrategy();\n\tif (strategy instanceof it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy)\n\t\talgorithmId = ((it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy)strategy).getAlgorithmId();\n}\n\n// If it hasn\'t been used, just use the wrapped condition to evaluate resolution.\nif (algorithmId == null)\n\treturn wrappedCondition.evaluate(session);\n\n// Otherwise, retrieve the reconfiguration service and delegate the evaluation to it.\nit.unitn.disi.zanshin.services.IReconfigurationService reconfigService = it.unitn.disi.zanshin.core.Activator.retrieveReconfigurationService(algorithmId);\nif (reconfigService == null) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.warn(\"Attempting to evaluate resolution with Reconfiguration Resolution Condition, but an algorithm with id \\\"{0}\\\" is not registered! Falling back to the wrapped condition.\", algorithmId); //$NON-NLS-1$\n\treturn wrappedCondition.evaluate(session);\n}\nreturn reconfigService.checkResolution(session, wrappedCondition);'"
 	 * @generated
 	 */
 	boolean evaluate(AdaptationSession session);

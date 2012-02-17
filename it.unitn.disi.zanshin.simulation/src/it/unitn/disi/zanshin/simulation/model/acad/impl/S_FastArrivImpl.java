@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.S_FastArriv;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>SFast Arriv</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>SFast Arriv</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class S_FastArrivImpl extends SoftgoalImpl implements S_FastArriv {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected S_FastArrivImpl() {
@@ -32,8 +30,8 @@ public class S_FastArrivImpl extends SoftgoalImpl implements S_FastArriv {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class S_FastArrivImpl extends SoftgoalImpl implements S_FastArriv {
 		return AcadPackage.Literals.SFAST_ARRIV;
 	}
 
-} //S_FastArrivImpl
+} // S_FastArrivImpl

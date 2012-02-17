@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_RegCall;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GReg Call</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GReg Call</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_RegCallImpl extends GoalImpl implements G_RegCall {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_RegCallImpl() {
@@ -32,8 +30,8 @@ public class G_RegCallImpl extends GoalImpl implements G_RegCall {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_RegCallImpl extends GoalImpl implements G_RegCall {
 		return AcadPackage.Literals.GREG_CALL;
 	}
 
-} //G_RegCallImpl
+} // G_RegCallImpl

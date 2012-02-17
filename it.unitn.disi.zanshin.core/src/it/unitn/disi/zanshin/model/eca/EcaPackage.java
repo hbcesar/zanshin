@@ -1033,21 +1033,13 @@ public interface EcaPackage extends EPackage {
 	int RECONFIGURATION_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
 
 	/**
-	 * The feature id for the '<em><b>Algorithm Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID = RESOLUTION_CONDITION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Wrapped Condition</b></em>' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION = RESOLUTION_CONDITION_FEATURE_COUNT + 1;
+	int RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION = RESOLUTION_CONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Reconfiguration Resolution Condition</em>' class. <!-- begin-user-doc
@@ -1056,7 +1048,7 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECONFIGURATION_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 2;
+	int RECONFIGURATION_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationStrategyImpl
@@ -1094,13 +1086,21 @@ public interface EcaPackage extends EPackage {
 	int RECONFIGURATION_STRATEGY__ALGORITHM_ID = ADAPTATION_STRATEGY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_STRATEGY__LEVEL = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Reconfiguration Strategy</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int RECONFIGURATION_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 1;
+	int RECONFIGURATION_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationApplicabilityConditionImpl
@@ -1645,18 +1645,6 @@ public interface EcaPackage extends EPackage {
 	EClass getReconfigurationResolutionCondition();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getAlgorithmId <em>Algorithm Id</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the attribute '<em>Algorithm Id</em>'.
-	 * @see it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getAlgorithmId()
-	 * @see #getReconfigurationResolutionCondition()
-	 * @generated
-	 */
-	EAttribute getReconfigurationResolutionCondition_AlgorithmId();
-
-	/**
 	 * Returns the meta object for the containment reference '
 	 * {@link it.unitn.disi.zanshin.model.eca.ReconfigurationResolutionCondition#getWrappedCondition
 	 * <em>Wrapped Condition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1689,6 +1677,17 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getReconfigurationStrategy_AlgorithmId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy#getLevel
+	 * <em>Level</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy#getLevel()
+	 * @see #getReconfigurationStrategy()
+	 * @generated
+	 */
+	EAttribute getReconfigurationStrategy_Level();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.ReconfigurationApplicabilityCondition
@@ -2273,14 +2272,6 @@ public interface EcaPackage extends EPackage {
 		EClass RECONFIGURATION_RESOLUTION_CONDITION = eINSTANCE.getReconfigurationResolutionCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Algorithm Id</b></em>' attribute feature. <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EAttribute RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID = eINSTANCE.getReconfigurationResolutionCondition_AlgorithmId();
-
-		/**
 		 * The meta object literal for the '<em><b>Wrapped Condition</b></em>' containment reference feature. <!--
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 * 
@@ -2305,6 +2296,14 @@ public interface EcaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RECONFIGURATION_STRATEGY__ALGORITHM_ID = eINSTANCE.getReconfigurationStrategy_AlgorithmId();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute RECONFIGURATION_STRATEGY__LEVEL = eINSTANCE.getReconfigurationStrategy_Level();
 
 		/**
 		 * The meta object literal for the '

@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_RadioPos;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TRadio Pos</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TRadio Pos</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_RadioPosImpl extends TaskImpl implements T_RadioPos {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_RadioPosImpl() {
@@ -32,8 +30,8 @@ public class T_RadioPosImpl extends TaskImpl implements T_RadioPos {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_RadioPosImpl extends TaskImpl implements T_RadioPos {
 		return AcadPackage.Literals.TRADIO_POS;
 	}
 
-} //T_RadioPosImpl
+} // T_RadioPosImpl

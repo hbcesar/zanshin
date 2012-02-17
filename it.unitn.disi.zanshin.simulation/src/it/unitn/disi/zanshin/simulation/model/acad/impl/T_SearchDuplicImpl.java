@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_SearchDuplic;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TSearch Duplic</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TSearch Duplic</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_SearchDuplicImpl extends TaskImpl implements T_SearchDuplic {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_SearchDuplicImpl() {
@@ -32,8 +30,8 @@ public class T_SearchDuplicImpl extends TaskImpl implements T_SearchDuplic {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_SearchDuplicImpl extends TaskImpl implements T_SearchDuplic {
 		return AcadPackage.Literals.TSEARCH_DUPLIC;
 	}
 
-} //T_SearchDuplicImpl
+} // T_SearchDuplicImpl

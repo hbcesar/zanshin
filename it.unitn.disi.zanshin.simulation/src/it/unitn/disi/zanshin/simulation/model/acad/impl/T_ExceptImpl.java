@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_Except;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TExcept</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TExcept</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_ExceptImpl extends TaskImpl implements T_Except {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_ExceptImpl() {
@@ -32,8 +30,8 @@ public class T_ExceptImpl extends TaskImpl implements T_Except {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_ExceptImpl extends TaskImpl implements T_Except {
 		return AcadPackage.Literals.TEXCEPT;
 	}
 
-} //T_ExceptImpl
+} // T_ExceptImpl

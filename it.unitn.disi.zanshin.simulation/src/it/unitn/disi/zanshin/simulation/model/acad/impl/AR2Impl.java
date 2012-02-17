@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.AcadPackage;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>AR2</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>AR2</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AR2Impl extends EcaAwReqImpl implements AR2 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AR2Impl() {
@@ -32,8 +30,8 @@ public class AR2Impl extends EcaAwReqImpl implements AR2 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class AR2Impl extends EcaAwReqImpl implements AR2 {
 		return AcadPackage.Literals.AR2;
 	}
 
-} //AR2Impl
+} // AR2Impl

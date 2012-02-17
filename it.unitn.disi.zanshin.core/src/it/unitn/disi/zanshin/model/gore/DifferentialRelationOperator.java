@@ -28,7 +28,7 @@ public enum DifferentialRelationOperator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	GREATER_THAN(0, "GREATER_THAN", "GT"), //$NON-NLS-1$ //$NON-NLS-2$
+	GREATER_THAN(0, "GREATER_THAN", "gt"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>FEWER THAN</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum DifferentialRelationOperator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FEWER_THAN(0, "FEWER_THAN", "FT"); //$NON-NLS-1$ //$NON-NLS-2$
+	FEWER_THAN(0, "FEWER_THAN", "ft"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>GREATER THAN</b></em>' literal value. <!-- begin-user-doc -->
@@ -48,7 +48,7 @@ public enum DifferentialRelationOperator implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #GREATER_THAN
-	 * @model literal="GT"
+	 * @model literal="gt"
 	 * @generated
 	 * @ordered
 	 */
@@ -63,7 +63,7 @@ public enum DifferentialRelationOperator implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #FEWER_THAN
-	 * @model literal="FT"
+	 * @model literal="ft"
 	 * @generated
 	 * @ordered
 	 */

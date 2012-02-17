@@ -9,14 +9,12 @@ package it.unitn.disi.zanshin.simulation.model.acad;
 import it.unitn.disi.zanshin.model.gore.Task;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>TCreate Or Assign</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>TCreate Or Assign</b></em>'. <!-- end-user-doc
+ * -->
+ * 
+ * 
  * @see it.unitn.disi.zanshin.simulation.model.acad.AcadPackage#getT_CreateOrAssign()
  * @model
  * @generated
  */
-public interface T_CreateOrAssign extends Task {
-} // T_CreateOrAssign
+public interface T_CreateOrAssign extends Task {} // T_CreateOrAssign

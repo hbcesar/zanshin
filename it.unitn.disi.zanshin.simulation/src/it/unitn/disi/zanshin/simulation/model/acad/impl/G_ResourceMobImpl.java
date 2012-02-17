@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_ResourceMob;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GResource Mob</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GResource Mob</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_ResourceMobImpl extends GoalImpl implements G_ResourceMob {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_ResourceMobImpl() {
@@ -32,8 +30,8 @@ public class G_ResourceMobImpl extends GoalImpl implements G_ResourceMob {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_ResourceMobImpl extends GoalImpl implements G_ResourceMob {
 		return AcadPackage.Literals.GRESOURCE_MOB;
 	}
 
-} //G_ResourceMobImpl
+} // G_ResourceMobImpl

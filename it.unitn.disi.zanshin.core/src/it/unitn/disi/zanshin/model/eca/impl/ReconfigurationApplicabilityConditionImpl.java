@@ -112,7 +112,35 @@ public class ReconfigurationApplicabilityConditionImpl extends ApplicabilityCond
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
-		return true;
+		// If the wrapped resolution condition wasn't specified, it defaults to a SimpleApplicabilityCondition.
+		if (wrappedCondition == null)
+			wrappedCondition = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createSimpleApplicabilityCondition();
+
+		// Retrieve the algorithm Id from the reconfiguration strategy.
+		it.unitn.disi.zanshin.model.eca.AdaptationStrategy strategy = getStrategy();
+		String strategyName = strategy.eClass().getName();
+		if (!(strategy instanceof it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy)) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("The Reconfiguration Applicability Condition was used with a {0}, but it can only be used with a Reconfiguration Strategy.", strategyName); //$NON-NLS-1$
+			return false;
+		}
+
+		// Attribute algorithmId is mandatory.
+		it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy reconfigStrategy = (it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) strategy;
+		String algorithmId = reconfigStrategy.getAlgorithmId();
+		if (algorithmId == null) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Strategy {0} is missing mandatory attribute \"algorithmId\" and cannot have its applicability evaluated.", strategyName); //$NON-NLS-1$
+			return false;
+		}
+
+		// Obtains a reference to the reconfiguration service and checks if it exists (if it has been registered).
+		it.unitn.disi.zanshin.services.IReconfigurationService reconfigService = it.unitn.disi.zanshin.core.Activator.retrieveReconfigurationService(algorithmId);
+		if (reconfigService == null) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to evaluate the applicability of {0}, but an algorithm with id \"{1}\" is not registered!", strategyName, algorithmId); //$NON-NLS-1$
+			return false;
+		}
+
+		// If all is well so far, delegate the applicability evaluation to the reconfiguration service.
+		return reconfigService.checkApplicability(reconfigStrategy.getAwReq(), session, wrappedCondition);
 	}
 
 	/**

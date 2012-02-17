@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_ResourceId;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GResource Id</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GResource Id</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_ResourceIdImpl extends GoalImpl implements G_ResourceId {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_ResourceIdImpl() {
@@ -32,8 +30,8 @@ public class G_ResourceIdImpl extends GoalImpl implements G_ResourceId {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_ResourceIdImpl extends GoalImpl implements G_ResourceId {
 		return AcadPackage.Literals.GRESOURCE_ID;
 	}
 
-} //G_ResourceIdImpl
+} // G_ResourceIdImpl

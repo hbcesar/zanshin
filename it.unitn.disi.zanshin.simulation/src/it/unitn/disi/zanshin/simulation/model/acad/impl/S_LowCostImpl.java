@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.S_LowCost;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>SLow Cost</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>SLow Cost</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class S_LowCostImpl extends SoftgoalImpl implements S_LowCost {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected S_LowCostImpl() {
@@ -32,8 +30,8 @@ public class S_LowCostImpl extends SoftgoalImpl implements S_LowCost {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class S_LowCostImpl extends SoftgoalImpl implements S_LowCost {
 		return AcadPackage.Literals.SLOW_COST;
 	}
 
-} //S_LowCostImpl
+} // S_LowCostImpl

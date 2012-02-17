@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_CreateOrAssign;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TCreate Or Assign</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TCreate Or Assign</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_CreateOrAssignImpl extends TaskImpl implements T_CreateOrAssign {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_CreateOrAssignImpl() {
@@ -32,8 +31,8 @@ public class T_CreateOrAssignImpl extends TaskImpl implements T_CreateOrAssign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class T_CreateOrAssignImpl extends TaskImpl implements T_CreateOrAssign {
 		return AcadPackage.Literals.TCREATE_OR_ASSIGN;
 	}
 
-} //T_CreateOrAssignImpl
+} // T_CreateOrAssignImpl

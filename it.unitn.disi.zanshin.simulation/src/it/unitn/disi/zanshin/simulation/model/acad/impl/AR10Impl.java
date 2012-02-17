@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.AcadPackage;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>AR10</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>AR10</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AR10Impl extends EcaAwReqImpl implements AR10 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AR10Impl() {
@@ -32,8 +30,8 @@ public class AR10Impl extends EcaAwReqImpl implements AR10 {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class AR10Impl extends EcaAwReqImpl implements AR10 {
 		return AcadPackage.Literals.AR10;
 	}
 
-} //AR10Impl
+} // AR10Impl

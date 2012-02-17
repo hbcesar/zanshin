@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.Q_IncidResolv;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QIncid Resolv</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>QIncid Resolv</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class Q_IncidResolvImpl extends QualityConstraintImpl implements Q_IncidResolv {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Q_IncidResolvImpl() {
@@ -32,8 +30,8 @@ public class Q_IncidResolvImpl extends QualityConstraintImpl implements Q_IncidR
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class Q_IncidResolvImpl extends QualityConstraintImpl implements Q_IncidR
 		return AcadPackage.Literals.QINCID_RESOLV;
 	}
 
-} //Q_IncidResolvImpl
+} // Q_IncidResolvImpl

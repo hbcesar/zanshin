@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_RouteAssist;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GRoute Assist</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GRoute Assist</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_RouteAssistImpl extends GoalImpl implements G_RouteAssist {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_RouteAssistImpl() {
@@ -32,8 +30,8 @@ public class G_RouteAssistImpl extends GoalImpl implements G_RouteAssist {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_RouteAssistImpl extends GoalImpl implements G_RouteAssist {
 		return AcadPackage.Literals.GROUTE_ASSIST;
 	}
 
-} //G_RouteAssistImpl
+} // G_RouteAssistImpl

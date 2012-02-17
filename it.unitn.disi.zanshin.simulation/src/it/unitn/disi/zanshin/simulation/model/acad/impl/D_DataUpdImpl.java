@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.D_DataUpd;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DData Upd</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>DData Upd</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class D_DataUpdImpl extends DomainAssumptionImpl implements D_DataUpd {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected D_DataUpdImpl() {
@@ -32,8 +30,8 @@ public class D_DataUpdImpl extends DomainAssumptionImpl implements D_DataUpd {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class D_DataUpdImpl extends DomainAssumptionImpl implements D_DataUpd {
 		return AcadPackage.Literals.DDATA_UPD;
 	}
 
-} //D_DataUpdImpl
+} // D_DataUpdImpl

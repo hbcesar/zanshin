@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.D_MDTPos;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DMDT Pos</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>DMDT Pos</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class D_MDTPosImpl extends DomainAssumptionImpl implements D_MDTPos {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected D_MDTPosImpl() {
@@ -32,8 +30,8 @@ public class D_MDTPosImpl extends DomainAssumptionImpl implements D_MDTPos {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class D_MDTPosImpl extends DomainAssumptionImpl implements D_MDTPos {
 		return AcadPackage.Literals.DMDT_POS;
 	}
 
-} //D_MDTPosImpl
+} // D_MDTPosImpl

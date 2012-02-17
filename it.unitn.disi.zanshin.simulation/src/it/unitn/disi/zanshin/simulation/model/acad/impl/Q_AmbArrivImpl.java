@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.Q_AmbArriv;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QAmb Arriv</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>QAmb Arriv</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class Q_AmbArrivImpl extends QualityConstraintImpl implements Q_AmbArriv {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Q_AmbArrivImpl() {
@@ -32,8 +30,8 @@ public class Q_AmbArrivImpl extends QualityConstraintImpl implements Q_AmbArriv 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class Q_AmbArrivImpl extends QualityConstraintImpl implements Q_AmbArriv 
 		return AcadPackage.Literals.QAMB_ARRIV;
 	}
 
-} //Q_AmbArrivImpl
+} // Q_AmbArrivImpl

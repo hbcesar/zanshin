@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.D_DriverKnows;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DDriver Knows</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>DDriver Knows</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class D_DriverKnowsImpl extends DomainAssumptionImpl implements D_DriverKnows {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected D_DriverKnowsImpl() {
@@ -32,8 +30,8 @@ public class D_DriverKnowsImpl extends DomainAssumptionImpl implements D_DriverK
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class D_DriverKnowsImpl extends DomainAssumptionImpl implements D_DriverK
 		return AcadPackage.Literals.DDRIVER_KNOWS;
 	}
 
-} //D_DriverKnowsImpl
+} // D_DriverKnowsImpl

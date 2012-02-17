@@ -28,7 +28,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UNDEFINED(0, "UNDEFINED", "Undefined"), //$NON-NLS-1$ //$NON-NLS-2$
+	UNDEFINED(0, "UNDEFINED", "undefined"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>STARTED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STARTED(1, "STARTED", "Started"), //$NON-NLS-1$ //$NON-NLS-2$
+	STARTED(1, "STARTED", "started"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>SUCCEEDED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -46,7 +46,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SUCCEEDED(2, "SUCCEEDED", "Succeeded"), //$NON-NLS-1$ //$NON-NLS-2$
+	SUCCEEDED(2, "SUCCEEDED", "succeeded"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>FAILED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -55,7 +55,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FAILED(3, "FAILED", "Failed"), //$NON-NLS-1$ //$NON-NLS-2$
+	FAILED(3, "FAILED", "failed"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>CANCELED</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -64,7 +64,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELED(4, "CANCELED", "Canceled"); //$NON-NLS-1$ //$NON-NLS-2$
+	CANCELED(4, "CANCELED", "canceled"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value. <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #UNDEFINED
-	 * @model literal="Undefined"
+	 * @model literal="undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -90,7 +90,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #STARTED
-	 * @model literal="Started"
+	 * @model literal="started"
 	 * @generated
 	 * @ordered
 	 */
@@ -105,7 +105,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #SUCCEEDED
-	 * @model literal="Succeeded"
+	 * @model literal="succeeded"
 	 * @generated
 	 * @ordered
 	 */
@@ -120,7 +120,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #FAILED
-	 * @model literal="Failed"
+	 * @model literal="failed"
 	 * @generated
 	 * @ordered
 	 */
@@ -135,7 +135,7 @@ public enum DefinableRequirementState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #CANCELED
-	 * @model literal="Canceled"
+	 * @model literal="canceled"
 	 * @generated
 	 * @ordered
 	 */

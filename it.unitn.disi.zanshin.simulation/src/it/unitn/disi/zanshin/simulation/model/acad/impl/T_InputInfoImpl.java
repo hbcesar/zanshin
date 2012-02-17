@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_InputInfo;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TInput Info</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TInput Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_InputInfoImpl extends TaskImpl implements T_InputInfo {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_InputInfoImpl() {
@@ -32,8 +30,8 @@ public class T_InputInfoImpl extends TaskImpl implements T_InputInfo {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_InputInfoImpl extends TaskImpl implements T_InputInfo {
 		return AcadPackage.Literals.TINPUT_INFO;
 	}
 
-} //T_InputInfoImpl
+} // T_InputInfoImpl

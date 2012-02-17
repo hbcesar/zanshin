@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_CloseIncident;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TClose Incident</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TClose Incident</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_CloseIncidentImpl extends TaskImpl implements T_CloseIncident {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_CloseIncidentImpl() {
@@ -32,8 +31,8 @@ public class T_CloseIncidentImpl extends TaskImpl implements T_CloseIncident {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class T_CloseIncidentImpl extends TaskImpl implements T_CloseIncident {
 		return AcadPackage.Literals.TCLOSE_INCIDENT;
 	}
 
-} //T_CloseIncidentImpl
+} // T_CloseIncidentImpl

@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_DispDepArriv;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TDisp Dep Arriv</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TDisp Dep Arriv</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_DispDepArrivImpl extends TaskImpl implements T_DispDepArriv {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_DispDepArrivImpl() {
@@ -32,8 +31,8 @@ public class T_DispDepArrivImpl extends TaskImpl implements T_DispDepArriv {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class T_DispDepArrivImpl extends TaskImpl implements T_DispDepArriv {
 		return AcadPackage.Literals.TDISP_DEP_ARRIV;
 	}
 
-} //T_DispDepArrivImpl
+} // T_DispDepArrivImpl

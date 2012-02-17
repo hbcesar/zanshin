@@ -21,23 +21,23 @@
 		<children xsi:type="acad:G_ResourceMob">							<!-- //@rootGoal/@children.3 -->
 			<children xsi:type="acad:T_DetBestAmb"/>
 			<children xsi:type="acad:T_InformStat"/>
-			<children xsi:type="acad:G_RouteAssist" refinementType="Or">
+			<children xsi:type="acad:G_RouteAssist" refinementType="or">
 				<children xsi:type="acad:D_DriverKnows"/>
 				<children xsi:type="acad:T_AcadAssists"/>
 				<children xsi:type="acad:T_StaffAssists"/>
 			</children>
 			<children xsi:type="acad:T_Feedback"/>
 		</children>
-		<children xsi:type="acad:G_ObtainMap" refinementType="Or">			<!-- //@rootGoal/@children.4 -->
+		<children xsi:type="acad:G_ObtainMap" refinementType="or">			<!-- //@rootGoal/@children.4 -->
 			<children xsi:type="acad:D_GazetUpd"/>
-			<children xsi:type="acad:G_ManualMap" refinementType="Or">
+			<children xsi:type="acad:G_ManualMap" refinementType="or">
 				<children xsi:type="acad:T_CheckGazet"/>
 				<children xsi:type="acad:T_CheckPaper"/>
 			</children>
 		</children>
 		<children xsi:type="acad:G_IncidentUpd">							<!-- //@rootGoal/@children.5 -->
 			<children xsi:type="acad:G_MonitorRes">
-				<children xsi:type="acad:G_UpdPosition" refinementType="Or">
+				<children xsi:type="acad:G_UpdPosition" refinementType="or">
 					<children xsi:type="acad:D_MDTPos"/>
 					<children xsi:type="acad:T_RadioPos"/>
 				</children>
@@ -45,7 +45,7 @@
 				<children xsi:type="acad:T_MonitorStatus"/>
 				<children xsi:type="acad:T_DispStatus"/>
 				<children xsi:type="acad:T_DispDepArriv"/>
-				<children xsi:type="acad:G_DispExcept" refinementType="Or">
+				<children xsi:type="acad:G_DispExcept" refinementType="or">
 					<children xsi:type="acad:T_Except"/>
 					<children xsi:type="acad:T_ExceptQueue"/>
 				</children>
@@ -80,13 +80,9 @@
 		<children xsi:type="acad:AR9"/>																					<!-- //@rootGoal/@children.24 -->
 		<children xsi:type="acad:AR10"/>																				<!-- //@rootGoal/@children.25 -->
 		<children xsi:type="acad:AR11" target="//@rootGoal/@children.12" incrementCoefficient="2">						<!-- //@rootGoal/@children.26 -->
-			<condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationResolutionCondition" algorithmId="qualia">
-				<wrappedCondition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
-			</condition>
+			<condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationResolutionCondition"/>
 			<strategies xsi:type="it.unitn.disi.zanshin.model:ReconfigurationStrategy" algorithmId="qualia">
-				<condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationApplicabilityCondition">
-					<wrappedCondition xsi:type="it.unitn.disi.zanshin.model:SimpleApplicabilityCondition"/>
-				</condition>
+				<condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationApplicabilityCondition"/>
 			</strategies>
 		</children>
 		<children xsi:type="acad:AR12"/>																					<!-- //@rootGoal/@children.27 -->
@@ -105,9 +101,9 @@
 	
 	<!-- System parameters. -->
 	<configuration>
-		<parameters xsi:type="acad:CV_MST" type="ECV" unit="10" value="60" metric="Integer"/>
+		<parameters xsi:type="acad:CV_MST" type="ECV" unit="10" value="60" metric="integer"/>
 	</configuration>
 	
 	<!-- Indicator / parameter differential relations. -->
-	<relations indicator="//@rootGoal/@children.26" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="FT" />
+	<relations indicator="//@rootGoal/@children.26" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="ft" />
 </acad:AcadGoalModel>

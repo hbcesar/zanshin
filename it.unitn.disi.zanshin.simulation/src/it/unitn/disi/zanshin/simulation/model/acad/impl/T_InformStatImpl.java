@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_InformStat;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TInform Stat</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TInform Stat</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_InformStatImpl extends TaskImpl implements T_InformStat {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_InformStatImpl() {
@@ -32,8 +30,8 @@ public class T_InformStatImpl extends TaskImpl implements T_InformStat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_InformStatImpl extends TaskImpl implements T_InformStat {
 		return AcadPackage.Literals.TINFORM_STAT;
 	}
 
-} //T_InformStatImpl
+} // T_InformStatImpl

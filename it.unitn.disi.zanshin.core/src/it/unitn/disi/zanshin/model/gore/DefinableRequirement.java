@@ -52,8 +52,9 @@ public interface DefinableRequirement extends Requirement {
 	void setTime(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>State</b></em>' attribute. The default value is <code>""</code>. The literals are
-	 * from the enumeration {@link it.unitn.disi.zanshin.model.gore.DefinableRequirementState}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>State</b></em>' attribute. The default value is <code>"undefined"</code>. The
+	 * literals are from the enumeration {@link it.unitn.disi.zanshin.model.gore.DefinableRequirementState}. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>State</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
@@ -63,7 +64,7 @@ public interface DefinableRequirement extends Requirement {
 	 * @see it.unitn.disi.zanshin.model.gore.DefinableRequirementState
 	 * @see #setState(DefinableRequirementState)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getDefinableRequirement_State()
-	 * @model default=""
+	 * @model default="undefined"
 	 * @generated
 	 */
 	DefinableRequirementState getState();

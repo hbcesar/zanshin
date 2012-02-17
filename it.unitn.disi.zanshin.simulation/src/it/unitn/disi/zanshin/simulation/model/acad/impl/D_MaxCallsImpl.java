@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.D_MaxCalls;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DMax Calls</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>DMax Calls</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class D_MaxCallsImpl extends DomainAssumptionImpl implements D_MaxCalls {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected D_MaxCallsImpl() {
@@ -32,8 +30,8 @@ public class D_MaxCallsImpl extends DomainAssumptionImpl implements D_MaxCalls {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class D_MaxCallsImpl extends DomainAssumptionImpl implements D_MaxCalls {
 		return AcadPackage.Literals.DMAX_CALLS;
 	}
 
-} //D_MaxCallsImpl
+} // D_MaxCallsImpl

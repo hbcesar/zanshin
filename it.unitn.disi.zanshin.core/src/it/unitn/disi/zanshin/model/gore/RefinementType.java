@@ -28,7 +28,7 @@ public enum RefinementType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	AND(0, "AND", "And"), //$NON-NLS-1$ //$NON-NLS-2$
+	AND(0, "AND", "and"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>OR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum RefinementType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OR(1, "OR", "Or"); //$NON-NLS-1$ //$NON-NLS-2$
+	OR(1, "OR", "or"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>AND</b></em>' literal value. <!-- begin-user-doc -->
@@ -48,7 +48,7 @@ public enum RefinementType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #AND
-	 * @model literal="And"
+	 * @model literal="and"
 	 * @generated
 	 * @ordered
 	 */
@@ -63,7 +63,7 @@ public enum RefinementType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #OR
-	 * @model literal="Or"
+	 * @model literal="or"
 	 * @generated
 	 * @ordered
 	 */

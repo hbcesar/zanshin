@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_DispStatus;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TDisp Status</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TDisp Status</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_DispStatusImpl extends TaskImpl implements T_DispStatus {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_DispStatusImpl() {
@@ -32,8 +30,8 @@ public class T_DispStatusImpl extends TaskImpl implements T_DispStatus {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_DispStatusImpl extends TaskImpl implements T_DispStatus {
 		return AcadPackage.Literals.TDISP_STATUS;
 	}
 
-} //T_DispStatusImpl
+} // T_DispStatusImpl

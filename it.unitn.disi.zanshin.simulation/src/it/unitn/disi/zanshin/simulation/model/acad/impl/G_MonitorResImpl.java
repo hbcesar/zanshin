@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_MonitorRes;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GMonitor Res</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GMonitor Res</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_MonitorResImpl extends GoalImpl implements G_MonitorRes {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_MonitorResImpl() {
@@ -32,8 +30,8 @@ public class G_MonitorResImpl extends GoalImpl implements G_MonitorRes {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_MonitorResImpl extends GoalImpl implements G_MonitorRes {
 		return AcadPackage.Literals.GMONITOR_RES;
 	}
 
-} //G_MonitorResImpl
+} // G_MonitorResImpl

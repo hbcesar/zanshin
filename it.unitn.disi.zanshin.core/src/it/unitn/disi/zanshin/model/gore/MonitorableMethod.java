@@ -28,7 +28,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	START(0, "START", "Start"), //$NON-NLS-1$ //$NON-NLS-2$
+	START(0, "START", "start"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>END</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	END(1, "END", "End"), //$NON-NLS-1$ //$NON-NLS-2$
+	END(1, "END", "end"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>SUCCESS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -46,7 +46,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SUCCESS(2, "SUCCESS", "Success"), //$NON-NLS-1$ //$NON-NLS-2$
+	SUCCESS(2, "SUCCESS", "success"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>FAIL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -55,7 +55,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FAIL(3, "FAIL", "Fail"), //$NON-NLS-1$ //$NON-NLS-2$
+	FAIL(3, "FAIL", "fail"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>CANCEL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -64,7 +64,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCEL(4, "CANCEL", "Cancel"); //$NON-NLS-1$ //$NON-NLS-2$
+	CANCEL(4, "CANCEL", "cancel"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>START</b></em>' literal value. <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #START
-	 * @model literal="Start"
+	 * @model literal="start"
 	 * @generated
 	 * @ordered
 	 */
@@ -90,7 +90,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #END
-	 * @model literal="End"
+	 * @model literal="end"
 	 * @generated
 	 * @ordered
 	 */
@@ -105,7 +105,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #SUCCESS
-	 * @model literal="Success"
+	 * @model literal="success"
 	 * @generated
 	 * @ordered
 	 */
@@ -120,7 +120,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #FAIL
-	 * @model literal="Fail"
+	 * @model literal="fail"
 	 * @generated
 	 * @ordered
 	 */
@@ -135,7 +135,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #CANCEL
-	 * @model literal="Cancel"
+	 * @model literal="cancel"
 	 * @generated
 	 * @ordered
 	 */

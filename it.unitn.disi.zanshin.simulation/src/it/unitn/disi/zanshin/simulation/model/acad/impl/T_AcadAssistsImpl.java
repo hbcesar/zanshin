@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_AcadAssists;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TAcad Assists</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TAcad Assists</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_AcadAssistsImpl extends TaskImpl implements T_AcadAssists {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_AcadAssistsImpl() {
@@ -32,8 +30,8 @@ public class T_AcadAssistsImpl extends TaskImpl implements T_AcadAssists {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_AcadAssistsImpl extends TaskImpl implements T_AcadAssists {
 		return AcadPackage.Literals.TACAD_ASSISTS;
 	}
 
-} //T_AcadAssistsImpl
+} // T_AcadAssistsImpl

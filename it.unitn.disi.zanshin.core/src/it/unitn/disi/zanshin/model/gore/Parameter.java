@@ -58,7 +58,7 @@ public interface Parameter extends EObject {
 	void setConfiguration(Configuration value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute. The default value is <code>"VP"</code>. The literals are
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. The default value is <code>"vp"</code>. The literals are
 	 * from the enumeration {@link it.unitn.disi.zanshin.model.gore.ParameterType}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really should be more of a description here...
@@ -69,7 +69,7 @@ public interface Parameter extends EObject {
 	 * @see it.unitn.disi.zanshin.model.gore.ParameterType
 	 * @see #setType(ParameterType)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getParameter_Type()
-	 * @model default="VP" required="true"
+	 * @model default="vp" required="true"
 	 * @generated
 	 */
 	ParameterType getType();
@@ -139,7 +139,7 @@ public interface Parameter extends EObject {
 	void setValue(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Metric</b></em>' attribute. The default value is <code>"Enumerated"</code>. The
+	 * Returns the value of the '<em><b>Metric</b></em>' attribute. The default value is <code>"enumerated"</code>. The
 	 * literals are from the enumeration {@link it.unitn.disi.zanshin.model.gore.ParameterMetric}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Metric</em>' attribute isn't clear, there really should be more of a description here...
@@ -150,7 +150,7 @@ public interface Parameter extends EObject {
 	 * @see it.unitn.disi.zanshin.model.gore.ParameterMetric
 	 * @see #setMetric(ParameterMetric)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getParameter_Metric()
-	 * @model default="Enumerated" required="true"
+	 * @model default="enumerated" required="true"
 	 * @generated
 	 */
 	ParameterMetric getMetric();

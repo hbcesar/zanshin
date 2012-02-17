@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.Q_MaxCost;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QMax Cost</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>QMax Cost</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class Q_MaxCostImpl extends QualityConstraintImpl implements Q_MaxCost {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Q_MaxCostImpl() {
@@ -32,8 +30,8 @@ public class Q_MaxCostImpl extends QualityConstraintImpl implements Q_MaxCost {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class Q_MaxCostImpl extends QualityConstraintImpl implements Q_MaxCost {
 		return AcadPackage.Literals.QMAX_COST;
 	}
 
-} //Q_MaxCostImpl
+} // Q_MaxCostImpl

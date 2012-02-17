@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.S_FastAssist;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>SFast Assist</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>SFast Assist</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class S_FastAssistImpl extends SoftgoalImpl implements S_FastAssist {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected S_FastAssistImpl() {
@@ -32,8 +30,8 @@ public class S_FastAssistImpl extends SoftgoalImpl implements S_FastAssist {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class S_FastAssistImpl extends SoftgoalImpl implements S_FastAssist {
 		return AcadPackage.Literals.SFAST_ASSIST;
 	}
 
-} //S_FastAssistImpl
+} // S_FastAssistImpl

@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.Q_MaxTimeMsg;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QMax Time Msg</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>QMax Time Msg</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class Q_MaxTimeMsgImpl extends QualityConstraintImpl implements Q_MaxTimeMsg {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Q_MaxTimeMsgImpl() {
@@ -32,8 +30,8 @@ public class Q_MaxTimeMsgImpl extends QualityConstraintImpl implements Q_MaxTime
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class Q_MaxTimeMsgImpl extends QualityConstraintImpl implements Q_MaxTime
 		return AcadPackage.Literals.QMAX_TIME_MSG;
 	}
 
-} //Q_MaxTimeMsgImpl
+} // Q_MaxTimeMsgImpl

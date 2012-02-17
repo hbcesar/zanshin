@@ -42,7 +42,10 @@ public class AcadSimulatedController extends EmptySimulatedController {
 		return SimulationUtils.readDefaultAcadGoalModel();
 	}
 
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#copyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement, it.unitn.disi.zanshin.model.gore.PerformativeRequirement) */
+	/**
+	 * @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#copyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement,
+	 *      it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
+	 */
 	@Override
 	public void copyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {}
 
@@ -60,7 +63,10 @@ public class AcadSimulatedController extends EmptySimulatedController {
 	@Override
 	public void waitFor(long timeInMillis) {}
 
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#resume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
+	/**
+	 * @see it.unitn.disi.zanshin.simulation.internal.services.EmptySimulatedController#resume(it.unitn.disi.zanshin.model.gore.Requirement,
+	 *      it.unitn.disi.zanshin.model.gore.Requirement)
+	 */
 	@Override
 	public void resume(Requirement req, Requirement parent) {}
 

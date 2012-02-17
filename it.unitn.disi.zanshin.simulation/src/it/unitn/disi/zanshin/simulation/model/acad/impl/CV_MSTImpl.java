@@ -14,18 +14,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.CV_MST;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>CV MST</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>CV MST</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class CV_MSTImpl extends ParameterImpl implements CV_MST {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CV_MSTImpl() {
@@ -33,12 +31,12 @@ public class CV_MSTImpl extends ParameterImpl implements CV_MST {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
 		return AcadPackage.Literals.CV_MST;
 	}
 
-} //CV_MSTImpl
+} // CV_MSTImpl

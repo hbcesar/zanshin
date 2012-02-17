@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_DetectLoc;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TDetect Loc</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TDetect Loc</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_DetectLocImpl extends TaskImpl implements T_DetectLoc {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_DetectLocImpl() {
@@ -32,8 +30,8 @@ public class T_DetectLocImpl extends TaskImpl implements T_DetectLoc {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_DetectLocImpl extends TaskImpl implements T_DetectLoc {
 		return AcadPackage.Literals.TDETECT_LOC;
 	}
 
-} //T_DetectLocImpl
+} // T_DetectLocImpl

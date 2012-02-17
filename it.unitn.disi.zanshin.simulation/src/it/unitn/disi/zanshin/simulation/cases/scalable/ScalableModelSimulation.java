@@ -40,7 +40,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 	private static final int MAX_CHILDREN = 5;
 
 	/** Constant that contains different model sizes to be simulated. */
-	private static final int[] GOAL_MODEL_SIZES = new int[] { 10 }; //, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+	private static final int[] GOAL_MODEL_SIZES = new int[] { 10 }; // , 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+																																	// };
 
 	/** The repository service. */
 	private IRepositoryService repositoryService;
@@ -76,7 +77,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					// Creates an exact copy of the model and injects it in the controller.
 					ScalableGoalModel modelCopy = createCopy(model);
 					SimulatedController controller = getController();
-					if (controller instanceof ScalableSimulatedController) ((ScalableSimulatedController) controller).setModelCopy(modelCopy);
+					if (controller instanceof ScalableSimulatedController)
+						((ScalableSimulatedController) controller).setModelCopy(modelCopy);
 
 					// Writes the model size in the date attribute of the root.
 					model.getRootGoal().setTime(new Date(modelSize));
@@ -145,7 +147,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		ScalableGoalModel model = factory.createScalableGoalModel();
 		G00000 root = factory.createG00000();
 		model.setRootGoal(root);
-		
+
 		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
 		AR1 awreq = factory.createAR1();
 		awreq.setParent(root);
@@ -237,7 +239,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 	 * required by some strategies that replace parts of the failed goal model with new elements who are not in the Failed
 	 * state.
 	 * 
-	 * @param model The goal model to copy.
+	 * @param model
+	 *          The goal model to copy.
 	 * @return An exact copy of the specified goal model.
 	 * @throws NoSuchMethodException
 	 *           If the factory method for creating goal model elements cannot be found.
@@ -254,7 +257,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		ScalableGoalModel newModel = factory.createScalableGoalModel();
 		G00000 root = factory.createG00000();
 		newModel.setRootGoal(root);
-		
+
 		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
 		AR1 awreq = factory.createAR1();
 		awreq.setParent(root);
@@ -284,7 +287,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					Method method = factory.getClass().getMethod(factoryMethodPrefix + child.eClass().getName());
 					Goal newChild = (Goal) method.invoke(factory);
 					newChild.setParent(newGoal);
-	
+
 					stack.push(child);
 					newStack.push(newChild);
 				}

@@ -176,8 +176,8 @@ public class RequirementImpl extends OclAnyImpl implements Requirement {
 		if (it.unitn.disi.zanshin.model.gore.Goal.class.isAssignableFrom(getClass()))
 			model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();
 
-		// If the model is not found in the root goal, move up the requirement tree looking for the root goal.
-		if ((model == null) && (getParent() != null))
+		// Otherwise, move up the requirement tree looking for the root goal.
+		else if (getParent() != null)
 			model = getParent().findGoalModel();
 
 		// Returns the found model, or null if no model has been found.

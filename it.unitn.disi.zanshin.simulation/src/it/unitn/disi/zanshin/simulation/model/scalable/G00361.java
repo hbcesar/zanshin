@@ -9,14 +9,11 @@ package it.unitn.disi.zanshin.simulation.model.scalable;
 import it.unitn.disi.zanshin.model.gore.Goal;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>G00361</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>G00361</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
  * @see it.unitn.disi.zanshin.simulation.model.scalable.ScalablePackage#getG00361()
  * @model
  * @generated
  */
-public interface G00361 extends Goal {
-} // G00361
+public interface G00361 extends Goal {} // G00361

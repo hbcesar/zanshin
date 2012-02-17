@@ -84,24 +84,20 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static AcadFactory init() {
 		try {
-			AcadFactory theAcadFactory = (AcadFactory)EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0");  //$NON-NLS-1$
-			if (theAcadFactory != null) {
-				return theAcadFactory;
-			}
+			AcadFactory theAcadFactory = (AcadFactory) EPackage.Registry.INSTANCE.getEFactory("http://acad/1.0"); //$NON-NLS-1$
+			if (theAcadFactory != null) { return theAcadFactory; }
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
@@ -110,9 +106,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AcadFactoryImpl() {
@@ -120,89 +115,157 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case AcadPackage.GGEN_DISPATCH: return createG_GenDispatch();
-			case AcadPackage.GCALL_TAKING: return createG_CallTaking();
-			case AcadPackage.DDATA_UPD: return createD_DataUpd();
-			case AcadPackage.GRESOURCE_ID: return createG_ResourceId();
-			case AcadPackage.GRESOURCE_MOB: return createG_ResourceMob();
-			case AcadPackage.GOBTAIN_MAP: return createG_ObtainMap();
-			case AcadPackage.GINCIDENT_UPD: return createG_IncidentUpd();
-			case AcadPackage.DMAX_CALLS: return createD_MaxCalls();
-			case AcadPackage.GREG_CALL: return createG_RegCall();
-			case AcadPackage.TCONFIRM_CALL: return createT_ConfirmCall();
-			case AcadPackage.GASSIGN_INCIDENT: return createG_AssignIncident();
-			case AcadPackage.TSEARCH_DUPLIC: return createT_SearchDuplic();
-			case AcadPackage.TCREATE_OR_ASSIGN: return createT_CreateOrAssign();
-			case AcadPackage.TINPUT_INFO: return createT_InputInfo();
-			case AcadPackage.TDETECT_LOC: return createT_DetectLoc();
-			case AcadPackage.TSPEC_CONFIG: return createT_SpecConfig();
-			case AcadPackage.TCONF_INCIDENT: return createT_ConfIncident();
-			case AcadPackage.TDET_BEST_AMB: return createT_DetBestAmb();
-			case AcadPackage.TINFORM_STAT: return createT_InformStat();
-			case AcadPackage.GROUTE_ASSIST: return createG_RouteAssist();
-			case AcadPackage.DDRIVER_KNOWS: return createD_DriverKnows();
-			case AcadPackage.TACAD_ASSISTS: return createT_AcadAssists();
-			case AcadPackage.TSTAFF_ASSISTS: return createT_StaffAssists();
-			case AcadPackage.TFEEDBACK: return createT_Feedback();
-			case AcadPackage.DGAZET_UPD: return createD_GazetUpd();
-			case AcadPackage.GMANUAL_MAP: return createG_ManualMap();
-			case AcadPackage.TCHECK_GAZET: return createT_CheckGazet();
-			case AcadPackage.TCHECK_PAPER: return createT_CheckPaper();
-			case AcadPackage.GDISP_EXCEPT: return createG_DispExcept();
-			case AcadPackage.GMONITOR_RES: return createG_MonitorRes();
-			case AcadPackage.GUPD_POSITION: return createG_UpdPosition();
-			case AcadPackage.DMDT_POS: return createD_MDTPos();
-			case AcadPackage.TRADIO_POS: return createT_RadioPos();
-			case AcadPackage.DMDT_USE: return createD_MDTUse();
-			case AcadPackage.TMONITOR_STATUS: return createT_MonitorStatus();
-			case AcadPackage.TDISP_STATUS: return createT_DispStatus();
-			case AcadPackage.TDISP_DEP_ARRIV: return createT_DispDepArriv();
-			case AcadPackage.TREPL_AMB: return createT_ReplAmb();
-			case AcadPackage.TEXCEPT: return createT_Except();
-			case AcadPackage.TEXCEPT_QUEUE: return createT_ExceptQueue();
-			case AcadPackage.TCLOSE_INCIDENT: return createT_CloseIncident();
-			case AcadPackage.SFAST_DISPATCH: return createS_FastDispatch();
-			case AcadPackage.QDISPATCH: return createQ_Dispatch();
-			case AcadPackage.SFAST_ASSIST: return createS_FastAssist();
-			case AcadPackage.QINCID_RESOLV: return createQ_IncidResolv();
-			case AcadPackage.SFAST_ARRIV: return createS_FastArriv();
-			case AcadPackage.QAMB_ARRIV: return createQ_AmbArriv();
-			case AcadPackage.SLOW_COST: return createS_LowCost();
-			case AcadPackage.QMAX_COST: return createQ_MaxCost();
-			case AcadPackage.SUSER_FRIENDLY: return createS_UserFriendly();
-			case AcadPackage.QMAX_TIME_MSG: return createQ_MaxTimeMsg();
-			case AcadPackage.AR1: return createAR1();
-			case AcadPackage.AR2: return createAR2();
-			case AcadPackage.AR3: return createAR3();
-			case AcadPackage.AR4: return createAR4();
-			case AcadPackage.AR5: return createAR5();
-			case AcadPackage.AR6: return createAR6();
-			case AcadPackage.AR7: return createAR7();
-			case AcadPackage.AR8: return createAR8();
-			case AcadPackage.AR9: return createAR9();
-			case AcadPackage.AR10: return createAR10();
-			case AcadPackage.AR11: return createAR11();
-			case AcadPackage.AR12: return createAR12();
-			case AcadPackage.AR13: return createAR13();
-			case AcadPackage.AR14: return createAR14();
-			case AcadPackage.AR15: return createAR15();
-			case AcadPackage.ACAD_GOAL_MODEL: return createAcadGoalModel();
-			case AcadPackage.CV_MST: return createCV_MST();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		case AcadPackage.GGEN_DISPATCH:
+			return createG_GenDispatch();
+		case AcadPackage.GCALL_TAKING:
+			return createG_CallTaking();
+		case AcadPackage.DDATA_UPD:
+			return createD_DataUpd();
+		case AcadPackage.GRESOURCE_ID:
+			return createG_ResourceId();
+		case AcadPackage.GRESOURCE_MOB:
+			return createG_ResourceMob();
+		case AcadPackage.GOBTAIN_MAP:
+			return createG_ObtainMap();
+		case AcadPackage.GINCIDENT_UPD:
+			return createG_IncidentUpd();
+		case AcadPackage.DMAX_CALLS:
+			return createD_MaxCalls();
+		case AcadPackage.GREG_CALL:
+			return createG_RegCall();
+		case AcadPackage.TCONFIRM_CALL:
+			return createT_ConfirmCall();
+		case AcadPackage.GASSIGN_INCIDENT:
+			return createG_AssignIncident();
+		case AcadPackage.TSEARCH_DUPLIC:
+			return createT_SearchDuplic();
+		case AcadPackage.TCREATE_OR_ASSIGN:
+			return createT_CreateOrAssign();
+		case AcadPackage.TINPUT_INFO:
+			return createT_InputInfo();
+		case AcadPackage.TDETECT_LOC:
+			return createT_DetectLoc();
+		case AcadPackage.TSPEC_CONFIG:
+			return createT_SpecConfig();
+		case AcadPackage.TCONF_INCIDENT:
+			return createT_ConfIncident();
+		case AcadPackage.TDET_BEST_AMB:
+			return createT_DetBestAmb();
+		case AcadPackage.TINFORM_STAT:
+			return createT_InformStat();
+		case AcadPackage.GROUTE_ASSIST:
+			return createG_RouteAssist();
+		case AcadPackage.DDRIVER_KNOWS:
+			return createD_DriverKnows();
+		case AcadPackage.TACAD_ASSISTS:
+			return createT_AcadAssists();
+		case AcadPackage.TSTAFF_ASSISTS:
+			return createT_StaffAssists();
+		case AcadPackage.TFEEDBACK:
+			return createT_Feedback();
+		case AcadPackage.DGAZET_UPD:
+			return createD_GazetUpd();
+		case AcadPackage.GMANUAL_MAP:
+			return createG_ManualMap();
+		case AcadPackage.TCHECK_GAZET:
+			return createT_CheckGazet();
+		case AcadPackage.TCHECK_PAPER:
+			return createT_CheckPaper();
+		case AcadPackage.GDISP_EXCEPT:
+			return createG_DispExcept();
+		case AcadPackage.GMONITOR_RES:
+			return createG_MonitorRes();
+		case AcadPackage.GUPD_POSITION:
+			return createG_UpdPosition();
+		case AcadPackage.DMDT_POS:
+			return createD_MDTPos();
+		case AcadPackage.TRADIO_POS:
+			return createT_RadioPos();
+		case AcadPackage.DMDT_USE:
+			return createD_MDTUse();
+		case AcadPackage.TMONITOR_STATUS:
+			return createT_MonitorStatus();
+		case AcadPackage.TDISP_STATUS:
+			return createT_DispStatus();
+		case AcadPackage.TDISP_DEP_ARRIV:
+			return createT_DispDepArriv();
+		case AcadPackage.TREPL_AMB:
+			return createT_ReplAmb();
+		case AcadPackage.TEXCEPT:
+			return createT_Except();
+		case AcadPackage.TEXCEPT_QUEUE:
+			return createT_ExceptQueue();
+		case AcadPackage.TCLOSE_INCIDENT:
+			return createT_CloseIncident();
+		case AcadPackage.SFAST_DISPATCH:
+			return createS_FastDispatch();
+		case AcadPackage.QDISPATCH:
+			return createQ_Dispatch();
+		case AcadPackage.SFAST_ASSIST:
+			return createS_FastAssist();
+		case AcadPackage.QINCID_RESOLV:
+			return createQ_IncidResolv();
+		case AcadPackage.SFAST_ARRIV:
+			return createS_FastArriv();
+		case AcadPackage.QAMB_ARRIV:
+			return createQ_AmbArriv();
+		case AcadPackage.SLOW_COST:
+			return createS_LowCost();
+		case AcadPackage.QMAX_COST:
+			return createQ_MaxCost();
+		case AcadPackage.SUSER_FRIENDLY:
+			return createS_UserFriendly();
+		case AcadPackage.QMAX_TIME_MSG:
+			return createQ_MaxTimeMsg();
+		case AcadPackage.AR1:
+			return createAR1();
+		case AcadPackage.AR2:
+			return createAR2();
+		case AcadPackage.AR3:
+			return createAR3();
+		case AcadPackage.AR4:
+			return createAR4();
+		case AcadPackage.AR5:
+			return createAR5();
+		case AcadPackage.AR6:
+			return createAR6();
+		case AcadPackage.AR7:
+			return createAR7();
+		case AcadPackage.AR8:
+			return createAR8();
+		case AcadPackage.AR9:
+			return createAR9();
+		case AcadPackage.AR10:
+			return createAR10();
+		case AcadPackage.AR11:
+			return createAR11();
+		case AcadPackage.AR12:
+			return createAR12();
+		case AcadPackage.AR13:
+			return createAR13();
+		case AcadPackage.AR14:
+			return createAR14();
+		case AcadPackage.AR15:
+			return createAR15();
+		case AcadPackage.ACAD_GOAL_MODEL:
+			return createAcadGoalModel();
+		case AcadPackage.CV_MST:
+			return createCV_MST();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_GenDispatch createG_GenDispatch() {
@@ -211,8 +274,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_CallTaking createG_CallTaking() {
@@ -221,8 +284,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_DataUpd createD_DataUpd() {
@@ -231,8 +294,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_ResourceId createG_ResourceId() {
@@ -241,8 +304,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_ResourceMob createG_ResourceMob() {
@@ -251,8 +314,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_ObtainMap createG_ObtainMap() {
@@ -261,8 +324,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_IncidentUpd createG_IncidentUpd() {
@@ -271,8 +334,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_MaxCalls createD_MaxCalls() {
@@ -281,8 +344,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_RegCall createG_RegCall() {
@@ -291,8 +354,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_ConfirmCall createT_ConfirmCall() {
@@ -301,8 +364,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_AssignIncident createG_AssignIncident() {
@@ -311,8 +374,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_SearchDuplic createT_SearchDuplic() {
@@ -321,8 +384,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_CreateOrAssign createT_CreateOrAssign() {
@@ -331,8 +394,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_InputInfo createT_InputInfo() {
@@ -341,8 +404,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_DetectLoc createT_DetectLoc() {
@@ -351,8 +414,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_SpecConfig createT_SpecConfig() {
@@ -361,8 +424,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_ConfIncident createT_ConfIncident() {
@@ -371,8 +434,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_DetBestAmb createT_DetBestAmb() {
@@ -381,8 +444,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_InformStat createT_InformStat() {
@@ -391,8 +454,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_RouteAssist createG_RouteAssist() {
@@ -401,8 +464,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_DriverKnows createD_DriverKnows() {
@@ -411,8 +474,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_AcadAssists createT_AcadAssists() {
@@ -421,8 +484,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_StaffAssists createT_StaffAssists() {
@@ -431,8 +494,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_Feedback createT_Feedback() {
@@ -441,8 +504,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_GazetUpd createD_GazetUpd() {
@@ -451,8 +514,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_ManualMap createG_ManualMap() {
@@ -461,8 +524,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_CheckGazet createT_CheckGazet() {
@@ -471,8 +534,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_CheckPaper createT_CheckPaper() {
@@ -481,8 +544,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_DispExcept createG_DispExcept() {
@@ -491,8 +554,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_MonitorRes createG_MonitorRes() {
@@ -501,8 +564,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public G_UpdPosition createG_UpdPosition() {
@@ -511,8 +574,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_MDTPos createD_MDTPos() {
@@ -521,8 +584,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_RadioPos createT_RadioPos() {
@@ -531,8 +594,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public D_MDTUse createD_MDTUse() {
@@ -541,8 +604,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_MonitorStatus createT_MonitorStatus() {
@@ -551,8 +614,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_DispStatus createT_DispStatus() {
@@ -561,8 +624,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_DispDepArriv createT_DispDepArriv() {
@@ -571,8 +634,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_ReplAmb createT_ReplAmb() {
@@ -581,8 +644,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_Except createT_Except() {
@@ -591,8 +654,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_ExceptQueue createT_ExceptQueue() {
@@ -601,8 +664,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public T_CloseIncident createT_CloseIncident() {
@@ -611,8 +674,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public S_FastDispatch createS_FastDispatch() {
@@ -621,8 +684,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Q_Dispatch createQ_Dispatch() {
@@ -631,8 +694,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public S_FastAssist createS_FastAssist() {
@@ -641,8 +704,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Q_IncidResolv createQ_IncidResolv() {
@@ -651,8 +714,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public S_FastArriv createS_FastArriv() {
@@ -661,8 +724,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Q_AmbArriv createQ_AmbArriv() {
@@ -671,8 +734,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public S_LowCost createS_LowCost() {
@@ -681,8 +744,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Q_MaxCost createQ_MaxCost() {
@@ -691,8 +754,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public S_UserFriendly createS_UserFriendly() {
@@ -701,8 +764,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Q_MaxTimeMsg createQ_MaxTimeMsg() {
@@ -711,8 +774,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR1 createAR1() {
@@ -721,8 +784,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR2 createAR2() {
@@ -731,8 +794,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR3 createAR3() {
@@ -741,8 +804,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR4 createAR4() {
@@ -751,8 +814,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR5 createAR5() {
@@ -761,8 +824,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR6 createAR6() {
@@ -771,8 +834,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR7 createAR7() {
@@ -781,8 +844,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR8 createAR8() {
@@ -791,8 +854,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR9 createAR9() {
@@ -801,8 +864,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR10 createAR10() {
@@ -811,8 +874,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR11 createAR11() {
@@ -821,8 +884,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR12 createAR12() {
@@ -831,8 +894,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR13 createAR13() {
@@ -841,8 +904,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR14 createAR14() {
@@ -851,8 +914,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AR15 createAR15() {
@@ -861,8 +924,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AcadGoalModel createAcadGoalModel() {
@@ -871,8 +934,8 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CV_MST createCV_MST() {
@@ -881,17 +944,17 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AcadPackage getAcadPackage() {
-		return (AcadPackage)getEPackage();
+		return (AcadPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -900,4 +963,4 @@ public class AcadFactoryImpl extends EFactoryImpl implements AcadFactory {
 		return AcadPackage.eINSTANCE;
 	}
 
-} //AcadFactoryImpl
+} // AcadFactoryImpl

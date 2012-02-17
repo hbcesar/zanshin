@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_MonitorStatus;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TMonitor Status</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TMonitor Status</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_MonitorStatusImpl extends TaskImpl implements T_MonitorStatus {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_MonitorStatusImpl() {
@@ -32,8 +31,8 @@ public class T_MonitorStatusImpl extends TaskImpl implements T_MonitorStatus {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class T_MonitorStatusImpl extends TaskImpl implements T_MonitorStatus {
 		return AcadPackage.Literals.TMONITOR_STATUS;
 	}
 
-} //T_MonitorStatusImpl
+} // T_MonitorStatusImpl

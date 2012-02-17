@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EClass;
 public class SimulationTargetSystemControllerService extends AbstractTargetSystemControllerService {
 	/** The controller simulation that will actually perform the actions, depending on the simulation being executed. */
 	private SimulatedController controller = new EmptySimulatedController();
-	
+
 	/** The Repository Service implementation. */
 	private IRepositoryService repositoryService;
 
@@ -42,7 +42,7 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 	public void unsetRepositoryService(IRepositoryService repositoryService) {
 		this.repositoryService = null;
 	}
-	
+
 	/** Setter for controller. */
 	public void setController(SimulatedController controller) {
 		this.controller = controller;
@@ -85,7 +85,10 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		controller.changeParameter(reqClass, param, value);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doCopyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement, it.unitn.disi.zanshin.model.gore.PerformativeRequirement) */
+	/**
+	 * @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doCopyData(it.unitn.disi.zanshin.model.gore.PerformativeRequirement,
+	 *      it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
+	 */
 	@Override
 	public void doCopyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq) {
 		SimulationUtils.log.info("Instruction received: copy-data(i{0}, i{1})", srcReq.eClass().getName(), dstReq.eClass().getName()); //$NON-NLS-1$
@@ -120,7 +123,10 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		return controller.createNewModel();
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doResume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
+	/**
+	 * @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doResume(it.unitn.disi.zanshin.model.gore.Requirement,
+	 *      it.unitn.disi.zanshin.model.gore.Requirement)
+	 */
 	@Override
 	public void doResume(Requirement req, Requirement parent) {
 		SimulationUtils.log.info("Instruction received: resume(i{0})", req.eClass().getName()); //$NON-NLS-1$
@@ -161,7 +167,7 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#waitFor(long) */
 	@Override
 	public void waitFor(long timeInMillis) {
-		SimulationUtils.log.info("Instruction received: wait({0})",timeInMillis); //$NON-NLS-1$
+		SimulationUtils.log.info("Instruction received: wait({0})", timeInMillis); //$NON-NLS-1$
 		controller.waitFor(timeInMillis);
 	}
 

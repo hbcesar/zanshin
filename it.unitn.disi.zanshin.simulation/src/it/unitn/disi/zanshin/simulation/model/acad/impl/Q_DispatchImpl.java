@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.Q_Dispatch;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QDispatch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>QDispatch</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class Q_DispatchImpl extends QualityConstraintImpl implements Q_Dispatch {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Q_DispatchImpl() {
@@ -32,8 +30,8 @@ public class Q_DispatchImpl extends QualityConstraintImpl implements Q_Dispatch 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class Q_DispatchImpl extends QualityConstraintImpl implements Q_Dispatch 
 		return AcadPackage.Literals.QDISPATCH;
 	}
 
-} //Q_DispatchImpl
+} // Q_DispatchImpl

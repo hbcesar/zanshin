@@ -51,7 +51,7 @@ public class ScalableSimulatedAwReqsMonitor implements IMonitoringService {
 		GoalModel model = req.findGoalModel();
 		if (model != null) {
 			Requirement firstChild = model.getRootGoal().getChildren().get(0);
-	
+
 			// Continue only if the AwReq was found.
 			if ((firstChild != null) && (firstChild instanceof AwReq)) {
 				AwReq awreq = (AwReq) firstChild;
@@ -68,13 +68,13 @@ public class ScalableSimulatedAwReqsMonitor implements IMonitoringService {
 					default:
 						awreq = null;
 					}
-	
+
 					// Notify the adaptation service of the AwReq state change.
 					if (awreq != null) {
 						adaptationService.processStateChange(awreq);
 					}
 				}
-	
+
 				// If it's not the target element, check if it's the root element ending. In that case, calculate and print the
 				// time.
 				else if (req.eClass().getName().equals("G00000") && (method == MonitorableMethod.END)) { //$NON-NLS-1$

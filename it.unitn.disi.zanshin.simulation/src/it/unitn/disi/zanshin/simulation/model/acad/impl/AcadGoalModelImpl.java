@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.AcadPackage;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Goal Model</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Goal Model</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AcadGoalModelImpl extends GoalModelImpl implements AcadGoalModel {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AcadGoalModelImpl() {
@@ -32,8 +30,8 @@ public class AcadGoalModelImpl extends GoalModelImpl implements AcadGoalModel {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class AcadGoalModelImpl extends GoalModelImpl implements AcadGoalModel {
 		return AcadPackage.Literals.ACAD_GOAL_MODEL;
 	}
 
-} //AcadGoalModelImpl
+} // AcadGoalModelImpl

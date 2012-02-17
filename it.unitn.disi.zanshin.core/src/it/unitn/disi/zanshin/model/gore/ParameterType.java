@@ -28,7 +28,7 @@ public enum ParameterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	VARIATION_POINT(0, "VARIATION_POINT", "VP"), //$NON-NLS-1$ //$NON-NLS-2$
+	VARIATION_POINT(0, "VARIATION_POINT", "vp"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>ENUMERATED CONTROL VARIABLE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum ParameterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ENUMERATED_CONTROL_VARIABLE(1, "ENUMERATED_CONTROL_VARIABLE", "ECV"), //$NON-NLS-1$ //$NON-NLS-2$
+	ENUMERATED_CONTROL_VARIABLE(1, "ENUMERATED_CONTROL_VARIABLE", "ecv"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>NUMERIC CONTROL VARIABLE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -46,7 +46,7 @@ public enum ParameterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NUMERIC_CONTROL_VARIABLE(2, "NUMERIC_CONTROL_VARIABLE", "NCV"); //$NON-NLS-1$ //$NON-NLS-2$
+	NUMERIC_CONTROL_VARIABLE(2, "NUMERIC_CONTROL_VARIABLE", "ncv"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>VARIATION POINT</b></em>' literal value. <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #VARIATION_POINT
-	 * @model literal="VP"
+	 * @model literal="vp"
 	 * @generated
 	 * @ordered
 	 */
@@ -72,7 +72,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #ENUMERATED_CONTROL_VARIABLE
-	 * @model literal="ECV"
+	 * @model literal="ecv"
 	 * @generated
 	 * @ordered
 	 */
@@ -87,7 +87,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #NUMERIC_CONTROL_VARIABLE
-	 * @model literal="NCV"
+	 * @model literal="ncv"
 	 * @generated
 	 * @ordered
 	 */

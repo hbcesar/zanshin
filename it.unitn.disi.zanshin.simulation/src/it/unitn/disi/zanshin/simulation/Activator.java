@@ -130,7 +130,7 @@ public class Activator implements BundleActivator {
 		simulationManager = new SimulationManager(props, controllerService, monitoringService);
 		return simulationManager;
 	}
-	
+
 	public static SimulationManager createSimulationManager(Integer simulationNumber) throws IOException {
 		// Reads the simulation properties, creates the simulation manager for a specific simulation and returns.
 		Properties props = SimulationUtils.readSimulationProperties();

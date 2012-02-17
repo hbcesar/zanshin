@@ -54,7 +54,7 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//DefinableRequirementState"
-        defaultValueLiteral=""/>
+        defaultValueLiteral="undefined"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//Requirement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
@@ -98,41 +98,41 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement"/>
   <eClassifiers xsi:type="ecore:EEnum" name="AggregationLevel">
-    <eLiterals name="INSTANCE" literal="Instance level only"/>
-    <eLiterals name="CLASS" value="1" literal="Class level only"/>
-    <eLiterals name="BOTH" value="2" literal="Both instance and class level"/>
+    <eLiterals name="INSTANCE" literal="instance-level"/>
+    <eLiterals name="CLASS" value="1" literal="class-level"/>
+    <eLiterals name="BOTH" value="2" literal="both-levels"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DefinableRequirementState">
-    <eLiterals name="UNDEFINED" literal="Undefined"/>
-    <eLiterals name="STARTED" value="1" literal="Started"/>
-    <eLiterals name="SUCCEEDED" value="2" literal="Succeeded"/>
-    <eLiterals name="FAILED" value="3" literal="Failed"/>
-    <eLiterals name="CANCELED" value="4" literal="Canceled"/>
+    <eLiterals name="UNDEFINED" literal="undefined"/>
+    <eLiterals name="STARTED" value="1" literal="started"/>
+    <eLiterals name="SUCCEEDED" value="2" literal="succeeded"/>
+    <eLiterals name="FAILED" value="3" literal="failed"/>
+    <eLiterals name="CANCELED" value="4" literal="canceled"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DifferentialRelationOperator">
-    <eLiterals name="GREATER_THAN" literal="GT"/>
-    <eLiterals name="FEWER_THAN" literal="FT"/>
+    <eLiterals name="GREATER_THAN" literal="gt"/>
+    <eLiterals name="FEWER_THAN" literal="ft"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MonitorableMethod">
-    <eLiterals name="START" literal="Start"/>
-    <eLiterals name="END" value="1" literal="End"/>
-    <eLiterals name="SUCCESS" value="2" literal="Success"/>
-    <eLiterals name="FAIL" value="3" literal="Fail"/>
-    <eLiterals name="CANCEL" value="4" literal="Cancel"/>
+    <eLiterals name="START" literal="start"/>
+    <eLiterals name="END" value="1" literal="end"/>
+    <eLiterals name="SUCCESS" value="2" literal="success"/>
+    <eLiterals name="FAIL" value="3" literal="fail"/>
+    <eLiterals name="CANCEL" value="4" literal="cancel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterMetric">
-    <eLiterals name="ENUMERATED" literal="Enumerated"/>
-    <eLiterals name="INTEGER" value="1" literal="Integer"/>
-    <eLiterals name="REAL" value="2" literal="Real"/>
+    <eLiterals name="ENUMERATED" literal="enumerated"/>
+    <eLiterals name="INTEGER" value="1" literal="integer"/>
+    <eLiterals name="REAL" value="2" literal="real"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterType">
-    <eLiterals name="VARIATION_POINT" literal="VP"/>
-    <eLiterals name="ENUMERATED_CONTROL_VARIABLE" value="1" literal="ECV"/>
-    <eLiterals name="NUMERIC_CONTROL_VARIABLE" value="2" literal="NCV"/>
+    <eLiterals name="VARIATION_POINT" literal="vp"/>
+    <eLiterals name="ENUMERATED_CONTROL_VARIABLE" value="1" literal="ecv"/>
+    <eLiterals name="NUMERIC_CONTROL_VARIABLE" value="2" literal="ncv"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RefinementType">
-    <eLiterals name="AND" literal="And"/>
-    <eLiterals name="OR" value="1" literal="Or"/>
+    <eLiterals name="AND" literal="and"/>
+    <eLiterals name="OR" value="1" literal="or"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
@@ -181,10 +181,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
         eOpposite="#//Configuration/parameters"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ParameterType"
-        defaultValueLiteral="VP"/>
+        defaultValueLiteral="vp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" lowerBound="1"
-        eType="#//ParameterMetric" defaultValueLiteral="Enumerated"/>
+        eType="#//ParameterMetric" defaultValueLiteral="enumerated"/>
   </eClassifiers>
 </ecore:EPackage>

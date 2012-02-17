@@ -119,19 +119,23 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 */
 	protected abstract void doSuspend(Requirement req);
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
+	/**
+	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement,
+	 *      it.unitn.disi.zanshin.model.gore.Requirement)
+	 */
 	@Override
 	public final void resume(Requirement req, Requirement parent) {
 		// Resuming a requirement instance means attaching it back to its parent.
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
 		req.setParent(parent);
-		
+
 		// Calls the application-specific implementation.
 		doResume(req, parent);
 	}
-	
+
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param req
 	 * @param parent
 	 */

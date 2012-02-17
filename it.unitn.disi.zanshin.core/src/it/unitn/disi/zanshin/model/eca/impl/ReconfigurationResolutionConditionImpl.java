@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationResolutionConditionImpl#getAlgorithmId <em>Algorithm
- * Id</em>}</li>
  * <li>{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationResolutionConditionImpl#getWrappedCondition <em>
  * Wrapped Condition</em>}</li>
  * </ul>
@@ -33,26 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class ReconfigurationResolutionConditionImpl extends ResolutionConditionImpl implements ReconfigurationResolutionCondition {
-	/**
-	 * The default value of the '{@link #getAlgorithmId() <em>Algorithm Id</em>}' attribute. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @see #getAlgorithmId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ALGORITHM_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAlgorithmId() <em>Algorithm Id</em>}' attribute. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @see #getAlgorithmId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String algorithmId = ALGORITHM_ID_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getWrappedCondition() <em>Wrapped Condition</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -80,27 +58,6 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	@Override
 	protected EClass eStaticClass() {
 		return EcaPackage.Literals.RECONFIGURATION_RESOLUTION_CONDITION;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public String getAlgorithmId() {
-		return algorithmId;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public void setAlgorithmId(String newAlgorithmId) {
-		String oldAlgorithmId = algorithmId;
-		algorithmId = newAlgorithmId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID, oldAlgorithmId, algorithmId));
 	}
 
 	/**
@@ -155,22 +112,30 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	 * @generated
 	 */
 	public boolean evaluate(AdaptationSession session) {
-		// If the current evaluation is Success, the problem is solved.
-		it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = getAwReq();
-		if ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED))
-			return true;
+		// If the wrapped resolution condition wasn't specified, it defaults to a SimpleResolutionCondition.
+		if (wrappedCondition == null)
+			wrappedCondition = it.unitn.disi.zanshin.model.eca.EcaFactory.eINSTANCE.createSimpleResolutionCondition();
 
-		// Otherwise, if the last applied strategy was "abort", the problem is also solved.
-		else if (session.getEvents().size() > 0) {
-			it.unitn.disi.zanshin.model.eca.Event lastEvent = session.getEvents().get(session.getEvents().size() - 1);
-			it.unitn.disi.zanshin.model.eca.EcaAwReq lastAwReq = (lastEvent == null) ? null : lastEvent.getAwReq();
-			it.unitn.disi.zanshin.model.eca.AdaptationStrategy lastStrategy = (lastAwReq == null) ? null : lastAwReq.getSelectedStrategy();
-			if ((lastStrategy != null) && (it.unitn.disi.zanshin.model.eca.AbortStrategy.class.isAssignableFrom(lastStrategy.getClass())))
-				return true;
+		// Checks if this reconfiguration algorithm has been used before and retrieve the algorithm id.
+		String algorithmId = null;
+		for (it.unitn.disi.zanshin.model.eca.Event event : session.getEvents()) {
+			it.unitn.disi.zanshin.model.eca.EcaAwReq awreq = (event == null) ? null : event.getAwReq();
+			it.unitn.disi.zanshin.model.eca.AdaptationStrategy strategy = (awreq == null) ? null : awreq.getSelectedStrategy();
+			if (strategy instanceof it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy)
+				algorithmId = ((it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy) strategy).getAlgorithmId();
 		}
 
-		// If none of the above, the problem is not yet solved.
-		return false;
+		// If it hasn't been used, just use the wrapped condition to evaluate resolution.
+		if (algorithmId == null)
+			return wrappedCondition.evaluate(session);
+
+		// Otherwise, retrieve the reconfiguration service and delegate the evaluation to it.
+		it.unitn.disi.zanshin.services.IReconfigurationService reconfigService = it.unitn.disi.zanshin.core.Activator.retrieveReconfigurationService(algorithmId);
+		if (reconfigService == null) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to evaluate resolution with Reconfiguration Resolution Condition, but an algorithm with id \"{0}\" is not registered! Falling back to the wrapped condition.", algorithmId); //$NON-NLS-1$
+			return wrappedCondition.evaluate(session);
+		}
+		return reconfigService.checkResolution(session, wrappedCondition);
 	}
 
 	/**
@@ -195,8 +160,6 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID:
-			return getAlgorithmId();
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION:
 			return getWrappedCondition();
 		}
@@ -211,9 +174,6 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID:
-			setAlgorithmId((String) newValue);
-			return;
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION:
 			setWrappedCondition((ResolutionCondition) newValue);
 			return;
@@ -229,9 +189,6 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID:
-			setAlgorithmId(ALGORITHM_ID_EDEFAULT);
-			return;
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION:
 			setWrappedCondition((ResolutionCondition) null);
 			return;
@@ -247,29 +204,10 @@ public class ReconfigurationResolutionConditionImpl extends ResolutionConditionI
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__ALGORITHM_ID:
-			return ALGORITHM_ID_EDEFAULT == null ? algorithmId != null : !ALGORITHM_ID_EDEFAULT.equals(algorithmId);
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION:
 			return wrappedCondition != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (algorithmId: "); //$NON-NLS-1$
-		result.append(algorithmId);
-		result.append(')');
-		return result.toString();
 	}
 
 } // ReconfigurationResolutionConditionImpl

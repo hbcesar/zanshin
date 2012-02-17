@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_CallTaking;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GCall Taking</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GCall Taking</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_CallTakingImpl extends GoalImpl implements G_CallTaking {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_CallTakingImpl() {
@@ -32,8 +30,8 @@ public class G_CallTakingImpl extends GoalImpl implements G_CallTaking {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_CallTakingImpl extends GoalImpl implements G_CallTaking {
 		return AcadPackage.Literals.GCALL_TAKING;
 	}
 
-} //G_CallTakingImpl
+} // G_CallTakingImpl

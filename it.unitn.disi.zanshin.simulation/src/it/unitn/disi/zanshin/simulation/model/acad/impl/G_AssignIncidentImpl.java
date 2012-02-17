@@ -13,18 +13,17 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_AssignIncident;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GAssign Incident</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GAssign Incident</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_AssignIncidentImpl extends GoalImpl implements G_AssignIncident {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_AssignIncidentImpl() {
@@ -32,8 +31,8 @@ public class G_AssignIncidentImpl extends GoalImpl implements G_AssignIncident {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +40,4 @@ public class G_AssignIncidentImpl extends GoalImpl implements G_AssignIncident {
 		return AcadPackage.Literals.GASSIGN_INCIDENT;
 	}
 
-} //G_AssignIncidentImpl
+} // G_AssignIncidentImpl

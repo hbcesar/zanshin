@@ -55,25 +55,25 @@ public class GoalModelElements {
 
 	/** The targets map, mapping EMF Classes to AwReqs that target them. */
 	private Map<EClass, Set<AwReq>> targetsMap = new HashMap<>();
-	
+
 	/** TODO: document this field. */
 	private GorePackage gorePackage = GorePackage.eINSTANCE;
-	
+
 	/** TODO: document this field. */
 	private EClass eAwReq = gorePackage.getAwReq();
-	
+
 	/** TODO: document this field. */
 	private EClass eDomainAssumption = gorePackage.getDomainAssumption();
-	
+
 	/** TODO: document this field. */
 	private EClass eGoal = gorePackage.getGoal();
-	
+
 	/** TODO: document this field. */
 	private EClass eQualityConstraint = gorePackage.getQualityConstraint();
-	
+
 	/** TODO: document this field. */
 	private EClass eSoftgoal = gorePackage.getSoftgoal();
-	
+
 	/** TODO: document this field. */
 	private EClass eTask = gorePackage.getTask();
 

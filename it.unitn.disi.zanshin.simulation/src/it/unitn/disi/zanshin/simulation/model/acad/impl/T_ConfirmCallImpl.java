@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_ConfirmCall;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TConfirm Call</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TConfirm Call</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_ConfirmCallImpl extends TaskImpl implements T_ConfirmCall {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_ConfirmCallImpl() {
@@ -32,8 +30,8 @@ public class T_ConfirmCallImpl extends TaskImpl implements T_ConfirmCall {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_ConfirmCallImpl extends TaskImpl implements T_ConfirmCall {
 		return AcadPackage.Literals.TCONFIRM_CALL;
 	}
 
-} //T_ConfirmCallImpl
+} // T_ConfirmCallImpl

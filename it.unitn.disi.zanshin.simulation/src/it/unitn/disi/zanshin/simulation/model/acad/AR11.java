@@ -9,14 +9,11 @@ package it.unitn.disi.zanshin.simulation.model.acad;
 import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>AR11</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>AR11</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
  * @see it.unitn.disi.zanshin.simulation.model.acad.AcadPackage#getAR11()
  * @model
  * @generated
  */
-public interface AR11 extends EcaAwReq {
-} // AR11
+public interface AR11 extends EcaAwReq {} // AR11

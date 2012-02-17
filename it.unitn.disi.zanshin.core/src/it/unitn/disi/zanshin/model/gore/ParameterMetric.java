@@ -28,7 +28,7 @@ public enum ParameterMetric implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ENUMERATED(0, "ENUMERATED", "Enumerated"), //$NON-NLS-1$ //$NON-NLS-2$
+	ENUMERATED(0, "ENUMERATED", "enumerated"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum ParameterMetric implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INTEGER(1, "INTEGER", "Integer"), //$NON-NLS-1$ //$NON-NLS-2$
+	INTEGER(1, "INTEGER", "integer"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>REAL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -46,7 +46,7 @@ public enum ParameterMetric implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REAL(2, "REAL", "Real"); //$NON-NLS-1$ //$NON-NLS-2$
+	REAL(2, "REAL", "real"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>ENUMERATED</b></em>' literal value. <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public enum ParameterMetric implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #ENUMERATED
-	 * @model literal="Enumerated"
+	 * @model literal="enumerated"
 	 * @generated
 	 * @ordered
 	 */
@@ -72,7 +72,7 @@ public enum ParameterMetric implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #INTEGER
-	 * @model literal="Integer"
+	 * @model literal="integer"
 	 * @generated
 	 * @ordered
 	 */
@@ -87,7 +87,7 @@ public enum ParameterMetric implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #REAL
-	 * @model literal="Real"
+	 * @model literal="real"
 	 * @generated
 	 * @ordered
 	 */

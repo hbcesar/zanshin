@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_IncidentUpd;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GIncident Upd</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GIncident Upd</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_IncidentUpdImpl extends GoalImpl implements G_IncidentUpd {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_IncidentUpdImpl() {
@@ -32,8 +30,8 @@ public class G_IncidentUpdImpl extends GoalImpl implements G_IncidentUpd {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_IncidentUpdImpl extends GoalImpl implements G_IncidentUpd {
 		return AcadPackage.Literals.GINCIDENT_UPD;
 	}
 
-} //G_IncidentUpdImpl
+} // G_IncidentUpdImpl

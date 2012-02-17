@@ -28,7 +28,7 @@ public enum AggregationLevel implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INSTANCE(0, "INSTANCE", "Instance level only"), //$NON-NLS-1$ //$NON-NLS-2$
+	INSTANCE(0, "INSTANCE", "instance-level"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>CLASS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -37,7 +37,7 @@ public enum AggregationLevel implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CLASS(1, "CLASS", "Class level only"), //$NON-NLS-1$ //$NON-NLS-2$
+	CLASS(1, "CLASS", "class-level"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -46,7 +46,7 @@ public enum AggregationLevel implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BOTH(2, "BOTH", "Both instance and class level"); //$NON-NLS-1$ //$NON-NLS-2$
+	BOTH(2, "BOTH", "both-levels"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>INSTANCE</b></em>' literal value. <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public enum AggregationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #INSTANCE
-	 * @model literal="Instance level only"
+	 * @model literal="instance-level"
 	 * @generated
 	 * @ordered
 	 */
@@ -72,7 +72,7 @@ public enum AggregationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #CLASS
-	 * @model literal="Class level only"
+	 * @model literal="class-level"
 	 * @generated
 	 * @ordered
 	 */
@@ -87,7 +87,7 @@ public enum AggregationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #BOTH
-	 * @model literal="Both instance and class level"
+	 * @model literal="both-levels"
 	 * @generated
 	 * @ordered
 	 */

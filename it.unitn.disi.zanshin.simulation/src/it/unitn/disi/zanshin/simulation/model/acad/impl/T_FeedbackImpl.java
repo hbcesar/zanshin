@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_Feedback;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TFeedback</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TFeedback</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_FeedbackImpl extends TaskImpl implements T_Feedback {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_FeedbackImpl() {
@@ -32,8 +30,8 @@ public class T_FeedbackImpl extends TaskImpl implements T_Feedback {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_FeedbackImpl extends TaskImpl implements T_Feedback {
 		return AcadPackage.Literals.TFEEDBACK;
 	}
 
-} //T_FeedbackImpl
+} // T_FeedbackImpl

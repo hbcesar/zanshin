@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.T_ExceptQueue;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>TExcept Queue</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>TExcept Queue</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class T_ExceptQueueImpl extends TaskImpl implements T_ExceptQueue {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected T_ExceptQueueImpl() {
@@ -32,8 +30,8 @@ public class T_ExceptQueueImpl extends TaskImpl implements T_ExceptQueue {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class T_ExceptQueueImpl extends TaskImpl implements T_ExceptQueue {
 		return AcadPackage.Literals.TEXCEPT_QUEUE;
 	}
 
-} //T_ExceptQueueImpl
+} // T_ExceptQueueImpl

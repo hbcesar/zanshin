@@ -13,18 +13,16 @@ import it.unitn.disi.zanshin.simulation.model.acad.G_GenDispatch;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>GGen Dispatch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>GGen Dispatch</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class G_GenDispatchImpl extends GoalImpl implements G_GenDispatch {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected G_GenDispatchImpl() {
@@ -32,8 +30,8 @@ public class G_GenDispatchImpl extends GoalImpl implements G_GenDispatch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,4 +39,4 @@ public class G_GenDispatchImpl extends GoalImpl implements G_GenDispatch {
 		return AcadPackage.Literals.GGEN_DISPATCH;
 	}
 
-} //G_GenDispatchImpl
+} // G_GenDispatchImpl

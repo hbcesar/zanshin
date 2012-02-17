@@ -9,14 +9,12 @@ package it.unitn.disi.zanshin.simulation.model.acad;
 import it.unitn.disi.zanshin.model.gore.Goal;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>GAssign Incident</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>GAssign Incident</b></em>'. <!-- end-user-doc
+ * -->
+ * 
+ * 
  * @see it.unitn.disi.zanshin.simulation.model.acad.AcadPackage#getG_AssignIncident()
  * @model
  * @generated
  */
-public interface G_AssignIncident extends Goal {
-} // G_AssignIncident
+public interface G_AssignIncident extends Goal {} // G_AssignIncident
