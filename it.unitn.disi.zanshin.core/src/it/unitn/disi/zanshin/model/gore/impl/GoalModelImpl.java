@@ -269,7 +269,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		EList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();
 		if (indicator != null)
 			for (DifferentialRelation relation : relations) {
-				AwReq relationIndicator = relation.getIndicator(); 
+				AwReq relationIndicator = relation.getIndicator();
 				if ((relationIndicator != null) && (relationIndicator.eClass().equals(indicator.eClass())))
 					filteredRelations.add(relation);
 			}
@@ -286,11 +286,51 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		EList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();
 		if (parameter != null)
 			for (DifferentialRelation relation : relations) {
-				Parameter relationParameter = relation.getParameter(); 
+				Parameter relationParameter = relation.getParameter();
 				if ((relationParameter != null) && (relationParameter.eClass().equals(parameter.eClass())))
 					filteredRelations.add(relation);
 			}
 		return filteredRelations;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EList<DifferentialRelation> filterRelations(AwReq indicator, Parameter parameter) {
+		// Returns a list of relations associated with the given indicator and the given parameter.
+		EList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();
+		if ((indicator != null) && (parameter != null))
+			for (DifferentialRelation relation : relations) {
+				AwReq relationIndicator = relation.getIndicator();
+				Parameter relationParameter = relation.getParameter();
+				if ((relationIndicator != null) && (relationIndicator.eClass().equals(indicator.eClass())) && (relationParameter != null) && (relationParameter.eClass().equals(parameter.eClass())))
+					filteredRelations.add(relation);
+			}
+		return filteredRelations;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public DifferentialRelation filterRelations(AwReq indicator, Parameter parameter, String value) {
+		// Filters the relations by indicator and parameter.
+		EList<DifferentialRelation> filteredRelations = filterRelations(indicator, parameter);
+
+		// Creates a fake parameter for the value comparison.
+		it.unitn.disi.zanshin.model.gore.Parameter param = parameter.createCopy();
+		param.setValue(value);
+
+		// Looks for a relation in which value is within bounds. Returns the first one found.
+		for (DifferentialRelation relation : filteredRelations)
+			if (param.withinBoundsOf(relation))
+				return relation;
+
+		// If not found, return null.
+		return null;
 	}
 
 	/**

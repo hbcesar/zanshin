@@ -62,7 +62,7 @@ public class ReconfigurationStrategyImpl extends AdaptationStrategyImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AggregationLevel LEVEL_EDEFAULT = AggregationLevel.INSTANCE;
+	protected static final AggregationLevel LEVEL_EDEFAULT = AggregationLevel.CLASS;
 
 	/**
 	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -189,11 +189,23 @@ public class ReconfigurationStrategyImpl extends AdaptationStrategyImpl implemen
 		if (level == null)
 			level = it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS;
 
+		// The AwReq and the goal model are mandatory.
+		it.unitn.disi.zanshin.model.gore.AwReq awreq = getAwReq();
+		if (awreq == null) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to apply {0}, but no AwReq is associated with it!", strategyName); //$NON-NLS-1$
+			return;
+		}
+		it.unitn.disi.zanshin.model.gore.GoalModel model = awreq.findGoalModel();
+		if (model == null) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Attempting to apply {0}, but associated AwReq {1} does not belong to a goal model!", strategyName, awreq.eClass().getName()); //$NON-NLS-1$
+			return;
+		}
+
 		// Executes the reconfiguration strategy.
 		strategyName += "(" + algorithmId + "; " + level + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		it.unitn.disi.zanshin.model.gore.Configuration newConfig = reconfigService.findConfiguration(procedureIds, getAwReq());
-		controller.applyConfig(newConfig, level);
+		it.unitn.disi.zanshin.model.gore.Configuration newConfig = reconfigService.findConfiguration(procedureIds, awreq);
+		controller.applyConfig(model, newConfig, level);
 	}
 
 	/**

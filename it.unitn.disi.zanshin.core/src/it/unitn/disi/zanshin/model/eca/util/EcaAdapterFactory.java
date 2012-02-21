@@ -194,6 +194,11 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseReconfigurationApplicabilityCondition(ReconfigurationApplicabilityCondition object) {
+			return createReconfigurationApplicabilityConditionAdapter();
+		}
+
+		@Override
 		public Adapter caseReconfigurationResolutionCondition(ReconfigurationResolutionCondition object) {
 			return createReconfigurationResolutionConditionAdapter();
 		}
@@ -201,11 +206,6 @@ public class EcaAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseReconfigurationStrategy(ReconfigurationStrategy object) {
 			return createReconfigurationStrategyAdapter();
-		}
-
-		@Override
-		public Adapter caseReconfigurationApplicabilityCondition(ReconfigurationApplicabilityCondition object) {
-			return createReconfigurationApplicabilityConditionAdapter();
 		}
 
 		@Override

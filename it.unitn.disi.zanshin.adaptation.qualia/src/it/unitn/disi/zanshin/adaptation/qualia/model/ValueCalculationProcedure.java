@@ -1,5 +1,6 @@
 package it.unitn.disi.zanshin.adaptation.qualia.model;
 
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 
@@ -15,8 +16,9 @@ public interface ValueCalculationProcedure extends Procedure {
 	/**
 	 * TODO: document this method.
 	 * @param model
+	 * @param awreq
 	 * @param parameters
 	 * @return
 	 */
-	List<String> calculateValues(GoalModel model, List<Parameter> parameters);
+	List<String> calculateValues(GoalModel model, AwReq awreq, List<Parameter> parameters);
 }

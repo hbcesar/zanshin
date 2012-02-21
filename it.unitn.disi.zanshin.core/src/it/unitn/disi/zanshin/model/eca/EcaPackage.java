@@ -1022,7 +1022,54 @@ public interface EcaPackage extends EPackage {
 	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getReconfigurationResolutionCondition()
 	 * @generated
 	 */
-	int RECONFIGURATION_RESOLUTION_CONDITION = 21;
+	int RECONFIGURATION_RESOLUTION_CONDITION = 22;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationStrategyImpl
+	 * <em>Reconfiguration Strategy</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see it.unitn.disi.zanshin.model.eca.impl.ReconfigurationStrategyImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getReconfigurationStrategy()
+	 * @generated
+	 */
+	int RECONFIGURATION_STRATEGY = 23;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationApplicabilityConditionImpl
+	 * <em>Reconfiguration Applicability Condition</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see it.unitn.disi.zanshin.model.eca.impl.ReconfigurationApplicabilityConditionImpl
+	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getReconfigurationApplicabilityCondition()
+	 * @generated
+	 */
+	int RECONFIGURATION_APPLICABILITY_CONDITION = 21;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Wrapped Condition</b></em>' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_APPLICABILITY_CONDITION__WRAPPED_CONDITION = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reconfiguration Applicability Condition</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Aw Req</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1049,16 +1096,6 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECONFIGURATION_RESOLUTION_CONDITION_FEATURE_COUNT = RESOLUTION_CONDITION_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationStrategyImpl
-	 * <em>Reconfiguration Strategy</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see it.unitn.disi.zanshin.model.eca.impl.ReconfigurationStrategyImpl
-	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getReconfigurationStrategy()
-	 * @generated
-	 */
-	int RECONFIGURATION_STRATEGY = 22;
 
 	/**
 	 * The feature id for the '<em><b>Aw Req</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1110,43 +1147,6 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECONFIGURATION_STRATEGY_FEATURE_COUNT = ADAPTATION_STRATEGY_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ReconfigurationApplicabilityConditionImpl
-	 * <em>Reconfiguration Applicability Condition</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see it.unitn.disi.zanshin.model.eca.impl.ReconfigurationApplicabilityConditionImpl
-	 * @see it.unitn.disi.zanshin.model.eca.impl.EcaPackageImpl#getReconfigurationApplicabilityCondition()
-	 * @generated
-	 */
-	int RECONFIGURATION_APPLICABILITY_CONDITION = 23;
-
-	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int RECONFIGURATION_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
-
-	/**
-	 * The feature id for the '<em><b>Wrapped Condition</b></em>' containment reference. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int RECONFIGURATION_APPLICABILITY_CONDITION__WRAPPED_CONDITION = APPLICABILITY_CONDITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Reconfiguration Applicability Condition</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int RECONFIGURATION_APPLICABILITY_CONDITION_FEATURE_COUNT = APPLICABILITY_CONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.EcaAwReq <em>Aw Req</em>}'. <!--

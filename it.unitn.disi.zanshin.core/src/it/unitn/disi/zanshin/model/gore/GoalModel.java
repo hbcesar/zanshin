@@ -133,7 +133,8 @@ public interface GoalModel extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @model
+	 * @model annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='// Returns a list of relations associated with the given indicator.\nEList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();\nif (indicator != null)\n\tfor (DifferentialRelation relation : relations) {\n\t\tAwReq relationIndicator = relation.getIndicator(); \n\t\tif ((relationIndicator != null) && (relationIndicator.eClass().equals(indicator.eClass())))\n\t\t\tfilteredRelations.add(relation);\n\t}\nreturn filteredRelations;'"
 	 * @generated
 	 */
 	EList<DifferentialRelation> filterRelations(AwReq indicator);
@@ -141,9 +142,28 @@ public interface GoalModel extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @model
+	 * @model annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='// Returns a list of relations associated with the given parameter.\nEList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();\nif (parameter != null)\n\tfor (DifferentialRelation relation : relations) {\n\t\tParameter relationParameter = relation.getParameter(); \n\t\tif ((relationParameter != null) && (relationParameter.eClass().equals(parameter.eClass())))\n\t\t\tfilteredRelations.add(relation);\n\t}\nreturn filteredRelations;'"
 	 * @generated
 	 */
 	EList<DifferentialRelation> filterRelations(Parameter parameter);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='// Returns a list of relations associated with the given indicator and the given parameter.\nEList<DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList<>();\nif ((indicator != null) && (parameter != null))\n\tfor (DifferentialRelation relation : relations) {\n\t\tAwReq relationIndicator = relation.getIndicator();\n\t\tParameter relationParameter = relation.getParameter();\n\t\tif ((relationIndicator != null) && (relationIndicator.eClass().equals(indicator.eClass())) && (relationParameter != null) && (relationParameter.eClass().equals(parameter.eClass())))\n\t\t\tfilteredRelations.add(relation);\n\t}\nreturn filteredRelations;'"
+	 * @generated
+	 */
+	EList<DifferentialRelation> filterRelations(AwReq indicator, Parameter parameter);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='// Filters the relations by indicator and parameter.\nEList<DifferentialRelation> filteredRelations = filterRelations(indicator, parameter);\n\n// Creates a fake parameter for the value comparison.\nit.unitn.disi.zanshin.model.gore.Parameter param = parameter.createCopy();\nparam.setValue(value);\n\n// Looks for a relation in which value is within bounds. Returns the first one found.\nfor (DifferentialRelation relation : filteredRelations) \n\tif (param.withinBoundsOf(relation))\n\t\treturn relation;\n\n// If not found, return null.\nreturn null;'"
+	 * @generated
+	 */
+	DifferentialRelation filterRelations(AwReq indicator, Parameter parameter, String value);
 
 } // GoalModel

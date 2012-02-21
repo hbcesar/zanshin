@@ -7,6 +7,9 @@ package it.unitn.disi.zanshin.adaptation.qualia.model;
  * @version 1.0
  */
 public interface Procedure {
+	/** TODO: document this field. */
+	static final int DEFAULT_REAL_NUMBER_SCALE = 5;
+	
 	/**
 	 * TODO: document this method.
 	 * @return

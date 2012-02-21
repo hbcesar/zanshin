@@ -33,29 +33,29 @@ public class EmptySimulatedController implements SimulatedController {
 	}
 
 	/**
-	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#applyConfig(it.unitn.disi.zanshin.model.gore.Configuration,
-	 *      it.unitn.disi.zanshin.model.gore.AggregationLevel)
+	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#applyConfig(it.unitn.disi.zanshin.model.gore.GoalModel,
+	 *      it.unitn.disi.zanshin.model.gore.Configuration, it.unitn.disi.zanshin.model.gore.AggregationLevel)
 	 */
 	@Override
-	public void applyConfig(Configuration config, AggregationLevel level) {
+	public void applyConfig(GoalModel model, Configuration newConfig, AggregationLevel level) {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
 	}
 
 	/**
 	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(it.unitn.disi.zanshin.model.gore.Requirement,
-	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.Object)
+	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.String)
 	 */
 	@Override
-	public void changeParameter(Requirement req, Parameter param, Object value) {
+	public void changeParameter(Requirement req, Parameter param, String value) {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
 	}
 
 	/**
 	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(org.eclipse.emf.ecore.EClass,
-	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.Object)
+	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.String)
 	 */
 	@Override
-	public void changeParameter(EClass reqClass, Parameter param, Object value) {
+	public void changeParameter(EClass reqClass, Parameter param, String value) {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
 	}
 

@@ -56,31 +56,31 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 	}
 
 	/**
-	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#applyConfig(it.unitn.disi.zanshin.model.gore.Configuration,
-	 *      it.unitn.disi.zanshin.model.gore.AggregationLevel)
+	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#applyConfig(it.unitn.disi.zanshin.model.gore.GoalModel,
+	 *      it.unitn.disi.zanshin.model.gore.Configuration, it.unitn.disi.zanshin.model.gore.AggregationLevel)
 	 */
 	@Override
-	public void applyConfig(Configuration config, AggregationLevel level) {
+	public void applyConfig(GoalModel model, Configuration newConfig, AggregationLevel level) {
 		SimulationUtils.log.info("Instruction received: apply-config()"); //$NON-NLS-1$
-		controller.applyConfig(config, level);
+		controller.applyConfig(model, newConfig, level);
 	}
 
 	/**
 	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(it.unitn.disi.zanshin.model.gore.Requirement,
-	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.Object)
+	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.String)
 	 */
 	@Override
-	public void changeParameter(Requirement req, Parameter param, Object value) {
+	public void changeParameter(Requirement req, Parameter param, String value) {
 		SimulationUtils.log.info("Instruction received: change-param(i{0}, {1}, {2})", req.eClass().getName(), param.eClass().getName(), value); //$NON-NLS-1$
 		controller.changeParameter(req, param, value);
 	}
 
 	/**
-	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(java.lang.Class,
-	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.Object)
+	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(org.eclipse.emf.ecore.EClass,
+	 *      it.unitn.disi.zanshin.model.gore.Parameter, java.lang.String)
 	 */
 	@Override
-	public void changeParameter(EClass reqClass, Parameter param, Object value) {
+	public void changeParameter(EClass reqClass, Parameter param, String value) {
 		SimulationUtils.log.info("Instruction received: change-param({0}, {1}, {2})", reqClass.getName(), param.eClass().getName(), value); //$NON-NLS-1$
 		controller.changeParameter(reqClass, param, value);
 	}

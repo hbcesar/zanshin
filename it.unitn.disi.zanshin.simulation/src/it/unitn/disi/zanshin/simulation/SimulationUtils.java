@@ -1,5 +1,9 @@
 package it.unitn.disi.zanshin.simulation;
 
+import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
+import it.unitn.disi.zanshin.model.gore.Parameter;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.simulation.model.acad.AcadGoalModel;
 import it.unitn.disi.zanshin.simulation.model.acad.AcadPackage;
 import it.unitn.disi.zanshin.util.EmptyLogger;
@@ -8,15 +12,16 @@ import it.unitn.disi.zanshin.util.PlatformLogger;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.osgi.framework.Bundle;
 import org.osgi.service.log.LogService;
@@ -33,6 +38,9 @@ public final class SimulationUtils {
 
 	/** Path to the file that represents the default goal model in this bundle. */
 	private static final String DEFAULT_GOAL_MODEL_PATH = "/META-INF/model.acad"; //$NON-NLS-1$
+
+	/** TODO: document this field. */
+	private static AcadGoalModel acadGoalModel;
 
 	/** The logger. */
 	public static ILogger log = new EmptyLogger();
@@ -72,16 +80,36 @@ public final class SimulationUtils {
 	}
 
 	/**
-	 * Reads the default goal model from a file in the bundle. The location of the file in the bundle is specified by the
-	 * constant DEFAULT_GOAL_MODEL_PATH.
+	 * TODO: document this method.
 	 * 
-	 * @return An instance of AcadGoalModel, which represents the goal model written in the file.
-	 * @throws URISyntaxException
-	 *           If the file cannot be found at the specified location.
+	 * @return
 	 */
-	public static AcadGoalModel readDefaultAcadGoalModel() throws URISyntaxException {
-		Bundle bundle = Activator.getContext().getBundle();
-		return readAcadGoalModel(bundle.getEntry(DEFAULT_GOAL_MODEL_PATH));
+	public static AcadGoalModel retrieveAcadGoalModel() {
+		// If the model hasn't yet been loaded from the file, loads it now.
+		if (acadGoalModel == null) {
+			Bundle bundle = Activator.getContext().getBundle();
+			acadGoalModel = readAcadGoalModel(bundle.getEntry(DEFAULT_GOAL_MODEL_PATH));
+		}
+
+		// Returns a copy of the goal model, simulating an execution session.
+		EcoreUtil.Copier copier = new EcoreUtil.Copier();
+		AcadGoalModel modelCopy = (AcadGoalModel) copier.copy(acadGoalModel);
+		copier.copyReferences();
+		fixLocalReferences(modelCopy);
+		return modelCopy;
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param newModel
+	 */
+	public static void changeAcadGoalModel(AcadGoalModel newModel) {
+		// Copies the given model and uses it as the class-level model from now on.
+		EcoreUtil.Copier copier = new EcoreUtil.Copier();
+		acadGoalModel = (AcadGoalModel) copier.copy(newModel);
+		copier.copyReferences();
+		fixLocalReferences(acadGoalModel);
 	}
 
 	/**
@@ -91,7 +119,7 @@ public final class SimulationUtils {
 	 *          The URL pointing to the location of the goal model file in the bundle.
 	 * @return An instance of AcadGoalModel, which represents the goal model written in the file.
 	 */
-	public static AcadGoalModel readAcadGoalModel(URL modelFileUrl) {
+	private static AcadGoalModel readAcadGoalModel(URL modelFileUrl) {
 		// Initializes the EMF model.
 		AcadPackage.eINSTANCE.eClass();
 
@@ -104,5 +132,36 @@ public final class SimulationUtils {
 		ResourceSet resSet = new ResourceSetImpl();
 		Resource resource = resSet.getResource(URI.createURI(modelFileUrl.toString()), true);
 		return (AcadGoalModel) resource.getContents().get(0);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param model
+	 */
+	private static void fixLocalReferences(AcadGoalModel model) {
+		// FIXME: see if there is a better way to do this or finish the implementation for all elements.
+
+		// This method makes sure that local objects in the model are pointing to other local objects instead of point to
+		// objects in other models. This latter situation can be possible because models are being copied with
+		// EcoreUtil.Copier, which does not know references should be local.
+		IRepositoryService repositoryService = Activator.getRepositoryService();
+		boolean notRegistered = (repositoryService.retrieveGoalModel(model.getId()) == null);
+		if (notRegistered)
+			repositoryService.storeGoalModel(model);
+		
+		// Fixes differential relations.
+		for (DifferentialRelation relation : model.getRelations()) {
+			EClass indicatorClass = relation.getIndicator().eClass();
+			EClass parameterClass = relation.getParameter().eClass();
+			relation.setIndicator((AwReq)repositoryService.retrieveRequirement(model.getId(), indicatorClass));
+			for (Parameter param : model.getConfiguration().getParameters())
+				if (param.eClass().equals(parameterClass))
+					relation.setParameter(param);
+		}
+		
+		// If the model was not registered in the repository service before, dispose it.
+		if (notRegistered)
+			repositoryService.disposeGoalModel(model.getId());
 	}
 }

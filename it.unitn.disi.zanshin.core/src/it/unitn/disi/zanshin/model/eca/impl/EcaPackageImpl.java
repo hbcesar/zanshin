@@ -977,6 +977,9 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		warningStrategyEClass = createEClass(WARNING_STRATEGY);
 		createEReference(warningStrategyEClass, WARNING_STRATEGY__ACTOR);
 
+		reconfigurationApplicabilityConditionEClass = createEClass(RECONFIGURATION_APPLICABILITY_CONDITION);
+		createEReference(reconfigurationApplicabilityConditionEClass, RECONFIGURATION_APPLICABILITY_CONDITION__WRAPPED_CONDITION);
+
 		reconfigurationResolutionConditionEClass = createEClass(RECONFIGURATION_RESOLUTION_CONDITION);
 		createEReference(reconfigurationResolutionConditionEClass, RECONFIGURATION_RESOLUTION_CONDITION__WRAPPED_CONDITION);
 
@@ -984,9 +987,6 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		createEAttribute(reconfigurationStrategyEClass, RECONFIGURATION_STRATEGY__ALGORITHM_ID);
 		createEAttribute(reconfigurationStrategyEClass, RECONFIGURATION_STRATEGY__LEVEL);
 		createEAttribute(reconfigurationStrategyEClass, RECONFIGURATION_STRATEGY__PROCEDURE_IDS);
-
-		reconfigurationApplicabilityConditionEClass = createEClass(RECONFIGURATION_APPLICABILITY_CONDITION);
-		createEReference(reconfigurationApplicabilityConditionEClass, RECONFIGURATION_APPLICABILITY_CONDITION__WRAPPED_CONDITION);
 	}
 
 	/**
@@ -1036,9 +1036,9 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		strengthenEnableChildStrategyEClass.getESuperTypes().add(this.getAdaptationStrategy());
 		strengthenReplaceEClass.getESuperTypes().add(this.getAdaptationStrategy());
 		warningStrategyEClass.getESuperTypes().add(this.getAdaptationStrategy());
+		reconfigurationApplicabilityConditionEClass.getESuperTypes().add(this.getApplicabilityCondition());
 		reconfigurationResolutionConditionEClass.getESuperTypes().add(this.getResolutionCondition());
 		reconfigurationStrategyEClass.getESuperTypes().add(this.getAdaptationStrategy());
-		reconfigurationApplicabilityConditionEClass.getESuperTypes().add(this.getApplicabilityCondition());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(ecaAwReqEClass, EcaAwReq.class, "EcaAwReq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1191,6 +1191,12 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		op = addEOperation(warningStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(reconfigurationApplicabilityConditionEClass, ReconfigurationApplicabilityCondition.class, "ReconfigurationApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getReconfigurationApplicabilityCondition_WrappedCondition(), this.getApplicabilityCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		op = addEOperation(reconfigurationApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
 		initEClass(reconfigurationResolutionConditionEClass, ReconfigurationResolutionCondition.class, "ReconfigurationResolutionCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getReconfigurationResolutionCondition_WrappedCondition(), this.getResolutionCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -1199,16 +1205,10 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 		initEClass(reconfigurationStrategyEClass, ReconfigurationStrategy.class, "ReconfigurationStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getReconfigurationStrategy_AlgorithmId(), ecorePackage.getEString(), "algorithmId", null, 0, 1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getReconfigurationStrategy_Level(), theGorePackage.getAggregationLevel(), "level", "class", 0, 1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getReconfigurationStrategy_Level(), theGorePackage.getAggregationLevel(), "level", "class-level", 0, 1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEAttribute(getReconfigurationStrategy_ProcedureIds(), ecorePackage.getEString(), "procedureIds", null, 0, -1, ReconfigurationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(reconfigurationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(reconfigurationApplicabilityConditionEClass, ReconfigurationApplicabilityCondition.class, "ReconfigurationApplicabilityCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getReconfigurationApplicabilityCondition_WrappedCondition(), this.getApplicabilityCondition(), null, "wrappedCondition", null, 0, 1, ReconfigurationApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		op = addEOperation(reconfigurationApplicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource

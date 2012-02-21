@@ -35,22 +35,68 @@ public final class AcadAR11FailureSimulation extends AbstractSimulation {
 	/** @see it.unitn.disi.zanshin.simulation.cases.AbstractSimulation#doInit() */
 	@Override
 	public void doInit() throws Exception {
-		// Loads the goal model.
-		model = SimulationUtils.readDefaultAcadGoalModel();
-
-		// Obtains the repository service and registers the goal model there.
+		// Obtains the repository service.
 		repositoryService = Activator.getRepositoryService();
-		repositoryService.storeGoalModel(model);
 
 		// Adds the first part of the simulation to the list.
 		parts.add(new SimulationPart() {
 			@Override
 			public void run() throws Exception {
+				// Loads and registers the goal model.
+				model = SimulationUtils.retrieveAcadGoalModel();
+				repositoryService.storeGoalModel(model);
+				
 				// Simulates a failure in quality constraint "Dispatching occurs in 3 min".
 				SimulationUtils.log.info("Current incident took more than 3 minutes do dispatch!"); //$NON-NLS-1$
 				Q_Dispatch qD = (Q_Dispatch) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getQ_Dispatch());
 				qD.start();
 				qD.fail();
+			}
+
+			@Override
+			public boolean shouldWait() {
+				return true;
+			}
+		});
+		
+		// Adds the second part.
+		parts.add(new SimulationPart() {
+			@Override
+			public void run() throws Exception {
+				// Unloads the previous goal model and loads the new one.
+				if (model != null)
+					repositoryService.disposeGoalModel(model.getId());
+				model = SimulationUtils.retrieveAcadGoalModel();
+				repositoryService.storeGoalModel(model);
+				
+				// Simulates another failure, because the first increment in the parameter was not enough.
+				SimulationUtils.log.info("First adaptation attempt was not enough, dispatch is still taking more than 3 minutes!"); //$NON-NLS-1$
+				Q_Dispatch qD = (Q_Dispatch) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getQ_Dispatch());
+				qD.start();
+				qD.fail();
+			}
+
+			@Override
+			public boolean shouldWait() {
+				return true;
+			}
+		});
+		
+		// Adds the third part.
+		parts.add(new SimulationPart() {
+			@Override
+			public void run() throws Exception {
+				// Unloads the previous goal model and loads the new one.
+				if (model != null)
+					repositoryService.disposeGoalModel(model.getId());
+				model = SimulationUtils.retrieveAcadGoalModel();
+				repositoryService.storeGoalModel(model);
+				
+				// The second change was enough, the quality constraint is now satisfied.
+				SimulationUtils.log.info("OK, dispatching now took less than 3 minutes!"); //$NON-NLS-1$
+				Q_Dispatch qD = (Q_Dispatch) repositoryService.retrieveRequirement(model.getId(), AcadPackage.eINSTANCE.getQ_Dispatch());
+				qD.start();
+				qD.success();
 			}
 
 			@Override

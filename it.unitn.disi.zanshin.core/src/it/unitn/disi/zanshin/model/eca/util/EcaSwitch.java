@@ -275,6 +275,15 @@ public class EcaSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case EcaPackage.RECONFIGURATION_APPLICABILITY_CONDITION: {
+			ReconfigurationApplicabilityCondition reconfigurationApplicabilityCondition = (ReconfigurationApplicabilityCondition) theEObject;
+			T result = caseReconfigurationApplicabilityCondition(reconfigurationApplicabilityCondition);
+			if (result == null)
+				result = caseApplicabilityCondition(reconfigurationApplicabilityCondition);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION: {
 			ReconfigurationResolutionCondition reconfigurationResolutionCondition = (ReconfigurationResolutionCondition) theEObject;
 			T result = caseReconfigurationResolutionCondition(reconfigurationResolutionCondition);
@@ -289,15 +298,6 @@ public class EcaSwitch<T> extends Switch<T> {
 			T result = caseReconfigurationStrategy(reconfigurationStrategy);
 			if (result == null)
 				result = caseAdaptationStrategy(reconfigurationStrategy);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case EcaPackage.RECONFIGURATION_APPLICABILITY_CONDITION: {
-			ReconfigurationApplicabilityCondition reconfigurationApplicabilityCondition = (ReconfigurationApplicabilityCondition) theEObject;
-			T result = caseReconfigurationApplicabilityCondition(reconfigurationApplicabilityCondition);
-			if (result == null)
-				result = caseApplicabilityCondition(reconfigurationApplicabilityCondition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;

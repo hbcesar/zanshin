@@ -111,12 +111,12 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 			return createStrengthenReplace();
 		case EcaPackage.WARNING_STRATEGY:
 			return createWarningStrategy();
+		case EcaPackage.RECONFIGURATION_APPLICABILITY_CONDITION:
+			return createReconfigurationApplicabilityCondition();
 		case EcaPackage.RECONFIGURATION_RESOLUTION_CONDITION:
 			return createReconfigurationResolutionCondition();
 		case EcaPackage.RECONFIGURATION_STRATEGY:
 			return createReconfigurationStrategy();
-		case EcaPackage.RECONFIGURATION_APPLICABILITY_CONDITION:
-			return createReconfigurationApplicabilityCondition();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}

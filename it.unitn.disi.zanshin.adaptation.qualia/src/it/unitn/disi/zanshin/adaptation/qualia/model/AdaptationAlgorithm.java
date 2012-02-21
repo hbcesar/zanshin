@@ -194,21 +194,24 @@ public class AdaptationAlgorithm {
 	/**
 	 * TODO: document this method.
 	 * @param model
+	 * @param awreq
 	 * @param parameters
 	 * @return
 	 */
-	public List<String> calculateValues(GoalModel model, List<Parameter> parameters) {
-		return valueCalculationProcedure.calculateValues(model, parameters);
+	public List<String> calculateValues(GoalModel model, AwReq awreq, List<Parameter> parameters) {
+		return valueCalculationProcedure.calculateValues(model, awreq, parameters);
 	}
 
 	/**
 	 * TODO: document this method.
+	 * @param model
+	 * @param awreq
 	 * @param parameters
 	 * @param values
 	 * @return
 	 */
-	public Configuration changeParameters(List<Parameter> parameters, List<String> values) {
-		return parameterChangeProcedure.changeParameters(parameters, values);
+	public Configuration changeParameters(GoalModel model, AwReq awreq, List<Parameter> parameters, List<String> values) {
+		return parameterChangeProcedure.changeParameters(model, awreq, parameters, values);
 	}
 
 	

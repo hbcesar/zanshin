@@ -53,11 +53,12 @@ public class QualiaReconfigurationService implements IReconfigurationService {
 		QualiaUtils.log.info("Parameters chosen: {0}", QualiaUtils.convertToString(params)); //$NON-NLS-1$
 		
 		// 2 - Calculates how much to change in each parameter.
-		List<String> values = algorithm.calculateValues(model, params);
-		QualiaUtils.log.info("Values to increment in the chosen parameters: {0}", values); //$NON-NLS-1$
+		List<String> values = algorithm.calculateValues(model, awreq, params);
+		QualiaUtils.log.info("Values to inc/decrement in the chosen parameters: {0}", values); //$NON-NLS-1$
 		
 		// 3 - Changes the parameters, creating the new configuration.
-		Configuration config = algorithm.changeParameters(params, values);
+		Configuration config = algorithm.changeParameters(model, awreq, params, values);
+		QualiaUtils.log.info("Produced new configuration with {0} changed parameter(s)", config.getParameters().size()); //$NON-NLS-1$
 		
 		// Returns the new configuration.
 		return config;

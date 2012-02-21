@@ -28,5 +28,4 @@ public final class CoreUtils {
 	static void initialize(LogService logService) {
 		log = new PlatformLogger(logService);
 	}
-
 }

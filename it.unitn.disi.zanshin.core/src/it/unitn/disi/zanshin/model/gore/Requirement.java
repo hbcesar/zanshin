@@ -107,7 +107,7 @@ public interface Requirement extends OclAny {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @model annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel body='GoalModel model = null;\n\n// If it\'s the root goal, return the goal model.\nif (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))\n\tmodel = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();\n\n// Otherwise, move up the requirement tree looking for the root goal.\nelse if (getParent() != null)\n\tmodel = getParent().findGoalModel();\n\n// Returns the found model, or null if no model has been found.\nreturn model;'"
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='GoalModel model = null;\n\n// If it\'s the root goal, return the goal model.\nif (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))\n\tmodel = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();\n\n// If the model is not found in the root goal, move up the requirement tree looking for the root goal.\nif ((model == null) && (getParent() != null))\n\tmodel = getParent().findGoalModel();\n\n// Returns the found model, or null if no model has been found.\nreturn model;'"
 	 * @generated
 	 */
 	GoalModel findGoalModel();

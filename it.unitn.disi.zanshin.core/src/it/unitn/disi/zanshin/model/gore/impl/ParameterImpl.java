@@ -7,6 +7,7 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.Configuration;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.ParameterMetric;
@@ -252,6 +253,266 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.PARAMETER__METRIC, oldMetric, metric));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Boolean greaterThan(String value) {
+		Boolean result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and compare as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.compareTo(b) > 0;
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Boolean fewerThan(String value) {
+		Boolean result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and compare as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.compareTo(b) < 0;
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Boolean equalTo(String value) {
+		Boolean result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and compare as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.compareTo(b) == 0;
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String addedTo(String value) {
+		String result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and add as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.add(b).toPlainString();
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String multipliedBy(String value) {
+		String result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and multiply as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.multiply(b).toPlainString();
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String subtractedFrom(String value) {
+		String result = null;
+
+		// Checks the metric of the parameter to know how to compare.
+		try {
+			switch (metric) {
+			// FIXME: implement enumerated parameters.
+			case ENUMERATED:
+				break;
+
+			// If the parameter is numeric, parses it and add as numbers.
+			case INTEGER:
+			case REAL:
+				java.math.BigDecimal a = new java.math.BigDecimal(this.value);
+				java.math.BigDecimal b = new java.math.BigDecimal(value);
+				return a.subtract(b).toPlainString();
+			}
+		}
+
+		// In case there are parsing errors (badly formatted numbers in the model), logs an error and returns null.
+		catch (NumberFormatException e) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Error during string->number conversion, either the parameter value ({0}) or the value to compare ({1}) are not numbers.", e, this.value, value); //$NON-NLS-1$
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Boolean withinBoundsOf(DifferentialRelation relation) {
+		String lowerBound = relation.getLowerBound();
+		String upperBound = relation.getUpperBound();
+
+		// Checks for null comparisons.
+		Boolean lowerCmp = greaterThan(lowerBound);
+		Boolean upperCmp = fewerThan(upperBound);
+		if ((lowerBound != null) && (lowerCmp == null))
+			return null;
+		if ((upperBound != null) && (upperCmp == null))
+			return null;
+
+		// Does the comparisons, but only if needed. When the bounds are null, they mean infinity.
+		return (((lowerBound == null) || lowerCmp) && ((upperBound == null) || upperCmp));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Boolean incrementableIn(DifferentialRelation relation) {
+		// Creates a fake parameter and increments it by a unit.
+		Parameter param = createCopy();
+		param.increment(relation, unit);
+
+		// Checks if the fake param, i.e., the param incremented by a unit, is still within boundaries.
+		return param.withinBoundsOf(relation);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public Parameter createCopy() {
+		org.eclipse.emf.ecore.util.EcoreUtil.Copier copier = new org.eclipse.emf.ecore.util.EcoreUtil.Copier();
+		Parameter copy = (Parameter) copier.copy(this);
+		return copy;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void increment(DifferentialRelation relation, String value) {
+		// Obtains the operator from the differential relation to check the increment direction.
+		String newValue = null;
+		switch (relation.getOperator()) {
+		case FEWER_THAN:
+			newValue = subtractedFrom(value);
+			break;
+		case GREATER_THAN:
+			newValue = addedTo(value);
+			break;
+		}
+
+		// Changes the parameter's value to the new value.
+		if (newValue != null)
+			setValue(newValue);
 	}
 
 	/**

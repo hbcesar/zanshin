@@ -1,8 +1,10 @@
 package it.unitn.disi.zanshin.adaptation.qualia.internal.procedures;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import it.unitn.disi.zanshin.adaptation.qualia.QualiaUtils;
 import it.unitn.disi.zanshin.adaptation.qualia.model.AbstractParameterChoiceProcedure;
@@ -28,11 +30,16 @@ public class RandomSingleParameterChoiceProcedure extends AbstractParameterChoic
 
 		// Obtains the relations associated with the given AwReq.
 		List<DifferentialRelation> relations = model.filterRelations(awreq);
-
-		// FIXME: remove from the list relations associated with parameters that are borderline w.r.t. their bounds.
+		
+		// Creates a set with the parameters that are associated with these relations, to filter out duplicate params.
+		Set<Parameter> paramSet = new HashSet<>();
+		for (DifferentialRelation relation : relations)
+			// Only adds parameters that are incrementable.
+			if (relation.getParameter().incrementableIn(relation))
+				paramSet.add(relation.getParameter());
 
 		// Checks how many relations are associated with this AwReq.
-		int size = relations.size();
+		int size = paramSet.size();
 		switch (size) {
 		// If there are no bounded parameters, issue a warning.
 		case 0:
@@ -41,14 +48,15 @@ public class RandomSingleParameterChoiceProcedure extends AbstractParameterChoic
 
 		// Trivial case: return the only parameter that is associated with the indicator.
 		case 1:
-			params.add(relations.get(0).getParameter());
+			params.add(paramSet.iterator().next());
 			break;
 			
 		// Usual case: select randomly among the possible parameters.
 		default:
+			Parameter[] paramArray = paramSet.toArray(new Parameter[] {});
 			Random random = new Random(System.currentTimeMillis());
 			int idx = random.nextInt(size);
-			params.add(relations.get(idx).getParameter());
+			params.add(paramArray[idx]);
 		}
 
 		return params;

@@ -4,6 +4,7 @@ import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
@@ -35,12 +36,14 @@ public interface ITargetSystemControllerService {
 	 * indicates if the change should occur at the class level (for future executions) and/or at the instance level (for
 	 * the current execution).
 	 * 
-	 * @param config
-	 *          The configuration to be applied.
+	 * @param model
+	 *          The goal model to which the new configuration should be applied.
+	 * @param newConfig
+	 *          The new configuration to be applied.
 	 * @param level
 	 *          The aggregation level to use when applying the new configuration (instance-only, class-only or both).
 	 */
-	void applyConfig(Configuration config, AggregationLevel level);
+	void applyConfig(GoalModel model, Configuration newConfig, AggregationLevel level);
 
 	/**
 	 * The target system should change the specified parameter to the specified value for the specified requirement
@@ -53,7 +56,7 @@ public interface ITargetSystemControllerService {
 	 * @param value
 	 *          The new value of the parameter.
 	 */
-	void changeParameter(Requirement req, Parameter param, Object value);
+	void changeParameter(Requirement req, Parameter param, String value);
 
 	/**
 	 * The target system should change the specified parameter to the specified value for all future executions of the
@@ -66,7 +69,7 @@ public interface ITargetSystemControllerService {
 	 * @param value
 	 *          The new value of the parameter.
 	 */
-	void changeParameter(EClass reqClass, Parameter param, Object value);
+	void changeParameter(EClass reqClass, Parameter param, String value);
 
 	/**
 	 * The target system should copy the data associated with the source performative requirement instance (e.g., data
