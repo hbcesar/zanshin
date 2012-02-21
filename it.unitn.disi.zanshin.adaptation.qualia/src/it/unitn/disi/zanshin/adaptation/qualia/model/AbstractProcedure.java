@@ -1,5 +1,8 @@
 package it.unitn.disi.zanshin.adaptation.qualia.model;
 
+import it.unitn.disi.zanshin.model.eca.AdaptationSession;
+import it.unitn.disi.zanshin.model.gore.AwReq;
+
 
 /**
  * TODO: document this type.
@@ -50,5 +53,12 @@ public abstract class AbstractProcedure implements Procedure {
 		if (procedureClass.isAssignableFrom(this.getClass()))
 			return (P) this;
 		else return null;
+	}
+
+	/** @see it.unitn.disi.zanshin.adaptation.qualia.model.Procedure#checkApplicability(it.unitn.disi.zanshin.model.gore.AwReq, it.unitn.disi.zanshin.model.eca.AdaptationSession, it.unitn.disi.zanshin.model.eca.ApplicabilityCondition) */
+	@Override
+	public boolean checkApplicability(AwReq awreq, AdaptationSession session) {
+		// By default, procedures are applicable.
+		return true;
 	}
 }

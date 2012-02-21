@@ -1,7 +1,10 @@
 package it.unitn.disi.zanshin.adaptation.qualia.internal.procedures;
 
+import it.unitn.disi.zanshin.adaptation.qualia.QualiaUtils;
 import it.unitn.disi.zanshin.adaptation.qualia.model.AbstractValueCalculationProcedure;
+import it.unitn.disi.zanshin.model.eca.AdaptationSession;
 import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 
@@ -38,5 +41,35 @@ public class SimpleValueCalculationProcedure extends AbstractValueCalculationPro
 		}
 		
 		return values;
+	}
+
+	/** @see it.unitn.disi.zanshin.adaptation.qualia.model.AbstractProcedure#checkApplicability(it.unitn.disi.zanshin.model.gore.AwReq, it.unitn.disi.zanshin.model.eca.AdaptationSession) */
+	@Override
+	public boolean checkApplicability(AwReq awreq, AdaptationSession session) {
+		// Retrieves the AwReq's goal model. If there is none, then this procedure is not applicable.
+		GoalModel model = awreq.findGoalModel();
+		if (model == null) {
+			QualiaUtils.log.warn("Simple Value Calculation procedure is not applicable: the AwReq is null"); //$NON-NLS-1$
+			return false;
+		}
+		
+		// If the AwReq has no relations associated to it, then this procedure is not applicable.
+		List<DifferentialRelation> relations = model.filterRelations(awreq);
+		if (relations.size() == 0) {
+			QualiaUtils.log.warn("Simple Value Calculation procedure is not applicable: {0} has no relations referring to it", awreq.eClass().getName()); //$NON-NLS-1$
+			return false;
+		}
+		
+		// Check that all parameters have their unit of increment set. 
+		for (DifferentialRelation relation : relations) {
+			String unit = relation.getParameter().getUnit(); 
+			if ((unit == null) || (unit.trim().length() == 0)) {
+				QualiaUtils.log.warn("Simple Value Calculation procedure is not applicable: parameter {0}, associated with AwReq {1}, has no increment unit defined", relation.getParameter().eClass().getName(), awreq.eClass().getName()); //$NON-NLS-1$
+				return false;
+			}
+		}
+		
+		// If no problem was found, the procedure is applicable.
+		return true;
 	}
 }

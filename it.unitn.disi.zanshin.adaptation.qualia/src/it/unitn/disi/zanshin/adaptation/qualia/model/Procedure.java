@@ -1,5 +1,8 @@
 package it.unitn.disi.zanshin.adaptation.qualia.model;
 
+import it.unitn.disi.zanshin.model.eca.AdaptationSession;
+import it.unitn.disi.zanshin.model.gore.AwReq;
+
 /**
  * TODO: document this type.
  *
@@ -28,4 +31,12 @@ public interface Procedure {
 	 * @param adaptationAlgorithm
 	 */
 	void replaceDefaultProcedure(AdaptationAlgorithm adaptationAlgorithm);
+	
+	/**
+	 * TODO: document this method.
+	 * @param awreq
+	 * @param session
+	 * @return
+	 */
+	boolean checkApplicability(AwReq awreq, AdaptationSession session);
 }

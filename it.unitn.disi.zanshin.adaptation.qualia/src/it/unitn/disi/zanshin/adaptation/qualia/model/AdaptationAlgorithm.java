@@ -2,6 +2,8 @@ package it.unitn.disi.zanshin.adaptation.qualia.model;
 
 import it.unitn.disi.zanshin.adaptation.qualia.Activator;
 import it.unitn.disi.zanshin.adaptation.qualia.QualiaUtils;
+import it.unitn.disi.zanshin.model.eca.AdaptationSession;
+import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
@@ -11,7 +13,7 @@ import java.util.List;
 
 /**
  * TODO: document this type.
- *
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
@@ -67,7 +69,7 @@ public class AdaptationAlgorithm {
 	/** Constructor. Assembles the default algorithm. */
 	public AdaptationAlgorithm() {
 		QualiaUtils.log.debug("Creating a default algorithm..."); //$NON-NLS-1$
-		
+
 		// Assembles the default algorithm.
 		parameterChoiceProcedure = Activator.retrieveProcedure(DEFAULT_PARAMETER_CHOICE_PROCEDURE_ID).as(ParameterChoiceProcedure.class);
 		valueCalculationProcedure = Activator.retrieveProcedure(DEFAULT_VALUE_CALCULATION_PROCEDURE_ID).as(ValueCalculationProcedure.class);
@@ -82,17 +84,16 @@ public class AdaptationAlgorithm {
 	/** Constructor. Assembles the default algorithm and replaces some procedures, given their IDs. */
 	public AdaptationAlgorithm(List<String> procedureIds) {
 		this();
-		
+
 		// Retrieves the procedures and has them replace a default one.
 		for (String id : procedureIds) {
 			Procedure procedure = Activator.retrieveProcedure(id);
 			if (procedure != null)
 				procedure.replaceDefaultProcedure(this);
-			else
-				QualiaUtils.log.warn("Procedure not found: {0}", id); //$NON-NLS-1$
+			else QualiaUtils.log.warn("Procedure not found: {0}", id); //$NON-NLS-1$
 		}
 	}
-	
+
 	/** Getter for parameterChoiceProcedure. */
 	protected ParameterChoiceProcedure getParameterChoiceProcedure() {
 		return parameterChoiceProcedure;
@@ -183,6 +184,18 @@ public class AdaptationAlgorithm {
 
 	/**
 	 * TODO: document this method.
+	 * 
+	 * @param awreq
+	 * @param session
+	 * @return
+	 */
+	public boolean checkApplicability(AwReq awreq, AdaptationSession session) {
+		return parameterChoiceProcedure.checkApplicability(awreq, session) && valueCalculationProcedure.checkApplicability(awreq, session) && parameterChangeProcedure.checkApplicability(awreq, session) && waitingProcedure.checkApplicability(awreq, session) && indicatorEvaluationProcedure.checkApplicability(awreq, session) && learningProcedure.checkApplicability(awreq, session) && resolutionCheckProcedure.checkApplicability(awreq, session) && algorithmReassessmentProcedure.checkApplicability(awreq, session);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
 	 * @param model
 	 * @param awreq
 	 * @return
@@ -193,6 +206,7 @@ public class AdaptationAlgorithm {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param model
 	 * @param awreq
 	 * @param parameters
@@ -204,6 +218,7 @@ public class AdaptationAlgorithm {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param model
 	 * @param awreq
 	 * @param parameters
@@ -214,28 +229,54 @@ public class AdaptationAlgorithm {
 		return parameterChangeProcedure.changeParameters(model, awreq, parameters, values);
 	}
 
-	
-	
-	
-	// FIXME: implement the methods below. Will require the definition of their signatures (depending on the procedures).
-
-	public void waitForEvaluation() {
-		System.out.println(waitingProcedure);
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @return
+	 */
+	public boolean waitForEvaluation(GoalModel model, AwReq awreq) {
+		return waitingProcedure.hasWaitedEnough(model, awreq);
 	}
 
-	public void evaluateIndicators() {
-		System.out.println(indicatorEvaluationProcedure);
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param model
+	 * @param awreq
+	 * @param session
+	 * @param wrappedCondition
+	 * @return
+	 */
+	public boolean evaluateIndicators(GoalModel model, AwReq awreq, AdaptationSession session, ResolutionCondition wrappedCondition) {
+		return indicatorEvaluationProcedure.evaluateIndicator(model, awreq, session, wrappedCondition);
 	}
 
-	public void learn() {
-		System.out.println(learningProcedure);
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param session
+	 */
+	public void learn(AdaptationSession session) {
+		learningProcedure.learn(session);
 	}
 
-	public void checkResolution() {
-		System.out.println(resolutionCheckProcedure);
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param evaluation
+	 * @return
+	 */
+	public boolean checkResolution(boolean evaluation) {
+		return resolutionCheckProcedure.checkResolution(evaluation);
 	}
 
-	public void reassessAlgorithm() {
-		System.out.println(algorithmReassessmentProcedure);
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param model
+	 * @param session
+	 */
+	public void reassessAlgorithm(GoalModel model, AdaptationSession session) {
+		algorithmReassessmentProcedure.reassess(model, session);
 	}
 }
