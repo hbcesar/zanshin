@@ -28,7 +28,7 @@ public class AdaptationAlgorithm {
 	private static final String DEFAULT_PARAMETER_CHANGE_PROCEDURE_ID = "simple-parameter-change"; //$NON-NLS-1$
 
 	/** TODO: document this field. */
-	private static final String DEFAULT_WAITING_PROCEDURE_ID = "default-waiting"; //$NON-NLS-1$
+	private static final String DEFAULT_WAITING_PROCEDURE_ID = "simple-waiting"; //$NON-NLS-1$
 
 	/** TODO: document this field. */
 	private static final String DEFAULT_INDICATOR_EVALUATION_PROCEDURE_ID = "boolean-indicator-evaluation"; //$NON-NLS-1$

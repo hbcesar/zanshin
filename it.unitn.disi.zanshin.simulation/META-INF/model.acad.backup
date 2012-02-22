@@ -103,7 +103,7 @@
 	
 	<!-- System parameters. -->
 	<configuration>
-		<parameters xsi:type="acad:CV_MST" type="ecv" unit="10" value="60" metric="integer"/>
+		<parameters xsi:type="acad:CV_MST" type="ncv" unit="10" value="60" metric="integer"/>
 	</configuration>
 	
 	<!-- Indicator / parameter differential relations. -->
