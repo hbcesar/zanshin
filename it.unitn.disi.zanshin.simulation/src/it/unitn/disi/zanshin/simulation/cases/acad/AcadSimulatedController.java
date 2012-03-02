@@ -99,7 +99,7 @@ public class AcadSimulatedController extends EmptySimulatedController {
 			}
 		}
 		
-		// If the change is at the class level, write the new configuration to the file read by the simulation.
+		// If the change is at the class level, write the new configuration to the global model of the simulation.
 		SimulationUtils.changeAcadGoalModel((AcadGoalModel)model);
 
 		// Continue with the simulation.

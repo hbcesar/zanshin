@@ -1,19 +1,22 @@
 package it.unitn.disi.zanshin.simulation.cases.scalable;
 
 import it.unitn.disi.zanshin.model.eca.EcaFactory;
-import it.unitn.disi.zanshin.model.eca.MaxExecutionsPerSessionApplicabilityCondition;
-import it.unitn.disi.zanshin.model.eca.RetryStrategy;
-import it.unitn.disi.zanshin.model.eca.SimpleResolutionCondition;
+import it.unitn.disi.zanshin.model.eca.ReconfigurationStrategy;
 import it.unitn.disi.zanshin.model.gore.AwReq;
+import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
+import it.unitn.disi.zanshin.model.gore.DifferentialRelationOperator;
 import it.unitn.disi.zanshin.model.gore.Goal;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GoreFactory;
+import it.unitn.disi.zanshin.model.gore.Parameter;
+import it.unitn.disi.zanshin.model.gore.ParameterMetric;
+import it.unitn.disi.zanshin.model.gore.ParameterType;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.simulation.cases.AbstractSimulation;
 import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
-import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 import it.unitn.disi.zanshin.simulation.model.scalable.AR1;
 import it.unitn.disi.zanshin.simulation.model.scalable.G00000;
 import it.unitn.disi.zanshin.simulation.model.scalable.ScalableFactory;
@@ -35,13 +38,15 @@ import java.util.Stack;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class ScalableModelSimulation extends AbstractSimulation {
+public class ScalableQualiaSimulation extends AbstractSimulation {
 	/** Constant that indicates the maximum number of children for each model element when generating random models. */
 	private static final int MAX_CHILDREN = 5;
 
-	/** Constant that contains different model sizes to be simulated. */
-	private static final int[] GOAL_MODEL_SIZES = new int[] { 10 }; // , 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
-																																	// };
+	/** Constant that defines the size of the goal model to build. */
+	private static final int GOAL_MODEL_SIZE = 300;
+	
+	/** Constant that defines different numbers for the amount of parameters and relations. */
+	private static final int[] NUMBERS_OF_RELATIONS = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 
 	/** The repository service. */
 	private IRepositoryService repositoryService;
@@ -65,23 +70,17 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		repositoryService = Activator.getRepositoryService();
 
 		// Creates a simulation part for each goal model size.
-		for (final int modelSize : GOAL_MODEL_SIZES) {
+		for (final int numberOfRelations : NUMBERS_OF_RELATIONS) {
 			parts.add(new SimulationPart() {
 				@Override
 				public void run() throws Exception {
 					// Creates a random goal model of the given size.
 					startTimestamp = System.currentTimeMillis();
-					model = createRandomModel(modelSize);
+					model = createRandomModel(GOAL_MODEL_SIZE, numberOfRelations);
 					repositoryService.storeGoalModel(model);
 
-					// Creates an exact copy of the model and injects it in the controller.
-					ScalableGoalModel modelCopy = createCopy(model);
-					SimulatedController controller = getController();
-					if (controller instanceof ScalableSimulatedController)
-						((ScalableSimulatedController) controller).setModelCopy(modelCopy);
-
 					// Writes the model size in the date attribute of the root.
-					model.getRootGoal().setTime(new Date(modelSize));
+					model.getRootGoal().setTime(new Date(numberOfRelations));
 
 					// Obtains the element that is going to fail.
 					AwReq awreq = (AwReq) model.getRootGoal().getChildren().get(0);
@@ -89,13 +88,12 @@ public class ScalableModelSimulation extends AbstractSimulation {
 
 					// Prints the elapsed amount of time.
 					long endTimestamp = System.currentTimeMillis();
-					System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Preparation time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
+					System.out.println(MessageFormat.format(">>> TIMING <<< Number of relations: {0}; Preparation time: {1}", numberOfRelations, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 
 					// Times the simulation of the failure and adaptation.
 					startTimestamp = System.currentTimeMillis();
 					target.start();
 					target.fail();
-					target.end();
 				}
 
 				@Override
@@ -111,11 +109,10 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					DefinableRequirement target = awreq.getTarget();
 					target.start();
 					target.success();
-					target.end();
 
 					// Prints the elapsed amount of time.
 					long endTimestamp = System.currentTimeMillis();
-					System.out.println(MessageFormat.format(">>> TIMING <<< Model Size: {0}; Target System time: {1}", modelSize, (endTimestamp - startTimestamp))); //$NON-NLS-1$
+					System.out.println(MessageFormat.format(">>> TIMING <<< Number of relations: {0}; Target System time: {1}", numberOfRelations, (endTimestamp - startTimestamp))); //$NON-NLS-1$
 				}
 
 				@Override
@@ -139,8 +136,8 @@ public class ScalableModelSimulation extends AbstractSimulation {
 	 * @throws InvocationTargetException
 	 *           If the factory method for creating goal model elements cannot be invoked.
 	 */
-	private ScalableGoalModel createRandomModel(int numElements) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		SimulationUtils.log.debug("Creating a random goal model with {0} elements...", numElements); //$NON-NLS-1$
+	private ScalableGoalModel createRandomModel(int numElements, int numberOfRelations) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+		SimulationUtils.log.debug("Creating a random goal model with {0} elements and {1} parameters/relations...", numElements, numberOfRelations); //$NON-NLS-1$
 
 		// Creates the scalable model and adds a root.
 		ScalableFactory factory = ScalableFactory.eINSTANCE;
@@ -217,98 +214,37 @@ public class ScalableModelSimulation extends AbstractSimulation {
 			levelCount++;
 		}
 
-		// Configures the ECA-based AwReq to target the randomly selected goal with strategy Retry.
-		SimulationUtils.log.debug("Creating AwReq AR1 targeting {0} with a Retry strategy applicable once per session", target.eClass().getName()); //$NON-NLS-1$
-		EcaFactory ecaFactory = EcaFactory.eINSTANCE;
-		SimpleResolutionCondition resolutionCondition = ecaFactory.createSimpleResolutionCondition();
-		awreq.setCondition(resolutionCondition);
-		RetryStrategy strategy = ecaFactory.createRetryStrategy();
-		MaxExecutionsPerSessionApplicabilityCondition applicabilityCondition = ecaFactory.createMaxExecutionsPerSessionApplicabilityCondition();
-		applicabilityCondition.setMaxExecutions(1);
-		strategy.setCondition(applicabilityCondition);
-		strategy.setAwReq(awreq);
-		strategy.setTime(3000l);
-
-		// Returns the scalable model.
-		SimulationUtils.log.debug("Random goal model with {0} elements created successfully.", numElements); //$NON-NLS-1$
-		return model;
-	}
-
-	/**
-	 * Creates a copy of the specified random requirements model for the scalability simulation. A copy of the model is
-	 * required by some strategies that replace parts of the failed goal model with new elements who are not in the Failed
-	 * state.
-	 * 
-	 * @param model
-	 *          The goal model to copy.
-	 * @return An exact copy of the specified goal model.
-	 * @throws NoSuchMethodException
-	 *           If the factory method for creating goal model elements cannot be found.
-	 * @throws IllegalAccessException
-	 *           If the factory method for creating goal model elements cannot be invoked.
-	 * @throws InvocationTargetException
-	 *           If the factory method for creating goal model elements cannot be invoked.
-	 */
-	protected ScalableGoalModel createCopy(ScalableGoalModel model) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		SimulationUtils.log.debug("Creating a copy of the random goal model that was just created..."); //$NON-NLS-1$
-
-		// Creates the scalable model and adds a root.
-		ScalableFactory factory = ScalableFactory.eINSTANCE;
-		ScalableGoalModel newModel = factory.createScalableGoalModel();
-		G00000 root = factory.createG00000();
-		newModel.setRootGoal(root);
-
-		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
-		AR1 awreq = factory.createAR1();
-		awreq.setParent(root);
-
-		// To identify the target...
-		DefinableRequirement target = ((AwReq) model.getRootGoal().getChildren().get(0)).getTarget();
-		DefinableRequirement newTarget = null;
-
-		// Objects needed for generating the names of the classes that implement the different goals.
-		String factoryMethodPrefix = "create"; //$NON-NLS-1$
-
-		// Recursively copy elements of the tree.
-		Stack<Goal> stack = new Stack<>();
-		Stack<Goal> newStack = new Stack<>();
-		stack.push(model.getRootGoal());
-		newStack.push(newModel.getRootGoal());
-		while (!stack.empty()) {
-			Goal goal = stack.pop();
-			Goal newGoal = newStack.pop();
-
-			if (target.eClass().equals(goal.eClass()))
-				newTarget = newGoal;
-
-			for (Requirement req : goal.getChildren()) {
-				if (req instanceof Goal) {
-					Goal child = (Goal) req;
-					Method method = factory.getClass().getMethod(factoryMethodPrefix + child.eClass().getName());
-					Goal newChild = (Goal) method.invoke(factory);
-					newChild.setParent(newGoal);
-
-					stack.push(child);
-					newStack.push(newChild);
-				}
-			}
+		// Creates N parameters and relations between these parameters and the failing AwReq.
+		GoreFactory goreFactory = GoreFactory.eINSTANCE;
+		Configuration configuration = goreFactory.createConfiguration();
+		configuration.setGoalModel(model);
+		for (int i = 0; i < numberOfRelations; i++) {
+			Parameter param = goreFactory.createParameter();
+			param.setType(ParameterType.NUMERIC_CONTROL_VARIABLE);
+			param.setUnit("10"); //$NON-NLS-1$
+			param.setValue("50"); //$NON-NLS-1$
+			param.setMetric(ParameterMetric.INTEGER);
+			param.setConfiguration(configuration);
+			
+			DifferentialRelation relation = goreFactory.createDifferentialRelation();
+			relation.setIndicator(awreq);
+			relation.setParameter(param);
+			relation.setLowerBound("0"); //$NON-NLS-1$
+			relation.setUpperBound("150"); //$NON-NLS-1$
+			relation.setOperator(DifferentialRelationOperator.GREATER_THAN);
+			model.getRelations().add(relation);
 		}
-
-		// Configures the ECA-based AwReq to target the randomly selected goal with strategy Retry.
-		SimulationUtils.log.debug("Like in the original, creating AwReq AR1 targeting {0} with a Retry strategy applicable once per session", newTarget.eClass().getName()); //$NON-NLS-1$
+		
+		// Uses qualia to adapt.
 		EcaFactory ecaFactory = EcaFactory.eINSTANCE;
-		awreq.setTarget(newTarget);
-		SimpleResolutionCondition resolutionCondition = ecaFactory.createSimpleResolutionCondition();
-		awreq.setCondition(resolutionCondition);
-		RetryStrategy strategy = ecaFactory.createRetryStrategy();
-		MaxExecutionsPerSessionApplicabilityCondition applicabilityCondition = ecaFactory.createMaxExecutionsPerSessionApplicabilityCondition();
-		applicabilityCondition.setMaxExecutions(1);
-		strategy.setCondition(applicabilityCondition);
-		strategy.setAwReq(awreq);
-		strategy.setTime(3000l);
+		awreq.setCondition(ecaFactory.createReconfigurationResolutionCondition());
+		ReconfigurationStrategy strategy = ecaFactory.createReconfigurationStrategy();
+		strategy.setCondition(ecaFactory.createReconfigurationApplicabilityCondition());
+		strategy.setAlgorithmId("qualia"); //$NON-NLS-1$
+		awreq.getStrategies().add(strategy);
 
 		// Returns the scalable model.
-		SimulationUtils.log.debug("Copy of goal model created successfully."); //$NON-NLS-1$
-		return newModel;
+		SimulationUtils.log.debug("Random goal model with {0} elements and {1} parameters/relations created successfully.", numElements, numberOfRelations); //$NON-NLS-1$
+		return model;
 	}
 }
