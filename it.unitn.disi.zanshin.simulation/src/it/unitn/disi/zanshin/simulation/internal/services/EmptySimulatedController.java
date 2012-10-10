@@ -86,13 +86,6 @@ public class EmptySimulatedController implements SimulatedController {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#newInstance(org.eclipse.emf.ecore.EClass) */
-	@Override
-	public Requirement newInstance(EClass reqClass) throws InstantiationException {
-		SimulationUtils.log.error(WARNING_MESSAGE);
-		throw new UnsupportedOperationException();
-	}
-
 	/**
 	 * @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.Requirement,
 	 *      it.unitn.disi.zanshin.model.gore.Requirement)
@@ -139,12 +132,5 @@ public class EmptySimulatedController implements SimulatedController {
 	@Override
 	public void waitForFix(AwReq awreq) {
 		SimulationUtils.log.warn(WARNING_MESSAGE);
-	}
-
-	/** @see it.unitn.disi.zanshin.simulation.internal.services.SimulatedController#createNewModel() */
-	@Override
-	public GoalModel createNewModel() throws Exception {
-		SimulationUtils.log.error(WARNING_MESSAGE);
-		throw new UnsupportedOperationException();
 	}
 }

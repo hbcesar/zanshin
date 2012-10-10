@@ -1,6 +1,5 @@
 package it.unitn.disi.zanshin.simulation.internal.services;
 
-import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
 
 /**
@@ -11,13 +10,4 @@ import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public interface SimulatedController extends ITargetSystemControllerService {
-	/**
-	 * Creates a new goal model instance for the corresponding simulation.
-	 * 
-	 * @return The goal model instance that is created.
-	 * @throws Exception
-	 *           If any exceptions occur during the creation of the goal model.
-	 */
-	GoalModel createNewModel() throws Exception;
-}
+public interface SimulatedController extends ITargetSystemControllerService {}

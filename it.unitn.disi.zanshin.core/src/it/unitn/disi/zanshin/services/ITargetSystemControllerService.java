@@ -111,17 +111,6 @@ public interface ITargetSystemControllerService {
 	void initiate(Requirement req);
 
 	/**
-	 * The adaptation framework should create a new instance of the given requirement class.
-	 * 
-	 * @param reqClass
-	 *          The requirement class of the instance that should be created.
-	 * @return The newly created requirement instance.
-	 * @throws InstantiationException
-	 *           If the new instance cannot be created.
-	 */
-	Requirement newInstance(EClass reqClass) throws InstantiationException;
-
-	/**
 	 * If the specified requirement instance has been previously suspended, the target system should resume pursuing the
 	 * its satisfaction.
 	 * 

@@ -116,13 +116,6 @@ public class SimulationTargetSystemControllerService extends AbstractTargetSyste
 		controller.initiate(req);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#createNewModel() */
-	@Override
-	public GoalModel createNewModel() throws Exception {
-		SimulationUtils.log.info("Creating a new model to retrieve the new instance..."); //$NON-NLS-1$
-		return controller.createNewModel();
-	}
-
 	/**
 	 * @see it.unitn.disi.zanshin.services.AbstractTargetSystemControllerService#doResume(it.unitn.disi.zanshin.model.gore.Requirement,
 	 *      it.unitn.disi.zanshin.model.gore.Requirement)

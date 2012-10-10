@@ -20,7 +20,7 @@ import java.util.concurrent.BlockingQueue;
  */
 public class MonitorThread extends Thread {
 	/** A queue of life-cycle method calls to process. */
-	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<>(100);
+	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<LifecycleMethodCall>(100);
 
 	/** Temporary solution. A "simulated" monitor is injected by the simulation. */
 	private IMonitoringService simulatedMonitor;

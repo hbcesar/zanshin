@@ -1,11 +1,8 @@
 package it.unitn.disi.zanshin.services;
 
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
-import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Requirement;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * Abstract class that implements the Adaptation Framework part of the Target System Controller Service, calling
@@ -53,44 +50,6 @@ public abstract class AbstractTargetSystemControllerService implements ITargetSy
 	 *          The destination requirement instance.
 	 */
 	protected abstract void doCopyData(PerformativeRequirement srcReq, PerformativeRequirement dstReq);
-
-	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#newInstance(org.eclipse.emf.ecore.EClass) */
-	@Override
-	public final Requirement newInstance(EClass reqClass) throws InstantiationException {
-		IRepositoryService repositoryService = getRepositoryService();
-
-		try {
-			// Creates a new copy of the entire application goal model and retrieve the new instance from it.
-			GoalModel newModel = createNewModel();
-			repositoryService.storeGoalModel(newModel);
-			Requirement newReq = repositoryService.retrieveRequirement(newModel.getId(), reqClass);
-
-			// Checks if the requirement really existed in the model.
-			if (newReq == null)
-				throw new IllegalArgumentException("Requirement " + reqClass.getName() + " does not exist in the goal model " + newModel.eClass().getName()); //$NON-NLS-1$ //$NON-NLS-2$
-
-			// Detaches the requirement from the goal model and disposes the model from the repository service.
-			newReq.setParent(null);
-			repositoryService.disposeGoalModel(newModel.getId());
-
-			// Returns the new requirement.
-			return newReq;
-		}
-
-		// If any problems occur during the creation of the instance, throw an instantiation exception.
-		catch (Exception e) {
-			throw new InstantiationException("An exception occurred while creating a new instance of " + reqClass.getName() + ": " + e.getMessage()); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
-
-	/**
-	 * Called by the newInstance() method, this method should be implemented by the concrete subclass and provide a new
-	 * instance of the application goal model. The Adaptation Framework is capable to create the new instance of the
-	 * requirement then, without any application-specific adaptation logic.
-	 * 
-	 * @return A new instance of the application requirement model.
-	 */
-	protected abstract GoalModel createNewModel() throws Exception;
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#suspend(it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override

@@ -7,13 +7,11 @@ import it.unitn.disi.zanshin.model.eca.SimpleResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.Goal;
-import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.simulation.Activator;
 import it.unitn.disi.zanshin.simulation.SimulationUtils;
 import it.unitn.disi.zanshin.simulation.cases.AbstractSimulation;
 import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
-import it.unitn.disi.zanshin.simulation.internal.services.SimulatedController;
 import it.unitn.disi.zanshin.simulation.model.scalable.AR1;
 import it.unitn.disi.zanshin.simulation.model.scalable.G00000;
 import it.unitn.disi.zanshin.simulation.model.scalable.ScalableFactory;
@@ -40,7 +38,7 @@ public class ScalableModelSimulation extends AbstractSimulation {
 	private static final int MAX_CHILDREN = 5;
 
 	/** Constant that contains different model sizes to be simulated. */
-	private static final int[] GOAL_MODEL_SIZES = new int[] { 10 }; // , 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+	private static final int[] GOAL_MODEL_SIZES = new int[] { 10, 100, 200 }; // , 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
 																																	// };
 
 	/** The repository service. */
@@ -74,12 +72,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					model = createRandomModel(modelSize);
 					repositoryService.storeGoalModel(model);
 
-					// Creates an exact copy of the model and injects it in the controller.
-					ScalableGoalModel modelCopy = createCopy(model);
-					SimulatedController controller = getController();
-					if (controller instanceof ScalableSimulatedController)
-						((ScalableSimulatedController) controller).setModelCopy(modelCopy);
-
 					// Writes the model size in the date attribute of the root.
 					model.getRootGoal().setTime(new Date(modelSize));
 
@@ -95,7 +87,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					startTimestamp = System.currentTimeMillis();
 					target.start();
 					target.fail();
-					target.end();
 				}
 
 				@Override
@@ -111,7 +102,6 @@ public class ScalableModelSimulation extends AbstractSimulation {
 					DefinableRequirement target = awreq.getTarget();
 					target.start();
 					target.success();
-					target.end();
 
 					// Prints the elapsed amount of time.
 					long endTimestamp = System.currentTimeMillis();
@@ -232,83 +222,5 @@ public class ScalableModelSimulation extends AbstractSimulation {
 		// Returns the scalable model.
 		SimulationUtils.log.debug("Random goal model with {0} elements created successfully.", numElements); //$NON-NLS-1$
 		return model;
-	}
-
-	/**
-	 * Creates a copy of the specified random requirements model for the scalability simulation. A copy of the model is
-	 * required by some strategies that replace parts of the failed goal model with new elements who are not in the Failed
-	 * state.
-	 * 
-	 * @param model
-	 *          The goal model to copy.
-	 * @return An exact copy of the specified goal model.
-	 * @throws NoSuchMethodException
-	 *           If the factory method for creating goal model elements cannot be found.
-	 * @throws IllegalAccessException
-	 *           If the factory method for creating goal model elements cannot be invoked.
-	 * @throws InvocationTargetException
-	 *           If the factory method for creating goal model elements cannot be invoked.
-	 */
-	protected ScalableGoalModel createCopy(ScalableGoalModel model) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		SimulationUtils.log.debug("Creating a copy of the random goal model that was just created..."); //$NON-NLS-1$
-
-		// Creates the scalable model and adds a root.
-		ScalableFactory factory = ScalableFactory.eINSTANCE;
-		ScalableGoalModel newModel = factory.createScalableGoalModel();
-		G00000 root = factory.createG00000();
-		newModel.setRootGoal(root);
-
-		// Adds the AwReq as first child of the root goal, so it's easier to retrieve later.
-		AR1 awreq = factory.createAR1();
-		awreq.setParent(root);
-
-		// To identify the target...
-		DefinableRequirement target = ((AwReq) model.getRootGoal().getChildren().get(0)).getTarget();
-		DefinableRequirement newTarget = null;
-
-		// Objects needed for generating the names of the classes that implement the different goals.
-		String factoryMethodPrefix = "create"; //$NON-NLS-1$
-
-		// Recursively copy elements of the tree.
-		Stack<Goal> stack = new Stack<>();
-		Stack<Goal> newStack = new Stack<>();
-		stack.push(model.getRootGoal());
-		newStack.push(newModel.getRootGoal());
-		while (!stack.empty()) {
-			Goal goal = stack.pop();
-			Goal newGoal = newStack.pop();
-
-			if (target.eClass().equals(goal.eClass()))
-				newTarget = newGoal;
-
-			for (Requirement req : goal.getChildren()) {
-				if (req instanceof Goal) {
-					Goal child = (Goal) req;
-					Method method = factory.getClass().getMethod(factoryMethodPrefix + child.eClass().getName());
-					Goal newChild = (Goal) method.invoke(factory);
-					newChild.setParent(newGoal);
-
-					stack.push(child);
-					newStack.push(newChild);
-				}
-			}
-		}
-
-		// Configures the ECA-based AwReq to target the randomly selected goal with strategy Retry.
-		SimulationUtils.log.debug("Like in the original, creating AwReq AR1 targeting {0} with a Retry strategy applicable once per session", newTarget.eClass().getName()); //$NON-NLS-1$
-		EcaFactory ecaFactory = EcaFactory.eINSTANCE;
-		awreq.setTarget(newTarget);
-		SimpleResolutionCondition resolutionCondition = ecaFactory.createSimpleResolutionCondition();
-		awreq.setCondition(resolutionCondition);
-		RetryStrategy strategy = ecaFactory.createRetryStrategy();
-		MaxExecutionsPerSessionApplicabilityCondition applicabilityCondition = ecaFactory.createMaxExecutionsPerSessionApplicabilityCondition();
-		applicabilityCondition.setMaxExecutions(1);
-		strategy.setCondition(applicabilityCondition);
-		strategy.setAwReq(awreq);
-		strategy.setTime(3000l);
-
-		// Returns the scalable model.
-		SimulationUtils.log.debug("Copy of goal model created successfully."); //$NON-NLS-1$
-		return newModel;
 	}
 }
