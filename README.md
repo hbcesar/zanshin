@@ -14,8 +14,8 @@ This is an Eclipse project containing several OSGi (Equinox) bundles. Each folde
 
 Other than the base Eclipse RCP intall, you will also need the following plug-ins:
 
-- EMF - Eclipse Modeling Framework SDK
-- AspectJ Development Tools and Equinox Weaving SDK (see Update Site URL here: http://eclipse.org/ajdt/downloads/)
+- EMF - Eclipse Modeling Framework SDK (from the Juno repository);
+- AspectJ Development Tools and Equinox Weaving SDK (check the [AJDT website](http://eclipse.org/ajdt/downloads/) for the Update Site URL);
 - (Possibly) the `it.unitn.disi.zanshin.core bundle` itself (see below).
 
 
