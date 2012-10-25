@@ -109,7 +109,7 @@ public class Activator implements BundleActivator {
 		SimulationUtils.initialize(logTracker.getService());
 		SimulationUtils.log.info("A-CAD Simulation Component starting..."); //$NON-NLS-1$
 
-		// Registers the "Start Simulation" command, which is activated by typing "start" in the OSGi command prompt.
+		// Registers the "Start Simulation" command, which is activated by typing "sim" in the OSGi command prompt.
 		context.registerService(CommandProvider.class, new StartSimulationCommandProvider(), null);
 	}
 
