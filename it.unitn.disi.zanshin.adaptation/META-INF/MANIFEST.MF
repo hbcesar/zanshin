@@ -6,8 +6,14 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: it.unitn.disi.zanshin.adaptation.Activator
 Bundle-Vendor: disi.unitn.it
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.osgi.framework;version="1.3.0"
+Import-Package: it.unitn.disi.zanshin.model.eca,
+ it.unitn.disi.zanshin.model.gore,
+ it.unitn.disi.zanshin.services,
+ it.unitn.disi.zanshin.util,
+ org.eclipse.emf.common.util,
+ org.eclipse.emf.ecore,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.service.log;version="1.3.0",
+ org.osgi.util.tracker;version="1.5.1"
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.osgi;bundle-version="3.7.1",
- it.unitn.disi.zanshin.core;bundle-version="1.0.0"
 Service-Component: OSGI-INF/*.xml

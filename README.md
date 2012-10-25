@@ -30,15 +30,13 @@ Running the Simulations
 
 To run, create a new OSGi Framework run configuration in Eclipse and configure the items below:
 
-1. In the "Bundles" tab, mark all `it.unitn.disi` bundles using the following start levels: simulation = 6, adaptation = 4, core = 3, logging = 2, monitoring = 5;
+1. In the "Bundles" tab, mark all `it.unitn.disi.zanshin` bundles;
 
-2. Follow the instructions of the [Equinox Weaving Quickstart](http://wiki.eclipse.org/Equinox_Weaving_QuickStart) and add the following bundles as well: `org.aspectj.weaver`, `org.eclipse.equinox.weaving.aspectj`, `org.eclipse.equinox.weaving.caching`, and `org.eclipse.equinox.weaving.hook`. Ensure `org.eclipse.equinox.weaving.aspectj` is auto-started at, say, level 2;
+2. Too add all required dependencies, click the "Add Required Bundles" button many times, until no more bundles are selected by Eclipse;
 
-3. Too add all required dependencies, click the "Add Required Bundles" button many times, until no more bundles are selected by Eclipse;
+3. In the "Arguments" tab, add two extra switches to the end of "VM arguments":  `-Dosgi.framework.extensions=org.eclipse.equinox.weaving.hook -XX:-UseSplitVerifier`
 
-4. In the "Arguments" tab, add two extra switches to the end of "VM arguments":  `-Dosgi.framework.extensions=org.eclipse.equinox.weaving.hook -XX:-UseSplitVerifier`
-
-5. In the "Settings" tab, make sure you select a Java 7 runtime environment. Marking "Clear the configuration area before launching" is also interesting if you experience strange problems during the execution.
+4. In the "Settings" tab, make sure you select a Java 7 runtime environment. Marking "Clear the configuration area before launching" is also interesting if you experience strange problems during the execution.
 
 
 After the bundles are loaded, the simulation will not execute itself automatically. Instead, you should use the command `sim` (or `sim <N>` where `<N>` is the number of the simulation that you want to execute) to execute them. Simulations are configured in the Simulation bundle, `META-INF/simulation.properties` file, so edit it accordingly if needed.
