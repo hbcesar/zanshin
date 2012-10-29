@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.unitn.disi.zanshin.core/src"
-    modelPluginID="it.unitn.disi.zanshin.core" modelName="Zanshin" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.unitn.disi.zanshin.core/src" modelPluginID="it.unitn.disi.zanshin.core"
+    modelName="Zanshin" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false">
   <foreignModel>eca.ecore</foreignModel>
   <foreignModel>gore.ecore</foreignModel>
   <foreignModel>LTL.ecore</foreignModel>
@@ -153,6 +152,12 @@
         <genParameters ecoreParameter="eca.ecore#//WarningStrategy/execute/session"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="eca.ecore#//ReconfigurationApplicabilityCondition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eca.ecore#//ReconfigurationApplicabilityCondition/wrappedCondition"/>
+      <genOperations ecoreOperation="eca.ecore#//ReconfigurationApplicabilityCondition/evaluate">
+        <genParameters ecoreParameter="eca.ecore#//ReconfigurationApplicabilityCondition/evaluate/session"/>
+      </genOperations>
+    </genClasses>
     <genClasses ecoreClass="eca.ecore#//ReconfigurationResolutionCondition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eca.ecore#//ReconfigurationResolutionCondition/wrappedCondition"/>
       <genOperations ecoreOperation="eca.ecore#//ReconfigurationResolutionCondition/evaluate">
@@ -162,14 +167,9 @@
     <genClasses ecoreClass="eca.ecore#//ReconfigurationStrategy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eca.ecore#//ReconfigurationStrategy/algorithmId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eca.ecore#//ReconfigurationStrategy/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eca.ecore#//ReconfigurationStrategy/procedureIds"/>
       <genOperations ecoreOperation="eca.ecore#//ReconfigurationStrategy/execute">
         <genParameters ecoreParameter="eca.ecore#//ReconfigurationStrategy/execute/session"/>
-      </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="eca.ecore#//ReconfigurationApplicabilityCondition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eca.ecore#//ReconfigurationApplicabilityCondition/wrappedCondition"/>
-      <genOperations ecoreOperation="eca.ecore#//ReconfigurationApplicabilityCondition/evaluate">
-        <genParameters ecoreParameter="eca.ecore#//ReconfigurationApplicabilityCondition/evaluate/session"/>
       </genOperations>
     </genClasses>
   </genPackages>
@@ -232,7 +232,7 @@
       <genOperations ecoreOperation="gore.ecore#//DefinableRequirement/checkState"/>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//Softgoal">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gore.ecore#//Softgoal/constraints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gore.ecore#//Softgoal/constraints"/>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//PerformativeRequirement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gore.ecore#//PerformativeRequirement/startTime"/>
@@ -240,7 +240,7 @@
       <genOperations ecoreOperation="gore.ecore#//PerformativeRequirement/checkState"/>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//QualityConstraint">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gore.ecore#//QualityConstraint/softgoal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gore.ecore#//QualityConstraint/softgoal"/>
       <genOperations ecoreOperation="gore.ecore#//QualityConstraint/replaceWith">
         <genParameters ecoreParameter="gore.ecore#//QualityConstraint/replaceWith/newRequirement"/>
       </genOperations>
@@ -277,6 +277,21 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gore.ecore#//GoalModel/configuration"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gore.ecore#//GoalModel/relations"/>
       <genOperations ecoreOperation="gore.ecore#//GoalModel/getId"/>
+      <genOperations ecoreOperation="gore.ecore#//GoalModel/filterRelations">
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations/indicator"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//GoalModel/filterRelations.1">
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.1/parameter"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//GoalModel/filterRelations.2">
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.2/indicator"/>
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.2/parameter"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//GoalModel/filterRelations.3">
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.3/indicator"/>
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.3/parameter"/>
+        <genParameters ecoreParameter="gore.ecore#//GoalModel/filterRelations.3/value"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//Parameter">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gore.ecore#//Parameter/configuration"/>
@@ -284,6 +299,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gore.ecore#//Parameter/unit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gore.ecore#//Parameter/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gore.ecore#//Parameter/metric"/>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/greaterThan">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/greaterThan/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/fewerThan">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/fewerThan/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/equalTo">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/equalTo/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/addedTo">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/addedTo/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/multipliedBy">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/multipliedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/subtractedFrom">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/subtractedFrom/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/withinBoundsOf">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/withinBoundsOf/relation"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/incrementableIn">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/incrementableIn/relation"/>
+      </genOperations>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/createCopy"/>
+      <genOperations ecoreOperation="gore.ecore#//Parameter/increment">
+        <genParameters ecoreParameter="gore.ecore#//Parameter/increment/relation"/>
+        <genParameters ecoreParameter="gore.ecore#//Parameter/increment/value"/>
+      </genOperations>
     </genClasses>
   </genPackages>
   <genPackages prefix="LTL" basePackage="org.eeat.model" disposableProviderFactory="true"

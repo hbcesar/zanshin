@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="LTL"
-    nsURI="http://zanshin.disi.unitn.it/1.0/ltl" nsPrefix="org.eeat.model">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="LTL" nsURI="http://disi.unitn.it/zanshin/1.0/ltl" nsPrefix="org.eeat.model">
   <eClassifiers xsi:type="ecore:EClass" name="OclAny">
     <eOperations name="after" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
       <eAnnotations source="LTL.op"/>
