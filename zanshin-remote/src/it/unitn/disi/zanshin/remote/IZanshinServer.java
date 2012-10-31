@@ -1,5 +1,7 @@
 package it.unitn.disi.zanshin.remote;
 
+import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -24,4 +26,23 @@ public interface IZanshinServer extends Remote {
 	 * @throws RemoteException
 	 */
 	String registerTargetSystem(String requirements) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @return
+	 * @throws RemoteException
+	 */
+	String createUserSession(String targetSystemId) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @param userSessionId
+	 * @param requirementsName
+	 * @param method
+	 */
+	void logRequirementLifecycleMethodCall(String targetSystemId, String userSessionId, String requirementsName, MonitorableMethod method);
 }

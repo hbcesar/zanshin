@@ -1,6 +1,7 @@
 package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.controller.ControllerUtils;
+import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.remote.IZanshinServer;
 import it.unitn.disi.zanshin.services.IModelManagementService;
 
@@ -10,10 +11,11 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -33,6 +35,9 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 
 	/** The model management service. */
 	private IModelManagementService modelManagementService;
+	
+	/** TODO: document this field. */
+	private Map<String, SessionManager> sessionManagers = new HashMap<>();
 
 	/** Constructor. */
 	public ZanshinRMIServer() throws RemoteException {
@@ -74,12 +79,23 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 			// Generate the Java classes.
 			modelManagementService.generateClasses(genModelResource);
 			ControllerUtils.log.debug("Target system model classes generated at project folder: {0}.", project.getLocation()); //$NON-NLS-1$
+
+			// Compiles the Java classes that were generated.
+			modelManagementService.compileClasses(project);
+			ControllerUtils.log.debug("Classes generated for target system {0} were compiled successfully.", targetSystemId); //$NON-NLS-1$
+
+			// Creates a class loader for the classes that were just compiled.
+			EPackage ePkg = (EPackage) modelManagementService.readModel(modelFile).getContents().get(0);
+			ZanshinClassLoader classLoader = new ZanshinClassLoader(project, ePkg, IModelManagementService.DEFAULT_BASE_PACKAGE + '.' + targetSystemId);
+			
+			// Creates a new session manager for this target system and stores it.
+			SessionManager sessionManager = new SessionManager(targetSystemId, classLoader);
+			sessionManagers.put(targetSystemId, sessionManager);
 		}
-		catch (CoreException | IOException e) {
+		catch (Throwable e) {
 			if (e instanceof Serializable)
 				throw new RemoteException("Could not register target system. Causing exception attached.", e); //$NON-NLS-1$
-			else 
-				throw new RemoteException("Could not register target system: " + e.getMessage()); //$NON-NLS-1$
+			else throw new RemoteException("Could not register target system: " + e.getMessage()); //$NON-NLS-1$
 		}
 
 		// Returns to the target system its ID so it's used in future calls.
@@ -108,5 +124,19 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 		String id = ePackage.getName();
 		ControllerUtils.log.debug("Extracted target system id from the system requirements: {0}", id); //$NON-NLS-1$
 		return id;
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#createUserSession(java.lang.String) */
+	@Override
+	public String createUserSession(String targetSystemId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementLifecycleMethodCall(java.lang.String, java.lang.String, java.lang.String, it.unitn.disi.zanshin.model.gore.MonitorableMethod) */
+	@Override
+	public void logRequirementLifecycleMethodCall(String targetSystemId, String userSessionId, String requirementsName, MonitorableMethod method) {
+		// TODO Auto-generated method stub
+		
 	}
 }

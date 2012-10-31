@@ -1,12 +1,17 @@
 package it.unitn.disi.zanshin.core.internal.services;
 
+import it.unitn.disi.zanshin.core.Activator;
 import it.unitn.disi.zanshin.core.CoreUtils;
 import it.unitn.disi.zanshin.services.IModelManagementService;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -16,12 +21,15 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.generator.Generator;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
@@ -29,8 +37,10 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -42,6 +52,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * TODO: document this type.
@@ -54,6 +66,15 @@ public class ModelManagementService implements IModelManagementService {
 	private static final String BASE_GENMODEL_FILE_PATH = "it.unitn.disi.zanshin.core/META-INF/zanshin.genmodel"; //$NON-NLS-1$
 
 	/** TODO: document this field. */
+	private static final String ROOT_PATH = "/"; //$NON-NLS-1$
+
+	/** TODO: document this field. */
+	private static final String ZANSHIN_MODELS_JAR_PATH = "/META-INF/zanshin-models.jar"; //$NON-NLS-1$
+	
+	/** TODO: document this field. */
+	private static final String JAVA_RUNTIME_JAR_PATH = System.getProperty("java.home") + File.separator + "lib" + File.separator + "rt.jar"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+
+	/** TODO: document this field. */
 	private ResourceSet resourceSet;
 
 	/** TODO: document this field. */
@@ -63,7 +84,7 @@ public class ModelManagementService implements IModelManagementService {
 	 * TODO: document this method.
 	 * 
 	 * @throws IOException
-	 * @throws CoreException 
+	 * @throws CoreException
 	 */
 	private void init() throws IOException, CoreException {
 		CoreUtils.log.debug("Initializing Zanshin Model Management Service"); //$NON-NLS-1$
@@ -106,7 +127,7 @@ public class ModelManagementService implements IModelManagementService {
 				resourceSet.getPackageRegistry().put(nsURI, ePkg);
 			}
 		}
-		
+
 		// Disables auto-build for model projects.
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceDescription description = workspace.getDescription();
@@ -116,7 +137,7 @@ public class ModelManagementService implements IModelManagementService {
 
 	/** @see it.unitn.disi.zanshin.services.IModelManagementService#createModelProject(java.lang.String) */
 	@Override
-	public IProject createModelProject(String projectName) throws CoreException {
+	public IProject createModelProject(String projectName) throws CoreException, IOException {
 		CoreUtils.log.debug("Creating a model project in the workspace: {0}", projectName); //$NON-NLS-1$
 		IProgressMonitor monitor = new NullProgressMonitor();
 
@@ -147,22 +168,58 @@ public class ModelManagementService implements IModelManagementService {
 		description.setNatureIds(newNatures);
 		project.setDescription(description, monitor);
 
-		// Sets the classpath of the Java project so we can compile classes later.
+		// Creates a classpath for the Java project so we can compile classes later.
 		IJavaProject javaProject = JavaCore.create(project);
-		IClasspathEntry[] classpath = new IClasspathEntry[1];
+		List<IClasspathEntry> classpath = new ArrayList<>();
 		
+		// First and foremost, adds the Java Runtime classes to the classpath.
+		classpath.add(JavaCore.newLibraryEntry(new Path(JAVA_RUNTIME_JAR_PATH), null, null));
+		
+		
+//		IVMInstall vmInstall = JavaRuntime.getDefaultVMInstall();
+//		LibraryLocation[] locations= JavaRuntime.getLibraryLocations(vmInstall);
+//		for (LibraryLocation location : locations)
+//			classpath.add(JavaCore.newLibraryEntry(location.getSystemLibraryPath(), null, null));
+		
+		
+		// Adds EMF Common and ECore Eclipse plug-ins to the classpath.
+		classpath.add(createClasspathEntryForClass(Adapter.class));
+		classpath.add(createClasspathEntryForClass(EClass.class));
+		
+		// Adds the Zanshin model classes to the classpath.
+		Bundle bundle = Activator.getContext().getBundle();
+		URL url = bundle.getEntry(ZANSHIN_MODELS_JAR_PATH);
+		IPath path = new Path(FileLocator.toFileURL(url).getPath());
+		classpath.add(JavaCore.newLibraryEntry(path, null, null));
+
 		// Adds the source folder to the classpath.
 		IFolder sourceFolder = project.getFolder(SOURCES_PROJECT_SUBDIR);
-		classpath[0] = JavaCore.newSourceEntry(sourceFolder.getFullPath());
-		javaProject.setRawClasspath(classpath, monitor);
+		classpath.add(JavaCore.newSourceEntry(sourceFolder.getFullPath()));
 		
+		// Effectively sets the classpath in the project.
+		javaProject.setRawClasspath(classpath.toArray(new IClasspathEntry[0]), monitor);
+
 		// Sets the project's classes folder, in which Java classes will be compiled.
 		IFolder classesFolder = project.getFolder(CLASSES_PROJECT_SUBDIR);
 		javaProject.setOutputLocation(classesFolder.getFullPath(), monitor);
-		
+
 		// Returns the created project.
 		CoreUtils.log.info("Created model project {0} in location: {1}", projectName, project.getLocation()); //$NON-NLS-1$
 		return project;
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param clazz
+	 * @return
+	 * @throws IOException
+	 */
+	private IClasspathEntry createClasspathEntryForClass(Class<?> clazz) throws IOException {
+		Bundle bundle = FrameworkUtil.getBundle(clazz);
+		URL url = bundle.getEntry(ROOT_PATH);
+		IPath path = new Path(FileLocator.toFileURL(url).getPath());
+		return JavaCore.newLibraryEntry(path, null, null);
 	}
 
 	/**
@@ -194,7 +251,7 @@ public class ModelManagementService implements IModelManagementService {
 	/** @see it.unitn.disi.zanshin.services.IModelManagementService#readModel(org.eclipse.core.resources.IFile) */
 	@Override
 	public Resource readModel(IFile modelFile) throws IOException, CoreException {
-		return readModel(URI.createURI(modelFile.getLocation().toString()));
+		return readModel(URI.createFileURI(modelFile.getLocation().toString()));
 	}
 
 	/**
@@ -203,7 +260,7 @@ public class ModelManagementService implements IModelManagementService {
 	 * @param modelURI
 	 * @return
 	 * @throws IOException
-	 * @throws CoreException 
+	 * @throws CoreException
 	 */
 	private Resource readModel(URI modelURI) throws IOException, CoreException {
 		CoreUtils.log.debug("Reading a model from location: {0}", modelURI); //$NON-NLS-1$
@@ -302,5 +359,15 @@ public class ModelManagementService implements IModelManagementService {
 		// Generates the source code following the instructions contained in the genmodel file.
 		generator.generate(genModel, GenBaseGeneratorAdapter.MODEL_PROJECT_TYPE, CodeGenUtil.EclipseUtil.createMonitor(monitor, 1));
 		CoreUtils.log.info("Source files for model classes generated in the location specified in the generator model."); //$NON-NLS-1$
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IModelManagementService#compileClasses(org.eclipse.core.resources.IProject) */
+	@Override
+	public void compileClasses(IProject project) throws CoreException {
+		CoreUtils.log.debug("Compiling classes that were generated in project {0}...", project.getName()); //$NON-NLS-1$
+		IProgressMonitor monitor = new NullProgressMonitor();
+
+		// Builds the project, as classpath and source folder have already been set.
+		project.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
 	}
 }

@@ -41,8 +41,9 @@ public interface IModelManagementService {
 	 * @param projectName
 	 * @return
 	 * @throws CoreException
+	 * @throws IOException 
 	 */
-	IProject createModelProject(String projectName) throws CoreException;
+	IProject createModelProject(String projectName) throws CoreException, IOException;
 
 	/**
 	 * TODO: document this method.
@@ -82,4 +83,12 @@ public interface IModelManagementService {
 	 * @param genModelResource
 	 */
 	void generateClasses(Resource genModelResource);
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param project
+	 * @throws CoreException
+	 */
+	void compileClasses(IProject project) throws CoreException;
 }

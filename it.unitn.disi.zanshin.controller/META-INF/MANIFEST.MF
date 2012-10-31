@@ -6,17 +6,29 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: it.unitn.disi.zanshin.controller.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: it.unitn.disi.zanshin.services,
+Import-Package: it.unitn.disi.zanshin.model.eca,
+ it.unitn.disi.zanshin.model.eca.impl,
+ it.unitn.disi.zanshin.model.eca.util,
+ it.unitn.disi.zanshin.model.gore,
+ it.unitn.disi.zanshin.model.gore.impl,
+ it.unitn.disi.zanshin.model.gore.util,
+ it.unitn.disi.zanshin.services,
  it.unitn.disi.zanshin.util,
  org.eclipse.core.resources,
  org.eclipse.core.runtime;version="3.4.0",
  org.eclipse.emf.codegen.ecore.genmodel,
+ org.eclipse.emf.common.notify,
+ org.eclipse.emf.common.notify.impl,
  org.eclipse.emf.common.util,
  org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.impl,
  org.eclipse.emf.ecore.resource,
  org.eclipse.emf.ecore.resource.impl,
  org.eclipse.jdt.core,
- org.osgi.framework;version="1.3.0",
+ org.eeat.model.LTL,
+ org.eeat.model.LTL.impl,
+ org.eeat.model.LTL.util,
+ org.osgi.framework;version="1.7.0",
  org.osgi.service.log;version="1.3.0",
  org.osgi.util.tracker;version="1.5.1"
 Bundle-Vendor: disi.unitn.it
