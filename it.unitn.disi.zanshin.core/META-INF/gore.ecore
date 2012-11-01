@@ -200,7 +200,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
         containment="true" eOpposite="#//Configuration/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
-        eType="#//DifferentialRelation"/>
+        eType="#//DifferentialRelation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eOperations name="greaterThan" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">

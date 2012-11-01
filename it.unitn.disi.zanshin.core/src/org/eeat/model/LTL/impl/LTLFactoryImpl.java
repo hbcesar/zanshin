@@ -32,7 +32,7 @@ public class LTLFactoryImpl extends EFactoryImpl implements LTLFactory {
 	 */
 	public static LTLFactory init() {
 		try {
-			LTLFactory theLTLFactory = (LTLFactory) EPackage.Registry.INSTANCE.getEFactory("http://zanshin.disi.unitn.it/1.0/ltl"); //$NON-NLS-1$
+			LTLFactory theLTLFactory = (LTLFactory) EPackage.Registry.INSTANCE.getEFactory("http://disi.unitn.it/zanshin/1.0/ltl"); //$NON-NLS-1$
 			if (theLTLFactory != null) { return theLTLFactory; }
 		}
 		catch (Exception exception) {

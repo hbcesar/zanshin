@@ -11,7 +11,7 @@ import java.rmi.registry.Registry;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public class ZanshinRemote {
+public class ZanshinRemote implements IZanshinServer {
 	/** TODO: document this field. */
 	private IZanshinServer zanshinServer;
 
@@ -29,14 +29,52 @@ public class ZanshinRemote {
 		zanshinServer = (IZanshinServer) rmiRegistry.lookup(IZanshinServer.RMI_NAME);
 	}
 
-	/**
-	 * TODO: document this method.
-	 * 
-	 * @param requirements
-	 * @return
-	 * @throws RemoteException
-	 */
-	public String registerTargetSystem(String requirements) throws RemoteException {
-		return zanshinServer.registerTargetSystem(requirements);
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(java.lang.String, java.lang.String) */
+	@Override
+	public String registerTargetSystem(String metaModel, String model) throws RemoteException {
+		return zanshinServer.registerTargetSystem(metaModel, model);
 	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#createUserSession(java.lang.String) */
+	@Override
+	public Long createUserSession(String targetSystemId) throws RemoteException {
+		return zanshinServer.createUserSession(targetSystemId);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementStart(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementStart(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		zanshinServer.logRequirementStart(targetSystemId, userSessionId, requirementsName);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementSuccess(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementSuccess(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		zanshinServer.logRequirementSuccess(targetSystemId, userSessionId, requirementsName);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementFailure(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementFailure(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		zanshinServer.logRequirementFailure(targetSystemId, userSessionId, requirementsName);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementCancellation(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementCancellation(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		zanshinServer.logRequirementCancellation(targetSystemId, userSessionId, requirementsName);
+	}
+
 }

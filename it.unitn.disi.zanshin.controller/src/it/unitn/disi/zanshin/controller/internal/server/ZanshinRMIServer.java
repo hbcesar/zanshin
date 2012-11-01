@@ -1,9 +1,12 @@
 package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.controller.ControllerUtils;
+import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
+import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.remote.IZanshinServer;
 import it.unitn.disi.zanshin.services.IModelManagementService;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,7 +38,10 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 
 	/** The model management service. */
 	private IModelManagementService modelManagementService;
-	
+
+	/** The repository service. */
+	private IRepositoryService repositoryService;
+
 	/** TODO: document this field. */
 	private Map<String, SessionManager> sessionManagers = new HashMap<>();
 
@@ -56,24 +62,36 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 		ControllerUtils.log.info("Model Management disposed from this bundle"); //$NON-NLS-1$
 	}
 
-	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(java.lang.String) */
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = repositoryService;
+		ControllerUtils.log.info("Repository Service injected in this bundle"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = null;
+		ControllerUtils.log.info("Repository Service disposed from this bundle"); //$NON-NLS-1$
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(java.lang.String, java.lang.String) */
 	@Override
-	public String registerTargetSystem(String requirements) throws RemoteException {
-		String targetSystemId = null;
+	public String registerTargetSystem(String metaModel, String model) throws RemoteException {
 		ControllerUtils.log.debug("Received remote request to register a target system..."); //$NON-NLS-1$
 
 		try {
-			// Extracts the ID for this target system from its requirements definitions.
-			targetSystemId = extractTargetSystemId(requirements);
+			// Extracts the ID for this target system from its requirements meta-model.
+			String targetSystemId = extractTargetSystemId(metaModel);
 
 			// Creates a new project in the workspace for this target system.
-			IProject project = modelManagementService.createModelProject(targetSystemId);
+			IProject project = modelManagementService.createZanshinProject(targetSystemId);
 
-			// Creates a file in the project to hold the system's requirements.
-			IFile modelFile = modelManagementService.createModel(project, targetSystemId + '.' + IModelManagementService.MODEL_FILE_EXTENSION, requirements);
+			// Creates files in the project to hold the system's requirements meta-model and model.
+			IFile metaModelFile = modelManagementService.createMetaModel(project, targetSystemId + '.' + IModelManagementService.META_MODEL_FILE_EXTENSION, metaModel);
+			IFile modelFile = modelManagementService.createModel(project, IModelManagementService.MODEL_FILE_BASE_NAME + '.' + targetSystemId, model);
 
 			// Creates the genmodel file that is used to generate the Java classes.
-			Resource genModelResource = modelManagementService.createGenModelFile(modelFile, IModelManagementService.DEFAULT_BASE_PACKAGE);
+			Resource genModelResource = modelManagementService.createGenModelFile(metaModelFile, IModelManagementService.DEFAULT_BASE_PACKAGE);
 			ControllerUtils.log.debug("Target system model generator file created: {0}.", genModelResource.getURI()); //$NON-NLS-1$
 
 			// Generate the Java classes.
@@ -84,23 +102,28 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 			modelManagementService.compileClasses(project);
 			ControllerUtils.log.debug("Classes generated for target system {0} were compiled successfully.", targetSystemId); //$NON-NLS-1$
 
-			// Creates a class loader for the classes that were just compiled.
-			EPackage ePkg = (EPackage) modelManagementService.readModel(modelFile).getContents().get(0);
+			// Removes the generic ecore package that was added to the model management's package registry, so the real
+			// package that was just compiled can take its place when it's initialized by the class loader (next).
+			EPackage ePkg = (EPackage) modelManagementService.readModel(metaModelFile).getContents().get(0);
+			modelManagementService.unregisterMetaModel(ePkg);
+
+			// Creates a class loader for the classes that were just compiled and loads the model classes.
 			ZanshinClassLoader classLoader = new ZanshinClassLoader(project, ePkg, IModelManagementService.DEFAULT_BASE_PACKAGE + '.' + targetSystemId);
-			
+			classLoader.loadModelClasses();
+
 			// Creates a new session manager for this target system and stores it.
-			SessionManager sessionManager = new SessionManager(targetSystemId, classLoader);
+			SessionManager sessionManager = new SessionManager(modelManagementService, repositoryService, targetSystemId, modelFile);
 			sessionManagers.put(targetSystemId, sessionManager);
+
+			// Returns to the target system its ID so it's used in future calls.
+			ControllerUtils.log.info("Successfully registered a new target system: {0}", targetSystemId); //$NON-NLS-1$
+			return targetSystemId;
 		}
 		catch (Throwable e) {
 			if (e instanceof Serializable)
 				throw new RemoteException("Could not register target system. Causing exception attached.", e); //$NON-NLS-1$
 			else throw new RemoteException("Could not register target system: " + e.getMessage()); //$NON-NLS-1$
 		}
-
-		// Returns to the target system its ID so it's used in future calls.
-		ControllerUtils.log.info("Successfully registered a new target system: {0}", targetSystemId); //$NON-NLS-1$
-		return targetSystemId;
 	}
 
 	/**
@@ -128,15 +151,103 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 
 	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#createUserSession(java.lang.String) */
 	@Override
-	public String createUserSession(String targetSystemId) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public Long createUserSession(String targetSystemId) throws RemoteException {
+		ControllerUtils.log.debug("Received remote request to create a new user session for target system {0}...", targetSystemId); //$NON-NLS-1$
+
+		try {
+			// Retrieves the session manager for the given target system.
+			SessionManager sessionManager = sessionManagers.get(targetSystemId);
+
+			// Creates the new user session and returns its id.
+			Long sessionId = sessionManager.createSession();
+			ControllerUtils.log.info("Successfully created a new user session for target system {0}: {1}", targetSystemId, sessionId); //$NON-NLS-1$
+			return sessionId;
+		}
+		catch (Throwable e) {
+			if (e instanceof Serializable)
+				throw new RemoteException("Could not create user session. Causing exception attached.", e); //$NON-NLS-1$
+			else throw new RemoteException("Could not create user session: " + e.getMessage()); //$NON-NLS-1$
+		}
 	}
 
-	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementLifecycleMethodCall(java.lang.String, java.lang.String, java.lang.String, it.unitn.disi.zanshin.model.gore.MonitorableMethod) */
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementStart(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
 	@Override
-	public void logRequirementLifecycleMethodCall(String targetSystemId, String userSessionId, String requirementsName, MonitorableMethod method) {
-		// TODO Auto-generated method stub
-		
+	public void logRequirementStart(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		logRequirementLifecycleMethod(targetSystemId, userSessionId, requirementsName, MonitorableMethod.START);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementSuccess(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementSuccess(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		logRequirementLifecycleMethod(targetSystemId, userSessionId, requirementsName, MonitorableMethod.SUCCESS);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementFailure(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementFailure(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		logRequirementLifecycleMethod(targetSystemId, userSessionId, requirementsName, MonitorableMethod.FAIL);
+	}
+
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#logRequirementCancellation(java.lang.String, java.lang.Long,
+	 *      java.lang.String)
+	 */
+	@Override
+	public void logRequirementCancellation(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException {
+		logRequirementLifecycleMethod(targetSystemId, userSessionId, requirementsName, MonitorableMethod.CANCEL);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @param userSessionId
+	 * @param requirementsName
+	 * @param start
+	 */
+	private void logRequirementLifecycleMethod(String targetSystemId, Long userSessionId, String requirementsName, MonitorableMethod method) throws RemoteException {
+		ControllerUtils.log.debug("Received log for life-cycle method call in session {0}/{1}: {2}.{3}()", targetSystemId, userSessionId, requirementsName, method.getName()); //$NON-NLS-1$
+
+		try {
+			// Retrieves the session manager for the given target system.
+			SessionManager sessionManager = sessionManagers.get(targetSystemId);
+
+			// Retrieve the requirement instance of the given class corresponding to the session id.
+			DefinableRequirement requirement = sessionManager.retrieveRequirement(userSessionId, requirementsName);
+
+			// Calls the appropriate method in the class. The monitoring component should catch this via aspects and verify
+			// the appropriate AwReqs.
+			switch (method) {
+			case START:
+				requirement.start();
+				break;
+			case SUCCESS:
+				requirement.success();
+				break;
+			case FAIL:
+				requirement.fail();
+				break;
+			case CANCEL:
+				((PerformativeRequirement) requirement).cancel();
+				break;
+			case END:
+				requirement.end();
+				break;
+			}
+		}
+		catch (Throwable e) {
+			if (e instanceof Serializable)
+				throw new RemoteException("Could not create user session. Causing exception attached.", e); //$NON-NLS-1$
+			else throw new RemoteException("Could not create user session: " + e.getMessage()); //$NON-NLS-1$
+		}
 	}
 }

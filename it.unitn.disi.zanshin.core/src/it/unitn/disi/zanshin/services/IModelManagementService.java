@@ -1,10 +1,13 @@
 package it.unitn.disi.zanshin.services;
 
+import it.unitn.disi.zanshin.model.gore.GoalModel;
+
 import java.io.IOException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
@@ -15,7 +18,10 @@ import org.eclipse.emf.ecore.resource.Resource;
  */
 public interface IModelManagementService {
 	/** File extension for requirements models. */
-	String MODEL_FILE_EXTENSION = "ecore"; //$NON-NLS-1$
+	String META_MODEL_FILE_EXTENSION = "ecore"; //$NON-NLS-1$
+
+	/** TODO: document this field. */
+	String MODEL_FILE_BASE_NAME = "model"; //$NON-NLS-1$
 
 	/** TODO: document this field. */
 	String GENMODEL_FILE_EXTENSION = "genmodel"; //$NON-NLS-1$
@@ -41,9 +47,21 @@ public interface IModelManagementService {
 	 * @param projectName
 	 * @return
 	 * @throws CoreException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	IProject createModelProject(String projectName) throws CoreException, IOException;
+	IProject createZanshinProject(String projectName) throws CoreException, IOException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param project
+	 * @param metaModelName
+	 * @param contents
+	 * @return
+	 * @throws CoreException
+	 * @throws IOException
+	 */
+	IFile createMetaModel(IProject project, String metaModelName, String contents) throws CoreException, IOException;
 
 	/**
 	 * TODO: document this method.
@@ -53,8 +71,9 @@ public interface IModelManagementService {
 	 * @param contents
 	 * @return
 	 * @throws CoreException
+	 * @throws IOException
 	 */
-	IFile createModel(IProject project, String modelName, String contents) throws CoreException;
+	IFile createModel(IProject project, String modelName, String contents) throws CoreException, IOException;
 
 	/**
 	 * TODO: document this method.
@@ -69,13 +88,13 @@ public interface IModelManagementService {
 	/**
 	 * TODO: document this method.
 	 * 
-	 * @param modelFile
+	 * @param metaModelFile
 	 * @param basePackage
 	 * @return
 	 * @throws IOException
 	 * @throws CoreException
 	 */
-	Resource createGenModelFile(IFile modelFile, String basePackage) throws IOException, CoreException;
+	Resource createGenModelFile(IFile metaModelFile, String basePackage) throws IOException, CoreException;
 
 	/**
 	 * TODO: document this method.
@@ -91,4 +110,19 @@ public interface IModelManagementService {
 	 * @throws CoreException
 	 */
 	void compileClasses(IProject project) throws CoreException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param ePackage
+	 */
+	void unregisterMetaModel(EPackage ePackage);
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param modelResource
+	 * @return
+	 */
+	GoalModel createGoalModel(Resource modelResource);
 }

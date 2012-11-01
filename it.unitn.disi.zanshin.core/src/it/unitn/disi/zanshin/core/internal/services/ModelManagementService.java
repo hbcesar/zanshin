@@ -2,6 +2,8 @@ package it.unitn.disi.zanshin.core.internal.services;
 
 import it.unitn.disi.zanshin.core.Activator;
 import it.unitn.disi.zanshin.core.CoreUtils;
+import it.unitn.disi.zanshin.model.eca.EcaPackage;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.services.IModelManagementService;
 
 import java.io.ByteArrayInputStream;
@@ -41,6 +43,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -70,7 +73,7 @@ public class ModelManagementService implements IModelManagementService {
 
 	/** TODO: document this field. */
 	private static final String ZANSHIN_MODELS_JAR_PATH = "/META-INF/zanshin-models.jar"; //$NON-NLS-1$
-	
+
 	/** TODO: document this field. */
 	private static final String JAVA_RUNTIME_JAR_PATH = System.getProperty("java.home") + File.separator + "lib" + File.separator + "rt.jar"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
@@ -93,52 +96,44 @@ public class ModelManagementService implements IModelManagementService {
 		EcorePackage.eINSTANCE.eClass();
 		GenModelPackage.eINSTANCE.eClass();
 
-		// Creates a resource set for this service.
+		// Initializes Zanshin packages.
+		EcaPackage.eINSTANCE.eClass();
+
+		// Creates a resource set for this service, using the global package registry.
 		resourceSet = new ResourceSetImpl();
 		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
+		resourceSet.setPackageRegistry(EPackage.Registry.INSTANCE);
 
 		// Registers a factory for generator models.
 		Resource.Factory.Registry registry = resourceSet.getResourceFactoryRegistry();
-		Map<String, Object> m = registry.getExtensionToFactoryMap();
-		m.put(IModelManagementService.GENMODEL_FILE_EXTENSION, new XMIResourceFactoryImpl());
-		m.put(IModelManagementService.MODEL_FILE_EXTENSION, new XMIResourceFactoryImpl());
+		Map<String, Object> map = registry.getExtensionToFactoryMap();
+		map.put(IModelManagementService.GENMODEL_FILE_EXTENSION, new XMIResourceFactoryImpl());
+		map.put(IModelManagementService.META_MODEL_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
 		// Loads Zanshin's generator model.
 		URI genModelURI = URI.createPlatformPluginURI(BASE_GENMODEL_FILE_PATH, false);
 		Resource baseGenModelResource = resourceSet.getResource(genModelURI, true);
 		baseGenModelResource.load(Collections.EMPTY_MAP);
-
-		// Obtains Zanshin's models from the generator model.
 		baseGenModel = (GenModel) baseGenModelResource.getContents().get(0);
-		for (GenPackage genPkg : baseGenModel.getGenPackages()) {
-			EPackage ePkg = genPkg.getEcorePackage();
 
-			// If it's a proxy, loads the proper package.
-			if (ePkg.eIsProxy()) {
-				URI modelURI = EcoreUtil.getURI(ePkg);
-				Resource resource = readModel(modelURI);
-				ePkg = (EPackage) resource.getContents().get(0);
-			}
-			String nsURI = ePkg.getNsURI();
-
-			// Checks if the package is already registered. If not, registers the package globally.
-			if (!EPackage.Registry.INSTANCE.containsKey(nsURI)) {
-				CoreUtils.log.debug("Registering base model package {0} under the namespace: {1}", ePkg.getName(), nsURI); //$NON-NLS-1$
-				resourceSet.getPackageRegistry().put(nsURI, ePkg);
-			}
+		// Fixes the references to generic EPackages to the proper EcaPackage, GorePackage, etc.
+		for (GenPackage genPackage : baseGenModel.getGenPackages()) {
+			String uri = genPackage.getEcorePackage().getNsURI();
+			EPackage correctPackage = resourceSet.getPackageRegistry().getEPackage(uri);
+			genPackage.setEcorePackage(correctPackage);
 		}
 
-		// Disables auto-build for model projects.
+		// Disables auto-build for Zanshin projects.
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceDescription description = workspace.getDescription();
 		description.setAutoBuilding(false);
 		workspace.setDescription(description);
 	}
 
-	/** @see it.unitn.disi.zanshin.services.IModelManagementService#createModelProject(java.lang.String) */
+	/** @see it.unitn.disi.zanshin.services.IModelManagementService#createZanshinProject(java.lang.String) */
 	@Override
-	public IProject createModelProject(String projectName) throws CoreException, IOException {
-		CoreUtils.log.debug("Creating a model project in the workspace: {0}", projectName); //$NON-NLS-1$
+	public IProject createZanshinProject(String projectName) throws CoreException, IOException {
+		CoreUtils.log.debug("Creating a Zanshin project in the workspace: {0}", projectName); //$NON-NLS-1$
 		IProgressMonitor monitor = new NullProgressMonitor();
 
 		// Creates the reference to a project in the workspace for the target system.
@@ -171,21 +166,21 @@ public class ModelManagementService implements IModelManagementService {
 		// Creates a classpath for the Java project so we can compile classes later.
 		IJavaProject javaProject = JavaCore.create(project);
 		List<IClasspathEntry> classpath = new ArrayList<>();
-		
+
 		// First and foremost, adds the Java Runtime classes to the classpath.
 		classpath.add(JavaCore.newLibraryEntry(new Path(JAVA_RUNTIME_JAR_PATH), null, null));
-		
-		
-//		IVMInstall vmInstall = JavaRuntime.getDefaultVMInstall();
-//		LibraryLocation[] locations= JavaRuntime.getLibraryLocations(vmInstall);
-//		for (LibraryLocation location : locations)
-//			classpath.add(JavaCore.newLibraryEntry(location.getSystemLibraryPath(), null, null));
-		
-		
+
+		// FIXME: is there a better way of retrieving the Java rt.jar path from the environment?
+		// In the code below, vmInstall is null and the following line throws an NPE.
+		// IVMInstall vmInstall = JavaRuntime.getDefaultVMInstall();
+		// LibraryLocation[] locations= JavaRuntime.getLibraryLocations(vmInstall);
+		// for (LibraryLocation location : locations)
+		// classpath.add(JavaCore.newLibraryEntry(location.getSystemLibraryPath(), null, null));
+
 		// Adds EMF Common and ECore Eclipse plug-ins to the classpath.
 		classpath.add(createClasspathEntryForClass(Adapter.class));
 		classpath.add(createClasspathEntryForClass(EClass.class));
-		
+
 		// Adds the Zanshin model classes to the classpath.
 		Bundle bundle = Activator.getContext().getBundle();
 		URL url = bundle.getEntry(ZANSHIN_MODELS_JAR_PATH);
@@ -195,7 +190,7 @@ public class ModelManagementService implements IModelManagementService {
 		// Adds the source folder to the classpath.
 		IFolder sourceFolder = project.getFolder(SOURCES_PROJECT_SUBDIR);
 		classpath.add(JavaCore.newSourceEntry(sourceFolder.getFullPath()));
-		
+
 		// Effectively sets the classpath in the project.
 		javaProject.setRawClasspath(classpath.toArray(new IClasspathEntry[0]), monitor);
 
@@ -204,7 +199,7 @@ public class ModelManagementService implements IModelManagementService {
 		javaProject.setOutputLocation(classesFolder.getFullPath(), monitor);
 
 		// Returns the created project.
-		CoreUtils.log.info("Created model project {0} in location: {1}", projectName, project.getLocation()); //$NON-NLS-1$
+		CoreUtils.log.info("Created Zanshin project {0} in location: {1}", projectName, project.getLocation()); //$NON-NLS-1$
 		return project;
 	}
 
@@ -223,35 +218,78 @@ public class ModelManagementService implements IModelManagementService {
 	}
 
 	/**
+	 * @see it.unitn.disi.zanshin.services.IModelManagementService#createMetaModel(org.eclipse.core.resources.IProject,
+	 *      java.lang.String, java.lang.String)
+	 */
+	@Override
+	public IFile createMetaModel(IProject project, String metaModelName, String contents) throws CoreException, IOException {
+		CoreUtils.log.debug("Creating a new meta-model file in project {0} with name: {1}", project.getName(), metaModelName); //$NON-NLS-1$
+
+		// Creates the file in the model folder of the project.
+		IFolder modelFolder = project.getFolder(MODELS_PROJECT_SUBDIR);
+		IFile metaModelFile = createFile(modelFolder, metaModelName, contents);
+
+		// Returns the file descriptor.
+		CoreUtils.log.info("Created meta-model file in project {0} in location: {1}", project.getName(), metaModelFile.getLocation()); //$NON-NLS-1$
+		return metaModelFile;
+	}
+
+	/**
 	 * @see it.unitn.disi.zanshin.services.IModelManagementService#createModel(org.eclipse.core.resources.IProject,
 	 *      java.lang.String, java.lang.String)
 	 */
 	@Override
-	public IFile createModel(IProject project, String modelName, String contents) throws CoreException {
+	public IFile createModel(IProject project, String modelName, String contents) throws CoreException, IOException {
 		CoreUtils.log.debug("Creating a new model file in project {0} with name: {1}", project.getName(), modelName); //$NON-NLS-1$
-		IProgressMonitor monitor = new NullProgressMonitor();
 
-		// Creates the reference to the model file in the project.
+		// If the service's resource set has not been initialized yet, initializes it now.
+		if (resourceSet == null)
+			init();
+
+		// Creates the file in the model folder of the project.
 		IFolder modelFolder = project.getFolder(MODELS_PROJECT_SUBDIR);
-		IFile modelFile = modelFolder.getFile(modelName);
+		IFile modelFile = createFile(modelFolder, modelName, contents);
 
-		// If the file already exists, deletes it.
-		if (modelFile.exists())
-			modelFile.delete(true, monitor);
-
-		// Creates a new file with the specified contents.
-		InputStream inputStream = new ByteArrayInputStream(contents.getBytes());
-		modelFile.create(inputStream, true, monitor);
+		// Registers the resource factory for the extension of this model.
+		Resource.Factory.Registry registry = resourceSet.getResourceFactoryRegistry();
+		Map<String, Object> map = registry.getExtensionToFactoryMap();
+		map.put(modelFile.getFileExtension(), new XMIResourceFactoryImpl());
 
 		// Returns the file descriptor.
 		CoreUtils.log.info("Created model file in project {0} in location: {1}", project.getName(), modelFile.getLocation()); //$NON-NLS-1$
 		return modelFile;
 	}
 
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param folder
+	 * @param fileName
+	 * @param contents
+	 * @return
+	 * @throws CoreException
+	 * @throws IOException
+	 */
+	private IFile createFile(IFolder folder, String fileName, String contents) throws CoreException, IOException {
+		// Creates the reference to the model file in the given folder.
+		IFile file = folder.getFile(fileName);
+
+		// If the file already exists, deletes it.
+		IProgressMonitor monitor = new NullProgressMonitor();
+		if (file.exists())
+			file.delete(true, monitor);
+
+		// Creates a new file with the specified contents and returns it.
+		try (InputStream inputStream = new ByteArrayInputStream(contents.getBytes())) {
+			file.create(inputStream, true, monitor);
+		}
+		return file;
+	}
+
 	/** @see it.unitn.disi.zanshin.services.IModelManagementService#readModel(org.eclipse.core.resources.IFile) */
 	@Override
-	public Resource readModel(IFile modelFile) throws IOException, CoreException {
-		return readModel(URI.createFileURI(modelFile.getLocation().toString()));
+	public Resource readModel(IFile metaModelFile) throws IOException, CoreException {
+		return readModel(URI.createFileURI(metaModelFile.getLocation().toString()));
 	}
 
 	/**
@@ -263,7 +301,7 @@ public class ModelManagementService implements IModelManagementService {
 	 * @throws CoreException
 	 */
 	private Resource readModel(URI modelURI) throws IOException, CoreException {
-		CoreUtils.log.debug("Reading a model from location: {0}", modelURI); //$NON-NLS-1$
+		CoreUtils.log.debug("Reading a (meta-)model file from location: {0}", modelURI); //$NON-NLS-1$
 
 		// If the service's resource set has not been initialized yet, initializes it now.
 		if (resourceSet == null)
@@ -278,19 +316,19 @@ public class ModelManagementService implements IModelManagementService {
 	 *      java.lang.String, java.lang.String, org.eclipse.core.resources.IFolder, org.eclipse.core.resources.IFolder)
 	 */
 	@Override
-	public Resource createGenModelFile(IFile modelFile, String basePackage) throws IOException, CoreException {
+	public Resource createGenModelFile(IFile metaModelFile, String basePackage) throws IOException, CoreException {
 		// If the service's resource set has not been initialized yet, initializes it now.
 		if (resourceSet == null)
 			init();
 
-		CoreUtils.log.debug("Creating a generator model for {0} with base package: {1}", modelFile.getName(), basePackage); //$NON-NLS-1$
+		CoreUtils.log.debug("Creating a generator model for {0} with base package: {1}", metaModelFile.getName(), basePackage); //$NON-NLS-1$
 
 		// Retrieves the target dir (where the sources should be generated).
-		IProject project = modelFile.getProject();
+		IProject project = metaModelFile.getProject();
 		IFolder targetDir = project.getFolder(SOURCES_PROJECT_SUBDIR);
 
 		// Determines the paths and URIs.
-		IPath ecorePath = modelFile.getLocation();
+		IPath ecorePath = metaModelFile.getLocation();
 		IPath genModelPath = ecorePath.removeFileExtension().addFileExtension(GENMODEL_FILE_EXTENSION);
 		URI ecoreURI = URI.createFileURI(ecorePath.toString());
 		URI genModelURI = URI.createFileURI(genModelPath.toString());
@@ -369,5 +407,31 @@ public class ModelManagementService implements IModelManagementService {
 
 		// Builds the project, as classpath and source folder have already been set.
 		project.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IModelManagementService#unregisterMetaModel(org.eclipse.emf.ecore.EPackage) */
+	@Override
+	public void unregisterMetaModel(EPackage ePackage) {
+		// Retrieves the package that is registered under the same namespace as the given package (for logging purposes).
+		String namespaceURI = ePackage.getNsURI();
+		EPackage.Registry packageRegistry = resourceSet.getPackageRegistry();
+		EPackage registeredPackage = packageRegistry.getEPackage(namespaceURI);
+
+		// Removes the package that was registered under the given namespace (if any).
+		packageRegistry.remove(namespaceURI);
+		CoreUtils.log.info("Removed namespace {0} from the package registry: {1}", namespaceURI, registeredPackage); //$NON-NLS-1$
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IModelManagementService#createGoalModel(org.eclipse.emf.ecore.resource.Resource) */
+	@Override
+	public GoalModel createGoalModel(Resource modelResource) {
+		// Retrieves the root object from the model.
+		EObject modelRoot = modelResource.getContents().get(0);
+
+		// Creates a copy of the original model, otherwise this will always return the same instance.
+		EObject modelRootCopy = EcoreUtil.copy(modelRoot);
+
+		// Converts the object to the GoalModel interface and returns.
+		return (GoalModel) modelRootCopy;
 	}
 }

@@ -1,7 +1,5 @@
 package it.unitn.disi.zanshin.remote;
 
-import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -21,11 +19,12 @@ public interface IZanshinServer extends Remote {
 	/**
 	 * TODO: document this method.
 	 * 
-	 * @param requirements
+	 * @param metaModel
+	 * @param model
 	 * @return
 	 * @throws RemoteException
 	 */
-	String registerTargetSystem(String requirements) throws RemoteException;
+	String registerTargetSystem(String metaModel, String model) throws RemoteException;
 
 	/**
 	 * TODO: document this method.
@@ -34,15 +33,37 @@ public interface IZanshinServer extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	String createUserSession(String targetSystemId) throws RemoteException;
+	Long createUserSession(String targetSystemId) throws RemoteException;
 
 	/**
 	 * TODO: document this method.
-	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
 	 * @param requirementsName
-	 * @param method
 	 */
-	void logRequirementLifecycleMethodCall(String targetSystemId, String userSessionId, String requirementsName, MonitorableMethod method);
+	void logRequirementStart(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * @param targetSystemId
+	 * @param userSessionId
+	 * @param requirementsName
+	 */
+	void logRequirementSuccess(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * @param targetSystemId
+	 * @param userSessionId
+	 * @param requirementsName
+	 */
+	void logRequirementFailure(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * @param targetSystemId
+	 * @param userSessionId
+	 * @param requirementsName
+	 */
+	void logRequirementCancellation(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException;
 }

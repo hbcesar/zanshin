@@ -40,7 +40,7 @@ public interface GorePackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_URI = "http://zanshin.disi.unitn.it/1.0/core"; //$NON-NLS-1$
+	String eNS_URI = "http://disi.unitn.it/zanshin/1.0/gore"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -813,7 +813,8 @@ public interface GorePackage extends EPackage {
 	int GOAL_MODEL__CONFIGURATION = 3;
 
 	/**
-	 * The feature id for the '<em><b>Relations</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Relations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
@@ -1375,10 +1376,11 @@ public interface GorePackage extends EPackage {
 	EReference getGoalModel_Configuration();
 
 	/**
-	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations
-	 * <em>Relations</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '
+	 * {@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations <em>Relations</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * 
-	 * @return the meta object for the reference list '<em>Relations</em>'.
+	 * @return the meta object for the containment reference list '<em>Relations</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRelations()
 	 * @see #getGoalModel()
 	 * @generated
@@ -1873,8 +1875,8 @@ public interface GorePackage extends EPackage {
 		EReference GOAL_MODEL__CONFIGURATION = eINSTANCE.getGoalModel_Configuration();
 
 		/**
-		 * The meta object literal for the '<em><b>Relations</b></em>' reference list feature. <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
+		 * The meta object literal for the '<em><b>Relations</b></em>' containment reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
 		 * 
 		 * @generated
 		 */

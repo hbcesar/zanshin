@@ -46,7 +46,7 @@ public class ZanshinClassLoader extends ClassLoader {
 
 	/** TODO: document this field. */
 	private static final String PACKAGE_CLASS_SUFFIX = "Package"; //$NON-NLS-1$
-	
+
 	/** TODO: document this field. */
 	private static final String PACKAGE_LITERALS_CLASS_SUFFIX = "Package$Literals"; //$NON-NLS-1$
 
@@ -84,7 +84,7 @@ public class ZanshinClassLoader extends ClassLoader {
 	private Map<String, Class<? extends DefinableRequirement>> requirementsMap = new HashMap<>();
 
 	/** Constructor. */
-	protected ZanshinClassLoader(IProject modelProject, EPackage ePackage, String basePackage) throws ZanshinClassLoaderException {
+	protected ZanshinClassLoader(IProject modelProject, EPackage ePackage, String basePackage) {
 		super(ZanshinClassLoader.class.getClassLoader());
 		this.modelProject = modelProject;
 		this.ePackage = ePackage;
@@ -92,7 +92,14 @@ public class ZanshinClassLoader extends ClassLoader {
 
 		// Determines the base package path from its fully-qualified name.
 		basePackagePath = COMPILED_CLASSES_PATH + basePackage.replaceAll("\\.", "/"); //$NON-NLS-1$ //$NON-NLS-2$
+	}
 
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @throws ZanshinClassLoaderException
+	 */
+	protected void loadModelClasses() throws ZanshinClassLoaderException {
 		// Initializes the class loader, loading the model classes, package, factory and utils.
 		// The boolean parameter indicates loading of interfaces (false) or classes (true).
 		try {
@@ -164,18 +171,23 @@ public class ZanshinClassLoader extends ClassLoader {
 
 		// Loads package and factory classes.
 		String impl = (loadImplementation ? IMPLEMENTATION_CLASS_SUFFIX : ""); //$NON-NLS-1$
-		loadCompiledClass(packageName + PACKAGE_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
-		Class<?> clazz = loadCompiledClass(packageName + FACTORY_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
+		Class<?> packageClazz = loadCompiledClass(packageName + PACKAGE_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
+		Class<?> factoryClazz = loadCompiledClass(packageName + FACTORY_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
 
-		// If we're loading implementations, creates and initializes an instance of the factory class so objects can be
-		// later instantiated when needed.
+		// If we're loading implementations, initializes them.
 		if (loadImplementation) {
-			factoryClass = (Class<? extends EFactory>) clazz;
-			factoryInstance = (EFactory) factoryClass.newInstance();
-			Method initMethod = factoryClass.getMethod(FACTORY_INIT_METHOD_NAME);
+			// Initializes the package, so it will register itself within EMF.
+			Class<? extends EPackage> packageClass = (Class<? extends EPackage>) packageClazz;
+			Method initMethod = packageClass.getMethod(FACTORY_INIT_METHOD_NAME);
+			initMethod.invoke(null);
+
+			// Initializes the factory class, keeping a reference to it in the class loader.
+			factoryClass = (Class<? extends EFactory>) factoryClazz;
+			factoryInstance = factoryClass.newInstance();
+			initMethod = factoryClass.getMethod(FACTORY_INIT_METHOD_NAME);
 			initMethod.invoke(factoryInstance);
 		}
-		
+
 		// Else, load the Literals inner class from the package class.
 		else {
 			loadCompiledClass(packageName + PACKAGE_LITERALS_CLASS_SUFFIX, null);

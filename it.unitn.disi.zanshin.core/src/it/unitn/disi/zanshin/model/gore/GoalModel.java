@@ -106,7 +106,7 @@ public interface GoalModel extends EObject {
 	void setConfiguration(Configuration value);
 
 	/**
-	 * Returns the value of the '<em><b>Relations</b></em>' reference list. The list contents are of type
+	 * Returns the value of the '<em><b>Relations</b></em>' containment reference list. The list contents are of type
 	 * {@link it.unitn.disi.zanshin.model.gore.DifferentialRelation}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relations</em>' reference list isn't clear, there really should be more of a description
@@ -114,9 +114,9 @@ public interface GoalModel extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '<em>Relations</em>' reference list.
+	 * @return the value of the '<em>Relations</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_Relations()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DifferentialRelation> getRelations();

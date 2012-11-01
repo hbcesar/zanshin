@@ -49,7 +49,7 @@ public class EcaFactoryImpl extends EFactoryImpl implements EcaFactory {
 	 */
 	public static EcaFactory init() {
 		try {
-			EcaFactory theEcaFactory = (EcaFactory) EPackage.Registry.INSTANCE.getEFactory("http://zanshin.disi.unitn.it/1.0/eca"); //$NON-NLS-1$
+			EcaFactory theEcaFactory = (EcaFactory) EPackage.Registry.INSTANCE.getEFactory("http://disi.unitn.it/zanshin/1.0/eca"); //$NON-NLS-1$
 			if (theEcaFactory != null) { return theEcaFactory; }
 		}
 		catch (Exception exception) {

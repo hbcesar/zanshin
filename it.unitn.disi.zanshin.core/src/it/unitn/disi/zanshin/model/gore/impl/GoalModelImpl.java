@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -95,8 +95,8 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	protected Configuration configuration;
 
 	/**
-	 * The cached value of the '{@link #getRelations() <em>Relations</em>}' reference list. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The cached value of the '{@link #getRelations() <em>Relations</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @see #getRelations()
 	 * @generated
@@ -243,7 +243,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 */
 	public EList<DifferentialRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectResolvingEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS);
+			relations = new EObjectContainmentEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS);
 		}
 		return relations;
 	}
@@ -370,6 +370,8 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 			return ((InternalEList<?>) getActors()).basicRemove(otherEnd, msgs);
 		case GorePackage.GOAL_MODEL__CONFIGURATION:
 			return basicSetConfiguration(null, msgs);
+		case GorePackage.GOAL_MODEL__RELATIONS:
+			return ((InternalEList<?>) getRelations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

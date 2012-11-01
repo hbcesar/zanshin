@@ -32,9 +32,10 @@ public final class CoreUtils {
 	static void initialize(LogService logService) {
 		log = new PlatformLogger(logService);
 	}
-	
+
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param src
 	 * @return
 	 */
@@ -43,7 +44,7 @@ public final class CoreUtils {
 		EcoreUtil.Copier copier = new EcoreUtil.Copier();
 		Requirement dst = (Requirement) copier.copy(src);
 		copier.copyReferences();
-		
+
 		// Resets the copy and returns.
 		if (dst instanceof PerformativeRequirement) {
 			PerformativeRequirement pr = (PerformativeRequirement) dst;

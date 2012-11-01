@@ -12,21 +12,21 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://zanshin.disi.unitn.it/1.0/eca"
+            uri="http://disi.unitn.it/zanshin/1.0/eca"
             class="it.unitn.disi.zanshin.model.eca.EcaPackage"
             genModel="model/zanshin.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://zanshin.disi.unitn.it/1.0/core"
+            uri="http://disi.unitn.it/zanshin/1.0/gore"
             class="it.unitn.disi.zanshin.model.gore.GorePackage"
             genModel="model/zanshin.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://zanshin.disi.unitn.it/1.0/ltl"
+            uri="http://disi.unitn.it/zanshin/1.0/ltl"
             class="org.eeat.model.LTL.LTLPackage"
             genModel="model/zanshin.genmodel"/>
    </extension>

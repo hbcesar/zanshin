@@ -50,7 +50,7 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	 */
 	public static GoreFactory init() {
 		try {
-			GoreFactory theGoreFactory = (GoreFactory) EPackage.Registry.INSTANCE.getEFactory("http://zanshin.disi.unitn.it/1.0/core"); //$NON-NLS-1$
+			GoreFactory theGoreFactory = (GoreFactory) EPackage.Registry.INSTANCE.getEFactory("http://disi.unitn.it/zanshin/1.0/gore"); //$NON-NLS-1$
 			if (theGoreFactory != null) { return theGoreFactory; }
 		}
 		catch (Exception exception) {
