@@ -270,4 +270,14 @@ public class GoalModelElements {
 		};
 		visitor.parse();
 	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param eClass
+	 * @return
+	 */
+	public Set<AwReq> retrieveSourceAwReqs(EClass eClass) {
+		return targetsMap.get(eClass);
+	}
 }

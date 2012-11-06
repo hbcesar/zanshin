@@ -1,12 +1,14 @@
 package it.unitn.disi.zanshin.core.internal.services;
 
 import it.unitn.disi.zanshin.core.CoreUtils;
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -91,5 +93,15 @@ public class RepositoryService implements IRepositoryService {
 
 		// Delegates the replacement to the elements mapping object.
 		elements.replaceRequirement(modelReq, newRequirement);
+	}
+
+	/** @see it.unitn.disi.zanshin.services.IRepositoryService#retrieveSourceAwReqs(java.lang.Long, org.eclipse.emf.ecore.EClass) */
+	@Override
+	public Set<AwReq> retrieveSourceAwReqs(Long modelId, EClass eClass) {
+		// Obtains the element mapping object from the elements repository.
+		GoalModelElements elements = elementsRepository.get(modelId);
+		
+		// Returns all the AwReqs that point to the given requirement.
+		return elements.retrieveSourceAwReqs(eClass);
 	}
 }

@@ -29,10 +29,10 @@ public class ZanshinRemote implements IZanshinServer {
 		zanshinServer = (IZanshinServer) rmiRegistry.lookup(IZanshinServer.RMI_NAME);
 	}
 
-	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(java.lang.String, java.lang.String) */
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(it.unitn.disi.zanshin.remote.ITargetSystem, java.lang.String, java.lang.String) */
 	@Override
-	public String registerTargetSystem(String metaModel, String model) throws RemoteException {
-		return zanshinServer.registerTargetSystem(metaModel, model);
+	public String registerTargetSystem(ITargetSystem targetSystem, String metaModel, String model) throws RemoteException {
+		return zanshinServer.registerTargetSystem(targetSystem, metaModel, model);
 	}
 
 	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#createUserSession(java.lang.String) */
@@ -77,4 +77,15 @@ public class ZanshinRemote implements IZanshinServer {
 		zanshinServer.logRequirementCancellation(targetSystemId, userSessionId, requirementsName);
 	}
 
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#isTargetSystemRegistered(java.lang.String) */
+	@Override
+	public Boolean isTargetSystemRegistered(String targetSystemId) throws RemoteException {
+		return zanshinServer.isTargetSystemRegistered(targetSystemId);
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#unregisterTargetSystem(java.lang.String) */
+	@Override
+	public Boolean unregisterTargetSystem(String targetSystemId) throws RemoteException {
+		return zanshinServer.unregisterTargetSystem(targetSystemId);
+	}
 }

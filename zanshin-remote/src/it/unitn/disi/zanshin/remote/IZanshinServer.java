@@ -17,14 +17,33 @@ public interface IZanshinServer extends Remote {
 	int RMI_PORT = 1099;
 
 	/**
-	 * TODO: document this method.
+	 * TODO: document this method. Copy the documentation of the remote exception to all other methods.
 	 * 
+	 * @param targetSystem
 	 * @param metaModel
 	 * @param model
 	 * @return
 	 * @throws RemoteException
 	 */
-	String registerTargetSystem(String metaModel, String model) throws RemoteException;
+	String registerTargetSystem(ITargetSystem targetSystem, String metaModel, String model) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @return
+	 * @throws RemoteException
+	 */
+	Boolean isTargetSystemRegistered(String targetSystemId) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @return
+	 * @throws RemoteException
+	 */
+	Boolean unregisterTargetSystem(String targetSystemId) throws RemoteException;
 
 	/**
 	 * TODO: document this method.
@@ -37,6 +56,7 @@ public interface IZanshinServer extends Remote {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
 	 * @param requirementsName
@@ -45,6 +65,7 @@ public interface IZanshinServer extends Remote {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
 	 * @param requirementsName
@@ -53,6 +74,7 @@ public interface IZanshinServer extends Remote {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
 	 * @param requirementsName
@@ -61,6 +83,7 @@ public interface IZanshinServer extends Remote {
 
 	/**
 	 * TODO: document this method.
+	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
 	 * @param requirementsName

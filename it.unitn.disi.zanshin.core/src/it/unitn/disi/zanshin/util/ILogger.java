@@ -18,6 +18,8 @@ public interface ILogger {
 	 * 
 	 * @param message
 	 *          Message to log.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void debug(String message, Object ... params);
 
@@ -26,6 +28,8 @@ public interface ILogger {
 	 * 
 	 * @param message
 	 *          Message to log.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void info(String message, Object ... params);
 
@@ -34,6 +38,8 @@ public interface ILogger {
 	 * 
 	 * @param message
 	 *          Message to log.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void warn(String message, Object ... params);
 
@@ -42,6 +48,8 @@ public interface ILogger {
 	 * 
 	 * @param message
 	 *          Message to log.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void error(String message, Object ... params);
 
@@ -52,6 +60,8 @@ public interface ILogger {
 	 *          Message to log.
 	 * @param error
 	 *          Associated error.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void debug(String message, Throwable error, Object ... params);
 
@@ -62,6 +72,8 @@ public interface ILogger {
 	 *          Message to log.
 	 * @param error
 	 *          Associated error.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void info(String message, Throwable error, Object ... params);
 
@@ -72,6 +84,8 @@ public interface ILogger {
 	 *          Message to log.
 	 * @param error
 	 *          Associated error.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void warn(String message, Throwable error, Object ... params);
 
@@ -82,6 +96,8 @@ public interface ILogger {
 	 *          Message to log.
 	 * @param error
 	 *          Associated error.
+	 * @param params
+	 *          Message parameters, to be inserted in {0}, {1}, etc. placeholders.
 	 */
 	public abstract void error(String message, Throwable error, Object ... params);
 

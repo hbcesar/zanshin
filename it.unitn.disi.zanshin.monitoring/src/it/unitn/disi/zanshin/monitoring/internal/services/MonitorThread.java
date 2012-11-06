@@ -1,12 +1,19 @@
 package it.unitn.disi.zanshin.monitoring.internal.services;
 
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
-import it.unitn.disi.zanshin.services.IMonitoringService;
+import it.unitn.disi.zanshin.services.IAdaptationService;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 
+import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * Thread that processes requirement life-cycle method calls.
@@ -19,15 +26,23 @@ import java.util.concurrent.BlockingQueue;
  * @version 1.0
  */
 public class MonitorThread extends Thread {
+	/** The adaptation service. */
+	private IAdaptationService adaptationService;
+
+	/** The repository service. */
+	private IRepositoryService repositoryService;
+
 	/** A queue of life-cycle method calls to process. */
 	private BlockingQueue<LifecycleMethodCall> queue = new ArrayBlockingQueue<LifecycleMethodCall>(100);
 
-	/** Temporary solution. A "simulated" monitor is injected by the simulation. */
-	private IMonitoringService simulatedMonitor;
+	/** Setter for adaptationService. */
+	public void setAdaptationService(IAdaptationService adaptationService) {
+		this.adaptationService = adaptationService;
+	}
 
-	/** Setter for simulatedMonitor. */
-	protected void setSimulatedMonitor(IMonitoringService simulatedMonitor) {
-		this.simulatedMonitor = simulatedMonitor;
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		this.repositoryService = repositoryService;
 	}
 
 	/**
@@ -79,11 +94,43 @@ public class MonitorThread extends Thread {
 	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.eClass().getName() }); //$NON-NLS-1$
 
-		// This is a temporary implementation. See https://github.com/vitorsouza/Zanshin/issues/1
-		if (simulatedMonitor == null) {
-			MonitoringUtils.log.warn("The simulated monitor has not been injected by the current simulation. Monitoring will not work. Please check your configuration."); //$NON-NLS-1$
-			return;
+		// Temporary implementation. See https://github.com/sefms-disi-unitn/Zanshin/issues/2
+
+		// Treats all AwReqs as NeverFail AwReqs, i.e., whenever there's a success or failure of a requirement, searches the
+		// repository service for an AwReq that refers to it and sends its state change to the adaptation service.
+		if ((method == MonitorableMethod.SUCCESS) || (method == MonitorableMethod.FAIL)) {
+			GoalModel model = req.findGoalModel();
+			Set<AwReq> awreqs = repositoryService.retrieveSourceAwReqs(model.getId(), req.eClass());
+
+			if (awreqs != null) {
+				MonitoringUtils.log.info("Requirement {0} has {1} AwReqs referring to it. Assuming all AwReqs are NeverFail and reporting AwReq state change: {2}", req.eClass().getName(), awreqs.size(), method); //$NON-NLS-1$
+
+				DefinableRequirementState state;
+				switch (method) {
+				case SUCCESS:
+					state = DefinableRequirementState.SUCCEEDED;
+					break;
+
+				case FAIL:
+					state = DefinableRequirementState.FAILED;
+					break;
+
+				default:
+					state = DefinableRequirementState.UNDEFINED;
+				}
+
+				for (AwReq awreq : awreqs) {
+					awreq.setState(state);
+					adaptationService.processStateChange(awreq);
+
+					// The code below was copied from the old simulated AwReq monitor services. Don't remember why this is
+					// necessary...
+					// Creates a copy of the failed AwReq, puts it in Undecided state and replaces the old one in the model.
+					AwReq newAwReq = (AwReq) EcoreUtil.copy(awreq);
+					newAwReq.setState(DefinableRequirementState.UNDEFINED);
+					repositoryService.replaceRequirement(model.getId(), awreq, newAwReq);
+				}
+			}
 		}
-		simulatedMonitor.monitorMethodCall(req, method);
 	}
 }

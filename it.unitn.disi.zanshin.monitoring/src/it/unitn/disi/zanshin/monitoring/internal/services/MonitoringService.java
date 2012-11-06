@@ -3,7 +3,9 @@ package it.unitn.disi.zanshin.monitoring.internal.services;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
+import it.unitn.disi.zanshin.services.IAdaptationService;
 import it.unitn.disi.zanshin.services.IMonitoringService;
+import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import java.lang.Thread.State;
 
@@ -25,10 +27,28 @@ public class MonitoringService implements IMonitoringService {
 		monitorThread.start();
 	}
 
-	/** Setter for simulatedMonitor. */
-	public void setSimulatedMonitor(IMonitoringService simulatedMonitor) {
-		if (monitorThread != null)
-			monitorThread.setSimulatedMonitor(simulatedMonitor);
+	/** Setter for adaptationService. */
+	public void setAdaptationService(IAdaptationService adaptationService) {
+		monitorThread.setAdaptationService(adaptationService);
+		MonitoringUtils.log.info("Adaptation Service injected in the monitoring thread."); //$NON-NLS-1$
+	}
+
+	/** Un-setter for adaptationService (required by OSGi Declarative Services). */
+	public void unsetAdaptationService(IAdaptationService adaptationService) {
+		monitorThread.setAdaptationService(null);
+		MonitoringUtils.log.info("Adaptation Service disposed from the monitoring thread."); //$NON-NLS-1$
+	}
+
+	/** Setter for repositoryService. */
+	public void setRepositoryService(IRepositoryService repositoryService) {
+		monitorThread.setRepositoryService(repositoryService);
+		MonitoringUtils.log.info("Repository Service injected in the monitoring thread."); //$NON-NLS-1$
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetRepositoryService(IRepositoryService repositoryService) {
+		monitorThread.setRepositoryService(null);
+		MonitoringUtils.log.info("Repository Service disposed from the monitoring thread."); //$NON-NLS-1$
 	}
 
 	/**

@@ -1,5 +1,8 @@
 package it.unitn.disi.zanshin.services;
 
+import java.util.Set;
+
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Requirement;
 
@@ -82,4 +85,13 @@ public interface IRepositoryService {
 	 *          The new requirement that should be included in the model.
 	 */
 	void replaceRequirement(Long modelId, Requirement oldRequirement, Requirement newRequirement);
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param modelId
+	 * @param eClass
+	 * @return
+	 */
+	Set<AwReq> retrieveSourceAwReqs(Long modelId, EClass eClass);
 }

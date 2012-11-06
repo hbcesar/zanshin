@@ -121,10 +121,11 @@ public class DelegateStrategyImpl extends AdaptationStrategyImpl implements Dele
 		}
 
 		// Executes the Delegate strategy.
+		it.unitn.disi.zanshin.model.gore.GoalModel goalModel = awreq.findGoalModel();
 		strategyName += "(" + actor.eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		controller.sendWarning(actor, awreq);
-		controller.waitForFix(awreq);
+		controller.sendWarning(goalModel, actor, awreq);
+		controller.waitForFix(goalModel, awreq);
 	}
 
 	/**

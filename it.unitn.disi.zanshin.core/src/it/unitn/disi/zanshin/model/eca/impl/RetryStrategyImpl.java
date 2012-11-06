@@ -162,13 +162,14 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		strategyName += "(" + copy + "; " + time + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
 		it.unitn.disi.zanshin.model.gore.Requirement newRequirement = it.unitn.disi.zanshin.core.CoreUtils.createCopy(requirement);
+		it.unitn.disi.zanshin.model.gore.GoalModel goalModel = requirement.findGoalModel();
 		if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement))
-			controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
-		controller.terminate(requirement);
+			controller.copyData(goalModel, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
+		controller.terminate(goalModel, requirement);
 		if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
-			controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
-		controller.waitFor(time);
-		controller.initiate(newRequirement);
+			controller.rollback(goalModel, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
+		controller.waitFor(goalModel, time);
+		controller.initiate(goalModel, newRequirement);
 	}
 
 	/**

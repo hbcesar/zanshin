@@ -17,13 +17,14 @@ Import-Package: it.unitn.disi.zanshin.model.eca,
  org.eclipse.emf.common.notify,
  org.eclipse.emf.common.util,
  org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.util,
  org.eeat.model.LTL,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.log;version="1.3.0",
  org.osgi.util.tracker;version="1.5.1"
 Bundle-ActivationPolicy: lazy
 Export-Package: it.unitn.disi.zanshin.monitoring.aspects;aspects="AwReqsMonitoringAspect"
-Eclipse-SupplementBundle: it.unitn.disi.zanshin.controller, it.unitn.disi.zanshin.core, it.unitn.disi.zanshin.simulation
+Eclipse-SupplementBundle: it.unitn.disi.zanshin.controller, it.unitn.disi.zanshin.core
 Service-Component: OSGI-INF/*.xml
 Require-Bundle: org.eclipse.equinox.weaving.aspectj;bundle-version="1.0.100",
  org.eclipse.equinox.weaving.caching;bundle-version="1.0.200"

@@ -1,0 +1,16 @@
+This is Zanshin simulator, a console-based application for running simulations
+of adaptive systems managed by the Zanshin framework. As such, you should make
+sure the Zanshin framework is executing before running any simulations. 
+
+Available commands:
+
+- exit       Exits the Zanshin simulator.
+
+- help       Shows this help message.
+
+- list       Lists the available simulations (as configured in the 
+             simulations.properties file).
+
+- sim [N]    Starts simulation N (according to what is configured in the 
+             simulations.properties file). If N is omitted, executes all
+             configured simulations in sequence.

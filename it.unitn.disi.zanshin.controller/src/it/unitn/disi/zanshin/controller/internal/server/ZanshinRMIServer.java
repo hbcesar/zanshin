@@ -4,7 +4,9 @@ import it.unitn.disi.zanshin.controller.ControllerUtils;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
+import it.unitn.disi.zanshin.remote.ITargetSystem;
 import it.unitn.disi.zanshin.remote.IZanshinServer;
+import it.unitn.disi.zanshin.remote.ZanshinSecurityManager;
 import it.unitn.disi.zanshin.services.IModelManagementService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
@@ -45,6 +47,11 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 	/** TODO: document this field. */
 	private Map<String, SessionManager> sessionManagers = new HashMap<>();
 
+	static {
+		// Uses a custom security manager that allows RMI to operate.
+		System.setSecurityManager(new ZanshinSecurityManager());
+	}
+
 	/** Constructor. */
 	public ZanshinRMIServer() throws RemoteException {
 		super();
@@ -53,35 +60,42 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 	/** Setter for modelManagementService. */
 	public void setModelManagementService(IModelManagementService modelManagementService) {
 		this.modelManagementService = modelManagementService;
-		ControllerUtils.log.info("Model Management Service injected in this bundle"); //$NON-NLS-1$
+		ControllerUtils.log.info("Model Management Service injected in the RMI server"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for modelManagementService (required by OSGi Declarative Services). */
 	public void unsetModelManagementService(IModelManagementService modelManagementService) {
 		this.modelManagementService = null;
-		ControllerUtils.log.info("Model Management disposed from this bundle"); //$NON-NLS-1$
+		ControllerUtils.log.info("Model Management disposed from the RMI server"); //$NON-NLS-1$
 	}
 
 	/** Setter for repositoryService. */
 	public void setRepositoryService(IRepositoryService repositoryService) {
 		this.repositoryService = repositoryService;
-		ControllerUtils.log.info("Repository Service injected in this bundle"); //$NON-NLS-1$
+		ControllerUtils.log.info("Repository Service injected in the RMI server"); //$NON-NLS-1$
 	}
 
 	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
 	public void unsetRepositoryService(IRepositoryService repositoryService) {
 		this.repositoryService = null;
-		ControllerUtils.log.info("Repository Service disposed from this bundle"); //$NON-NLS-1$
+		ControllerUtils.log.info("Repository Service disposed from the RMI server"); //$NON-NLS-1$
 	}
 
-	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(java.lang.String, java.lang.String) */
+	/**
+	 * @see it.unitn.disi.zanshin.remote.IZanshinServer#registerTargetSystem(it.unitn.disi.zanshin.remote.ITargetSystem,
+	 *      java.lang.String, java.lang.String)
+	 */
 	@Override
-	public String registerTargetSystem(String metaModel, String model) throws RemoteException {
+	public String registerTargetSystem(ITargetSystem targetSystem, String metaModel, String model) throws RemoteException {
 		ControllerUtils.log.debug("Received remote request to register a target system..."); //$NON-NLS-1$
 
 		try {
 			// Extracts the ID for this target system from its requirements meta-model.
 			String targetSystemId = extractTargetSystemId(metaModel);
+
+			// If the system is already registered, returns immediately.
+			if (isTargetSystemRegistered(targetSystemId))
+				return targetSystemId;
 
 			// Creates a new project in the workspace for this target system.
 			IProject project = modelManagementService.createZanshinProject(targetSystemId);
@@ -112,7 +126,7 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 			classLoader.loadModelClasses();
 
 			// Creates a new session manager for this target system and stores it.
-			SessionManager sessionManager = new SessionManager(modelManagementService, repositoryService, targetSystemId, modelFile);
+			SessionManager sessionManager = new SessionManager(modelManagementService, repositoryService, targetSystem, targetSystemId, modelFile);
 			sessionManagers.put(targetSystemId, sessionManager);
 
 			// Returns to the target system its ID so it's used in future calls.
@@ -249,5 +263,39 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 				throw new RemoteException("Could not create user session. Causing exception attached.", e); //$NON-NLS-1$
 			else throw new RemoteException("Could not create user session: " + e.getMessage()); //$NON-NLS-1$
 		}
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#isTargetSystemRegistered(java.lang.String) */
+	@Override
+	public Boolean isTargetSystemRegistered(String targetSystemId) throws RemoteException {
+		return sessionManagers.containsKey(targetSystemId);
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#unregisterTargetSystem(java.lang.String) */
+	@Override
+	public Boolean unregisterTargetSystem(String targetSystemId) throws RemoteException {
+
+		// If the system is registered, unregisters it.
+		boolean result = isTargetSystemRegistered(targetSystemId);
+		if (result)
+			sessionManagers.remove(targetSystemId);
+
+		// Returns true if the system was successfully unregistered, false otherwise.
+		return result;
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ITargetSystem retrieveTargetSystem(String targetSystemId) {
+		// Retrieves the session manager for the given target system.
+		SessionManager sessionManager = sessionManagers.get(targetSystemId);
+
+		// If the session manager exists, returns the reference to the target system.
+		return (sessionManager == null) ? null : sessionManager.getTargetSystem();
 	}
 }

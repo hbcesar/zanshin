@@ -271,6 +271,7 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 		}
 
 		// Executes the Strengthen by Replacing strategy.
+		it.unitn.disi.zanshin.model.gore.GoalModel goalModel = requirement.findGoalModel();
 		strategyName += "(" + requirement.eClass().getName() + "; " + copy + "; " + level + "; " + newRequirement.eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.CLASS) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
@@ -279,11 +280,11 @@ public class StrengthenReplaceImpl extends AdaptationStrategyImpl implements Str
 		}
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
 			if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement))
-				controller.copyData((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
-			controller.terminate(requirement);
+				controller.copyData(goalModel, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);
+			controller.terminate(goalModel, requirement);
 			if (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)
-				controller.rollback((it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
-			controller.initiate(newRequirement);
+				controller.rollback(goalModel, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement);
+			controller.initiate(goalModel, newRequirement);
 		}
 	}
 

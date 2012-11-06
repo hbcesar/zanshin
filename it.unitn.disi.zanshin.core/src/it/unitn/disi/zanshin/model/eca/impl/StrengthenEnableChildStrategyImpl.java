@@ -233,11 +233,12 @@ public class StrengthenEnableChildStrategyImpl extends AdaptationStrategyImpl im
 			controller.enable(child.eClass());
 		}
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
+			it.unitn.disi.zanshin.model.gore.GoalModel goalModel = requirement.findGoalModel();
 			Requirement parent = requirement.getParent();
-			controller.suspend(requirement);
-			controller.resume(child, requirement);
-			controller.initiate(child);
-			controller.resume(requirement, parent);
+			controller.suspend(goalModel, requirement);
+			controller.resume(goalModel, child, requirement);
+			controller.initiate(goalModel, child);
+			controller.resume(goalModel, requirement, parent);
 		}
 	}
 

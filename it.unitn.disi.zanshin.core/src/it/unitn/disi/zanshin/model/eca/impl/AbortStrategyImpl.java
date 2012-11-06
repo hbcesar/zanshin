@@ -56,7 +56,9 @@ public class AbortStrategyImpl extends AdaptationStrategyImpl implements AbortSt
 
 		// Executes the Abort strategy.
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		controller.abort(getAwReq());
+		it.unitn.disi.zanshin.model.gore.AwReq awreq = getAwReq();
+		it.unitn.disi.zanshin.model.gore.GoalModel goalModel = awreq.findGoalModel();
+		controller.abort(goalModel, awreq);
 	}
 
 } // AbortStrategyImpl

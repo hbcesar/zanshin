@@ -2,6 +2,7 @@ package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.remote.ITargetSystem;
 import it.unitn.disi.zanshin.services.IModelManagementService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
@@ -23,6 +24,9 @@ public class SessionManager {
 
 	/** TODO: document this field. */
 	private IRepositoryService repositoryService;
+	
+	/** TODO: document this field. */
+	private ITargetSystem targetSystem;
 
 	/** TODO: document this field. */
 	private String targetSystemId;
@@ -34,11 +38,17 @@ public class SessionManager {
 	private Resource modelResource;
 
 	/** Constructor. */
-	public SessionManager(IModelManagementService modelManagementService, IRepositoryService repositoryService, String targetSystemId, IFile modelFile) {
+	public SessionManager(IModelManagementService modelManagementService, IRepositoryService repositoryService, ITargetSystem targetSystem, String targetSystemId, IFile modelFile) {
 		this.modelManagementService = modelManagementService;
 		this.repositoryService = repositoryService;
+		this.targetSystem = targetSystem;
 		this.targetSystemId = targetSystemId;
 		this.modelFile = modelFile;
+	}
+
+	/** Getter for targetSystem. */
+	public ITargetSystem getTargetSystem() {
+		return targetSystem;
 	}
 
 	/** Getter for targetSystemId. */
