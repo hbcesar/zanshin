@@ -13,6 +13,8 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * TODO: document this type.
  * 
+ * Creation of the RMI stub thanks to Giuliano Mega, guru of distributed systems. :)
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
