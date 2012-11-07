@@ -5,8 +5,16 @@ import java.util.Map;
 import it.unitn.disi.zanshin.remote.ITargetSystem;
 
 /**
- * TODO: document this type.
- *
+ * A class that simulates what the target system does when it receives adaptation actions from Zanshin.
+ * 
+ * This class performs nothing but printing the received command in the log. Some simulations, however, have to simulate
+ * the fact that the target system is waiting for Zanshin to tell it what to do. In these cases, certain commands
+ * received by Zanshin should "wake up" the simulation thread that is waiting. The commands that wake up the threads
+ * depend on what is simulated.
+ * 
+ * Therefore, this class should be extended for each different simulated system (but usually one simulated target system
+ * should be able to handle all simulations related to the same system).
+ * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */

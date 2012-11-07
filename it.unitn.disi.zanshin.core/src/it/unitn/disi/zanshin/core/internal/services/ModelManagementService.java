@@ -59,7 +59,8 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 /**
- * TODO: document this type.
+ * Implementation of the Model Management Service that uses Eclipse's features (Java compiler, EMF, etc.) to implement
+ * Zanshin projects and related operations.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
@@ -68,28 +69,30 @@ public class ModelManagementService implements IModelManagementService {
 	/** Path for the generator file for the base packages eca, goalmodel and LTL. */
 	private static final String BASE_GENMODEL_FILE_PATH = "it.unitn.disi.zanshin.core/META-INF/zanshin.genmodel"; //$NON-NLS-1$
 
-	/** TODO: document this field. */
+	/** String that represents the path to the root of a bundle. */
 	private static final String ROOT_PATH = "/"; //$NON-NLS-1$
 
-	/** TODO: document this field. */
+	/** String that represents the path to the JAR that contains the base classes for Zanshin models. */
 	private static final String ZANSHIN_MODELS_JAR_PATH = "/META-INF/zanshin-models.jar"; //$NON-NLS-1$
 
-	/** TODO: document this field. */
+	/** String that represents the path to the JAR that contains basic Java classes (rt.jar, provided by the JRE). */
 	private static final String JAVA_RUNTIME_JAR_PATH = System.getProperty("java.home") + File.separator + "lib" + File.separator + "rt.jar"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
-	/** TODO: document this field. */
+	/** Global EMF resource set, where EMF packages are registered. */
 	private ResourceSet resourceSet;
 
-	/** TODO: document this field. */
+	/** Reference to Zanshin's generator model, instantiated during class initialization. */
 	private GenModel baseGenModel;
 
 	/**
-	 * TODO: document this method.
+	 * Initializes the model management service implementation
 	 * 
-	 * @throws IOException
 	 * @throws CoreException
+	 *           If any Eclipse errors occur during this operation.
+	 * @throws IOException
+	 *           If any I/O errors occur during this operation.
 	 */
-	private void init() throws IOException, CoreException {
+	private void init() throws CoreException, IOException {
 		CoreUtils.log.debug("Initializing Zanshin Model Management Service"); //$NON-NLS-1$
 
 		// Initializes the ECore and GenModel models.
@@ -204,11 +207,15 @@ public class ModelManagementService implements IModelManagementService {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Create's an Eclipse classpath entry for the bundle (plug-in) that contains a specific class. This method is used to
+	 * include Eclipse plug-ins like EMF Common and EMF Ecore in the classpath of the Zanshin project in order to compile
+	 * the classes that are generated from requirements meta-models.
 	 * 
 	 * @param clazz
-	 * @return
+	 *          The class whose bundle should be included in the classpath.
+	 * @return The Eclipse classpath entry that can be associated with an Eclipse Java project.
 	 * @throws IOException
+	 *           If any I/O errors occur during this operation.
 	 */
 	private IClasspathEntry createClasspathEntryForClass(Class<?> clazz) throws IOException {
 		Bundle bundle = FrameworkUtil.getBundle(clazz);
@@ -261,14 +268,20 @@ public class ModelManagementService implements IModelManagementService {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Given an Eclipse descriptor for a folder, a file name and its textual contents, creates the file in the specified
+	 * folder with the specified contents and returns a descriptor to it.
 	 * 
 	 * @param folder
+	 *          The descriptor of the folder in the project that should hold the file.
 	 * @param fileName
+	 *          The name of the file to be created.
 	 * @param contents
-	 * @return
+	 *          The contents to be put into the file that is created.
+	 * @return An Eclipse descriptor of the file that was just created in the project's folder.
 	 * @throws CoreException
+	 *           If any Eclipse errors occur during this operation.
 	 * @throws IOException
+	 *           If any I/O errors occur during this operation.
 	 */
 	private IFile createFile(IFolder folder, String fileName, String contents) throws CoreException, IOException {
 		// Creates the reference to the model file in the given folder.
@@ -293,12 +306,16 @@ public class ModelManagementService implements IModelManagementService {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Given an EMF URI, reads the model that is pointed by it and returns the EMF resource that contains the models'
+	 * contents.
 	 * 
 	 * @param modelURI
-	 * @return
-	 * @throws IOException
+	 *          The EMF URI that points to the model.
+	 * @return An EMF resource with the models' contents.
 	 * @throws CoreException
+	 *           If any Eclipse errors occur during this operation.
+	 * @throws IOException
+	 *           If any I/O errors occur during this operation.
 	 */
 	private Resource readModel(URI modelURI) throws IOException, CoreException {
 		CoreUtils.log.debug("Reading a (meta-)model file from location: {0}", modelURI); //$NON-NLS-1$

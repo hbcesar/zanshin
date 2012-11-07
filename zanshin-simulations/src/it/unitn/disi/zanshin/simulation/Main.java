@@ -10,35 +10,48 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * TODO: document this type.
+ * Main class that can be executed and provides a console for running the simulations of Zanshin.
+ * 
+ * Simulations should be defined in a file called simulation.properties, located in the same package as this class. This
+ * file follows the syntax below (where # should be replaced with the simulation number:
+ * 
+ * cases.#.name = <simulation name> cases.#.simulationClass = <fully-qualified name of the simulation class>
+ * 
+ * The simulation class should implement the Simulation interface, but we advise that you extend the AbstractSimulation
+ * class.
+ * 
+ * The console loads the simulations defined in the properties file and provides commands for listing the simulations
+ * that have been loaded, running all simulations or running one particular simulation given its number. For a list of
+ * available commands, the user should type 'help' (without the quotes) and press Enter.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public class Main {
-	/** TODO: document this field. */
+	/** Base path for files that this class needs to load, starting from the root of the classpath. */
 	private static final String BASE_PATH = '/' + Main.class.getPackage().getName().replace('.', '/') + '/';
 
-	/** TODO: document this field. */
+	/** Path to the file that contains the help associated with the console (list of commands). */
 	private static final String HELP_FILE_PATH = BASE_PATH + "help.txt"; //$NON-NLS-1$
 
-	/** TODO: document this field. */
+	/** Path to the properties file that contains the configuration of the simulations to be loaded. */
 	private static final String PROPERTIES_FILE_PATH = BASE_PATH + "simulation.properties"; //$NON-NLS-1$
 
-	/** TODO: document this field. */
+	/** Contents of the help file, loaded lazily the first time the 'help' command is executed. */
 	private static String helpContents;
 
-	/** TODO: document this field. */
+	/** The simulation manager, responsible for loading and running simulations. */
 	private static SimulationManager simulationManager;
 
 	/**
-	 * TODO: document this method.
+	 * Main method, which opens the console and accepts commands from the user.
 	 * 
 	 * @param args
+	 *          No arguments are necessary (any arguments given are ignored).
 	 */
 	public static void main(String[] args) {
 		printMessage("残心へようこそ (Welcome to Zanshin!)\n\nInitializing simulations, please wait...\n"); //$NON-NLS-1$
-		
+
 		// Initializes the simulations.
 		init();
 		printMessage("Done. If you need assistance, use the 'help' command.\n"); //$NON-NLS-1$
@@ -79,7 +92,7 @@ public class Main {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Initializes the simulation console, by loading the simulations properties and instantiating the simulation manager.
 	 */
 	private static void init() {
 		Properties props = null;
@@ -109,22 +122,28 @@ public class Main {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Prints an error message and quits the application (VM exit).
 	 * 
 	 * @param message
+	 *          The message to be printed, following printf format.
 	 * @param params
+	 *          Parameters to be merged into the message, following printf rules.
 	 */
 	private static void exitWithError(String message, Object ... params) {
 		System.err.printf(message, params);
-		System.out.println('\n');
+		System.err.println('\n');
 		System.exit(1);
 	}
-	
+
 	/**
-	 * TODO: document this method.
+	 * Prints an error message, plus the stack trace of an exception, and quits the application (VM exit).
+	 * 
 	 * @param message
+	 *          The message to be printed, following printf format.
 	 * @param e
+	 *          The exception whose stack trace will be printed also.
 	 * @param params
+	 *          Parameters to be merged into the message, following printf rules.
 	 */
 	private static void exitWithError(String message, Throwable e, Object ... params) {
 		System.err.printf(message, params);
@@ -134,10 +153,12 @@ public class Main {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Prints an informational message on the screen.
 	 * 
 	 * @param message
+	 *          The message to be printed, following printf format.
 	 * @param params
+	 *          Parameters to be merged into the message, following printf rules.
 	 */
 	private static void printMessage(String message, Object ... params) {
 		System.out.printf(message, params);
@@ -145,7 +166,7 @@ public class Main {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Prints the contents of the help associated with the simulation console.
 	 */
 	private static void printHelp() {
 		// When used for the first time, loads the contents of the help document.
@@ -163,31 +184,33 @@ public class Main {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Prints the number and the name of all simulations that have been loaded.
 	 */
 	private static void printLoadedSimulations() {
 		// Obtains the set of loaded simulations.
 		Set<Map.Entry<Integer, Simulation>> simulations = simulationManager.list();
-		
+
 		// If no simulations were loaded, prints an informational message.
 		if (simulations.isEmpty()) {
 			printMessage("There are no simulations loaded. You should configure them in: %s", PROPERTIES_FILE_PATH); //$NON-NLS-1$
 		}
-		
+
 		// If simulations were loaded, prints their names alongside their numbers.
 		else {
 			printMessage("#\tSimulation"); //$NON-NLS-1$
 			for (Map.Entry<Integer, Simulation> entry : simulations)
 				printMessage("%d\t%s", entry.getKey(), entry.getValue().getName()); //$NON-NLS-1$
 		}
-		
+
 		printMessage(""); //$NON-NLS-1$
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Runs one or all the simulations, depending on the given arguments.
 	 * 
 	 * @param args
+	 *          <code>null</code> if you want to run all simulations, otherwise submit the number of one simulation you'd
+	 *          like to run (the console does not support running many but not all simulations).
 	 */
 	private static void runSimulations(String ... args) {
 		Integer simNum = null;
@@ -202,17 +225,16 @@ public class Main {
 				return;
 			}
 		}
-		
+
 		try {
 			// If a simulation number was not specified, runs all simulations.
 			if (simNum == null)
 				simulationManager.runAll();
-			
+
 			// Otherwise, runs the specified simulation.
-			else
-				simulationManager.run(simNum);
+			else simulationManager.run(simNum);
 		}
-		
+
 		// Catches any errors, printing an error message on screen.
 		catch (Throwable e) {
 			printMessage("Could not run simulation(s): %s", e.getMessage()); //$NON-NLS-1$

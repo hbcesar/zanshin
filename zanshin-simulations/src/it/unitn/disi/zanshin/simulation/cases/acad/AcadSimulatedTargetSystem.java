@@ -5,13 +5,17 @@ import it.unitn.disi.zanshin.simulation.SimulatedTargetSystem;
 import java.util.Map;
 
 /**
- * TODO: document this type.
+ * A simulated target system for the A-CAD simulation cases.
+ * 
+ * Simulated target systems receive the adaptation actions from Zanshin and, for certain commands, "wake up" the
+ * simulation thread that is waiting for Zanshin to respond. The commands that wake up the threads depend on what is
+ * simulated.
  * 
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
 public class AcadSimulatedTargetSystem extends SimulatedTargetSystem {
-	/** TODO: document this field. */
+	/** The object in which the simulation thread is sleeping, and therefore used to "wake it up". */
 	private Object lock;
 
 	/** Constructor. */

@@ -56,25 +56,25 @@ public class GoalModelElements {
 	/** The targets map, mapping EMF Classes to AwReqs that target them. */
 	private Map<EClass, Set<AwReq>> targetsMap = new HashMap<>();
 
-	/** TODO: document this field. */
+	/** The EMF package for goal-oriented RE, from which to take the definition of classes representing requirements. */
 	private GorePackage gorePackage = GorePackage.eINSTANCE;
 
-	/** TODO: document this field. */
+	/** Meta-class that represents Awareness Requirements. */
 	private EClass eAwReq = gorePackage.getAwReq();
 
-	/** TODO: document this field. */
+	/** Meta-class that represents domain assumptions. */
 	private EClass eDomainAssumption = gorePackage.getDomainAssumption();
 
-	/** TODO: document this field. */
+	/** Meta-class that represents (hard) goals. */
 	private EClass eGoal = gorePackage.getGoal();
 
-	/** TODO: document this field. */
+	/** Meta-class that represents quality constraints. */
 	private EClass eQualityConstraint = gorePackage.getQualityConstraint();
 
-	/** TODO: document this field. */
+	/** Meta-class that represents softgoals. */
 	private EClass eSoftgoal = gorePackage.getSoftgoal();
 
-	/** TODO: document this field. */
+	/** Meta-class that represents tasks. */
 	private EClass eTask = gorePackage.getTask();
 
 	/** Constructor. */
@@ -272,10 +272,12 @@ public class GoalModelElements {
 	}
 
 	/**
-	 * TODO: document this method.
+	 * Given the meta-class that represents a requirement, returns the set of Awareness Requirements that have this class
+	 * as one of their targets.
 	 * 
 	 * @param eClass
-	 * @return
+	 *          The meta-class that represents a requirement from the model.
+	 * @return A set containing none, one or more AwReqs that have this requirement as target.
 	 */
 	public Set<AwReq> retrieveSourceAwReqs(EClass eClass) {
 		return targetsMap.get(eClass);

@@ -69,7 +69,6 @@ public final class AcadAR15FailureSimulation extends AbstractAcadSimulation {
 			
 			@Override
 			public boolean shouldWait() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		});
