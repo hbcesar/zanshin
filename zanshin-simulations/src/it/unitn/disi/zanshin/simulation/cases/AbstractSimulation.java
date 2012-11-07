@@ -72,4 +72,10 @@ public abstract class AbstractSimulation implements Simulation {
 	public boolean shouldWait() {
 		return (currentPart != null) && (currentPart.shouldWait());
 	}
+	
+	/** @see it.unitn.disi.zanshin.simulation.cases.Simulation#reset() */
+	@Override
+	public void reset() {
+		index = 0;
+	}
 }

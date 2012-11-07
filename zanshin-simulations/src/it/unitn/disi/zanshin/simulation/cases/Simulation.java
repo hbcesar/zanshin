@@ -59,4 +59,16 @@ public interface Simulation {
 	 * @return <code>true</code> if the simulation should wait, <code>false</code> otherwise.
 	 */
 	boolean shouldWait();
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @return
+	 */
+	Object getLock();
+	
+	/**
+	 * TODO: document this method.
+	 */
+	void reset();
 }

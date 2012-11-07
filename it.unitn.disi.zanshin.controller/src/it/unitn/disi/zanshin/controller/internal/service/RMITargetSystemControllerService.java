@@ -107,10 +107,20 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 		Long sessionId = model.getId();
 		ITargetSystem targetSystem = retrieveTargetSystem(model.eClass());
 
-		// Builds a map associating parameter names with their values according to the configuration.
+		// Creates a map to associate parameter names with their values.
 		Map<String, String> configMap = new HashMap<>();
-		for (Parameter param : newConfig.getParameters())
+		for (Parameter param : newConfig.getParameters()) {
 			configMap.put(param.eClass().getName(), param.getValue());
+		}
+		
+		try {
+			// Updates the model at the appropriate level so future executions will be based on the new value.
+			String targetSystemId = model.eClass().getEPackage().getName();
+			zanshinServer.updateModel(targetSystemId, sessionId, newConfig, level);
+		}
+		catch (Exception e) {
+			ControllerUtils.log.error("Error updating the model with the new configuration: {0}.", e, configMap); //$NON-NLS-1$
+		}
 
 		// Sends the instruction to the target system.
 		try {

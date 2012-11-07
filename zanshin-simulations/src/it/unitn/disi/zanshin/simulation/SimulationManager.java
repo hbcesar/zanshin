@@ -9,6 +9,7 @@ import it.unitn.disi.zanshin.simulation.cases.Simulation;
 
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -45,7 +46,7 @@ public final class SimulationManager {
 	public SimulationManager(Properties props) throws Exception {
 		// Connects to Zanshin.
 		zanshin = new ZanshinRemote(REMOTE_SERVER_ADDRESS, IZanshinServer.RMI_PORT);
-		
+
 		// Loads all simulations listed in the properties and place them in the list.
 		for (int num = 1; true; num++) {
 			try {
@@ -143,34 +144,47 @@ public final class SimulationManager {
 	private void run(Simulation simulation) throws InterruptedException {
 		String name = simulation.getName();
 		log.info("Running simulation: {0}", name); //$NON-NLS-1$
+		
+		// In case we're running the simulation for the second time, resets it.
+		simulation.reset();
 
 		// Runs the simulation until it has finished or until an error is found.
 		while (!simulation.hasFinished()) {
-			// When activated, runs the next part of the current simulation.
-			try {
-				log.debug("({0}) Running the next part of simulation...", name); //$NON-NLS-1$
-				simulation.runNextPart();
-			}
-			catch (Exception e) {
-				log.error("({0}) An error occurred. Skipping to the next simulation.", e, name); //$NON-NLS-1$
-				break;
-			}
-
-			// Checks if the simulation should wait.
-			if (simulation.shouldWait()) {
-				// Yes. Wait for further orders.
-				log.debug("({0}) Simulation part ran successfully. Will wait for further instructions...", name); //$NON-NLS-1$
-				synchronized (this) {
-					wait();
+			Object lock = simulation.getLock();
+			synchronized (lock) {
+				// When activated, runs the next part of the current simulation.
+				try {
+					log.debug("({0}) Running the next part of simulation...", name); //$NON-NLS-1$
+					simulation.runNextPart();
 				}
-			}
-			else {
-				// No. Just wait for a second so the threads can sync.
-				log.debug("({0}) Simulation part ran successfully. Waiting for {1} second before continuing...", name, TIME_TO_WAIT / 1000); //$NON-NLS-1$
-				Thread.sleep(TIME_TO_WAIT);
+				catch (Exception e) {
+					log.error("({0}) An error occurred. Skipping to the next simulation.", e, name); //$NON-NLS-1$
+					break;
+				}
+
+				// Checks if the simulation should wait.
+				if (simulation.shouldWait()) {
+					// Waits on the simulation object itself, so its simulated target system know how to wake the simulation up.
+					log.debug("({0}) Simulation part ran successfully. Will wait for further instructions...", name); //$NON-NLS-1$
+					lock.wait();
+				}
+				else {
+					// No. Just wait for a second so the threads can sync.
+					log.debug("({0}) Simulation part ran successfully. Waiting for {1} second before continuing...", name, TIME_TO_WAIT / 1000); //$NON-NLS-1$
+					Thread.sleep(TIME_TO_WAIT);
+				}
 			}
 		}
 
 		log.info("({0}) Simulation has finished (no more parts to run).", name); //$NON-NLS-1$
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @return
+	 */
+	public Set<Map.Entry<Integer, Simulation>> list() {
+		return simulations.entrySet();
 	}
 }

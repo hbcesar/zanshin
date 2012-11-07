@@ -88,4 +88,10 @@ public class ZanshinRemote implements IZanshinServer {
 	public Boolean unregisterTargetSystem(String targetSystemId) throws RemoteException {
 		return zanshinServer.unregisterTargetSystem(targetSystemId);
 	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#disposeUserSession(java.lang.String, java.lang.Long) */
+	@Override
+	public Boolean disposeUserSession(String targetSystemId, Long userSessionId) throws RemoteException {
+		return zanshinServer.disposeUserSession(targetSystemId, userSessionId);
+	}
 }

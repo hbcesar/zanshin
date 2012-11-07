@@ -1,8 +1,6 @@
 package it.unitn.disi.zanshin.simulation.cases.acad;
 
 import it.unitn.disi.zanshin.simulation.Logger;
-import it.unitn.disi.zanshin.simulation.SimulationUtils;
-import it.unitn.disi.zanshin.simulation.cases.AbstractSimulation;
 import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
 
 /**
@@ -11,38 +9,15 @@ import it.unitn.disi.zanshin.simulation.cases.SimulationPart;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
-public final class AcadAR15FailureSimulation extends AbstractSimulation {
+public final class AcadAR15FailureSimulation extends AbstractAcadSimulation {
 	/** The logger. */
 	private static final Logger log = new Logger(AcadAR15FailureSimulation.class);
 	
-	/** TODO: document this field. */
-	private static final String BASE_PATH = AcadAR15FailureSimulation.class.getPackage().getName().replace('.', '/') + '/';
-	
-	/** TODO: document this field. */
-	private static final String META_MODEL_FILE_PATH = BASE_PATH + "acad.ecore"; //$NON-NLS-1$
-
-	/** TODO: document this field. */
-	private static final String MODEL_FILE_PATH = BASE_PATH + "model.acad"; //$NON-NLS-1$
-	
-	/** TODO: document this field. */
-	private static final String T_INPUT_INFO = "T_InputInfo"; //$NON-NLS-1$
-	
-	/** TODO: document this field. */
-	private static final String T_DETECT_LOC = "T_DetectLoc"; //$NON-NLS-1$
-
-	/** The target system ID assigned by Zanshin. */
-	private String targetSystemId;
-	
-	/** TODO: document this field. */
-	private Long sessionId;
-
 	/** @see it.unitn.disi.zanshin.simulation.cases.AbstractSimulation#doInit() */
 	@Override
 	public void doInit() throws Exception {
-		// Registers the A-CAD as target system in Zanshin, if not already registered.
-		log.info("Registering the ACAD as a target system in Zanshin..."); //$NON-NLS-1$
-		targetSystemId = SimulationUtils.registerTargetSystem(zanshin, META_MODEL_FILE_PATH, MODEL_FILE_PATH);
-		log.info("Target system registered as: {0}", targetSystemId); //$NON-NLS-1$
+		// Registers the A-CAD as target system in Zanshin.
+		registerTargetSystem();
 		
 		// Adds the first part of the simulation to the list.
 		parts.add(new SimulationPart() {
@@ -79,6 +54,22 @@ public final class AcadAR15FailureSimulation extends AbstractSimulation {
 
 			@Override
 			public boolean shouldWait() {
+				return true;
+			}
+		});
+		
+		// Adds the third part, wrapping things up.
+		parts.add(new SimulationPart() {
+			@Override
+			public void run() throws Exception {
+				// Ends the user session.
+				log.info("OK. Ending user session..."); //$NON-NLS-1$
+				zanshin.disposeUserSession(targetSystemId, sessionId);
+			}
+			
+			@Override
+			public boolean shouldWait() {
+				// TODO Auto-generated method stub
 				return false;
 			}
 		});

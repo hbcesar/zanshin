@@ -59,6 +59,15 @@ public interface IZanshinServer extends Remote {
 	 * 
 	 * @param targetSystemId
 	 * @param userSessionId
+	 * @return
+	 */
+	Boolean disposeUserSession(String targetSystemId, Long userSessionId) throws RemoteException;
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @param userSessionId
 	 * @param requirementsName
 	 */
 	void logRequirementStart(String targetSystemId, Long userSessionId, String requirementsName) throws RemoteException;

@@ -62,7 +62,7 @@ public enum Command {
 			return null;
 		
 		// Removes the command from the command line, breaks the rest of the arguments and returns.
-		line = line.substring(idx);
-		return line.split("\\s*"); //$NON-NLS-1$
+		line = line.substring(idx + 1);
+		return line.split("\\s"); //$NON-NLS-1$
 	}
 }

@@ -1,6 +1,8 @@
 package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.controller.ControllerUtils;
+import it.unitn.disi.zanshin.model.gore.AggregationLevel;
+import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
@@ -21,6 +23,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -93,9 +96,12 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 			// Extracts the ID for this target system from its requirements meta-model.
 			String targetSystemId = extractTargetSystemId(metaModel);
 
-			// If the system is already registered, returns immediately.
-			if (isTargetSystemRegistered(targetSystemId))
+			// If the system is already registered, just checks if the target system reference should be updated.
+			if (sessionManagers.containsKey(targetSystemId)) {
+				SessionManager sessionManager = sessionManagers.get(targetSystemId);
+				sessionManager.setTargetSystem(targetSystem);
 				return targetSystemId;
+			}
 
 			// Creates a new project in the workspace for this target system.
 			IProject project = modelManagementService.createZanshinProject(targetSystemId);
@@ -274,9 +280,8 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#unregisterTargetSystem(java.lang.String) */
 	@Override
 	public Boolean unregisterTargetSystem(String targetSystemId) throws RemoteException {
-
 		// If the system is registered, unregisters it.
-		boolean result = isTargetSystemRegistered(targetSystemId);
+		boolean result = sessionManagers.containsKey(targetSystemId);
 		if (result)
 			sessionManagers.remove(targetSystemId);
 
@@ -289,7 +294,6 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 	 * 
 	 * @param targetSystemId
 	 * @return
-	 * @throws RemoteException
 	 */
 	public ITargetSystem retrieveTargetSystem(String targetSystemId) {
 		// Retrieves the session manager for the given target system.
@@ -297,5 +301,40 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 
 		// If the session manager exists, returns the reference to the target system.
 		return (sessionManager == null) ? null : sessionManager.getTargetSystem();
+	}
+
+	/** @see it.unitn.disi.zanshin.remote.IZanshinServer#disposeUserSession(java.lang.String, java.lang.Long) */
+	@Override
+	public Boolean disposeUserSession(String targetSystemId, Long userSessionId) throws RemoteException {
+		// Retrieves the session manager for the given target system.
+		SessionManager sessionManager = sessionManagers.get(targetSystemId);
+
+		// If the system is not registered, returns.
+		if (sessionManager == null)
+			return false;
+
+		// Disposes the user session from the session manager.
+		return sessionManager.disposeSession(userSessionId);
+	}
+
+	/**
+	 * TODO: document this method.
+	 * 
+	 * @param targetSystemId
+	 * @param newConfig
+	 * @param level
+	 * @throws CoreException 
+	 * @throws IOException 
+	 */
+	public void updateModel(String targetSystemId, Long userSessionId, Configuration newConfig, AggregationLevel level) throws IOException, CoreException {
+		// Retrieves the session manager for the given target system.
+		SessionManager sessionManager = sessionManagers.get(targetSystemId);
+
+		// If the system is not registered, returns.
+		if (sessionManager == null)
+			return;
+
+		// Delegates to the session manager the update of the model at the appropriate level.
+		sessionManager.updateModel(newConfig, level, userSessionId);
 	}
 }

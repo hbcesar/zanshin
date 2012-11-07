@@ -83,8 +83,6 @@
 			<condition xsi:type="eca:ReconfigurationResolutionCondition"/>
 			<strategies xsi:type="eca:ReconfigurationStrategy" algorithmId="qualia">
 				<condition xsi:type="eca:ReconfigurationApplicabilityCondition"/>
-				<procedureIds xsi:type="ecore:EString">no-learning</procedureIds>
-				<procedureIds xsi:type="ecore:EString">no-algorithm-reassessment</procedureIds>
 			</strategies>
 		</children>
 		<children xsi:type="acad:AR12"/>																					<!-- //@rootGoal/@children.27 -->
@@ -95,9 +93,9 @@
 			<strategies xsi:type="eca:RetryStrategy" time="5000">
 				<condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
 			</strategies>
-			<!-- strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@children.0/@children.1/@children.1">
+			<strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@children.0/@children.1/@children.1">
 				<condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
-			</strategies -->
+			</strategies>
 		</children>
 	</rootGoal>
 	

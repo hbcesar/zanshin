@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -19,37 +18,21 @@ import java.rmi.server.UnicastRemoteObject;
  * @version 1.0
  */
 public class SimulationUtils {
-	/** TODO: document this field. */
-	private static ITargetSystem simulatedTargetSystem = new SimulatedTargetSystem();
-
-	/** TODO: document this field. */
-	private static ITargetSystem simulatedTargetSystemStub;
-
-	/**
-	 * TODO: document this method.
-	 * 
-	 * @throws RemoteException
-	 */
-	public static void init() throws RemoteException {
-		simulatedTargetSystemStub = (ITargetSystem) UnicastRemoteObject.exportObject(simulatedTargetSystem, 0);
-	}
-
 	/**
 	 * TODO: document this method.
 	 * 
 	 * @return
 	 * @throws IOException
 	 */
-	public static String registerTargetSystem(ZanshinRemote zanshin, String metaModelFilePath, String modelFilePath) throws IOException {
+	public static String registerTargetSystem(ZanshinRemote zanshin, ITargetSystem simulatedTargetSystem, String metaModelFilePath, String modelFilePath) throws IOException {
 		String targetSystemId = null;
-
-		// If the target system stub has not been initialized yet, throws an exception.
-		if (simulatedTargetSystemStub == null)
-			throw new IllegalStateException("The simulated target system stub has not been initialized. Did you call init()?"); //$NON-NLS-1$
 
 		// Loads the requirements meta-model and model files.
 		StringBuilder metaModelBuilder = readLocalFile(metaModelFilePath);
 		StringBuilder modelBuilder = readLocalFile(modelFilePath);
+		
+		// Creates a stub for the simulated target system in order to receive adaptation instructions from Zanshin.
+		ITargetSystem simulatedTargetSystemStub = (ITargetSystem) UnicastRemoteObject.exportObject(simulatedTargetSystem, 0);
 
 		// Sends the requirements to Zanshin in order to register itself as a new target system managed by the framework.
 		targetSystemId = zanshin.registerTargetSystem(simulatedTargetSystemStub, metaModelBuilder.toString(), modelBuilder.toString());

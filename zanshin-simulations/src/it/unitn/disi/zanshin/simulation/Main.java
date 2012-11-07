@@ -1,10 +1,13 @@
 package it.unitn.disi.zanshin.simulation;
 
+import it.unitn.disi.zanshin.simulation.cases.Simulation;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.rmi.RemoteException;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * TODO: document this type.
@@ -36,14 +39,6 @@ public class Main {
 	public static void main(String[] args) {
 		printMessage("残心へようこそ (Welcome to Zanshin!)\n\nInitializing simulations, please wait...\n"); //$NON-NLS-1$
 		
-		// Initializes the simulated target system.
-		try {
-			SimulationUtils.init();
-		}
-		catch (RemoteException e) {
-			exitWithError("Could not initialize the simulated target system: %s. Aborting.", e); //$NON-NLS-1$
-		}
-		
 		// Initializes the simulations.
 		init();
 		printMessage("Done. If you need assistance, use the 'help' command.\n"); //$NON-NLS-1$
@@ -61,6 +56,7 @@ public class Main {
 					break;
 
 				case LIST:
+					printLoadedSimulations();
 					break;
 
 				case SIM:
@@ -79,6 +75,7 @@ public class Main {
 		}
 
 		printMessage("\nさようなら (Goodbye!)"); //$NON-NLS-1$
+		System.exit(0);
 	}
 
 	/**
@@ -107,7 +104,7 @@ public class Main {
 		}
 		// In case of exceptions loading the simulation manager, exits with an error.
 		catch (Throwable e) {
-			exitWithError("Could not load the simulation manager: %s. Aborting.", e); //$NON-NLS-1$
+			exitWithError("Could not load the simulation manager. Aborting.", e); //$NON-NLS-1$
 		}
 	}
 
@@ -119,6 +116,20 @@ public class Main {
 	 */
 	private static void exitWithError(String message, Object ... params) {
 		System.err.printf(message, params);
+		System.out.println('\n');
+		System.exit(1);
+	}
+	
+	/**
+	 * TODO: document this method.
+	 * @param message
+	 * @param e
+	 * @param params
+	 */
+	private static void exitWithError(String message, Throwable e, Object ... params) {
+		System.err.printf(message, params);
+		System.err.println('\n');
+		e.printStackTrace(System.err);
 		System.exit(1);
 	}
 
@@ -149,6 +160,28 @@ public class Main {
 
 		// Prints the contents of the help document.
 		printMessage(helpContents);
+	}
+
+	/**
+	 * TODO: document this method.
+	 */
+	private static void printLoadedSimulations() {
+		// Obtains the set of loaded simulations.
+		Set<Map.Entry<Integer, Simulation>> simulations = simulationManager.list();
+		
+		// If no simulations were loaded, prints an informational message.
+		if (simulations.isEmpty()) {
+			printMessage("There are no simulations loaded. You should configure them in: %s", PROPERTIES_FILE_PATH); //$NON-NLS-1$
+		}
+		
+		// If simulations were loaded, prints their names alongside their numbers.
+		else {
+			printMessage("#\tSimulation"); //$NON-NLS-1$
+			for (Map.Entry<Integer, Simulation> entry : simulations)
+				printMessage("%d\t%s", entry.getKey(), entry.getValue().getName()); //$NON-NLS-1$
+		}
+		
+		printMessage(""); //$NON-NLS-1$
 	}
 
 	/**
