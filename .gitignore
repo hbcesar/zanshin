@@ -1,0 +1,4 @@
+bin/
+!it.unitn.disi.zanshin.controller/META-INF/*.jar
+!it.unitn.disi.zanshin.core/META-INF/*.jar
+!zanshin-simulations/lib/*.jar
