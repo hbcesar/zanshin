@@ -3,5 +3,6 @@
    <implementation class="it.unitn.disi.zanshin.core.Activator" />
    <reference bind="setControllerService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.ITargetSystemControllerService" name="ITargetSystemControllerService" policy="dynamic" unbind="unsetControllerService" />
    <reference bind="setRepositoryService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.IRepositoryService" name="IRepositoryService" policy="dynamic" unbind="unsetRepositoryService" />
+   <reference bind="setMonitoringService" cardinality="1..1" interface="it.unitn.disi.zanshin.services.IMonitoringService" name="IMonitoringService" policy="dynamic" unbind="unsetMonitoringService" />
    <reference bind="addReconfigurationService" cardinality="0..n" interface="it.unitn.disi.zanshin.services.IReconfigurationService" name="IReconfigurationService" policy="dynamic" unbind="removeReconfigurationService" />
 </scr:component>

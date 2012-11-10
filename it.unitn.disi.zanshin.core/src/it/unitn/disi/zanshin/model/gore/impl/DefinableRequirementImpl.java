@@ -9,6 +9,7 @@ package it.unitn.disi.zanshin.model.gore.impl;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
+import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 
 import java.util.Date;
 
@@ -138,6 +139,13 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	public void start() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement started: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);
+		
+		// If the monitoring service is active, warn it that this requirement has been started.
+		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
+		if (monitoringService != null)
+			monitoringService.monitorMethodCall(this, MonitorableMethod.START);
+		
+		// Propagate the start to the parent.
 		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
 		if ((parent != null) && (parent instanceof DefinableRequirement) && (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))
 			((DefinableRequirement) parent).start();
@@ -150,6 +158,11 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	 */
 	public void end() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement ended: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		
+		// If the monitoring service is active, warn it that this requirement has ended.
+		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
+		if (monitoringService != null)
+			monitoringService.monitorMethodCall(this, MonitorableMethod.END);
 	}
 
 	/**
@@ -160,7 +173,16 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	public void success() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement succeeded: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);
+
+		// If the monitoring service is active, warn it that this requirement has been successful.
+		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
+		if (monitoringService != null)
+			monitoringService.monitorMethodCall(this, MonitorableMethod.SUCCESS);
+	
+		// If the requirement is successful, then it has also ended.
 		end();
+
+		// Propagate the success to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
 		if ((parent != null) && (parent instanceof DefinableRequirement)) {
 			if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR)
@@ -177,7 +199,16 @@ public class DefinableRequirementImpl extends RequirementImpl implements Definab
 	public void fail() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement failed: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED);
+
+		// If the monitoring service is active, warn it that this requirement has failed.
+		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
+		if (monitoringService != null)
+			monitoringService.monitorMethodCall(this, MonitorableMethod.FAIL);
+	
+		// If the requirement failed, then it has also ended.
 		end();
+
+		// Propagate the failure to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
 		if ((parent != null) && (parent instanceof DefinableRequirement)) {
 			if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)

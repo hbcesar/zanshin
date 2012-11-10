@@ -1,5 +1,6 @@
 package it.unitn.disi.zanshin.core;
 
+import it.unitn.disi.zanshin.services.IMonitoringService;
 import it.unitn.disi.zanshin.services.IReconfigurationService;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 import it.unitn.disi.zanshin.services.ITargetSystemControllerService;
@@ -29,6 +30,9 @@ public class Activator implements BundleActivator {
 
 	/** The repository service. */
 	private static IRepositoryService repositoryService;
+
+	/** The monitoring service. */
+	private static IMonitoringService monitoringService;
 
 	/** The map of reconfiguration services available. */
 	private static Map<String, IReconfigurationService> reconfigurationServices = new HashMap<>();
@@ -70,6 +74,23 @@ public class Activator implements BundleActivator {
 	public void unsetRepositoryService(IRepositoryService repositoryService) {
 		Activator.repositoryService = null;
 		CoreUtils.log.info("Repository Service disposed from the activator"); //$NON-NLS-1$
+	}
+
+	/** Getter for repositoryService. */
+	public static IMonitoringService getMonitoringService() {
+		return monitoringService;
+	}
+
+	/** Setter for repositoryService. */
+	public void setMonitoringService(IMonitoringService monitoringService) {
+		Activator.monitoringService = monitoringService;
+		CoreUtils.log.info("Monitoring Service injected in the activator"); //$NON-NLS-1$
+	}
+
+	/** Un-setter for repositoryService (required by OSGi Declarative Services). */
+	public void unsetMonitoringService(IMonitoringService monitoringService) {
+		Activator.monitoringService = null;
+		CoreUtils.log.info("Monitoring Service disposed from the activator"); //$NON-NLS-1$
 	}
 
 	/** Adds a reconfiguration service to the map (used by OSGi Declarative Services). */

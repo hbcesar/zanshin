@@ -7,6 +7,7 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.GorePackage;
+import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 
 import java.util.Date;
@@ -98,6 +99,13 @@ public class PerformativeRequirementImpl extends DefinableRequirementImpl implem
 		if (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement canceled: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);
+			
+			// If the monitoring service is active, warn it that this requirement has been canceled.
+			it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
+			if (monitoringService != null)
+				monitoringService.monitorMethodCall(this, MonitorableMethod.CANCEL);
+			
+			// If the requirement is canceled, then it has also ended.
 			end();
 
 			// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.
