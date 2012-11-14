@@ -189,7 +189,9 @@ public class GoalModelElements {
 		Set<Integer> superTypeIds = new HashSet<>();
 		for (EClass superType : superTypes)
 			superTypeIds.add(superType.getClassifierID());
-		superTypeIds.add(eClass.getClassifierID());
+		
+		// FIXME: Why did I do this?
+		// superTypeIds.add(eClass.getClassifierID());
 
 		// Searches the appropriate requirement map, depending on the EMF class.
 		if (superTypeIds.contains(GorePackage.AW_REQ))

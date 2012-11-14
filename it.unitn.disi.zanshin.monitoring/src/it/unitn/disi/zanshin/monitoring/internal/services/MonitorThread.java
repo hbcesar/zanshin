@@ -1,5 +1,6 @@
 package it.unitn.disi.zanshin.monitoring.internal.services;
 
+import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
 import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
@@ -123,11 +124,13 @@ public class MonitorThread extends Thread {
 					awreq.setState(state);
 					adaptationService.processStateChange(awreq);
 
-					// The code below was copied from the old simulated AwReq monitor services. Don't remember why this is
-					// necessary...
-					// Creates a copy of the failed AwReq, puts it in Undecided state and replaces the old one in the model.
+					// Creates a copy of the failed AwReq, puts it in Undecided state, removes the selected strategy and replaces
+					// the old one in the model. This is necessary because the previous AwReq is associated with an event in the
+					// adaptation session and we cannot use the same AwReq for the next event.
 					AwReq newAwReq = (AwReq) EcoreUtil.copy(awreq);
 					newAwReq.setState(DefinableRequirementState.UNDEFINED);
+					if (newAwReq instanceof EcaAwReq)
+						((EcaAwReq) newAwReq).setSelectedStrategy(null);
 					repositoryService.replaceRequirement(model.getId(), awreq, newAwReq);
 				}
 			}

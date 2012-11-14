@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scheduler:SchedulerGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:it.unitn.disi.zanshin.model="http://disi.unitn.it/zanshin/1.0/eca" xmlns:scheduler="http://disi.unitn.it/zanshin/1.0/scheduler">
+  <rootGoal xsi:type="scheduler:G_SchedMeet">
+    <children xsi:type="scheduler:T_CharactMeet"/>
+    <children xsi:type="scheduler:G_CollectTime" refinementType="or">
+      <children xsi:type="scheduler:T_CallPartic"/>
+      <children xsi:type="scheduler:T_EmailPartic"/>
+      <children xsi:type="scheduler:G_CollectAuto">
+        <children xsi:type="scheduler:D_ParticUseCal"/>
+        <children xsi:type="scheduler:T_CollectCal"/>
+      </children>
+    </children>
+    <children xsi:type="scheduler:G_FindRoom" refinementType="or">
+      <children xsi:type="scheduler:G_UseLocal">
+        <children xsi:type="scheduler:G_FindLocal" refinementType="or">
+          <children xsi:type="scheduler:T_GetSuggest"/>
+          <children xsi:type="scheduler:T_ListAvail"/>
+        </children>
+        <children xsi:type="scheduler:D_LocalAvail"/>
+        <children xsi:type="scheduler:G_BookRoom" refinementType="or">
+          <children xsi:type="scheduler:T_UseAvail"/>
+          <children xsi:type="scheduler:T_CancelLess"/>
+        </children>
+      </children>
+      <children xsi:type="scheduler:T_CallPartner"/>
+      <children xsi:type="scheduler:T_CallHotel"/>
+    </children>
+    <children xsi:type="scheduler:G_ChooseSched" refinementType="or">
+      <children xsi:type="scheduler:T_SchedManual"/>
+      <children xsi:type="scheduler:T_SchedSystem"/>
+    </children>
+    <children xsi:type="scheduler:G_ManageMeet" refinementType="or">
+      <children xsi:type="scheduler:T_CancelMeet"/>
+      <children xsi:type="scheduler:T_CancelMeet"/>
+    </children>
+    <children xsi:type="scheduler:S_LowCost" constraints="//@rootGoal/@children.8"/>
+    <children xsi:type="scheduler:S_GoodPartic" constraints="//@rootGoal/@children.9"/>
+    <children xsi:type="scheduler:S_FastSched" constraints="//@rootGoal/@children.10"/>
+    <children xsi:type="scheduler:Q_CostLess100" softgoal="//@rootGoal/@children.5"/>
+    <children xsi:type="scheduler:Q_Min90pctPart" softgoal="//@rootGoal/@children.6"/>
+    <children xsi:type="scheduler:Q_Sched1Day" softgoal="//@rootGoal/@children.7"/>
+    <children xsi:type="scheduler:AR1" target="//@rootGoal/@children.0">
+      <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
+      <strategies xsi:type="it.unitn.disi.zanshin.model:RetryStrategy" time="5000">
+        <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="2"/>
+      </strategies>
+    </children>
+    <children xsi:type="scheduler:AR4" target="//@rootGoal/@children.2">
+      <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationResolutionCondition"/>
+      <strategies xsi:type="it.unitn.disi.zanshin.model:ReconfigurationStrategy" algorithmId="qualia">
+        <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationApplicabilityCondition"/>
+      </strategies>
+    </children>
+  </rootGoal>
+  <configuration>
+    <parameters xsi:type="scheduler:CV_RfM" unit="1" value="5" metric="integer"/>
+  </configuration>
+  <relations indicator="//@rootGoal/@children.12" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="10"/>
+</scheduler:SchedulerGoalModel>
