@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atm:AtmGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:atm="http://disi.unitn.it/zanshin/1.0/atm" xmlns:it.unitn.disi.zanshin.model="http://disi.unitn.it/zanshin/1.0/eca">
+  <rootGoal xsi:type="atm:GProvideATM">
+    <children xsi:type="atm:GOperStartATM">
+      <children xsi:type="atm:GDetectCashAm">
+        <children xsi:type="atm:TUseCashSens" refinementType="or"/>
+        <children xsi:type="atm:TUseOperEntry" refinementType="or"/>
+      </children>
+      <children xsi:type="atm:DConnBankNet"/>
+      <children xsi:type="atm:TTurnOnATM"/>
+      <children xsi:type="atm:TSetUpConnect"/>
+      <children xsi:type="atm:TMakeATMAvail"/>
+    </children>
+    <children xsi:type="atm:GServeCust">
+      <children xsi:type="atm:GAuthentCust">
+        <children xsi:type="atm:GGetCardInfo">
+          <children xsi:type="atm:GGetCardNumber">
+            <children xsi:type="atm:GCustEntCardN" refinementType="or">
+              <children xsi:type="atm:TEnterCNUmFromK" refinementType="or"/>
+              <children xsi:type="atm:TEnterCNUmFrom2K" refinementType="or"/>
+            </children>
+            <children xsi:type="atm:TCustInsCard" refinementType="or"/>
+          </children>
+          <children xsi:type="atm:TCheckValidCard"/>
+        </children>
+        <children xsi:type="atm:GAuthentWPin">
+          <children xsi:type="atm:GGetPin">
+            <children xsi:type="atm:TEnterPinFromK" refinementType="or"/>
+            <children xsi:type="atm:TEnterPinFrom2K" refinementType="or"/>
+          </children>
+          <children xsi:type="atm:TValidatePin"/>
+        </children>
+      </children>
+      <children xsi:type="atm:GConductSess">
+        <children xsi:type="atm:GConductTrans">
+          <children xsi:type="atm:GPerfTrans">
+            <children xsi:type="atm:GWithdraw">
+              <children xsi:type="atm:DCashDispens"/>
+              <children xsi:type="atm:GGetCustWithdSpecs">
+                <children xsi:type="atm:TGetWithdrAcc"/>
+                <children xsi:type="atm:TGetWithdrAmm"/>
+              </children>
+              <children xsi:type="atm:GProcWithdaw">
+                <children xsi:type="atm:TCheckAtmFunds"/>
+                <children xsi:type="atm:TPerfWithdTrans"/>
+              </children>
+              <children xsi:type="atm:GDispCash">
+                <children xsi:type="atm:TSuccDispCAsh"/>
+                <children xsi:type="atm:TPrintCompTok"/>
+              </children>
+            </children>
+            <children xsi:type="atm:GDeposit">
+              <children xsi:type="atm:GGetCustDepSpecs">
+                <children xsi:type="atm:TGetDepAcc"/>
+                <children xsi:type="atm:TGetDepAmm"/>
+              </children>
+              <children xsi:type="atm:GProcDep">
+                <children xsi:type="atm:TCheckAccExist"/>
+                <children xsi:type="atm:TAcceptEnv"/>
+                <children xsi:type="atm:TPerfDepTrans"/>
+              </children>
+            </children>
+            <children xsi:type="atm:GTransfer">
+              <children xsi:type="atm:GGetCustTransSpecs">
+                <children xsi:type="atm:TGetFromAcc"/>
+                <children xsi:type="atm:TGetToAcc"/>
+                <children xsi:type="atm:TGetTransAmm"/>
+              </children>
+              <children xsi:type="atm:TPerfTransTrans"/>
+            </children>
+            <children xsi:type="atm:GInquiry">
+              <children xsi:type="atm:TGetInqAcc"/>
+              <children xsi:type="atm:TPerfInqTrans"/>
+            </children>
+          </children>
+          <children xsi:type="atm:GPrintRec">
+            <children xsi:type="atm:TPrintReceipt"/>
+            <children xsi:type="atm:TDisplay"/>
+          </children>
+          <children xsi:type="atm:TSelectTrans"/>
+        </children>
+        <children xsi:type="atm:TEjectCard"/>
+      </children>
+    </children>
+    <children xsi:type="atm:GOperShutAtm">
+      <children xsi:type="atm:TMakeATMAvail"/>
+      <children xsi:type="atm:TCloseConnect"/>
+      <children xsi:type="atm:TTurnOffATM"/>
+    </children>
+    <children xsi:type="atm:SSecurity"/>
+    <children xsi:type="atm:SReduceOperWork"/>
+    <children xsi:type="atm:SReduceCustWork" constraints="//@rootGoal/@children.9 //@rootGoal/@children.10"/>
+    <children xsi:type="atm:SEfficiency"/>
+    <children xsi:type="atm:SUsability"/>
+    <children xsi:type="atm:SMainPhysRec" constraints="//@rootGoal/@children.11"/>
+    <children xsi:type="atm:QCustPerfTrans3min" softgoal="//@rootGoal/@children.5"/>
+    <children xsi:type="atm:QCustPerfTrans6min" softgoal="//@rootGoal/@children.5"/>
+    <children xsi:type="atm:QNumReqPrint" softgoal="//@rootGoal/@children.8"/>
+    <children xsi:type="atm:AR2" target="//@rootGoal/@children.0/@children.0">
+      <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationResolutionCondition"/>
+      <strategies xsi:type="it.unitn.disi.zanshin.model:ReconfigurationStrategy" algorithmId="qualia">
+        <condition xsi:type="it.unitn.disi.zanshin.model:ReconfigurationApplicabilityCondition"/>
+      </strategies>
+    </children>
+    <children xsi:type="atm:AR1" target="//@rootGoal/@children.0/@children.3">
+      <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
+      <strategies xsi:type="it.unitn.disi.zanshin.model:RetryStrategy" time="5000">
+        <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="2"/>
+      </strategies>
+    </children>
+    <children xsi:type="atm:AR3" target="//@rootGoal/@children.1/@children.1/@children.0/@children.1/@children.0">
+      <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
+      <strategies xsi:type="it.unitn.disi.zanshin.model:AbortStrategy">
+        <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+      </strategies>
+    </children>
+    <children xsi:type="atm:AR4" target="//@rootGoal/@children.0/@children.1"/>
+    <children xsi:type="atm:AR5"/>
+  </rootGoal>
+  <configuration>
+    <parameters xsi:type="atm:NOA" type="ncv" unit="1" value="1" metric="integer"/>
+  </configuration>
+  <relations indicator="//@rootGoal/@children.12" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="5"/>
+</atm:AtmGoalModel>
