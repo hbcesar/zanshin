@@ -26,7 +26,7 @@ public class AtmAR1FailureSimulation extends AbstractAtmSimulation {
 				sessionId = zanshin.createUserSession(targetSystemId);
 				log.info("Created a new user session with id: {0}", sessionId); //$NON-NLS-1$
 
-				// Simulates a failure in task "Characterize meeting".
+				// Simulates a failure in task "Set up connection to bank".
 				log.info("The ATM tries to connect to the banking network but it fails!!!"); //$NON-NLS-1$
 				zanshin.logRequirementStart(targetSystemId, sessionId, T_SET_UP_CONNECT);
 				zanshin.logRequirementFailure(targetSystemId, sessionId, T_SET_UP_CONNECT);
@@ -75,7 +75,7 @@ public class AtmAR1FailureSimulation extends AbstractAtmSimulation {
 			
 			@Override
 			public void run() throws Exception {
-				// Simulates another failure in task "Characterize meeting".
+				// Simulates another failure in task "Set up connection to bank".
 				log.info("The system aborts! Today the ATM will not be available..."); //$NON-NLS-1$
 			}
 	});

@@ -26,7 +26,7 @@ public class AtmAR3FailureSimulation extends AbstractAtmSimulation {
 				sessionId = zanshin.createUserSession(targetSystemId);
 				log.info("Created a new user session with id: {0}", sessionId); //$NON-NLS-1$
 
-				// Simulates a failure in task "Characterize meeting".
+				// Simulates a failure in task "Print receipt".
 				log.info("The ATM tries to print the receipt but it fails!!!"); //$NON-NLS-1$
 				zanshin.logRequirementStart(targetSystemId, sessionId, T_PRINT_RECEIPT);
 				zanshin.logRequirementFailure(targetSystemId, sessionId, T_PRINT_RECEIPT);
