@@ -7,3 +7,14 @@ For practical information on how to download and run _Zanshin_ or how to contrib
 
 The project's name -- _Zanshin_ -- refers to a "term used in the Japanese martial arts. It refers to a state of awareness" ([Wikipedia](http://en.wikipedia.org/wiki/Zanshin)). In episode 17 of the 6th season of the American television series [Friends](http://en.wikipedia.org/wiki/Friends), Ross uses "Unagi" instead of "Zanshin" to refer to this concept (and that's why the CASE Tool I'm also developing for the _Zanshin_ approach is called _Unagi_ ([see its repository here on github](https://github.com/sefms-disi-unitn/Unagi)).
 
+
+About the `zanshin-managed-atm` project
+=======================================
+
+This project was based on the source code for the ATM simulation produced by prof. Russel C. Bjork of Gordon College, USA. The code is available from the website http://www.math-cs.gordon.edu/courses/cs211/ATMExample/, which shows the following copyright notice:
+
+> A downloadable version of the complete set of pages - including the Java source code in a folder called "source" is available [here](http://www.cs.gordon.edu/local/courses/cs211/atmexample.tar). Please note the copyright information below before downloading.
+
+> Though the pages are copyrighted, I hereby freely give permission for their reproduction for non commercial educational purposes. I hope they will prove useful to other faculty who are starting - as I am - to teach OO methods.
+
+Therefore, the license to use this specific project in this repository follows the original copyright and is available for non-commercial, educational purposes only.
