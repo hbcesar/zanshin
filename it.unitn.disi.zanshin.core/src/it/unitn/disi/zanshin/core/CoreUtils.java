@@ -1,8 +1,8 @@
 package it.unitn.disi.zanshin.core;
 
-import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
+import it.unitn.disi.zanshin.model.gore.GOREElementState;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.util.EmptyLogger;
 import it.unitn.disi.zanshin.util.ILogger;
 import it.unitn.disi.zanshin.util.PlatformLogger;
@@ -39,10 +39,10 @@ public final class CoreUtils {
 	 * @param src
 	 * @return
 	 */
-	public static Requirement createCopy(Requirement src) {
+	public static GOREElement createCopy(GOREElement src) {
 		// Uses the Ecore copier to create a copy of the given requirement.
 		EcoreUtil.Copier copier = new EcoreUtil.Copier();
-		Requirement dst = (Requirement) copier.copy(src);
+		GOREElement dst = (GOREElement) copier.copy(src);
 		copier.copyReferences();
 
 		// Resets the copy and returns.
@@ -50,7 +50,7 @@ public final class CoreUtils {
 			PerformativeRequirement pr = (PerformativeRequirement) dst;
 			pr.setStartTime(null);
 			pr.setTime(null);
-			pr.setState(DefinableRequirementState.UNDEFINED);
+			pr.setState(GOREElementState.UNDEFINED);
 		}
 		return dst;
 	}

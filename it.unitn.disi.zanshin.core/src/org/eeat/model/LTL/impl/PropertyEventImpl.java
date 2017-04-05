@@ -16,15 +16,12 @@ import org.eeat.model.LTL.PropertyEvent;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Property Event</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
- * 
+ *
  * @generated
  */
 public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PropertyEventImpl() {
@@ -33,7 +30,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -43,7 +39,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String name() {
@@ -54,7 +49,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Boolean satisfied() {
@@ -65,7 +59,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date openDate() {
@@ -76,7 +69,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date closeDate() {
@@ -87,7 +79,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Event openEvent() {
@@ -98,7 +89,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Event closeEvent() {
@@ -109,7 +99,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Event scopeEvent() {
@@ -120,7 +109,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<PropertyEvent> support() {
@@ -131,7 +119,6 @@ public class PropertyEventImpl extends EventImpl implements PropertyEvent {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String property() {

@@ -2,10 +2,10 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
-import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
-import it.unitn.disi.zanshin.model.gore.Parameter;
+import it.unitn.disi.zanshin.model.gore.HardGoal;
+import it.unitn.disi.zanshin.model.gore.Task;
 
 import java.util.Collection;
 
@@ -18,43 +18,41 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Configuration</b></em>'.
+ * An implementation of the model object '<em><b>Hard Goal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl#getGoalModel <em>Goal Model</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getGoalModel <em>Goal Model</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConfigurationImpl extends EObjectImpl implements Configuration {
+public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoal {
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParameters()
+	 * @see #getTasks()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> parameters;
+	protected EList<Task> tasks;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConfigurationImpl() {
+	protected HardGoalImpl() {
 		super();
 	}
 
@@ -65,19 +63,7 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GorePackage.Literals.CONFIGURATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentWithInverseEList<Parameter>(Parameter.class, this, GorePackage.CONFIGURATION__PARAMETERS, GorePackage.PARAMETER__CONFIGURATION);
-		}
-		return parameters;
+		return GorePackage.Literals.HARD_GOAL;
 	}
 
 	/**
@@ -86,7 +72,7 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * @generated
 	 */
 	public GoalModel getGoalModel() {
-		if (eContainerFeatureID() != GorePackage.CONFIGURATION__GOAL_MODEL) return null;
+		if (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL) return null;
 		return (GoalModel)eInternalContainer();
 	}
 
@@ -96,7 +82,7 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * @generated
 	 */
 	public NotificationChain basicSetGoalModel(GoalModel newGoalModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.CONFIGURATION__GOAL_MODEL, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.HARD_GOAL__GOAL_MODEL, msgs);
 		return msgs;
 	}
 
@@ -106,19 +92,19 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * @generated
 	 */
 	public void setGoalModel(GoalModel newGoalModel) {
-		if (newGoalModel != eInternalContainer() || (eContainerFeatureID() != GorePackage.CONFIGURATION__GOAL_MODEL && newGoalModel != null)) {
+		if (newGoalModel != eInternalContainer() || (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL && newGoalModel != null)) {
 			if (EcoreUtil.isAncestor(this, newGoalModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newGoalModel != null)
-				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__CONFIGURATION, GoalModel.class, msgs);
+				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
 			msgs = basicSetGoalModel(newGoalModel, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.CONFIGURATION__GOAL_MODEL, newGoalModel, newGoalModel));
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.HARD_GOAL__GOAL_MODEL, newGoalModel, newGoalModel));
 	}
 
 	/**
@@ -126,13 +112,22 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	public EList<Task> getTasks() {
+		if (tasks == null) {
+			tasks = new EObjectResolvingEList<Task>(Task.class, this, GorePackage.HARD_GOAL__TASKS);
+		}
+		return tasks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetGoalModel((GoalModel)otherEnd, msgs);
@@ -148,9 +143,7 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				return basicSetGoalModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -164,8 +157,8 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
-				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__CONFIGURATION, GoalModel.class, msgs);
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -178,10 +171,10 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				return getParameters();
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				return getGoalModel();
+			case GorePackage.HARD_GOAL__TASKS:
+				return getTasks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,12 +188,12 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends Parameter>)newValue);
-				return;
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				setGoalModel((GoalModel)newValue);
+				return;
+			case GorePackage.HARD_GOAL__TASKS:
+				getTasks().clear();
+				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,11 +207,11 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				getParameters().clear();
-				return;
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				setGoalModel((GoalModel)null);
+				return;
+			case GorePackage.HARD_GOAL__TASKS:
+				getTasks().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -232,12 +225,12 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.CONFIGURATION__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
-			case GorePackage.CONFIGURATION__GOAL_MODEL:
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				return getGoalModel() != null;
+			case GorePackage.HARD_GOAL__TASKS:
+				return tasks != null && !tasks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ConfigurationImpl
+} //HardGoalImpl

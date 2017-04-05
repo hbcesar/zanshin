@@ -6,7 +6,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="// Performs the replacement as a normal AwReq first.&#xA;super.replaceWith(newRequirement);&#xA;&#xA;// Then, instructs each adaptation strategy to update their own references after the change.&#xA;for (AdaptationStrategy strategy : ((EcaAwReq) newRequirement).getStrategies())&#xA;&#x9;strategy.updateReferences();"/>
       </eAnnotations>
-      <eParameters name="newRequirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+      <eParameters name="newRequirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ResolutionCondition"
         containment="true" eOpposite="#//ResolutionCondition/awReq"/>
@@ -169,9 +169,9 @@
         <details key="body" value="// Retrieves the model id and continues only if this requirement is part of a model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getAwReq().findGoalModel();&#xA;if (model != null) {&#xA;&#x9;Long modelId = model.getId();&#xA;&#x9;&#xA;&#x9;// Retrieves the repository service from the platform to be able to update the references.&#xA;&#x9;it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();&#xA;&#x9;&#xA;&#x9;// Updates references to requirement and child.&#xA;&#x9;if (requirement != null)&#xA;&#x9;&#x9;setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));&#xA;&#x9;if (child != null)&#xA;&#x9;&#x9;setChild(repositoryService.retrieveRequirement(modelId, child.eClass()));&#xA;}"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//GOREElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RelaxReplace" eSuperTypes="#//AdaptationStrategy">
     <eOperations name="execute">
@@ -185,10 +185,10 @@
         <details key="body" value="// Retrieves the model id and continues only if this requirement is part of a model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getAwReq().findGoalModel();&#xA;if (model != null) {&#xA;&#x9;Long modelId = model.getId();&#xA;&#x9;&#xA;&#x9;// Retrieves the repository service from the platform to be able to update the references.&#xA;&#x9;it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();&#xA;&#x9;&#xA;&#x9;// Updates references to requirement and newRequirement.&#xA;&#x9;if (requirement != null)&#xA;&#x9;&#x9;setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));&#xA;&#x9;if (newRequirement != null)&#xA;&#x9;&#x9;setNewRequirement(repositoryService.retrieveRequirement(modelId, newRequirement.eClass()));&#xA;}"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="copy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RetryStrategy" eSuperTypes="#//AdaptationStrategy">
     <eOperations name="execute">
@@ -212,9 +212,9 @@
         <details key="body" value="// Retrieves the model id and continues only if this requirement is part of a model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getAwReq().findGoalModel();&#xA;if (model != null) {&#xA;&#x9;Long modelId = model.getId();&#xA;&#x9;&#xA;&#x9;// Retrieves the repository service from the platform to be able to update the references.&#xA;&#x9;it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();&#xA;&#x9;&#xA;&#x9;// Updates references to requirement and child.&#xA;&#x9;if (requirement != null)&#xA;&#x9;&#x9;setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));&#xA;&#x9;if (child != null)&#xA;&#x9;&#x9;setChild(repositoryService.retrieveRequirement(modelId, child.eClass()));&#xA;}"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="ecore:EClass gore.ecore#//GOREElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StrengthenReplace" eSuperTypes="#//AdaptationStrategy">
     <eOperations name="execute">
@@ -228,10 +228,10 @@
         <details key="body" value="// Retrieves the model id and continues only if this requirement is part of a model.&#xA;it.unitn.disi.zanshin.model.gore.GoalModel model = getAwReq().findGoalModel();&#xA;if (model != null) {&#xA;&#x9;Long modelId = model.getId();&#xA;&#x9;&#xA;&#x9;// Retrieves the repository service from the platform to be able to update the references.&#xA;&#x9;it.unitn.disi.zanshin.services.IRepositoryService repositoryService = it.unitn.disi.zanshin.core.Activator.getRepositoryService();&#xA;&#x9;&#xA;&#x9;// Updates references to requirement and newRequirement.&#xA;&#x9;if (requirement != null)&#xA;&#x9;&#x9;setRequirement(repositoryService.retrieveRequirement(modelId, requirement.eClass()));&#xA;&#x9;if (newRequirement != null)&#xA;&#x9;&#x9;setNewRequirement(repositoryService.retrieveRequirement(modelId, newRequirement.eClass()));&#xA;}"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="copy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EEnum gore.ecore#//AggregationLevel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newRequirement" eType="ecore:EClass gore.ecore#//GOREElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WarningStrategy" eSuperTypes="#//AdaptationStrategy">
     <eOperations name="execute">

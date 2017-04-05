@@ -7,7 +7,7 @@ import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -60,7 +60,7 @@ public interface ITargetSystemControllerService {
 	 * @param value
 	 *          The new value of the parameter.
 	 */
-	void changeParameter(GoalModel model, Requirement req, Parameter param, String value);
+	void changeParameter(GoalModel model, GOREElement req, Parameter param, String value);
 
 	/**
 	 * The target system should change the specified parameter to the specified value for all future executions of the
@@ -116,7 +116,7 @@ public interface ITargetSystemControllerService {
 	 * @param req
 	 *          The requirement instance to initiate.
 	 */
-	void initiate(GoalModel model, Requirement req);
+	void initiate(GoalModel model, GOREElement req);
 
 	/**
 	 * If the specified requirement instance has been previously suspended, the target system should resume pursuing the
@@ -129,7 +129,7 @@ public interface ITargetSystemControllerService {
 	 * @param parent
 	 *          The former parent of the requirement instance to be resumed.
 	 */
-	void resume(GoalModel model, Requirement req, Requirement parent);
+	void resume(GoalModel model, GOREElement req, GOREElement parent);
 
 	/**
 	 * The target system should undo any partial changes that might have been effected while the satisfaction of the
@@ -163,7 +163,7 @@ public interface ITargetSystemControllerService {
 	 * @param req
 	 *          The requirement instance to suspend.
 	 */
-	void suspend(GoalModel model, Requirement req);
+	void suspend(GoalModel model, GOREElement req);
 
 	/**
 	 * The target system should terminate any component related to the specified requirement instance and stop pursuing
@@ -175,7 +175,7 @@ public interface ITargetSystemControllerService {
 	 * @param req
 	 *          The requirement instance to terminate.
 	 */
-	void terminate(GoalModel model, Requirement req);
+	void terminate(GoalModel model, GOREElement req);
 
 	/**
 	 * The adaptation framework should wait for the specified amount of time before continuing with the next instruction.

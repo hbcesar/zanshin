@@ -14,15 +14,12 @@ import org.eeat.model.LTL.OclMessage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ocl Message</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
- * 
+ *
  * @generated
  */
 public class OclMessageImpl extends EventImpl implements OclMessage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected OclMessageImpl() {
@@ -31,7 +28,6 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,10 +37,9 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public OclAny argument(String expression) {
+	public OclAny argument(final String expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.argument() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -52,10 +47,9 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public OclAny argument(int expression) {
+	public OclAny argument(final int expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclMessage.argument() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -63,7 +57,6 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<OclAny> arguments() {
@@ -74,7 +67,6 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String className() {
@@ -85,7 +77,6 @@ public class OclMessageImpl extends EventImpl implements OclMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String methodName() {

@@ -10,173 +10,173 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Monitorable Method</b></em>',
+ * A representation of the literals of the enumeration '<em><b>GORE Element State</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see it.unitn.disi.zanshin.model.gore.GorePackage#getMonitorableMethod()
+ * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElementState()
  * @model
  * @generated
  */
-public enum MonitorableMethod implements Enumerator {
+public enum GOREElementState implements Enumerator {
 	/**
-	 * The '<em><b>START</b></em>' literal object.
+	 * The '<em><b>UNDEFINED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #START_VALUE
+	 * @see #UNDEFINED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	START(0, "START", "start"),
+	UNDEFINED(0, "UNDEFINED", "undefined"),
 
 	/**
-	 * The '<em><b>END</b></em>' literal object.
+	 * The '<em><b>STARTED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #END_VALUE
+	 * @see #STARTED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	END(1, "END", "end"),
+	STARTED(1, "STARTED", "started"),
 
 	/**
-	 * The '<em><b>SUCCESS</b></em>' literal object.
+	 * The '<em><b>SUCCEEDED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SUCCESS_VALUE
+	 * @see #SUCCEEDED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SUCCESS(2, "SUCCESS", "success"),
+	SUCCEEDED(2, "SUCCEEDED", "succeeded"),
 
 	/**
-	 * The '<em><b>FAIL</b></em>' literal object.
+	 * The '<em><b>FAILED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FAIL_VALUE
+	 * @see #FAILED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FAIL(3, "FAIL", "fail"),
+	FAILED(3, "FAILED", "failed"),
 
 	/**
-	 * The '<em><b>CANCEL</b></em>' literal object.
+	 * The '<em><b>CANCELED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CANCEL_VALUE
+	 * @see #CANCELED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CANCEL(4, "CANCEL", "cancel");
+	CANCELED(4, "CANCELED", "canceled");
 
 	/**
-	 * The '<em><b>START</b></em>' literal value.
+	 * The '<em><b>UNDEFINED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>START</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>UNDEFINED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #START
-	 * @model literal="start"
+	 * @see #UNDEFINED
+	 * @model literal="undefined"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int START_VALUE = 0;
+	public static final int UNDEFINED_VALUE = 0;
 
 	/**
-	 * The '<em><b>END</b></em>' literal value.
+	 * The '<em><b>STARTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>END</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>STARTED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #END
-	 * @model literal="end"
+	 * @see #STARTED
+	 * @model literal="started"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int END_VALUE = 1;
+	public static final int STARTED_VALUE = 1;
 
 	/**
-	 * The '<em><b>SUCCESS</b></em>' literal value.
+	 * The '<em><b>SUCCEEDED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>SUCCESS</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>SUCCEEDED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SUCCESS
-	 * @model literal="success"
+	 * @see #SUCCEEDED
+	 * @model literal="succeeded"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SUCCESS_VALUE = 2;
+	public static final int SUCCEEDED_VALUE = 2;
 
 	/**
-	 * The '<em><b>FAIL</b></em>' literal value.
+	 * The '<em><b>FAILED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>FAIL</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>FAILED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FAIL
-	 * @model literal="fail"
+	 * @see #FAILED
+	 * @model literal="failed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FAIL_VALUE = 3;
+	public static final int FAILED_VALUE = 3;
 
 	/**
-	 * The '<em><b>CANCEL</b></em>' literal value.
+	 * The '<em><b>CANCELED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>CANCEL</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>CANCELED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CANCEL
-	 * @model literal="cancel"
+	 * @see #CANCELED
+	 * @model literal="canceled"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CANCEL_VALUE = 4;
+	public static final int CANCELED_VALUE = 4;
 
 	/**
-	 * An array of all the '<em><b>Monitorable Method</b></em>' enumerators.
+	 * An array of all the '<em><b>GORE Element State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MonitorableMethod[] VALUES_ARRAY =
-		new MonitorableMethod[] {
-			START,
-			END,
-			SUCCESS,
-			FAIL,
-			CANCEL,
+	private static final GOREElementState[] VALUES_ARRAY =
+		new GOREElementState[] {
+			UNDEFINED,
+			STARTED,
+			SUCCEEDED,
+			FAILED,
+			CANCELED,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Monitorable Method</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>GORE Element State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MonitorableMethod> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<GOREElementState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Monitorable Method</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>GORE Element State</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MonitorableMethod get(String literal) {
+	public static GOREElementState get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MonitorableMethod result = VALUES_ARRAY[i];
+			GOREElementState result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -185,16 +185,16 @@ public enum MonitorableMethod implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Monitorable Method</b></em>' literal with the specified name.
+	 * Returns the '<em><b>GORE Element State</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MonitorableMethod getByName(String name) {
+	public static GOREElementState getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MonitorableMethod result = VALUES_ARRAY[i];
+			GOREElementState result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -203,20 +203,20 @@ public enum MonitorableMethod implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Monitorable Method</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>GORE Element State</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MonitorableMethod get(int value) {
+	public static GOREElementState get(int value) {
 		switch (value) {
-			case START_VALUE: return START;
-			case END_VALUE: return END;
-			case SUCCESS_VALUE: return SUCCESS;
-			case FAIL_VALUE: return FAIL;
-			case CANCEL_VALUE: return CANCEL;
+			case UNDEFINED_VALUE: return UNDEFINED;
+			case STARTED_VALUE: return STARTED;
+			case SUCCEEDED_VALUE: return SUCCEEDED;
+			case FAILED_VALUE: return FAILED;
+			case CANCELED_VALUE: return CANCELED;
 		}
 		return null;
 	}
@@ -248,7 +248,7 @@ public enum MonitorableMethod implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MonitorableMethod(int value, String name, String literal) {
+	private GOREElementState(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -292,4 +292,4 @@ public enum MonitorableMethod implements Enumerator {
 		return literal;
 	}
 	
-} //MonitorableMethod
+} //GOREElementState

@@ -3,7 +3,7 @@ package it.unitn.disi.zanshin.core.internal.services;
 import it.unitn.disi.zanshin.core.CoreUtils;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.services.IRepositoryService;
 
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class RepositoryService implements IRepositoryService {
 	 *      org.eclipse.emf.ecore.EClass)
 	 */
 	@Override
-	public Requirement retrieveRequirement(Long modelId, EClass eClass) {
+	public GOREElement retrieveRequirement(Long modelId, EClass eClass) {
 		// Obtains the element mapping object from the elements repository.
 		GoalModelElements elements = elementsRepository.get(modelId);
 
@@ -68,7 +68,7 @@ public class RepositoryService implements IRepositoryService {
 
 	/** @see it.unitn.disi.zanshin.services.IRepositoryService#retrieveRequirement(java.lang.Long, java.lang.String) */
 	@Override
-	public Requirement retrieveRequirement(Long modelId, String eClassName) {
+	public GOREElement retrieveRequirement(Long modelId, String eClassName) {
 		// Obtains the element mapping object from the elements repository.
 		GoalModelElements elements = elementsRepository.get(modelId);
 
@@ -81,13 +81,13 @@ public class RepositoryService implements IRepositoryService {
 	 *      it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement)
 	 */
 	@Override
-	public void replaceRequirement(Long modelId, Requirement oldRequirement, Requirement newRequirement) {
+	public void replaceRequirement(Long modelId, GOREElement oldRequirement, GOREElement newRequirement) {
 		// Obtains the element mapping object from the elements repository.
 		GoalModelElements elements = elementsRepository.get(modelId);
 
 		// Checks if the requirement instances are the same. Produce a warning if they aren't.
 		EClass reqClass = oldRequirement.eClass();
-		Requirement modelReq = elements.retrieveRequirementInstance(reqClass);
+		GOREElement modelReq = elements.retrieveRequirementInstance(reqClass);
 		if (!oldRequirement.equals(modelReq))
 			CoreUtils.log.warn("Requirement to be replaced is not the same object as the requirement from the same class in the model. Proceeding with replacement anyways...", reqClass); //$NON-NLS-1$
 

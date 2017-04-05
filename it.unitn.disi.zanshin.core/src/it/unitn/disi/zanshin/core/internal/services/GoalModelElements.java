@@ -1,13 +1,13 @@
 package it.unitn.disi.zanshin.core.internal.services;
 
 import it.unitn.disi.zanshin.model.gore.AwReq;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
-import it.unitn.disi.zanshin.model.gore.Goal;
+import it.unitn.disi.zanshin.model.gore.HardGoal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
 
@@ -39,7 +39,7 @@ public class GoalModelElements {
 	private Map<EClass, DomainAssumption> domainAssumptionsMap = new HashMap<>();
 
 	/** The Goal elements map, mapping the elements EMF class to its implementation. */
-	private Map<EClass, Goal> goalsMap = new HashMap<>();
+	private Map<EClass, HardGoal> goalsMap = new HashMap<>();
 
 	/** The QualityConstraint map, mapping the elements EMF class to its implementation. */
 	private Map<EClass, QualityConstraint> qualityConstraintsMap = new HashMap<>();
@@ -66,7 +66,7 @@ public class GoalModelElements {
 	private EClass eDomainAssumption = gorePackage.getDomainAssumption();
 
 	/** Meta-class that represents (hard) goals. */
-	private EClass eGoal = gorePackage.getGoal();
+	private EClass eHardGoal = gorePackage.getHardGoal();
 
 	/** Meta-class that represents quality constraints. */
 	private EClass eQualityConstraint = gorePackage.getQualityConstraint();
@@ -90,7 +90,7 @@ public class GoalModelElements {
 		// Uses a visitor to go through every element in the tree and store them in the collections, starting from the root.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(model.getRootGoal()) {
 			@Override
-			protected void visit(Requirement req) {
+			protected void visit(GOREElement req) {
 				checkTypeAndStore(req);
 			}
 		};
@@ -105,14 +105,14 @@ public class GoalModelElements {
 	 * @param req
 	 *          The requirement to store.
 	 */
-	private final void checkTypeAndStore(Requirement req) {
+	private final void checkTypeAndStore(GOREElement req) {
 		// Checks the element's type and stores it in the appropriate map.
 		if (eAwReq.isInstance(req))
 			store((AwReq) req, awReqsMap);
 		else if (eDomainAssumption.isInstance(req))
 			store((DomainAssumption) req, domainAssumptionsMap);
-		else if (eGoal.isInstance(req))
-			store((Goal) req, goalsMap);
+		else if (eHardGoal.isInstance(req))
+			store((HardGoal) req, goalsMap);
 		else if (eQualityConstraint.isInstance(req))
 			store((QualityConstraint) req, qualityConstraintsMap);
 		else if (eSoftgoal.isInstance(req))
@@ -134,7 +134,7 @@ public class GoalModelElements {
 	 * @param reqsMap
 	 *          The requirements map.
 	 */
-	private <R extends Requirement> void store(R req, Map<EClass, R> reqsMap) {
+	private <R extends GOREElement> void store(R req, Map<EClass, R> reqsMap) {
 		EClass eClass = req.eClass();
 		reqsMap.put(eClass, req);
 		eClassMap.put(eClass.getName(), eClass);
@@ -142,11 +142,12 @@ public class GoalModelElements {
 		// If the requirement is an AwReq, adds its targets to the target map.
 		if (req instanceof AwReq) {
 			AwReq awreq = (AwReq) req;
-			DefinableRequirement target = awreq.getTarget();
+			GOREElement target = awreq.getTarget();
 			if (target != null)
 				addToTargetMap(target, awreq);
-			for (DefinableRequirement otherTarget : awreq.getOtherTargets())
-				addToTargetMap(otherTarget, awreq);
+			//Não existe mais "otherTarget"
+//			for (GOREElement otherTarget : awreq.getOtherTargets())
+//				addToTargetMap(otherTarget, awreq);
 		}
 	}
 
@@ -159,7 +160,7 @@ public class GoalModelElements {
 	 * @param awreq
 	 *          The AwReq to be added to the targets map.
 	 */
-	private void addToTargetMap(DefinableRequirement target, AwReq awreq) {
+	private void addToTargetMap(GOREElement target, AwReq awreq) {
 		// Always creates a new AwReq set, even when one already exists, to deal with replacements.
 		Set<AwReq> awreqs = new HashSet<>();
 
@@ -183,7 +184,7 @@ public class GoalModelElements {
 	 *          The EMF class of the requirement.
 	 * @return The requirement instance, if found, or <code>null</code> otherwise.
 	 */
-	public Requirement retrieveRequirementInstance(EClass eClass) {
+	public GOREElement retrieveRequirementInstance(EClass eClass) {
 		// Creates a list with the IDs of all EMF classes implemented by this requirement class, including its own.
 		EList<EClass> superTypes = eClass.getEAllSuperTypes();
 		Set<Integer> superTypeIds = new HashSet<>();
@@ -198,7 +199,7 @@ public class GoalModelElements {
 			return awReqsMap.get(eClass);
 		if (superTypeIds.contains(GorePackage.DOMAIN_ASSUMPTION))
 			return domainAssumptionsMap.get(eClass);
-		if (superTypeIds.contains(GorePackage.GOAL))
+		if (superTypeIds.contains(GorePackage.HARD_GOAL))
 			return goalsMap.get(eClass);
 		if (superTypeIds.contains(GorePackage.QUALITY_CONSTRAINT))
 			return qualityConstraintsMap.get(eClass);
@@ -218,12 +219,12 @@ public class GoalModelElements {
 	 *          The name of the EMF class of the requirement.
 	 * @return The requirement instance, if found, or <code>null</code> otherwise.
 	 */
-	public Requirement retrieveRequirementInstance(String eClassName) {
+	public GOREElement retrieveRequirementInstance(String eClassName) {
 		// Searches for the interface that represents this requirement by its name.
 		EClass eClass = eClassMap.get(eClassName);
 
 		// If not null, search for the instance using the requirement's interface.
-		return (eClass == null) ? null : (Requirement) retrieveRequirementInstance(eClass);
+		return (eClass == null) ? null : (GOREElement) retrieveRequirementInstance(eClass);
 	}
 
 	/**
@@ -235,14 +236,14 @@ public class GoalModelElements {
 	 * @param newReq
 	 *          The new requirement.
 	 */
-	public void replaceRequirement(Requirement oldReq, Requirement newReq) {
+	public void replaceRequirement(GOREElement oldReq, GOREElement newReq) {
 		// Replaces the requirement.
 		oldReq.replaceWith(newReq);
 
 		// Uses a visitor to replace the requirement and all its descendants as AwReq targets and in their respective maps.
 		RequirementTreeVisitor visitor = new RequirementTreeVisitor(newReq) {
 			@Override
-			protected void visit(Requirement req) {
+			protected void visit(GOREElement req) {
 				EClass reqClass = req.eClass();
 
 				// Replaces the old requirement in the respective map.
@@ -254,18 +255,18 @@ public class GoalModelElements {
 					for (AwReq awreq : targetsMap.get(reqClass)) {
 						// If it's the primary target, replace it.
 						if (reqClass.equals(awreq.getTarget().eClass()))
-							awreq.setTarget((DefinableRequirement) req);
+							awreq.setTarget((GOREElement) req);
 
-						// If it's one of the other targets, replace it.
-						DefinableRequirement oldTarget = null;
-						EList<DefinableRequirement> otherTargets = awreq.getOtherTargets();
-						for (DefinableRequirement target : otherTargets)
-							if (reqClass.equals(target.eClass()))
-								oldTarget = target;
-						if (oldTarget != null) {
-							otherTargets.remove(oldTarget);
-							otherTargets.add((DefinableRequirement) req);
-						}
+						// If it's one of the other targets, replace it. Nao existe mais otherTargets
+//						DefinableRequirement oldTarget = null;
+//						EList<DefinableRequirement> otherTargets = awreq.getOtherTargets();
+//						for (DefinableRequirement target : otherTargets)
+//							if (reqClass.equals(target.eClass()))
+//								oldTarget = target;
+//						if (oldTarget != null) {
+//							otherTargets.remove(oldTarget);
+//							otherTargets.add((DefinableRequirement) req);
+//						}
 					}
 				}
 			}

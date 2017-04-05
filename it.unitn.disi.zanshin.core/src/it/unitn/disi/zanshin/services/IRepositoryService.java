@@ -4,7 +4,7 @@ import java.util.Set;
 
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -58,7 +58,7 @@ public interface IRepositoryService {
 	 *         returns null if there is no goal model with the given ID or if the corresponding goal model does not
 	 *         contain an instance of the specified requirement.
 	 */
-	Requirement retrieveRequirement(Long modelId, EClass eClass);
+	GOREElement retrieveRequirement(Long modelId, EClass eClass);
 
 	/**
 	 * Retrieves a particular requirement instance from the repository, given the goal model's ID and the requirement's
@@ -72,7 +72,7 @@ public interface IRepositoryService {
 	 *         returns null if there is no goal model with the given ID or if the corresponding goal model does not
 	 *         contain an instance of the specified requirement.
 	 */
-	Requirement retrieveRequirement(Long modelId, String eClassName);
+	GOREElement retrieveRequirement(Long modelId, String eClassName);
 
 	/**
 	 * Replaces an instance of a requirement in the model with a new instance.
@@ -84,7 +84,7 @@ public interface IRepositoryService {
 	 * @param newRequirement
 	 *          The new requirement that should be included in the model.
 	 */
-	void replaceRequirement(Long modelId, Requirement oldRequirement, Requirement newRequirement);
+	void replaceRequirement(Long modelId, GOREElement oldRequirement, GOREElement newRequirement);
 
 	/**
 	 * TODO: document this method.

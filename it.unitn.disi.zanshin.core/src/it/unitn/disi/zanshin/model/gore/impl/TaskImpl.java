@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
@@ -12,16 +8,16 @@ import it.unitn.disi.zanshin.model.gore.Task;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Task</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
- * 
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Task</b></em>'.
+ * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class TaskImpl extends PerformativeRequirementImpl implements Task {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TaskImpl() {
@@ -29,8 +25,8 @@ public class TaskImpl extends PerformativeRequirementImpl implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -38,4 +34,4 @@ public class TaskImpl extends PerformativeRequirementImpl implements Task {
 		return GorePackage.Literals.TASK;
 	}
 
-} // TaskImpl
+} //TaskImpl

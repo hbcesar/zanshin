@@ -18,15 +18,12 @@ import org.eeat.model.LTL.Timeout;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ocl Any</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
- * 
+ *
  * @generated
  */
 public class OclAnyImpl extends EObjectImpl implements OclAny {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected OclAnyImpl() {
@@ -35,7 +32,6 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -45,10 +41,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean after(Boolean exp1, Boolean exp2, Timeout timeout) {
+	public Boolean after(final Boolean exp1, final Boolean exp2, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.after() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -56,10 +51,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean after(Boolean exp1, Boolean exp2) {
+	public Boolean after(final Boolean exp1, final Boolean exp2) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.after() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -67,10 +61,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean between(Boolean exp1, Boolean exp2, Boolean exp3) {
+	public Boolean between(final Boolean exp1, final Boolean exp2, final Boolean exp3) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.between() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -78,10 +71,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean always(Boolean expression) {
+	public Boolean always(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.always() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -89,10 +81,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean always(Boolean expression, Timeout timeout) {
+	public Boolean always(final Boolean expression, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.always() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -100,10 +91,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean before(Boolean exp1, Boolean exp2, Timeout timeout) {
+	public Boolean before(final Boolean exp1, final Boolean exp2, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.before() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -111,10 +101,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean before(Boolean exp1, Boolean exp2) {
+	public Boolean before(final Boolean exp1, final Boolean exp2) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.before() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -122,10 +111,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean eventually(Boolean expression) {
+	public Boolean eventually(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.eventually() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -133,10 +121,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean never(Boolean expression) {
+	public Boolean never(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.never() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -144,10 +131,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean never(Boolean expression, Timeout timeout) {
+	public Boolean never(final Boolean expression, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.never() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -155,10 +141,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean responds(Boolean stimulus, Boolean response) {
+	public Boolean responds(final Boolean stimulus, final Boolean response) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.responds() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -166,10 +151,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean responds(Boolean stimulus, Boolean response, Timeout timeout) {
+	public Boolean responds(final Boolean stimulus, final Boolean response, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.responds() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -177,10 +161,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean unless(Boolean expression) {
+	public Boolean unless(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.unless() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -188,10 +171,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean until(Boolean expression) {
+	public Boolean until(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.until() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -199,10 +181,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean sequence(EList<Boolean> expression) {
+	public Boolean sequence(final EList<Boolean> expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.sequence() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -210,10 +191,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean sequence(EList<Boolean> expression, Timeout timeout) {
+	public Boolean sequence(final EList<Boolean> expression, final Timeout timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.sequence() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -221,10 +201,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Timeout timeout(String spec) {
+	public Timeout timeout(final String spec) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.timeout() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -232,10 +211,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public EList<OclMessage> receivedMessages(String methodName) {
+	public EList<OclMessage> receivedMessages(final String methodName) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedMessages() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -243,10 +221,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public OclMessage receivedMessage(String methodName) {
+	public OclMessage receivedMessage(final String methodName) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedMessage() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -254,10 +231,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public OclMessage receivedMessage(String className, String methodName) {
+	public OclMessage receivedMessage(final String className, final String methodName) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedMessage() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -265,10 +241,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean newPEval(Boolean expression) {
+	public Boolean newPEval(final Boolean expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.newPEval() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -276,10 +251,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean after(Boolean exp1, Boolean exp2, String timeout) {
+	public Boolean after(final Boolean exp1, final Boolean exp2, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.after() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -287,10 +261,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean before(Boolean exp1, Boolean exp2, String timeout) {
+	public Boolean before(final Boolean exp1, final Boolean exp2, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.before() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -298,10 +271,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean eventually(Boolean expression, String timeout) {
+	public Boolean eventually(final Boolean expression, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.eventually() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -309,10 +281,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean always(Boolean expression, String timeout) {
+	public Boolean always(final Boolean expression, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.always() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -320,10 +291,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean never(Boolean expression, String timeout) {
+	public Boolean never(final Boolean expression, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.never() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -331,10 +301,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean responds(Boolean stimulus, Boolean response, String timeout) {
+	public Boolean responds(final Boolean stimulus, final Boolean response, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.responds() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -342,10 +311,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean unless(Boolean expression, String timeout) {
+	public Boolean unless(final Boolean expression, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.unless() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -353,10 +321,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Boolean until(Boolean expression, String timeout) {
+	public Boolean until(final Boolean expression, final String timeout) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.until() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -364,10 +331,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public EList<PropertyEvent> receivedProperties(String name) {
+	public EList<PropertyEvent> receivedProperties(final String name) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedProperties() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -375,10 +341,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public PropertyEvent receivedProperty(String name) {
+	public PropertyEvent receivedProperty(final String name) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedProperty() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -386,10 +351,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public Event receivedEvent(String expression) {
+	public Event receivedEvent(final String expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedEvent() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -397,10 +361,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public EList<Event> receivedEvents(String expression) {
+	public EList<Event> receivedEvents(final String expression) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedEvents() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();
@@ -408,10 +371,9 @@ public class OclAnyImpl extends EObjectImpl implements OclAny {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public EList<OclMessage> receivedMessages(String className, String methodName) {
+	public EList<OclMessage> receivedMessages(final String className, final String methodName) {
 		// This method has not been implemented.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method OclAny.receivedMessages() has not been implemented."); //$NON-NLS-1$
 		throw new UnsupportedOperationException();

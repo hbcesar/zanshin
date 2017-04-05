@@ -14,15 +14,12 @@ import org.eeat.model.LTL.LTLPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Event</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
- * 
+ *
  * @generated
  */
 public class EventImpl extends OclAnyImpl implements Event {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected EventImpl() {
@@ -31,7 +28,6 @@ public class EventImpl extends OclAnyImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -41,7 +37,6 @@ public class EventImpl extends OclAnyImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Date date() {
@@ -52,7 +47,6 @@ public class EventImpl extends OclAnyImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long timestamp() {
@@ -63,7 +57,6 @@ public class EventImpl extends OclAnyImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Object object() {
