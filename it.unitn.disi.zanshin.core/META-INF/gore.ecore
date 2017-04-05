@@ -45,16 +45,6 @@
         eType="#//AwReq"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" eSuperTypes="#//GOREElement">
-    <eOperations name="getChildrenStateCount" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Converts to EList so we can return, adding the total number of definable children to the last position.&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;for (int count : stateCount)&#xA;&#x9;stateCountList.add(count);&#xA;stateCountList.add(defChildrenCount);&#xA;return stateCountList;"/>
-      </eAnnotations>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//GoalOrientedRequirement"
-        eOpposite="#//GoalOrientedRequirement/children"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//GoalOrientedRequirement" containment="true" eOpposite="#//GoalOrientedRequirement/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assumptions" upperBound="-1"
         eType="#//DomainAssumption"/>
   </eClassifiers>
@@ -71,13 +61,25 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement">
+  <eClassifiers xsi:type="ecore:EClass" name="Goal">
+    <eOperations name="getChildrenStateCount" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Converts to EList so we can return, adding the total number of definable children to the last position.&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;for (int count : stateCount)&#xA;&#x9;stateCountList.add(count);&#xA;stateCountList.add(defChildrenCount);&#xA;return stateCountList;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Goal" containment="true" eOpposite="#//Goal/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Goal"
+        eOpposite="#//Goal/children"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement #//Goal">
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
         eOpposite="#//GoalModel/rootGoal"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//GoalOrientedRequirement">
+  <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//GoalOrientedRequirement #//Goal">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//QualityConstraint" eOpposite="#//QualityConstraint/softgoal"/>
   </eClassifiers>
@@ -98,7 +100,10 @@
         defaultValueLiteral="1.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//GOREElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="decompositions" upperBound="-1"
+        eType="#//Task"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AggregationLevel">
     <eLiterals name="INSTANCE" literal="instance-level"/>
     <eLiterals name="CLASS" value="1" literal="class-level"/>

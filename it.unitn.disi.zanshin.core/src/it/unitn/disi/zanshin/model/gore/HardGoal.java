@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface HardGoal extends PerformativeRequirement {
+public interface HardGoal extends PerformativeRequirement, Goal {
 	/**
 	 * Returns the value of the '<em><b>Goal Model</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal <em>Root Goal</em>}'.

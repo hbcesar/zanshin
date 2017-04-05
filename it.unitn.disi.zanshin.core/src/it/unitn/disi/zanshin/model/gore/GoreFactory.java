@@ -49,6 +49,15 @@ public interface GoreFactory extends EFactory {
 	PerformativeRequirement createPerformativeRequirement();
 
 	/**
+	 * Returns a new object of class '<em>Goal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Goal</em>'.
+	 * @generated
+	 */
+	Goal createGoal();
+
+	/**
 	 * Returns a new object of class '<em>Hard Goal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

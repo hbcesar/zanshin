@@ -92,10 +92,17 @@ public class GoreSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GorePackage.GOAL: {
+				Goal goal = (Goal)theEObject;
+				T result = caseGoal(goal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case GorePackage.HARD_GOAL: {
 				HardGoal hardGoal = (HardGoal)theEObject;
 				T result = caseHardGoal(hardGoal);
 				if (result == null) result = casePerformativeRequirement(hardGoal);
+				if (result == null) result = caseGoal(hardGoal);
 				if (result == null) result = caseGoalOrientedRequirement(hardGoal);
 				if (result == null) result = caseGOREElement(hardGoal);
 				if (result == null) result = caseOclAny(hardGoal);
@@ -106,6 +113,7 @@ public class GoreSwitch<T> extends Switch<T> {
 				Softgoal softgoal = (Softgoal)theEObject;
 				T result = caseSoftgoal(softgoal);
 				if (result == null) result = caseGoalOrientedRequirement(softgoal);
+				if (result == null) result = caseGoal(softgoal);
 				if (result == null) result = caseGOREElement(softgoal);
 				if (result == null) result = caseOclAny(softgoal);
 				if (result == null) result = defaultCase(theEObject);
@@ -221,6 +229,21 @@ public class GoreSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePerformativeRequirement(PerformativeRequirement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Goal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Goal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGoal(Goal object) {
 		return null;
 	}
 
