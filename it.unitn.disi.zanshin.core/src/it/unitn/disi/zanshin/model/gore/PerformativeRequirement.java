@@ -4,6 +4,8 @@ package it.unitn.disi.zanshin.model.gore;
 
 import java.util.Date;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Performative Requirement</b></em>'.
@@ -14,6 +16,7 @@ import java.util.Date;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement#getStartTime <em>Start Time</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getPerformativeRequirement()
@@ -48,6 +51,22 @@ public interface PerformativeRequirement extends GoalOrientedRequirement {
 	void setStartTime(Date value);
 
 	/**
+	 * Returns the value of the '<em><b>Tasks</b></em>' reference list.
+	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.Task}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tasks</em>' reference list.
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getPerformativeRequirement_Tasks()
+	 * @model
+	 * @generated
+	 */
+	EList<Task> getTasks();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='// Only process the cancellation if the requirement has not yet been canceled.\nif (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {\n\tit.unitn.disi.zanshin.core.CoreUtils.log.debug(\"Requirement canceled: \" + eClass().getName() + \" (\" + this + \")\"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$\n\tsetState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);\n\t\t\t\n\t// If the monitoring service is active, warn it that this requirement has been canceled.\n\tit.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();\n\tif (monitoringService != null)\n\t\tmonitoringService.monitorMethodCall(this, MonitorableMethod.CANCEL);\n\t\n\t// If the requirement is canceled, then it has also ended.\n\tend();\n\t\n\t// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.\n\tit.unitn.disi.zanshin.model.gore.Requirement parent = getParent();\n\tif ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement)) {\n\t\tif (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).checkState();\n\t\telse if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();\n\t\telse ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).fail();\n\t}\n\t\n\t// Also propagate the cancellation to the children if and-refined and the children are performative.\n\tif (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)\n\t\tfor (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())\n\t\t\tif (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();\n}'"
@@ -62,5 +81,14 @@ public interface PerformativeRequirement extends GoalOrientedRequirement {
 	 * @generated
 	 */
 	void checkState();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" many="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();\r\nEList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();\r\nEList<Task> tasks = this.getTasks();\r\n\t\t\t\t\r\nfor(GOREElement child : awreqs_da){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\r\nfor(GOREElement child : tasks){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\r\nreturn children;'"
+	 * @generated
+	 */
+	EList<GOREElement> getChildren();
 
 } // PerformativeRequirement

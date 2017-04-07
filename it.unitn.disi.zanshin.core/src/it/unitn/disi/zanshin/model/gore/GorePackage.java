@@ -215,13 +215,22 @@ public interface GorePackage extends EPackage {
 	int PERFORMATIVE_REQUIREMENT__START_TIME = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMATIVE_REQUIREMENT__TASKS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Performative Requirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERFORMATIVE_REQUIREMENT_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
+	int PERFORMATIVE_REQUIREMENT_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalImpl <em>Goal</em>}' class.
@@ -325,6 +334,15 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__START_TIME = PERFORMATIVE_REQUIREMENT__START_TIME;
 
 	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARD_GOAL__TASKS = PERFORMATIVE_REQUIREMENT__TASKS;
+
+	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -352,7 +370,7 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__PARENT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
+	 * The feature id for the '<em><b>Goal Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -361,22 +379,13 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__GOAL_MODEL = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HARD_GOAL__TASKS = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Hard Goal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HARD_GOAL_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 5;
+	int HARD_GOAL_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl <em>Softgoal</em>}' class.
@@ -690,13 +699,13 @@ public interface GorePackage extends EPackage {
 	int TASK__START_TIME = PERFORMATIVE_REQUIREMENT__START_TIME;
 
 	/**
-	 * The feature id for the '<em><b>Decompositions</b></em>' reference list.
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DECOMPOSITIONS = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
+	int TASK__TASKS = PERFORMATIVE_REQUIREMENT__TASKS;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -705,7 +714,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
+	int TASK_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl <em>Actor</em>}' class.
@@ -1130,6 +1139,17 @@ public interface GorePackage extends EPackage {
 	EAttribute getPerformativeRequirement_StartTime();
 
 	/**
+	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement#getTasks <em>Tasks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Tasks</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.PerformativeRequirement#getTasks()
+	 * @see #getPerformativeRequirement()
+	 * @generated
+	 */
+	EReference getPerformativeRequirement_Tasks();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Goal <em>Goal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1183,26 +1203,15 @@ public interface GorePackage extends EPackage {
 	EClass getHardGoal();
 
 	/**
-	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel <em>Goal Model</em>}'.
+	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Goal Model</em>'.
+	 * @return the meta object for the reference '<em>Goal Model</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel()
 	 * @see #getHardGoal()
 	 * @generated
 	 */
 	EReference getHardGoal_GoalModel();
-
-	/**
-	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getTasks <em>Tasks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Tasks</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.HardGoal#getTasks()
-	 * @see #getHardGoal()
-	 * @generated
-	 */
-	EReference getHardGoal_Tasks();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Softgoal <em>Softgoal</em>}'.
@@ -1297,17 +1306,6 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTask();
-
-	/**
-	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.Task#getDecompositions <em>Decompositions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Decompositions</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.Task#getDecompositions()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EReference getTask_Decompositions();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Actor <em>Actor</em>}'.
@@ -1731,6 +1729,14 @@ public interface GorePackage extends EPackage {
 		EAttribute PERFORMATIVE_REQUIREMENT__START_TIME = eINSTANCE.getPerformativeRequirement_StartTime();
 
 		/**
+		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERFORMATIVE_REQUIREMENT__TASKS = eINSTANCE.getPerformativeRequirement_Tasks();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalImpl <em>Goal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1775,20 +1781,12 @@ public interface GorePackage extends EPackage {
 		EClass HARD_GOAL = eINSTANCE.getHardGoal();
 
 		/**
-		 * The meta object literal for the '<em><b>Goal Model</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Goal Model</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference HARD_GOAL__GOAL_MODEL = eINSTANCE.getHardGoal_GoalModel();
-
-		/**
-		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference HARD_GOAL__TASKS = eINSTANCE.getHardGoal_Tasks();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl <em>Softgoal</em>}' class.
@@ -1871,14 +1869,6 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TASK = eINSTANCE.getTask();
-
-		/**
-		 * The meta object literal for the '<em><b>Decompositions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK__DECOMPOSITIONS = eINSTANCE.getTask_Decompositions();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl <em>Actor</em>}' class.

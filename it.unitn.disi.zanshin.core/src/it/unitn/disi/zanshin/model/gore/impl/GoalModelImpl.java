@@ -158,9 +158,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		if (newRootGoal != rootGoal) {
 			NotificationChain msgs = null;
 			if (rootGoal != null)
-				msgs = ((InternalEObject)rootGoal).eInverseRemove(this, GorePackage.HARD_GOAL__GOAL_MODEL, HardGoal.class, msgs);
+				msgs = ((InternalEObject)rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
 			if (newRootGoal != null)
-				msgs = ((InternalEObject)newRootGoal).eInverseAdd(this, GorePackage.HARD_GOAL__GOAL_MODEL, HardGoal.class, msgs);
+				msgs = ((InternalEObject)newRootGoal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
 			msgs = basicSetRootGoal(newRootGoal, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -337,10 +337,6 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				if (rootGoal != null)
-					msgs = ((InternalEObject)rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
-				return basicSetRootGoal((HardGoal)otherEnd, msgs);
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActors()).basicAdd(otherEnd, msgs);
 			case GorePackage.GOAL_MODEL__CONFIGURATION:

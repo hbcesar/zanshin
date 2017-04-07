@@ -1,7 +1,9 @@
 package it.unitn.disi.zanshin.core.internal.services;
 
 import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
+import it.unitn.disi.zanshin.model.gore.Task;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
+import it.unitn.disi.zanshin.model.gore.Goal;
 
 import java.util.Stack;
 
@@ -34,15 +36,11 @@ public abstract class RequirementTreeVisitor {
 		while (!stack.isEmpty()) {
 			GOREElement req = stack.pop();
 			visit(req);
+			
+			// Adds this requirements children (if this is a kind of element that can have them) to the stack to continue the search.
+			for (Object child : req.getChildren())
+				stack.push((GOREElement)child);
 
-			//Aqui pode ser um GoalOrientedRequirement SE E SOMENTE SE AwReq nao puder ser refinado em mais AwReqs, caso contrario tem que rever essa bagaça
-			//Porem, se nao puder e aqui for um AwReq? Verificar antes, se for, next step.
-			// Adds this requirements children to the stack to continue the search.
-			if(req instanceof GoalOrientedRequirement) {
-				GoalOrientedRequirement r = (GoalOrientedRequirement) req;
-				for (GoalOrientedRequirement child : r.getChildren())
-					stack.push(child);
-			}
 		}
 	}
 

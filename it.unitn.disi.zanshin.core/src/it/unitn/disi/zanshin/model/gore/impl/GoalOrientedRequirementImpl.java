@@ -3,27 +3,17 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
-import it.unitn.disi.zanshin.model.gore.GoalModel;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
-import it.unitn.disi.zanshin.model.gore.RefinementType;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,6 +68,27 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 			assumptions = new EObjectResolvingEList<DomainAssumption>(DomainAssumption.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS);
 		}
 		return assumptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<AwReq> awreqs = super.getAwreqs();
+		EList<DomainAssumption> domainAssumptions = this.getAssumptions();
+						
+		for(GOREElement child : awreqs){
+			children.add(child);
+		}
+						
+		for(GOREElement child : domainAssumptions){
+			children.add(child);
+		}
+						
+		return children;
 	}
 
 	/**

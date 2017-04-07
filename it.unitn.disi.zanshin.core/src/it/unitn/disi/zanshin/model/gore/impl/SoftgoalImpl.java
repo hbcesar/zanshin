@@ -2,6 +2,7 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -50,6 +52,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 * @ordered
 	 */
 	protected static final RefinementType REFINEMENT_TYPE_EDEFAULT = RefinementType.AND;
+
 	/**
 	 * The cached value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -59,6 +62,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 * @ordered
 	 */
 	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -68,6 +72,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 * @ordered
 	 */
 	protected EList<Goal> children;
+
 	/**
 	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -123,7 +128,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Goal> getChildren() {
+	public EList<Goal> getChildren_() {
 		if (children == null) {
 			children = new EObjectContainmentWithInverseEList<Goal>(Goal.class, this, GorePackage.SOFTGOAL__CHILDREN, GorePackage.GOAL__PARENT);
 		}
@@ -181,6 +186,32 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 			constraints = new EObjectWithInverseResolvingEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__SOFTGOAL);
 		}
 		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
+		EList<QualityConstraint> qc = this.getConstraints();
+		EList<Goal> goals = getChildren_();
+								
+		for(GOREElement child : awreqs_da){
+			children.add(child);
+		}
+								
+		for(GOREElement child : qc){
+			children.add(child);
+		}
+				
+		for(Goal child : goals){
+			children.add((GOREElement) child);
+		}
+								
+		return children;
 	}
 
 	/**

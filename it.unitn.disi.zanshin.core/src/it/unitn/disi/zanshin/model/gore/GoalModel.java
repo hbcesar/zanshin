@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
 public interface GoalModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Root Goal</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Root Goal</em>' containment reference isn't clear,
@@ -39,8 +38,7 @@ public interface GoalModel extends EObject {
 	 * @return the value of the '<em>Root Goal</em>' containment reference.
 	 * @see #setRootGoal(HardGoal)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_RootGoal()
-	 * @see it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel
-	 * @model opposite="goalModel" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	HardGoal getRootGoal();

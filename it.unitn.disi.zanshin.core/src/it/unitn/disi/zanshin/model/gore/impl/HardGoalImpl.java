@@ -7,7 +7,6 @@ import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.HardGoal;
 import it.unitn.disi.zanshin.model.gore.RefinementType;
-import it.unitn.disi.zanshin.model.gore.Task;
 
 import java.util.Collection;
 
@@ -22,7 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -38,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getGoalModel <em>Goal Model</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,6 +50,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @ordered
 	 */
 	protected static final RefinementType REFINEMENT_TYPE_EDEFAULT = RefinementType.AND;
+
 	/**
 	 * The cached value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,6 +60,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @ordered
 	 */
 	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -71,15 +70,16 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @ordered
 	 */
 	protected EList<Goal> children;
+
 	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
+	 * The cached value of the '{@link #getGoalModel() <em>Goal Model</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTasks()
+	 * @see #getGoalModel()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Task> tasks;
+	protected GoalModel goalModel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,8 +180,15 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @generated
 	 */
 	public GoalModel getGoalModel() {
-		if (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL) return null;
-		return (GoalModel)eInternalContainer();
+		if (goalModel != null && goalModel.eIsProxy()) {
+			InternalEObject oldGoalModel = (InternalEObject)goalModel;
+			goalModel = (GoalModel)eResolveProxy(oldGoalModel);
+			if (goalModel != oldGoalModel) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.HARD_GOAL__GOAL_MODEL, oldGoalModel, goalModel));
+			}
+		}
+		return goalModel;
 	}
 
 	/**
@@ -189,9 +196,8 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGoalModel(GoalModel newGoalModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.HARD_GOAL__GOAL_MODEL, msgs);
-		return msgs;
+	public GoalModel basicGetGoalModel() {
+		return goalModel;
 	}
 
 	/**
@@ -200,31 +206,10 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @generated
 	 */
 	public void setGoalModel(GoalModel newGoalModel) {
-		if (newGoalModel != eInternalContainer() || (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL && newGoalModel != null)) {
-			if (EcoreUtil.isAncestor(this, newGoalModel))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newGoalModel != null)
-				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
-			msgs = basicSetGoalModel(newGoalModel, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.HARD_GOAL__GOAL_MODEL, newGoalModel, newGoalModel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Task> getTasks() {
-		if (tasks == null) {
-			tasks = new EObjectResolvingEList<Task>(Task.class, this, GorePackage.HARD_GOAL__TASKS);
-		}
-		return tasks;
+		GoalModel oldGoalModel = goalModel;
+		goalModel = newGoalModel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.HARD_GOAL__GOAL_MODEL, oldGoalModel, goalModel));
 	}
 
 	/**
@@ -266,10 +251,6 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParent((Goal)otherEnd, msgs);
-			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetGoalModel((GoalModel)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -286,8 +267,6 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 			case GorePackage.HARD_GOAL__PARENT:
 				return basicSetParent(null, msgs);
-			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				return basicSetGoalModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -302,8 +281,6 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 		switch (eContainerFeatureID()) {
 			case GorePackage.HARD_GOAL__PARENT:
 				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL__CHILDREN, Goal.class, msgs);
-			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -323,9 +300,8 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 			case GorePackage.HARD_GOAL__PARENT:
 				return getParent();
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				return getGoalModel();
-			case GorePackage.HARD_GOAL__TASKS:
-				return getTasks();
+				if (resolve) return getGoalModel();
+				return basicGetGoalModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -352,10 +328,6 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				setGoalModel((GoalModel)newValue);
 				return;
-			case GorePackage.HARD_GOAL__TASKS:
-				getTasks().clear();
-				getTasks().addAll((Collection<? extends Task>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -380,9 +352,6 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
 				setGoalModel((GoalModel)null);
 				return;
-			case GorePackage.HARD_GOAL__TASKS:
-				getTasks().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -402,9 +371,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 			case GorePackage.HARD_GOAL__PARENT:
 				return getParent() != null;
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				return getGoalModel() != null;
-			case GorePackage.HARD_GOAL__TASKS:
-				return tasks != null && !tasks.isEmpty();
+				return goalModel != null;
 		}
 		return super.eIsSet(featureID);
 	}

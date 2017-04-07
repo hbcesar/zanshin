@@ -6,7 +6,6 @@ import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GOREElementState;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
-import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 
 import java.util.Collection;
@@ -357,6 +356,22 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		
 		// Returns the found model, or null if no model has been found.
 		return model;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<AwReq> awreqs = this.getAwreqs();
+								
+		for(GOREElement child : awreqs){
+			children.add(child);
+		}
+				
+		return children;
 	}
 
 	/**

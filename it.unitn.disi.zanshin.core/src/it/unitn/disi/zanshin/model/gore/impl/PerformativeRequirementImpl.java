@@ -2,16 +2,23 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
+import it.unitn.disi.zanshin.model.gore.Task;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl#getStartTime <em>Start Time</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +54,16 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * @ordered
 	 */
 	protected Date startTime = START_TIME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTasks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Task> tasks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +103,18 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 		startTime = newStartTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME, oldStartTime, startTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Task> getTasks() {
+		if (tasks == null) {
+			tasks = new EObjectResolvingEList<Task>(Task.class, this, GorePackage.PERFORMATIVE_REQUIREMENT__TASKS);
+		}
+		return tasks;
 	}
 
 	/**
@@ -148,11 +178,34 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
+		EList<Task> tasks = this.getTasks();
+						
+		for(GOREElement child : awreqs_da){
+			children.add(child);
+		}
+						
+		for(GOREElement child : tasks){
+			children.add(child);
+		}
+						
+		return children;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				return getStartTime();
+			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
+				return getTasks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,11 +215,16 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				setStartTime((Date)newValue);
+				return;
+			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
+				getTasks().clear();
+				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,6 +241,9 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				setStartTime(START_TIME_EDEFAULT);
 				return;
+			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
+				getTasks().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +258,8 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				return START_TIME_EDEFAULT == null ? startTime != null : !START_TIME_EDEFAULT.equals(startTime);
+			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
+				return tasks != null && !tasks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

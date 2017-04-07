@@ -37,4 +37,13 @@ public interface GoalOrientedRequirement extends GOREElement {
 	 */
 	EList<DomainAssumption> getAssumptions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" many="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();\r\nEList<AwReq> awreqs = super.getAwreqs();\r\nEList<DomainAssumption> domainAssumptions = this.getAssumptions();\r\n\t\t\t\t\r\nfor(GOREElement child : awreqs){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\r\nfor(GOREElement child : domainAssumptions){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\r\nreturn children;'"
+	 * @generated
+	 */
+	EList<GOREElement> getChildren();
+
 } // GoalOrientedRequirement
