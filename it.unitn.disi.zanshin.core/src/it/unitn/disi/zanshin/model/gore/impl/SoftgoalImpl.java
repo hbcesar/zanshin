@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getRefinementType <em>Refinement Type</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -64,14 +64,14 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+	 * The cached value of the '{@link #getRefinements() <em>Refinements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChildren()
+	 * @see #getRefinements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Goal> children;
+	protected EList<Goal> refinements;
 
 	/**
 	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' reference list.
@@ -128,11 +128,11 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Goal> getChildren_() {
-		if (children == null) {
-			children = new EObjectContainmentWithInverseEList<Goal>(Goal.class, this, GorePackage.SOFTGOAL__CHILDREN, GorePackage.GOAL__PARENT);
+	public EList<Goal> getRefinements() {
+		if (refinements == null) {
+			refinements = new EObjectContainmentWithInverseEList<Goal>(Goal.class, this, GorePackage.SOFTGOAL__REFINEMENTS, GorePackage.GOAL__PARENT);
 		}
-		return children;
+		return refinements;
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
-				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GOAL__CHILDREN, Goal.class, msgs);
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GOAL__REFINEMENTS, Goal.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -247,8 +247,8 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__CHILDREN:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRefinements()).basicAdd(otherEnd, msgs);
 			case GorePackage.SOFTGOAL__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -267,8 +267,8 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__CHILDREN:
-				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				return ((InternalEList<?>)getRefinements()).basicRemove(otherEnd, msgs);
 			case GorePackage.SOFTGOAL__PARENT:
 				return basicSetParent(null, msgs);
 			case GorePackage.SOFTGOAL__CONSTRAINTS:
@@ -286,7 +286,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case GorePackage.SOFTGOAL__PARENT:
-				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL__CHILDREN, Goal.class, msgs);
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL__REFINEMENTS, Goal.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -301,8 +301,8 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		switch (featureID) {
 			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
 				return getRefinementType();
-			case GorePackage.SOFTGOAL__CHILDREN:
-				return getChildren();
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				return getRefinements();
 			case GorePackage.SOFTGOAL__PARENT:
 				return getParent();
 			case GorePackage.SOFTGOAL__CONSTRAINTS:
@@ -323,9 +323,9 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
 				setRefinementType((RefinementType)newValue);
 				return;
-			case GorePackage.SOFTGOAL__CHILDREN:
-				getChildren().clear();
-				getChildren().addAll((Collection<? extends Goal>)newValue);
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				getRefinements().clear();
+				getRefinements().addAll((Collection<? extends Goal>)newValue);
 				return;
 			case GorePackage.SOFTGOAL__PARENT:
 				setParent((Goal)newValue);
@@ -349,8 +349,8 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
 				setRefinementType(REFINEMENT_TYPE_EDEFAULT);
 				return;
-			case GorePackage.SOFTGOAL__CHILDREN:
-				getChildren().clear();
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				getRefinements().clear();
 				return;
 			case GorePackage.SOFTGOAL__PARENT:
 				setParent((Goal)null);
@@ -372,8 +372,8 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		switch (featureID) {
 			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
 				return refinementType != REFINEMENT_TYPE_EDEFAULT;
-			case GorePackage.SOFTGOAL__CHILDREN:
-				return children != null && !children.isEmpty();
+			case GorePackage.SOFTGOAL__REFINEMENTS:
+				return refinements != null && !refinements.isEmpty();
 			case GorePackage.SOFTGOAL__PARENT:
 				return getParent() != null;
 			case GorePackage.SOFTGOAL__CONSTRAINTS:
@@ -392,7 +392,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		if (baseClass == Goal.class) {
 			switch (derivedFeatureID) {
 				case GorePackage.SOFTGOAL__REFINEMENT_TYPE: return GorePackage.GOAL__REFINEMENT_TYPE;
-				case GorePackage.SOFTGOAL__CHILDREN: return GorePackage.GOAL__CHILDREN;
+				case GorePackage.SOFTGOAL__REFINEMENTS: return GorePackage.GOAL__REFINEMENTS;
 				case GorePackage.SOFTGOAL__PARENT: return GorePackage.GOAL__PARENT;
 				default: return -1;
 			}
@@ -410,7 +410,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		if (baseClass == Goal.class) {
 			switch (baseFeatureID) {
 				case GorePackage.GOAL__REFINEMENT_TYPE: return GorePackage.SOFTGOAL__REFINEMENT_TYPE;
-				case GorePackage.GOAL__CHILDREN: return GorePackage.SOFTGOAL__CHILDREN;
+				case GorePackage.GOAL__REFINEMENTS: return GorePackage.SOFTGOAL__REFINEMENTS;
 				case GorePackage.GOAL__PARENT: return GorePackage.SOFTGOAL__PARENT;
 				default: return -1;
 			}

@@ -379,7 +379,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGoal_Children() {
+	public EReference getGoal_Refinements() {
 		return (EReference)goalEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -812,7 +812,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		goalEClass = createEClass(GOAL);
 		createEAttribute(goalEClass, GOAL__REFINEMENT_TYPE);
-		createEReference(goalEClass, GOAL__CHILDREN);
+		createEReference(goalEClass, GOAL__REFINEMENTS);
 		createEReference(goalEClass, GOAL__PARENT);
 
 		hardGoalEClass = createEClass(HARD_GOAL);
@@ -966,10 +966,16 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGoal_RefinementType(), this.getRefinementType(), "refinementType", null, 0, 1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGoal_Children(), this.getGoal(), this.getGoal_Parent(), "children", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGoal_Parent(), this.getGoal(), this.getGoal_Children(), "parent", null, 0, 1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_Refinements(), this.getGoal(), this.getGoal_Parent(), "refinements", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_Parent(), this.getGoal(), this.getGoal_Refinements(), "parent", null, 0, 1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(goalEClass, ecorePackage.getEInt(), "getChildrenStateCount", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(goalEClass, null, "getChildren", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEEList());
+		g2 = createEGenericType(this.getGOREElement());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		initEClass(hardGoalEClass, HardGoal.class, "HardGoal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHardGoal_GoalModel(), this.getGoalModel(), null, "goalModel", null, 0, 1, HardGoal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

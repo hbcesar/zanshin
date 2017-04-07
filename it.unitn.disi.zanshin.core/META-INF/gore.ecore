@@ -93,11 +93,16 @@
         <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Converts to EList so we can return, adding the total number of definable children to the last position.&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;for (int count : stateCount)&#xA;&#x9;stateCountList.add(count);&#xA;stateCountList.add(defChildrenCount);&#xA;return stateCountList;"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getChildren">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="#//GOREElement"/>
+      </eGenericType>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//Goal" containment="true" eOpposite="#//Goal/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Goal"
-        eOpposite="#//Goal/children"/>
+        eOpposite="#//Goal/refinements"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement #//Goal">
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"/>

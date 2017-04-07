@@ -252,13 +252,13 @@ public interface GorePackage extends EPackage {
 	int GOAL__REFINEMENT_TYPE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__CHILDREN = 1;
+	int GOAL__REFINEMENTS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -352,13 +352,13 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HARD_GOAL__CHILDREN = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
+	int HARD_GOAL__REFINEMENTS = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -443,13 +443,13 @@ public interface GorePackage extends EPackage {
 	int SOFTGOAL__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOFTGOAL__CHILDREN = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
+	int SOFTGOAL__REFINEMENTS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -1171,15 +1171,15 @@ public interface GorePackage extends EPackage {
 	EAttribute getGoal_RefinementType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.Goal#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinements <em>Refinements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.Goal#getChildren()
+	 * @return the meta object for the containment reference list '<em>Refinements</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.Goal#getRefinements()
 	 * @see #getGoal()
 	 * @generated
 	 */
-	EReference getGoal_Children();
+	EReference getGoal_Refinements();
 
 	/**
 	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.Goal#getParent <em>Parent</em>}'.
@@ -1755,12 +1755,12 @@ public interface GorePackage extends EPackage {
 		EAttribute GOAL__REFINEMENT_TYPE = eINSTANCE.getGoal_RefinementType();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GOAL__CHILDREN = eINSTANCE.getGoal_Children();
+		EReference GOAL__REFINEMENTS = eINSTANCE.getGoal_Refinements();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
