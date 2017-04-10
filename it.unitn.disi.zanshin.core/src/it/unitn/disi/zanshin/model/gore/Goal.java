@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinements <em>Refinements</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.Goal#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoal()
@@ -57,7 +56,6 @@ public interface Goal extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Refinements</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.Goal}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.Goal#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Refinements</em>' containment reference list isn't clear,
@@ -66,8 +64,7 @@ public interface Goal extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Refinements</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoal_Refinements()
-	 * @see it.unitn.disi.zanshin.model.gore.Goal#getParent
-	 * @model opposite="parent" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Goal> getRefinements();
@@ -83,34 +80,6 @@ public interface Goal extends EObject {
 	 * @generated
 	 */
 	EList<GOREElement> getChildren();
-
-	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinements <em>Refinements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' container reference.
-	 * @see #setParent(Goal)
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoal_Parent()
-	 * @see it.unitn.disi.zanshin.model.gore.Goal#getRefinements
-	 * @model opposite="refinements" transient="false"
-	 * @generated
-	 */
-	Goal getParent();
-
-	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.Goal#getParent <em>Parent</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' container reference.
-	 * @see #getParent()
-	 * @generated
-	 */
-	void setParent(Goal value);
 
 	/**
 	 * <!-- begin-user-doc -->

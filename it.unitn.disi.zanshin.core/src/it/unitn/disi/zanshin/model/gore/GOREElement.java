@@ -17,6 +17,7 @@ import org.eeat.model.LTL.OclAny;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}</li>
@@ -27,6 +28,32 @@ import org.eeat.model.LTL.OclAny;
  * @generated
  */
 public interface GOREElement extends OclAny {
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent</em>' reference.
+	 * @see #setParent(GOREElement)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement_Parent()
+	 * @model
+	 * @generated
+	 */
+	GOREElement getParent();
+
+	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @see #getParent()
+	 * @generated
+	 */
+	void setParent(GOREElement value);
+
 	/**
 	 * Returns the value of the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->

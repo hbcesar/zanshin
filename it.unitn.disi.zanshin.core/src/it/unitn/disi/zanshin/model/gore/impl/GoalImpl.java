@@ -7,6 +7,7 @@ import it.unitn.disi.zanshin.model.gore.GOREElementState;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.RefinementType;
+import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -35,7 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalImpl#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalImpl#getRefinements <em>Refinements</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalImpl#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,7 +119,7 @@ public class GoalImpl extends EObjectImpl implements Goal {
 	 */
 	public EList<Goal> getRefinements() {
 		if (refinements == null) {
-			refinements = new EObjectContainmentWithInverseEList<Goal>(Goal.class, this, GorePackage.GOAL__REFINEMENTS, GorePackage.GOAL__PARENT);
+			refinements = new EObjectContainmentEList<Goal>(Goal.class, this, GorePackage.GOAL__REFINEMENTS);
 		}
 		return refinements;
 	}
@@ -139,55 +140,14 @@ public class GoalImpl extends EObjectImpl implements Goal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Goal getParent() {
-		if (eContainerFeatureID() != GorePackage.GOAL__PARENT) return null;
-		return (Goal)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetParent(Goal newParent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParent, GorePackage.GOAL__PARENT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(Goal newParent) {
-		if (newParent != eInternalContainer() || (eContainerFeatureID() != GorePackage.GOAL__PARENT && newParent != null)) {
-			if (EcoreUtil.isAncestor(this, newParent))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newParent != null)
-				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GOAL__REFINEMENTS, Goal.class, msgs);
-			msgs = basicSetParent(newParent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GOAL__PARENT, newParent, newParent));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Integer> getChildrenStateCount() {
 		// Counts the number of children in each state and the number of defineable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];
+		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
 		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {
-			if (child instanceof DefinableRequirement) {
+		for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {
+			if (!(child instanceof Softgoal)) {
 				defChildrenCount++;
-				stateCount[((DefinableRequirement) child).getState().getValue()]++;
+				stateCount[((GOREElement) child).getState().getValue()]++;
 			}
 		}
 		
@@ -204,48 +164,13 @@ public class GoalImpl extends EObjectImpl implements Goal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case GorePackage.GOAL__REFINEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRefinements()).basicAdd(otherEnd, msgs);
-			case GorePackage.GOAL__PARENT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParent((Goal)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GorePackage.GOAL__REFINEMENTS:
 				return ((InternalEList<?>)getRefinements()).basicRemove(otherEnd, msgs);
-			case GorePackage.GOAL__PARENT:
-				return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case GorePackage.GOAL__PARENT:
-				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL__REFINEMENTS, Goal.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -260,8 +185,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 				return getRefinementType();
 			case GorePackage.GOAL__REFINEMENTS:
 				return getRefinements();
-			case GorePackage.GOAL__PARENT:
-				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -282,9 +205,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 				getRefinements().clear();
 				getRefinements().addAll((Collection<? extends Goal>)newValue);
 				return;
-			case GorePackage.GOAL__PARENT:
-				setParent((Goal)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -303,9 +223,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 			case GorePackage.GOAL__REFINEMENTS:
 				getRefinements().clear();
 				return;
-			case GorePackage.GOAL__PARENT:
-				setParent((Goal)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -322,8 +239,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 				return refinementType != REFINEMENT_TYPE_EDEFAULT;
 			case GorePackage.GOAL__REFINEMENTS:
 				return refinements != null && !refinements.isEmpty();
-			case GorePackage.GOAL__PARENT:
-				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

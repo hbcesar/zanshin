@@ -4,7 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="GOREElement" eSuperTypes="LTL.ecore#//OclAny">
     <eOperations name="start">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);&#xA;&#xA;// If the monitoring service is active, warn it that this requirement has been started.&#xA;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xA;if (monitoringService != null)&#xA;&#x9;monitoringService.monitorMethodCall(this, MonitorableMethod.START);&#xA;&#xA;// Propagate the start to the parent.&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement) &amp;&amp; (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))&#xA;&#x9;((DefinableRequirement) parent).start();"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xD;&#xA;setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// If the monitoring service is active, warn it that this requirement has been started.&#xD;&#xA;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xD;&#xA;if (monitoringService != null)&#xD;&#xA;&#x9;monitoringService.monitorMethodCall(this, MonitorableMethod.START);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// Propagate the start to the parent.&#xD;&#xA;it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();&#xD;&#xA;if ((parent != null) &amp;&amp; (!(parent instanceof Softgoal)) &amp;&amp; (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))&#xD;&#xA;&#x9;((GOREElement) parent).start();"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="end">
@@ -14,7 +14,7 @@
     </eOperations>
     <eOperations name="success">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement succeeded: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xA;setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);&#xA;&#xA;// If the monitoring service is active, warn it that this requirement has been successful.&#xA;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xA;if (monitoringService != null)&#xA;&#x9;monitoringService.monitorMethodCall(this, MonitorableMethod.SUCCESS);&#xA;&#xA;// If the requirement is successful, then it has also ended.&#xA;end();&#xA;&#xA;// Propagate the success to the parent, depending on the type of refinement.&#xA;it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();&#xA;if ((parent != null) &amp;&amp; (parent instanceof DefinableRequirement)) {&#xA;&#x9;if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((DefinableRequirement) parent).success();&#xA;&#x9;else ((DefinableRequirement)parent).checkState();&#xA;}"/>
+        <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement succeeded: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xD;&#xA;setState(it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// If the monitoring service is active, warn it that this requirement has been successful.&#xD;&#xA;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xD;&#xA;if (monitoringService != null)&#xD;&#xA;&#x9;monitoringService.monitorMethodCall(this, MonitorableMethod.SUCCESS);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// If the requirement is successful, then it has also ended.&#xD;&#xA;end();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// Propagate the success to the parent, depending on the type of refinement.&#xD;&#xA;it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();&#xD;&#xA;if ((parent != null) &amp;&amp; (parent instanceof Goal)) {&#xD;&#xA;&#x9;Goal p = (Goal) parent;&#xD;&#xA;&#x9;if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((GOREElement) parent).success();&#xD;&#xA;&#x9;else ((GOREElement)parent).checkState();&#xD;&#xA;}"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="fail">
@@ -46,6 +46,7 @@
         <eTypeArguments eClassifier="#//GOREElement"/>
       </eGenericType>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//GOREElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//GOREElementState"
         defaultValueLiteral="undefined"/>
@@ -76,9 +77,6 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="getChildren">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;Task> tasks = this.getTasks();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : tasks){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
-      </eAnnotations>
       <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
         <eTypeArguments eClassifier="#//GOREElement"/>
       </eGenericType>
@@ -90,7 +88,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Goal">
     <eOperations name="getChildrenStateCount" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];&#xA;int defChildrenCount = 0;&#xA;for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {&#xA;&#x9;if (child instanceof DefinableRequirement) {&#xA;&#x9;&#x9;defChildrenCount++;&#xA;&#x9;&#x9;stateCount[((DefinableRequirement) child).getState().getValue()]++;&#xA;&#x9;}&#xA;}&#xA;&#xA;// Converts to EList so we can return, adding the total number of definable children to the last position.&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;for (int count : stateCount)&#xA;&#x9;stateCountList.add(count);&#xA;stateCountList.add(defChildrenCount);&#xA;return stateCountList;"/>
+        <details key="body" value="// Counts the number of children in each state and the number of defineable children.&#xD;&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];&#xD;&#xA;int defChildrenCount = 0;&#xD;&#xA;for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {&#xD;&#xA;&#x9;if (!(child instanceof Softgoal)) {&#xD;&#xA;&#x9;&#x9;defChildrenCount++;&#xD;&#xA;&#x9;&#x9;stateCount[((GOREElement) child).getState().getValue()]++;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// Converts to EList so we can return, adding the total number of definable children to the last position.&#xD;&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;for (int count : stateCount)&#xD;&#xA;&#x9;stateCountList.add(count);&#xD;&#xA;stateCountList.add(defChildrenCount);&#xD;&#xA;return stateCountList;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getChildren">
@@ -100,17 +98,23 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
-        eType="#//Goal" containment="true" eOpposite="#//Goal/parent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Goal"
-        eOpposite="#//Goal/refinements"/>
+        eType="#//Goal" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement #//Goal">
+    <eOperations name="getChildren">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;Task> tasks = super.getTasks();&#xD;&#xA;EList&lt;Goal> goals = getRefinements();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : tasks){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(Goal child : goals){&#xD;&#xA;&#x9;children.add((GOREElement) child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="#//GOREElement"/>
+      </eGenericType>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//GoalOrientedRequirement #//Goal">
     <eOperations name="getChildren">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;QualityConstraint> qc = this.getConstraints();&#xD;&#xA;EList&lt;Goal> goals = getChildren_();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : qc){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;for(Goal child : goals){&#xD;&#xA;&#x9;children.add((GOREElement) child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
+        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;QualityConstraint> qc = this.getConstraints();&#xD;&#xA;EList&lt;Goal> goals = getRefinements();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : qc){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;for(Goal child : goals){&#xD;&#xA;&#x9;children.add((GOREElement) child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
       </eAnnotations>
       <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
         <eTypeArguments eClassifier="#//GOREElement"/>
@@ -136,7 +140,16 @@
         defaultValueLiteral="1.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//GOREElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement">
+    <eOperations name="getChildren">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;Task> tasks = this.getTasks();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : tasks){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="#//GOREElement"/>
+      </eGenericType>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AggregationLevel">
     <eLiterals name="INSTANCE" literal="instance-level"/>
     <eLiterals name="CLASS" value="1" literal="class-level"/>

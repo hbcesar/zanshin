@@ -178,27 +178,6 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GOREElement> getChildren() {
-		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
-		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
-		EList<Task> tasks = this.getTasks();
-						
-		for(GOREElement child : awreqs_da){
-			children.add(child);
-		}
-						
-		for(GOREElement child : tasks){
-			children.add(child);
-		}
-						
-		return children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {

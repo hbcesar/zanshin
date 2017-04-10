@@ -68,6 +68,15 @@ public interface EcaPackage extends EPackage {
 	int ECA_AW_REQ = 0;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECA_AW_REQ__PARENT = GorePackage.AW_REQ__PARENT;
+
+	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

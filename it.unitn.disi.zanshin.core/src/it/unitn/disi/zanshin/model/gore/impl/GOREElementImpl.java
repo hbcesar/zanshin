@@ -5,8 +5,11 @@ package it.unitn.disi.zanshin.model.gore.impl;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GOREElementState;
+import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
+import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
+import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 import java.util.Date;
@@ -17,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -31,6 +35,7 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getAwreqs <em>Awreqs</em>}</li>
@@ -39,6 +44,16 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  * @generated
  */
 public class GOREElementImpl extends OclAnyImpl implements GOREElement {
+	/**
+	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParent()
+	 * @generated
+	 * @ordered
+	 */
+	protected GOREElement parent;
+
 	/**
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -113,6 +128,44 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GOREElement getParent() {
+		if (parent != null && parent.eIsProxy()) {
+			InternalEObject oldParent = (InternalEObject)parent;
+			parent = (GOREElement)eResolveProxy(oldParent);
+			if (parent != oldParent) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
+			}
+		}
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GOREElement basicGetParent() {
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(GOREElement newParent) {
+		GOREElement oldParent = parent;
+		parent = newParent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Date getTime() {
 		return time;
 	}
@@ -169,7 +222,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public void start() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement started: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);
+		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);
 		
 		// If the monitoring service is active, warn it that this requirement has been started.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
@@ -177,9 +230,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 			monitoringService.monitorMethodCall(this, MonitorableMethod.START);
 		
 		// Propagate the start to the parent.
-		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
-		if ((parent != null) && (parent instanceof DefinableRequirement) && (((DefinableRequirement) parent).getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED))
-			((DefinableRequirement) parent).start();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		if ((parent != null) && (!(parent instanceof Softgoal)) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
+			((GOREElement) parent).start();
 	}
 
 	/**
@@ -204,7 +257,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public void success() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement succeeded: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED);
+		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED);
 		
 		// If the monitoring service is active, warn it that this requirement has been successful.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
@@ -215,10 +268,11 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		end();
 		
 		// Propagate the success to the parent, depending on the type of refinement.
-		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
-		if ((parent != null) && (parent instanceof DefinableRequirement)) {
-			if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((DefinableRequirement) parent).success();
-			else ((DefinableRequirement)parent).checkState();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		if ((parent != null) && (parent instanceof Goal)) {
+			Goal p = (Goal) parent;
+			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((GOREElement) parent).success();
+			else ((GOREElement)parent).checkState();
 		}
 	}
 
@@ -229,7 +283,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public void fail() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement failed: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED);
+		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED);
 		
 		// If the monitoring service is active, warn it that this requirement has failed.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
@@ -240,9 +294,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		end();
 		
 		// Propagate the failure to the parent, depending on the type of refinement.
-		it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
-		if ((parent != null) && (parent instanceof DefinableRequirement)) {
-			if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		if ((parent != null) && !(parent instanceof Softgoal)) {
+						if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();
 			else ((DefinableRequirement)parent).checkState();
 		}
 	}
@@ -382,6 +436,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__PARENT:
+				if (resolve) return getParent();
+				return basicGetParent();
 			case GorePackage.GORE_ELEMENT__TIME:
 				return getTime();
 			case GorePackage.GORE_ELEMENT__STATE:
@@ -401,6 +458,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__PARENT:
+				setParent((GOREElement)newValue);
+				return;
 			case GorePackage.GORE_ELEMENT__TIME:
 				setTime((Date)newValue);
 				return;
@@ -423,6 +483,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__PARENT:
+				setParent((GOREElement)null);
+				return;
 			case GorePackage.GORE_ELEMENT__TIME:
 				setTime(TIME_EDEFAULT);
 				return;
@@ -444,6 +507,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__PARENT:
+				return parent != null;
 			case GorePackage.GORE_ELEMENT__TIME:
 				return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
 			case GorePackage.GORE_ELEMENT__STATE:

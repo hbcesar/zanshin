@@ -48,7 +48,7 @@ public class SimpleResolutionConditionImpl extends ResolutionConditionImpl imple
 			awreq = events.get(events.size() - 1).getAwReq();
 		
 		// If the current evaluation is Success, the problem is solved.
-		if ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED))
+		if ((awreq != null) && (awreq.getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED))
 			return true;
 		
 		// Otherwise, if the last applied strategy was "abort", the problem is also solved.

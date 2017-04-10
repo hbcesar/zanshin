@@ -156,7 +156,7 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		}
 		
 		// The requirement to retry is always the AwReq's target.
-		it.unitn.disi.zanshin.model.gore.Requirement requirement = awreq.getTarget();
+		it.unitn.disi.zanshin.model.gore.GOREElement requirement = awreq.getTarget();
 		if (requirement == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Strategy {0} cannot be executed because the referred AwReq doesn't have a target set.", strategyName); //$NON-NLS-1$
 			return;
@@ -165,7 +165,7 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		// Executes the Retry strategy.
 		strategyName += "(" + copy + "; " + time + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		it.unitn.disi.zanshin.core.CoreUtils.log.info("{0} Applying strategy {1}...", session.getId(), strategyName); //$NON-NLS-1$
-		it.unitn.disi.zanshin.model.gore.Requirement newRequirement = it.unitn.disi.zanshin.core.CoreUtils.createCopy(requirement);
+		it.unitn.disi.zanshin.model.gore.GOREElement newRequirement = it.unitn.disi.zanshin.core.CoreUtils.createCopy(requirement);
 		it.unitn.disi.zanshin.model.gore.GoalModel goalModel = requirement.findGoalModel();
 		if ((copy) && (requirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement) && (newRequirement instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement))
 			controller.copyData(goalModel, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) requirement, (it.unitn.disi.zanshin.model.gore.PerformativeRequirement) newRequirement);

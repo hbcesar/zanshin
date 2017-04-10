@@ -2,9 +2,11 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.Task;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -32,6 +34,27 @@ public class TaskImpl extends PerformativeRequirementImpl implements Task {
 	@Override
 	protected EClass eStaticClass() {
 		return GorePackage.Literals.TASK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
+		EList<Task> tasks = this.getTasks();
+						
+		for(GOREElement child : awreqs_da){
+			children.add(child);
+		}
+						
+		for(GOREElement child : tasks){
+			children.add(child);
+		}
+						
+		return children;
 	}
 
 } //TaskImpl

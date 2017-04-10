@@ -1,6 +1,6 @@
 package it.unitn.disi.zanshin.services;
 
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 
 /**
@@ -27,7 +27,7 @@ public interface IMonitoringService {
 	 * @param method
 	 *          The type of life-cycle method that has been called.
 	 */
-	void monitorMethodCall(DefinableRequirement req, MonitorableMethod method);
+	void monitorMethodCall(GOREElement req, MonitorableMethod method);
 
 	/**
 	 * Stops the monitoring service, giving its implementation a chance to stop any threads, close resources, etc.
