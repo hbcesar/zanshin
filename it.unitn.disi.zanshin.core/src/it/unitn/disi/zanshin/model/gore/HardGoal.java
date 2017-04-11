@@ -4,7 +4,6 @@ package it.unitn.disi.zanshin.model.gore;
 
 import org.eclipse.emf.common.util.EList;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Hard Goal</b></em>'.

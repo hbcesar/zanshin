@@ -19,8 +19,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -220,18 +220,42 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Integer> getChildrenStateCount() {
+		// Counts the number of children in each state and the number of defineable children.
+		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
+		int defChildrenCount = 0;
+		for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {
+			if (!(child instanceof Softgoal)) {
+				defChildrenCount++;
+				stateCount[((GOREElement) child).getState().getValue()]++;
+			}
+		}
+		
+		// Converts to EList so we can return, adding the total number of definable children to the last position.
+		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
+		for (int count : stateCount)
+			stateCountList.add(count);
+		stateCountList.add(defChildrenCount);
+		return stateCountList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void start() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement started: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);
-		
+				
 		// If the monitoring service is active, warn it that this requirement has been started.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
 		if (monitoringService != null)
 			monitoringService.monitorMethodCall(this, MonitorableMethod.START);
-		
+				
 		// Propagate the start to the parent.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if ((parent != null) && (!(parent instanceof Softgoal)) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
+		if ((parent != null) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
 			((GOREElement) parent).start();
 	}
 
@@ -258,18 +282,18 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	public void success() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement succeeded: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED);
-		
+				
 		// If the monitoring service is active, warn it that this requirement has been successful.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
 		if (monitoringService != null)
 			monitoringService.monitorMethodCall(this, MonitorableMethod.SUCCESS);
-		
+				
 		// If the requirement is successful, then it has also ended.
 		end();
-		
+				
 		// Propagate the success to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if ((parent != null) && (parent instanceof Goal)) {
+		if (parent != null) {
 			Goal p = (Goal) parent;
 			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((GOREElement) parent).success();
 			else ((GOREElement)parent).checkState();
@@ -284,20 +308,21 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	public void fail() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement failed: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED);
-		
+				
 		// If the monitoring service is active, warn it that this requirement has failed.
 		it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
 		if (monitoringService != null)
 			monitoringService.monitorMethodCall(this, MonitorableMethod.FAIL);
-			
+					
 		// If the requirement failed, then it has also ended.
 		end();
-		
+				
 		// Propagate the failure to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if ((parent != null) && !(parent instanceof Softgoal)) {
-						if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((DefinableRequirement) parent).fail();
-			else ((DefinableRequirement)parent).checkState();
+		if (parent != null) {
+			Goal p = (Goal) parent;
+			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((GOREElement) parent).fail();
+			else ((GOREElement)parent).checkState();
 		}
 	}
 

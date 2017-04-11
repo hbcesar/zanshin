@@ -2,6 +2,7 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;

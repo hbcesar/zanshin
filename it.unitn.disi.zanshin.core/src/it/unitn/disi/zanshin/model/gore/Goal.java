@@ -71,23 +71,10 @@ public interface Goal extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" many="false"
 	 * @generated
 	 */
 	EList<GOREElement> getChildren();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='// Counts the number of children in each state and the number of defineable children.\nint[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];\nint defChildrenCount = 0;\nfor (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {\n\tif (child instanceof DefinableRequirement) {\n\t\tdefChildrenCount++;\n\t\tstateCount[((DefinableRequirement) child).getState().getValue()]++;\n\t}\n}\n\n// Converts to EList so we can return, adding the total number of definable children to the last position.\nEList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();\nfor (int count : stateCount)\n\tstateCountList.add(count);\nstateCountList.add(defChildrenCount);\nreturn stateCountList;'"
-	 * @generated
-	 */
-	EList<Integer> getChildrenStateCount();
 
 } // Goal

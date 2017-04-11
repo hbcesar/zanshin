@@ -22,9 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -171,30 +169,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		}
 								
 		return children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Integer> getChildrenStateCount() {
-		// Counts the number of children in each state and the number of defineable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.DefinableRequirementState.VALUES.size()];
-		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren()) {
-			if (child instanceof DefinableRequirement) {
-				defChildrenCount++;
-				stateCount[((DefinableRequirement) child).getState().getValue()]++;
-			}
-		}
-		
-		// Converts to EList so we can return, adding the total number of definable children to the last position.
-		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
-		for (int count : stateCount)
-			stateCountList.add(count);
-		stateCountList.add(defChildrenCount);
-		return stateCountList;
 	}
 
 	/**

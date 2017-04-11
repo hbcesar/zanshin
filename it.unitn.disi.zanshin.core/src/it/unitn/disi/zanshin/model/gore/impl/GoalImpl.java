@@ -3,11 +3,9 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.GOREElement;
-import it.unitn.disi.zanshin.model.gore.GOREElementState;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.RefinementType;
-import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 
@@ -23,8 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -133,30 +129,6 @@ public class GoalImpl extends EObjectImpl implements Goal {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Integer> getChildrenStateCount() {
-		// Counts the number of children in each state and the number of defineable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
-		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {
-			if (!(child instanceof Softgoal)) {
-				defChildrenCount++;
-				stateCount[((GOREElement) child).getState().getValue()]++;
-			}
-		}
-		
-		// Converts to EList so we can return, adding the total number of definable children to the last position.
-		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
-		for (int count : stateCount)
-			stateCountList.add(count);
-		stateCountList.add(defChildrenCount);
-		return stateCountList;
 	}
 
 	/**

@@ -2,7 +2,6 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
-import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.model.gore.Task;
