@@ -178,7 +178,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	public EList<GOREElement> getChildren() {
 		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
 		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
-		EList<Task> tasks = super.getTasks();
+		EList<it.unitn.disi.zanshin.model.gore.Task> tasks = super.getTasks();
 		EList<Goal> goals = getRefinements();
 										
 		for(GOREElement child : awreqs_da){

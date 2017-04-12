@@ -40,7 +40,7 @@
     </eOperations>
     <eOperations name="findGoalModel" eType="#//GoalModel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="GoalModel model = null;&#xA;&#xA;// If it's the root goal, return the goal model.&#xA;if (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))&#xA;&#x9;model = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();&#xA;&#xA;// If the model is not found in the root goal, move up the requirement tree looking for the root goal.&#xA;if ((model == null) &amp;&amp; (getParent() != null))&#xA;&#x9;model = getParent().findGoalModel();&#xA;&#xA;// Returns the found model, or null if no model has been found.&#xA;return model;"/>
+        <details key="body" value="GoalModel model = null;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// If it's the root goal, return the goal model.&#xD;&#xA;if (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this) &amp; (this instanceof it.unitn.disi.zanshin.model.gore.HardGoal))&#xD;&#xA;&#x9;&#x9;&#x9;model = ((it.unitn.disi.zanshin.model.gore.HardGoal) this).getGoalModel();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// If the model is not found in the root goal, move up the requirement tree looking for the root goal.&#xD;&#xA;if ((model == null) &amp;&amp; (getParent() != null))&#xD;&#xA;&#x9;&#x9;&#x9;model = getParent().findGoalModel();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// Returns the found model, or null if no model has been found.&#xD;&#xA;return model;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getChildren">
@@ -69,6 +69,7 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assumptions" upperBound="-1"
         eType="#//DomainAssumption"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" eSuperTypes="#//GoalOrientedRequirement">
     <eOperations name="cancel">
@@ -96,14 +97,13 @@
         <eTypeArguments eClassifier="#//GOREElement"/>
       </eGenericType>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//Goal" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement #//Goal">
     <eOperations name="getChildren">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;Task> tasks = super.getTasks();&#xD;&#xA;EList&lt;Goal> goals = getRefinements();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : tasks){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(Goal child : goals){&#xD;&#xA;&#x9;children.add((GOREElement) child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
+        <details key="body" value="EList&lt;GOREElement> children = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;EList&lt;GOREElement> awreqs_da = (EList&lt;GOREElement>) super.getChildren();&#xD;&#xA;EList&lt;it.unitn.disi.zanshin.model.gore.Task> tasks = super.getTasks();&#xD;&#xA;EList&lt;Goal> goals = getRefinements();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : awreqs_da){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(GOREElement child : tasks){&#xD;&#xA;&#x9;children.add(child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;for(Goal child : goals){&#xD;&#xA;&#x9;children.add((GOREElement) child);&#xD;&#xA;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;return children;"/>
       </eAnnotations>
       <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
         <eTypeArguments eClassifier="#//GOREElement"/>
