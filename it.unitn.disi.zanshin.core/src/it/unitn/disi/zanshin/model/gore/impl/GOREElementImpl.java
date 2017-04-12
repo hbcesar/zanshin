@@ -220,6 +220,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	//TODO: Rever isso since todos sao definable children agora
 	public EList<Integer> getChildrenStateCount() {
 		// Counts the number of children in each state and the number of defineable children.
 		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
