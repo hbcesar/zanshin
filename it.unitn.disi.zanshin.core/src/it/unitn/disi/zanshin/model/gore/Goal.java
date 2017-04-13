@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinements <em>Refinements</em>}</li>
  * </ul>
  *
@@ -24,35 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Goal extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Refinement Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link it.unitn.disi.zanshin.model.gore.RefinementType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Refinement Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Refinement Type</em>' attribute.
-	 * @see it.unitn.disi.zanshin.model.gore.RefinementType
-	 * @see #setRefinementType(RefinementType)
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoal_RefinementType()
-	 * @model
-	 * @generated
-	 */
-	RefinementType getRefinementType();
-
-	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinementType <em>Refinement Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Refinement Type</em>' attribute.
-	 * @see it.unitn.disi.zanshin.model.gore.RefinementType
-	 * @see #getRefinementType()
-	 * @generated
-	 */
-	void setRefinementType(RefinementType value);
-
 	/**
 	 * Returns the value of the '<em><b>Refinements</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.Goal}.

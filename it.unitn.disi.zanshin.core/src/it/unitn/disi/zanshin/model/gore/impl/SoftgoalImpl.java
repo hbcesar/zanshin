@@ -6,20 +6,16 @@ import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
-import it.unitn.disi.zanshin.model.gore.RefinementType;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -33,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -41,26 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoal {
-	/**
-	 * The default value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRefinementType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final RefinementType REFINEMENT_TYPE_EDEFAULT = RefinementType.AND;
-
-	/**
-	 * The cached value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRefinementType()
-	 * @generated
-	 * @ordered
-	 */
-	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getRefinements() <em>Refinements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -98,27 +73,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	protected EClass eStaticClass() {
 		return GorePackage.Literals.SOFTGOAL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RefinementType getRefinementType() {
-		return refinementType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRefinementType(RefinementType newRefinementType) {
-		RefinementType oldRefinementType = refinementType;
-		refinementType = newRefinementType == null ? REFINEMENT_TYPE_EDEFAULT : newRefinementType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.SOFTGOAL__REFINEMENT_TYPE, oldRefinementType, refinementType));
 	}
 
 	/**
@@ -210,8 +164,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
-				return getRefinementType();
 			case GorePackage.SOFTGOAL__REFINEMENTS:
 				return getRefinements();
 			case GorePackage.SOFTGOAL__CONSTRAINTS:
@@ -229,9 +181,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
-				setRefinementType((RefinementType)newValue);
-				return;
 			case GorePackage.SOFTGOAL__REFINEMENTS:
 				getRefinements().clear();
 				getRefinements().addAll((Collection<? extends Goal>)newValue);
@@ -252,9 +201,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
-				setRefinementType(REFINEMENT_TYPE_EDEFAULT);
-				return;
 			case GorePackage.SOFTGOAL__REFINEMENTS:
 				getRefinements().clear();
 				return;
@@ -273,8 +219,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.SOFTGOAL__REFINEMENT_TYPE:
-				return refinementType != REFINEMENT_TYPE_EDEFAULT;
 			case GorePackage.SOFTGOAL__REFINEMENTS:
 				return refinements != null && !refinements.isEmpty();
 			case GorePackage.SOFTGOAL__CONSTRAINTS:
@@ -292,7 +236,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Goal.class) {
 			switch (derivedFeatureID) {
-				case GorePackage.SOFTGOAL__REFINEMENT_TYPE: return GorePackage.GOAL__REFINEMENT_TYPE;
 				case GorePackage.SOFTGOAL__REFINEMENTS: return GorePackage.GOAL__REFINEMENTS;
 				default: return -1;
 			}
@@ -309,28 +252,11 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Goal.class) {
 			switch (baseFeatureID) {
-				case GorePackage.GOAL__REFINEMENT_TYPE: return GorePackage.SOFTGOAL__REFINEMENT_TYPE;
 				case GorePackage.GOAL__REFINEMENTS: return GorePackage.SOFTGOAL__REFINEMENTS;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (refinementType: ");
-		result.append(refinementType);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SoftgoalImpl

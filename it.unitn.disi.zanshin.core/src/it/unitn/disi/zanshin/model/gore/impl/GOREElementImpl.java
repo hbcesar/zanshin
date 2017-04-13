@@ -5,11 +5,8 @@ package it.unitn.disi.zanshin.model.gore.impl;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GOREElementState;
-import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
-import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
-import it.unitn.disi.zanshin.model.gore.Softgoal;
 
 import java.util.Collection;
 import java.util.Date;
@@ -220,31 +217,6 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	//TODO: Rever isso since todos sao definable children agora
-	public EList<Integer> getChildrenStateCount() {
-		// Counts the number of children in each state and the number of defineable children.
-		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
-		int defChildrenCount = 0;
-		for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {
-			if (!(child instanceof Softgoal)) {
-				defChildrenCount++;
-				stateCount[((GOREElement) child).getState().getValue()]++;
-			}
-		}
-		
-		// Converts to EList so we can return, adding the total number of definable children to the last position.
-		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
-		for (int count : stateCount)
-			stateCountList.add(count);
-		stateCountList.add(defChildrenCount);
-		return stateCountList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void start() {
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement started: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);
@@ -256,7 +228,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				
 		// Propagate the start to the parent.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if ((parent != null) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
+		if ((parent != null) && (!(parent instanceof Softgoal)) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
 			((GOREElement) parent).start();
 	}
 
@@ -294,7 +266,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				
 		// Propagate the success to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if (parent != null) {
+		if ((parent != null) && (parent instanceof Goal)) {
 			Goal p = (Goal) parent;
 			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((GOREElement) parent).success();
 			else ((GOREElement)parent).checkState();
@@ -320,11 +292,10 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				
 		// Propagate the failure to the parent, depending on the type of refinement.
 		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-		if (parent != null) {
+		if ((parent != null) && !(parent instanceof Softgoal)) {
 			Goal p = (Goal) parent;
 			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((GOREElement) parent).fail();
 			else ((GOREElement)parent).checkState();
-		}
 	}
 
 	/**
@@ -332,23 +303,19 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
-	//TODO: Pensar melhor nessa funcao, acho que ela pode ser bastante simplificada, já que só precisa contar como ta o leite das criança
 	public void checkState() {
 		// Counts the number of children in each state and the number of definable children.
 		org.eclipse.emf.common.util.EList<Integer> stateCount = getChildrenStateCount();
 		int defChildrenCount = stateCount.get(stateCount.size() - 1);
 		
-		// For AND-refined requirements (that are possible only in GoalOrientedRequirement), checks if all children have SUCCEEDED.
-		if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
-			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gor = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
-			if (gor.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {
-				if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED_VALUE) == defChildrenCount) success();
-			}
+		// For AND-refined requirements, checks if all children have SUCCEEDED.
+		if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE) == defChildrenCount) success();
 		}
-		// For OR-refined requirements in GoalOrientedRequirement or in all other requirements, checks if all children have FAILED.
+		
+		// For OR-refined requirements, checks if all children have FAILED.
 		else {
-			if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED_VALUE) == defChildrenCount) fail();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == defChildrenCount) fail();
 		}
 	}
 
@@ -373,7 +340,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm). When
 		// elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as EMF
 		// generated code will handle the inverse association automatically.
-		GOREElement parent = getParent();
+		Requirement parent = getParent();
 		setParent(null);
 		newRequirement.setParent(parent);
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Replacing requirement instances of class {0} ({1} -> {2})", eClass().getName(), this, newRequirement); //$NON-NLS-1$
@@ -383,8 +350,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		// one in an AND-refinement, the parent should change from Failed to Started or Undefined. Navigate up the tree.
 		while (parent != null) {
 			// This procedure only makes sense in definable requirements.
-			//if (parent instanceof DefinableRequirement) {
-			GOREElement req = (GOREElement) parent;
+			if (parent instanceof DefinableRequirement) {
+				DefinableRequirement req = (DefinableRequirement) parent;
 		
 				// Counts the number of children in each state and the number of definable children.
 				EList<Integer> stateCount = req.getChildrenStateCount();
@@ -395,22 +362,22 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				switch (req.getRefinementType()) {
 				case AND:
 					// For failed AND-refined requirements, if none of its children failed, reset its state.
-					doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED) && (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED_VALUE) == 0);
+					doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) && (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == 0);
 					break;
 				case OR:
 					// For failed OR-refined requirements, if at least one of its children didn't fail, reset its state.
-					doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED) && (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED_VALUE) < defChildrenCount);
+					doReset = (req.getState() == it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED) && (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) < defChildrenCount);
 					break;
 				}
 				
 				// Checks if a reset is in order.
 				if (doReset) {
 					// If no children have yet started, set the requirement also as Undefined.
-					if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED_VALUE) == defChildrenCount)
-						req.setState(it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED);
+					if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED_VALUE) == defChildrenCount)
+						req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.UNDEFINED);
 		
 					// Otherwise, if at least one child has started, set it also as Started.
-					else req.setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);
+					else req.setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.STARTED);
 		
 					// Log what has just happened.
 					it.unitn.disi.zanshin.core.CoreUtils.log.debug("The status of {0} has been reset to {1}", req.eClass().getName(), req.getState()); //$NON-NLS-1$
@@ -419,7 +386,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		
 			// Next ancestor.
 			parent = parent.getParent();
-		//}
+		}
 	}
 
 	/**
@@ -429,15 +396,15 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public GoalModel findGoalModel() {
 		GoalModel model = null;
-		
+				
 		// If it's the root goal, return the goal model.
 		if (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this) & (this instanceof it.unitn.disi.zanshin.model.gore.HardGoal))
-			model = ((it.unitn.disi.zanshin.model.gore.HardGoal) this).getGoalModel();
-		
+					model = ((it.unitn.disi.zanshin.model.gore.HardGoal) this).getGoalModel();
+				
 		// If the model is not found in the root goal, move up the requirement tree looking for the root goal.
 		if ((model == null) && (getParent() != null))
-			model = getParent().findGoalModel();
-		
+					model = getParent().findGoalModel();
+				
 		// Returns the found model, or null if no model has been found.
 		return model;
 	}
@@ -456,6 +423,27 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		}
 				
 		return children;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Integer> getChildrenStateCount() {
+		// Counts the number of children in each state and the number of children.
+		int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];
+		 
+		for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {
+			stateCount[((GOREElement) child).getState().getValue()]++;
+		}
+		
+		// Converts to EList so we can return
+		EList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();
+		for (int count : stateCount)
+			stateCountList.add(count);
+		
+		return stateCountList;
 	}
 
 	/**

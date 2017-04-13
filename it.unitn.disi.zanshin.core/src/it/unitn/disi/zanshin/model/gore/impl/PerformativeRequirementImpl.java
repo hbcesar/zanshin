@@ -123,9 +123,9 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 */
 	public void cancel() {
 		// Only process the cancellation if the requirement has not yet been canceled.
-		if (getState() != it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED) {
+		if (getState() != it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.debug("Requirement canceled: " + eClass().getName() + " (" + this + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			setState(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED);
+			setState(it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED);
 					
 			// If the monitoring service is active, warn it that this requirement has been canceled.
 			it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
@@ -136,16 +136,16 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 			end();
 			
 			// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.
-			it.unitn.disi.zanshin.model.gore.Requirement parent = getParent();
-			if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.DefinableRequirement)) {
-				if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).checkState();
+			it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+			if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.GOREElement)) {
+				if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.GOREElement)parent).checkState();
 				else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();
-				else ((it.unitn.disi.zanshin.model.gore.DefinableRequirement)parent).fail();
+				else ((it.unitn.disi.zanshin.model.gore.GOREElement)parent).fail();
 			}
 			
 			// Also propagate the cancellation to the children if and-refined and the children are performative.
 			if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)
-				for (it.unitn.disi.zanshin.model.gore.Requirement child : getChildren())
+				for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren())
 					if (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();
 		}
 	}
@@ -156,19 +156,19 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * @generated
 	 */
 	public void checkState() {
-		// Counts the number of children in each state and the number of definable children.
+		//Counts the number of children
 		org.eclipse.emf.common.util.EList<Integer> stateCount = getChildrenStateCount();
-		int defChildrenCount = stateCount.get(stateCount.size() - 1);
+		int childrenCount = getChildren().size();
 		
 		// For AND-refined requirements, checks if all children have SUCCEEDED.
 		if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) {
-			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.SUCCEEDED_VALUE) == defChildrenCount) success();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.SUCCEEDED_VALUE) == childrenCount) success();
 		}
 		
 		// For OR-refined requirements, checks if all children have FAILED or have been CANCELED.
 		else {
-			if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.FAILED_VALUE) == defChildrenCount) fail();
-			else if (stateCount.get(it.unitn.disi.zanshin.model.gore.DefinableRequirementState.CANCELED_VALUE) == defChildrenCount) cancel();
+			if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED_VALUE) == childrenCount) fail();
+			else if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED_VALUE) == childrenCount) cancel();
 		}
 	}
 

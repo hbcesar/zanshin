@@ -169,13 +169,22 @@ public interface GorePackage extends EPackage {
 	int GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = GORE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = GORE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Goal Oriented Requirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 1;
+	int GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl <em>Performative Requirement</em>}' class.
@@ -233,6 +242,15 @@ public interface GorePackage extends EPackage {
 	int PERFORMATIVE_REQUIREMENT__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,22 +288,13 @@ public interface GorePackage extends EPackage {
 	int GOAL = 3;
 
 	/**
-	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL__REFINEMENT_TYPE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__REFINEMENTS = 1;
+	int GOAL__REFINEMENTS = 0;
 
 	/**
 	 * The number of structural features of the '<em>Goal</em>' class.
@@ -294,7 +303,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_FEATURE_COUNT = 2;
+	int GOAL_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl <em>Hard Goal</em>}' class.
@@ -352,6 +361,15 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARD_GOAL__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -370,22 +388,13 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__TASKS = PERFORMATIVE_REQUIREMENT__TASKS;
 
 	/**
-	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HARD_GOAL__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HARD_GOAL__REFINEMENTS = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
+	int HARD_GOAL__REFINEMENTS = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Goal Model</b></em>' reference.
@@ -394,7 +403,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HARD_GOAL__GOAL_MODEL = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 2;
+	int HARD_GOAL__GOAL_MODEL = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Hard Goal</em>' class.
@@ -403,7 +412,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HARD_GOAL_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 3;
+	int HARD_GOAL_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl <em>Softgoal</em>}' class.
@@ -467,7 +476,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOFTGOAL__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 0;
+	int SOFTGOAL__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -476,7 +485,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOFTGOAL__REFINEMENTS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
+	int SOFTGOAL__REFINEMENTS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
@@ -485,7 +494,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOFTGOAL__CONSTRAINTS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 2;
+	int SOFTGOAL__CONSTRAINTS = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Softgoal</em>' class.
@@ -494,7 +503,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOFTGOAL_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 3;
+	int SOFTGOAL_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl <em>Quality Constraint</em>}' class.
@@ -742,6 +751,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
@@ -1183,6 +1201,17 @@ public interface GorePackage extends EPackage {
 	EReference getGoalOrientedRequirement_Assumptions();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType <em>Refinement Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Refinement Type</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType()
+	 * @see #getGoalOrientedRequirement()
+	 * @generated
+	 */
+	EAttribute getGoalOrientedRequirement_RefinementType();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.PerformativeRequirement <em>Performative Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1223,17 +1252,6 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGoal();
-
-	/**
-	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinementType <em>Refinement Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Refinement Type</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.Goal#getRefinementType()
-	 * @see #getGoal()
-	 * @generated
-	 */
-	EAttribute getGoal_RefinementType();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.Goal#getRefinements <em>Refinements</em>}'.
@@ -1773,6 +1791,14 @@ public interface GorePackage extends EPackage {
 		EReference GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = eINSTANCE.getGoalOrientedRequirement_Assumptions();
 
 		/**
+		 * The meta object literal for the '<em><b>Refinement Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = eINSTANCE.getGoalOrientedRequirement_RefinementType();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl <em>Performative Requirement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1807,14 +1833,6 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass GOAL = eINSTANCE.getGoal();
-
-		/**
-		 * The meta object literal for the '<em><b>Refinement Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GOAL__REFINEMENT_TYPE = eINSTANCE.getGoal_RefinementType();
 
 		/**
 		 * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.

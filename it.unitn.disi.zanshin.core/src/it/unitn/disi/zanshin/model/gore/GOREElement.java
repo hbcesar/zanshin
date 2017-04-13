@@ -129,15 +129,6 @@ public interface GOREElement extends OclAny {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='// Counts the number of children in each state and the number of defineable children.\r\nint[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];\r\nint defChildrenCount = 0;\r\nfor (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {\r\n\tif (!(child instanceof Softgoal)) {\r\n\t\tdefChildrenCount++;\r\n\t\tstateCount[((GOREElement) child).getState().getValue()]++;\r\n\t}\r\n}\r\n\r\n// Converts to EList so we can return, adding the total number of definable children to the last position.\r\nEList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();\r\nfor (int count : stateCount)\r\n\tstateCountList.add(count);\r\nstateCountList.add(defChildrenCount);\r\nreturn stateCountList;'"
-	 * @generated
-	 */
-	EList<Integer> getChildrenStateCount();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='it.unitn.disi.zanshin.core.CoreUtils.log.debug(\"Requirement started: \" + eClass().getName() + \" (\" + this + \")\"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$\r\nsetState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);\r\n\t\t\r\n// If the monitoring service is active, warn it that this requirement has been started.\r\nit.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();\r\nif (monitoringService != null)\r\n\tmonitoringService.monitorMethodCall(this, MonitorableMethod.START);\r\n\t\t\r\n// Propagate the start to the parent.\r\nit.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();\r\nif ((parent != null) && (!(parent instanceof Softgoal)) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))\r\n\t((GOREElement) parent).start();'"
 	 * @generated
 	 */
@@ -186,7 +177,7 @@ public interface GOREElement extends OclAny {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='GoalModel model = null;\n\n// If it\'s the root goal, return the goal model.\nif (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this))\n\tmodel = ((it.unitn.disi.zanshin.model.gore.Goal) this).getGoalModel();\n\n// If the model is not found in the root goal, move up the requirement tree looking for the root goal.\nif ((model == null) && (getParent() != null))\n\tmodel = getParent().findGoalModel();\n\n// Returns the found model, or null if no model has been found.\nreturn model;'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='GoalModel model = null;\r\n\t\t\r\n// If it\'s the root goal, return the goal model.\r\nif (it.unitn.disi.zanshin.model.gore.GorePackage.eINSTANCE.getGoal().isInstance(this) & (this instanceof it.unitn.disi.zanshin.model.gore.HardGoal))\r\n\t\t\tmodel = ((it.unitn.disi.zanshin.model.gore.HardGoal) this).getGoalModel();\r\n\t\t\r\n// If the model is not found in the root goal, move up the requirement tree looking for the root goal.\r\nif ((model == null) && (getParent() != null))\r\n\t\t\tmodel = getParent().findGoalModel();\r\n\t\t\r\n// Returns the found model, or null if no model has been found.\r\nreturn model;'"
 	 * @generated
 	 */
 	GoalModel findGoalModel();
@@ -199,5 +190,14 @@ public interface GOREElement extends OclAny {
 	 * @generated
 	 */
 	EList<GOREElement> getChildren();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='// Counts the number of children in each state and the number of children.\r\nint[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];\r\n \r\nfor (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {\r\n\tstateCount[((GOREElement) child).getState().getValue()]++;\r\n}\r\n\r\n// Converts to EList so we can return\r\nEList<Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList<>();\r\nfor (int count : stateCount)\r\n\tstateCountList.add(count);\r\n\r\nreturn stateCountList;'"
+	 * @generated
+	 */
+	EList<Integer> getChildrenStateCount();
 
 } // GOREElement
