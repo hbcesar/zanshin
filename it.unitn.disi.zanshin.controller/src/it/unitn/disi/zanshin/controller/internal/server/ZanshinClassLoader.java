@@ -1,7 +1,7 @@
 package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.controller.ControllerUtils;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -81,7 +81,7 @@ public class ZanshinClassLoader extends ClassLoader {
 	private EFactory factoryInstance;
 
 	/** TODO: document this field. */
-	private Map<String, Class<? extends DefinableRequirement>> requirementsMap = new HashMap<>();
+	private Map<String, Class<? extends GOREElement>> requirementsMap = new HashMap<>();
 
 	/** Constructor. */
 	protected ZanshinClassLoader(IProject modelProject, EPackage ePackage, String basePackage) {
@@ -134,8 +134,8 @@ public class ZanshinClassLoader extends ClassLoader {
 			Class<?> clazz = loadCompiledClass(className + (loadImplementation ? IMPLEMENTATION_CLASS_SUFFIX : ""), loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null); //$NON-NLS-1$
 
 			// If it's an implementation of a definable requirement, place it in the requirements map.
-			if (loadImplementation && (DefinableRequirement.class.isAssignableFrom(clazz)))
-				requirementsMap.put(className, (Class<? extends DefinableRequirement>) clazz);
+			if (loadImplementation && (GOREElement.class.isAssignableFrom(clazz)))
+				requirementsMap.put(className, (Class<? extends GOREElement>) clazz);
 		}
 	}
 
@@ -265,7 +265,7 @@ public class ZanshinClassLoader extends ClassLoader {
 	 * @throws IllegalAccessException
 	 *           If the create method is enforcing Java language access control and the underlying method is inaccessible.
 	 */
-	public DefinableRequirement instantiate(String className) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public GOREElement instantiate(String className) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		// Checks that this requirement belongs to the model.
 		if (!requirementsMap.containsKey(className))
 			return null;
@@ -273,6 +273,6 @@ public class ZanshinClassLoader extends ClassLoader {
 		// Invoke the factory method that creates this type of requirement and returns the new instance.
 		Method createMethod = factoryClass.getMethod(FACTORY_CREATE_METHOD_PREFIX + className);
 		Object result = createMethod.invoke(factoryInstance);
-		return (DefinableRequirement) result;
+		return (GOREElement) result;
 	}
 }

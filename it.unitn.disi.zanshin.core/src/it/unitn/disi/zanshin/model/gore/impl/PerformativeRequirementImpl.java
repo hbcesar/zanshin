@@ -2,11 +2,10 @@
  */
 package it.unitn.disi.zanshin.model.gore.impl;
 
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
-import it.unitn.disi.zanshin.model.gore.Task;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -17,8 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Performative Requirement</b></em>'.
@@ -28,7 +25,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl#getStartTime <em>Start Time</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,16 +49,6 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * @ordered
 	 */
 	protected Date startTime = START_TIME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTasks()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Task> tasks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,18 +95,6 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Task> getTasks() {
-		if (tasks == null) {
-			tasks = new EObjectResolvingEList<Task>(Task.class, this, GorePackage.PERFORMATIVE_REQUIREMENT__TASKS);
-		}
-		return tasks;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void cancel() {
 		// Only process the cancellation if the requirement has not yet been canceled.
 		if (getState() != it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED) {
@@ -130,17 +104,19 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 			// If the monitoring service is active, warn it that this requirement has been canceled.
 			it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();
 			if (monitoringService != null)
-				monitoringService.monitorMethodCall(this, MonitorableMethod.CANCEL);
+				monitoringService.monitorMethodCall(this, it.unitn.disi.zanshin.model.gore.MonitorableMethod.CANCEL);
 			
 			// If the requirement is canceled, then it has also ended.
 			end();
 			
 			// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.
+			//TODO: verificar propagacao pra outros tipos de requisito
 			it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
-			if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.GOREElement)) {
-				if (parent.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((it.unitn.disi.zanshin.model.gore.GOREElement)parent).checkState();
+			if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement)) {
+				it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement req = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent;
+				if (req.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) parent.checkState();
 				else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();
-				else ((it.unitn.disi.zanshin.model.gore.GOREElement)parent).fail();
+				else parent.fail();
 			}
 			
 			// Also propagate the cancellation to the children if and-refined and the children are performative.
@@ -177,13 +153,32 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<GOREElement> getChildren() {
+		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
+		EList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();
+		EList<it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement> goals_tasks = getRefinements();
+														
+		for(GOREElement child : awreqs_da){
+			children.add(child);
+		}
+														
+		for(GOREElement child : goals_tasks){
+			children.add(child);
+		}
+										
+		return children;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				return getStartTime();
-			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
-				return getTasks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -193,16 +188,11 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				setStartTime((Date)newValue);
-				return;
-			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
-				getTasks().clear();
-				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,9 +209,6 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				setStartTime(START_TIME_EDEFAULT);
 				return;
-			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
-				getTasks().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,8 +223,6 @@ public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl imp
 		switch (featureID) {
 			case GorePackage.PERFORMATIVE_REQUIREMENT__START_TIME:
 				return START_TIME_EDEFAULT == null ? startTime != null : !START_TIME_EDEFAULT.equals(startTime);
-			case GorePackage.PERFORMATIVE_REQUIREMENT__TASKS:
-				return tasks != null && !tasks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

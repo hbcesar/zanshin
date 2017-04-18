@@ -9,7 +9,7 @@ import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.eca.EcaFactory;
 import it.unitn.disi.zanshin.model.eca.ResolutionCondition;
 import it.unitn.disi.zanshin.model.gore.AwReq;
-import it.unitn.disi.zanshin.model.gore.Requirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.services.IAdaptationService;
 
 import java.util.HashMap;
@@ -52,7 +52,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 		// Retrieves information on the AwReq.
 		EClass awreqClass = awreq.eClass();
 		String awreqName = awreqClass.getName();
-		Requirement target = awreq.getTarget();
+		GOREElement target = awreq.getTarget();
 
 		// Checks if the AwReq's target has been properly set.
 		if (target == null) {

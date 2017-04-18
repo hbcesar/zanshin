@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Softgoal extends GoalOrientedRequirement, Goal {
+public interface Softgoal extends GoalOrientedRequirement {
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.QualityConstraint}.

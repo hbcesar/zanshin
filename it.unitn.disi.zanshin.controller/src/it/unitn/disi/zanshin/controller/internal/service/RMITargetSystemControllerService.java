@@ -10,11 +10,10 @@ import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
-import it.unitn.disi.zanshin.model.gore.Requirement;
 import it.unitn.disi.zanshin.remote.ITargetSystem;
 import it.unitn.disi.zanshin.remote.IZanshinServer;
 import it.unitn.disi.zanshin.services.IRepositoryService;
@@ -144,7 +143,7 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#changeParameter(it.unitn.disi.zanshin.model.gore.GoalModel, it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Parameter, java.lang.String) */
 	@Override
-	public void changeParameter(GoalModel model, Requirement req, Parameter param, String value) {
+	public void changeParameter(GoalModel model, GOREElement req, Parameter param, String value) {
 		String paramName = param.eClass().getName();
 		ControllerUtils.log.debug("RMI Target System Controller forwarding instruction: change-parameter(i{0}, {1}, {2})", req.eClass().getName(), paramName, value); //$NON-NLS-1$
 
@@ -244,7 +243,7 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#initiate(it.unitn.disi.zanshin.model.gore.GoalModel, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void initiate(GoalModel model, Requirement req) {
+	public void initiate(GoalModel model, GOREElement req) {
 		String reqName = req.eClass().getName();
 		ControllerUtils.log.debug("RMI Target System Controller forwarding instruction: initiate(i{0})", reqName); //$NON-NLS-1$
 
@@ -263,7 +262,7 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#resume(it.unitn.disi.zanshin.model.gore.GoalModel, it.unitn.disi.zanshin.model.gore.Requirement, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public final void resume(GoalModel model, Requirement req, Requirement parent) {
+	public final void resume(GoalModel model, GOREElement req, GOREElement parent) {
 		String reqName = req.eClass().getName();
 		ControllerUtils.log.debug("RMI Target System Controller forwarding instruction: resume(i{0}, i{1})", reqName, parent.eClass().getName()); //$NON-NLS-1$
 
@@ -325,19 +324,18 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#suspend(it.unitn.disi.zanshin.model.gore.GoalModel, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public final void suspend(GoalModel model, Requirement req) {
+	public final void suspend(GoalModel model, GOREElement req) {
 		String reqName = req.eClass().getName();
 		ControllerUtils.log.debug("RMI Target System Controller forwarding instruction: suspend(i{0})", reqName); //$NON-NLS-1$
 
 		// Suspending a requirement instance means removing it from its parent.
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
-		Requirement parent = req.getParent();
+		GOREElement parent = req.getParent();
 		if (parent != null) {
 			req.setParent(null);
 
 			// Re-evaluates the parent, because the remaining children might all be successful.
-			if (parent instanceof DefinableRequirement)
-				((DefinableRequirement) parent).checkState();
+			parent.checkState();
 		}
 
 		// Retrieves the session id and a reference to the target system responsible for this requirement instance.
@@ -355,7 +353,7 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 	/** @see it.unitn.disi.zanshin.services.ITargetSystemControllerService#terminate(it.unitn.disi.zanshin.model.gore.GoalModel, it.unitn.disi.zanshin.model.gore.Requirement) */
 	@Override
-	public void terminate(GoalModel model, Requirement req) {
+	public void terminate(GoalModel model, GOREElement req) {
 		String reqName = req.eClass().getName();
 		ControllerUtils.log.debug("RMI Target System Controller forwarding instruction: terminate(i{0})", reqName); //$NON-NLS-1$
 

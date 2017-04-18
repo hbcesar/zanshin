@@ -82,10 +82,6 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 				return createPerformativeRequirementAdapter();
 			}
 			@Override
-			public Adapter caseGoal(Goal object) {
-				return createGoalAdapter();
-			}
-			@Override
 			public Adapter caseHardGoal(HardGoal object) {
 				return createHardGoalAdapter();
 			}
@@ -192,20 +188,6 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPerformativeRequirementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.Goal <em>Goal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see it.unitn.disi.zanshin.model.gore.Goal
-	 * @generated
-	 */
-	public Adapter createGoalAdapter() {
 		return null;
 	}
 

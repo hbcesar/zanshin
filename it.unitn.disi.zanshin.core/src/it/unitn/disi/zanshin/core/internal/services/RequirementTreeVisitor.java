@@ -1,9 +1,6 @@
 package it.unitn.disi.zanshin.core.internal.services;
 
-import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
-import it.unitn.disi.zanshin.model.gore.Task;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
-import it.unitn.disi.zanshin.model.gore.Goal;
 
 import java.util.Stack;
 
@@ -38,7 +35,7 @@ public abstract class RequirementTreeVisitor {
 			visit(req);
 			
 			// Adds this requirements children (if this is a kind of element that can have them) to the stack to continue the search.
-			for (Object child : req.getChildren())
+			for (GOREElement child : req.getChildren())
 				stack.push((GOREElement)child);
 
 		}

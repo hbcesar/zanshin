@@ -3,7 +3,7 @@ package it.unitn.disi.zanshin.controller.internal.server;
 import it.unitn.disi.zanshin.controller.ControllerUtils;
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.Configuration;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.model.gore.PerformativeRequirement;
 import it.unitn.disi.zanshin.remote.ITargetSystem;
@@ -242,7 +242,7 @@ public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinSer
 			SessionManager sessionManager = sessionManagers.get(targetSystemId);
 
 			// Retrieve the requirement instance of the given class corresponding to the session id.
-			DefinableRequirement requirement = sessionManager.retrieveRequirement(userSessionId, requirementsName);
+			GOREElement requirement = sessionManager.retrieveRequirement(userSessionId, requirementsName);
 
 			// Calls the appropriate method in the class. The monitoring component should catch this via aspects and verify
 			// the appropriate AwReqs.

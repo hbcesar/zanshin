@@ -60,7 +60,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 			case GorePackage.GORE_ELEMENT: return createGOREElement();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT: return createGoalOrientedRequirement();
 			case GorePackage.PERFORMATIVE_REQUIREMENT: return createPerformativeRequirement();
-			case GorePackage.GOAL: return createGoal();
 			case GorePackage.HARD_GOAL: return createHardGoal();
 			case GorePackage.SOFTGOAL: return createSoftgoal();
 			case GorePackage.QUALITY_CONSTRAINT: return createQualityConstraint();
@@ -159,16 +158,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	public PerformativeRequirement createPerformativeRequirement() {
 		PerformativeRequirementImpl performativeRequirement = new PerformativeRequirementImpl();
 		return performativeRequirement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Goal createGoal() {
-		GoalImpl goal = new GoalImpl();
-		return goal;
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package it.unitn.disi.zanshin.monitoring.internal.services;
 
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
 import it.unitn.disi.zanshin.services.IAdaptationService;
@@ -56,7 +56,7 @@ public class MonitoringService implements IMonitoringService {
 	 *      it.unitn.disi.zanshin.model.gore.MonitorableMethod)
 	 */
 	@Override
-	public void monitorMethodCall(DefinableRequirement req, MonitorableMethod method) {
+	public void monitorMethodCall(GOREElement req, MonitorableMethod method) {
 		// Adds this method call to the queue.
 		try {
 			monitorThread.addToQueue(req, method);

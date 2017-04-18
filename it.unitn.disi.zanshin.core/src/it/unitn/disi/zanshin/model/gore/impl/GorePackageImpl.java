@@ -15,7 +15,6 @@ import it.unitn.disi.zanshin.model.gore.DifferentialRelationOperator;
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
 import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GOREElementState;
-import it.unitn.disi.zanshin.model.gore.Goal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.GoreFactory;
@@ -72,13 +71,6 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * @generated
 	 */
 	private EClass performativeRequirementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass goalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -352,6 +344,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getGoalOrientedRequirement_Refinements() {
+		return (EReference)goalOrientedRequirementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPerformativeRequirement() {
 		return performativeRequirementEClass;
 	}
@@ -363,33 +364,6 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 */
 	public EAttribute getPerformativeRequirement_StartTime() {
 		return (EAttribute)performativeRequirementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPerformativeRequirement_Tasks() {
-		return (EReference)performativeRequirementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getGoal() {
-		return goalEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getGoal_Refinements() {
-		return (EReference)goalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -807,13 +781,10 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		goalOrientedRequirementEClass = createEClass(GOAL_ORIENTED_REQUIREMENT);
 		createEReference(goalOrientedRequirementEClass, GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS);
 		createEAttribute(goalOrientedRequirementEClass, GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE);
+		createEReference(goalOrientedRequirementEClass, GOAL_ORIENTED_REQUIREMENT__REFINEMENTS);
 
 		performativeRequirementEClass = createEClass(PERFORMATIVE_REQUIREMENT);
 		createEAttribute(performativeRequirementEClass, PERFORMATIVE_REQUIREMENT__START_TIME);
-		createEReference(performativeRequirementEClass, PERFORMATIVE_REQUIREMENT__TASKS);
-
-		goalEClass = createEClass(GOAL);
-		createEReference(goalEClass, GOAL__REFINEMENTS);
 
 		hardGoalEClass = createEClass(HARD_GOAL);
 		createEReference(hardGoalEClass, HARD_GOAL__GOAL_MODEL);
@@ -906,9 +877,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		goalOrientedRequirementEClass.getESuperTypes().add(this.getGOREElement());
 		performativeRequirementEClass.getESuperTypes().add(this.getGoalOrientedRequirement());
 		hardGoalEClass.getESuperTypes().add(this.getPerformativeRequirement());
-		hardGoalEClass.getESuperTypes().add(this.getGoal());
 		softgoalEClass.getESuperTypes().add(this.getGoalOrientedRequirement());
-		softgoalEClass.getESuperTypes().add(this.getGoal());
 		qualityConstraintEClass.getESuperTypes().add(this.getGOREElement());
 		awReqEClass.getESuperTypes().add(this.getGOREElement());
 		domainAssumptionEClass.getESuperTypes().add(this.getGOREElement());
@@ -947,6 +916,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		initEClass(goalOrientedRequirementEClass, GoalOrientedRequirement.class, "GoalOrientedRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGoalOrientedRequirement_Assumptions(), this.getDomainAssumption(), null, "assumptions", null, 0, -1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGoalOrientedRequirement_RefinementType(), this.getRefinementType(), "refinementType", null, 0, 1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoalOrientedRequirement_Refinements(), this.getGoalOrientedRequirement(), null, "refinements", null, 0, -1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(goalOrientedRequirementEClass, null, "getChildren", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEEList());
@@ -956,7 +926,6 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		initEClass(performativeRequirementEClass, PerformativeRequirement.class, "PerformativeRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerformativeRequirement_StartTime(), ecorePackage.getEDate(), "startTime", null, 0, 1, PerformativeRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPerformativeRequirement_Tasks(), this.getTask(), null, "tasks", null, 0, -1, PerformativeRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(performativeRequirementEClass, null, "cancel", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -968,23 +937,8 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGoal_Refinements(), this.getGoal(), null, "refinements", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = addEOperation(goalEClass, null, "getChildren", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEEList());
-		g2 = createEGenericType(this.getGOREElement());
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
 		initEClass(hardGoalEClass, HardGoal.class, "HardGoal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHardGoal_GoalModel(), this.getGoalModel(), null, "goalModel", null, 0, 1, HardGoal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = addEOperation(hardGoalEClass, null, "getChildren", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEEList());
-		g2 = createEGenericType(this.getGOREElement());
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		initEClass(softgoalEClass, Softgoal.class, "Softgoal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSoftgoal_Constraints(), this.getQualityConstraint(), this.getQualityConstraint_Softgoal(), "constraints", null, 0, -1, Softgoal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1008,12 +962,6 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		initEClass(domainAssumptionEClass, DomainAssumption.class, "DomainAssumption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(taskEClass, null, "getChildren", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEEList());
-		g2 = createEGenericType(this.getGOREElement());
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActor_GoalModel(), this.getGoalModel(), this.getGoalModel_Actors(), "goalModel", null, 0, 1, Actor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

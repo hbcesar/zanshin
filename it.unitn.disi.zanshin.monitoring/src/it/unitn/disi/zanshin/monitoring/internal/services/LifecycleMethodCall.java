@@ -1,6 +1,6 @@
 package it.unitn.disi.zanshin.monitoring.internal.services;
 
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 
 /**
@@ -17,19 +17,19 @@ import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
  */
 public class LifecycleMethodCall {
 	/** The requirement in which the method was called. */
-	private DefinableRequirement requirement;
+	private GOREElement requirement;
 
 	/** The type of method that was called. */
 	private MonitorableMethod method;
 
 	/** Constructor. */
-	public LifecycleMethodCall(DefinableRequirement requirement, MonitorableMethod method) {
+	public LifecycleMethodCall(GOREElement requirement, MonitorableMethod method) {
 		this.requirement = requirement;
 		this.method = method;
 	}
 
 	/** Getter for requirement. */
-	public DefinableRequirement getRequirement() {
+	public GOREElement getRequirement() {
 		return requirement;
 	}
 

@@ -3,7 +3,6 @@
 package it.unitn.disi.zanshin.model.gore.impl;
 
 import it.unitn.disi.zanshin.model.gore.DomainAssumption;
-import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.RefinementType;
@@ -11,14 +10,18 @@ import it.unitn.disi.zanshin.model.gore.RefinementType;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinementType <em>Refinement Type</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinements <em>Refinements</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,6 +68,16 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 	 * @ordered
 	 */
 	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRefinements() <em>Refinements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRefinements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GoalOrientedRequirement> refinements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,20 +136,25 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GOREElement> getChildren() {
-		EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();
-		EList<AwReq> awreqs = super.getAwreqs();
-		EList<DomainAssumption> domainAssumptions = this.getAssumptions();
-						
-		for(GOREElement child : awreqs){
-			children.add(child);
+	public EList<GoalOrientedRequirement> getRefinements() {
+		if (refinements == null) {
+			refinements = new EObjectContainmentEList<GoalOrientedRequirement>(GoalOrientedRequirement.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS);
 		}
-						
-		for(GOREElement child : domainAssumptions){
-			children.add(child);
+		return refinements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				return ((InternalEList<?>)getRefinements()).basicRemove(otherEnd, msgs);
 		}
-						
-		return children;
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -150,6 +169,8 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 				return getAssumptions();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				return getRefinementType();
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				return getRefinements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,6 +191,10 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				setRefinementType((RefinementType)newValue);
 				return;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				getRefinements().clear();
+				getRefinements().addAll((Collection<? extends GoalOrientedRequirement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -188,6 +213,9 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				setRefinementType(REFINEMENT_TYPE_EDEFAULT);
 				return;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				getRefinements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -204,6 +232,8 @@ public class GoalOrientedRequirementImpl extends GOREElementImpl implements Goal
 				return assumptions != null && !assumptions.isEmpty();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				return refinementType != REFINEMENT_TYPE_EDEFAULT;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				return refinements != null && !refinements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

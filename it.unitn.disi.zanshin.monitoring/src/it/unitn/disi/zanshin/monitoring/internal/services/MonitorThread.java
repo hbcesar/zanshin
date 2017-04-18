@@ -2,8 +2,8 @@ package it.unitn.disi.zanshin.monitoring.internal.services;
 
 import it.unitn.disi.zanshin.model.eca.EcaAwReq;
 import it.unitn.disi.zanshin.model.gore.AwReq;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirementState;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
+import it.unitn.disi.zanshin.model.gore.GOREElementState;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.MonitorableMethod;
 import it.unitn.disi.zanshin.monitoring.MonitoringUtils;
@@ -57,7 +57,7 @@ public class MonitorThread extends Thread {
 	 * @throws InterruptedException
 	 *           If the calling thread gets interrupted while waiting for the queue to be released by another thread.
 	 */
-	public void addToQueue(DefinableRequirement req, MonitorableMethod method) throws InterruptedException {
+	public void addToQueue(GOREElement req, MonitorableMethod method) throws InterruptedException {
 		queue.put(new LifecycleMethodCall(req, method));
 	}
 
@@ -92,7 +92,7 @@ public class MonitorThread extends Thread {
 	 * @param method
 	 *          The method that was called (start(), end(), success(), etc.).
 	 */
-	public void processMethodCall(DefinableRequirement req, MonitorableMethod method) {
+	public void processMethodCall(GOREElement req, MonitorableMethod method) {
 		MonitoringUtils.log.info("Processing method call: {0} / {1}", new Object[] { method, req.eClass().getName() }); //$NON-NLS-1$
 
 		// Temporary implementation. See https://github.com/sefms-disi-unitn/Zanshin/issues/2
@@ -106,18 +106,18 @@ public class MonitorThread extends Thread {
 			if (awreqs != null) {
 				MonitoringUtils.log.info("Requirement {0} has {1} AwReqs referring to it. Assuming all AwReqs are NeverFail and reporting AwReq state change: {2}", req.eClass().getName(), awreqs.size(), method); //$NON-NLS-1$
 
-				DefinableRequirementState state;
+				GOREElementState state;
 				switch (method) {
 				case SUCCESS:
-					state = DefinableRequirementState.SUCCEEDED;
+					state = GOREElementState.SUCCEEDED;
 					break;
 
 				case FAIL:
-					state = DefinableRequirementState.FAILED;
+					state = GOREElementState.FAILED;
 					break;
 
 				default:
-					state = DefinableRequirementState.UNDEFINED;
+					state = GOREElementState.UNDEFINED;
 				}
 
 				for (AwReq awreq : awreqs) {
@@ -128,7 +128,7 @@ public class MonitorThread extends Thread {
 					// the old one in the model. This is necessary because the previous AwReq is associated with an event in the
 					// adaptation session and we cannot use the same AwReq for the next event.
 					AwReq newAwReq = (AwReq) EcoreUtil.copy(awreq);
-					newAwReq.setState(DefinableRequirementState.UNDEFINED);
+					newAwReq.setState(GOREElementState.UNDEFINED);
 					if (newAwReq instanceof EcaAwReq)
 						((EcaAwReq) newAwReq).setSelectedStrategy(null);
 					repositoryService.replaceRequirement(model.getId(), awreq, newAwReq);

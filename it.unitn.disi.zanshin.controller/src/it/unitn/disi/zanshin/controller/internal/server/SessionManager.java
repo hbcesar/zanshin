@@ -2,7 +2,7 @@ package it.unitn.disi.zanshin.controller.internal.server;
 
 import it.unitn.disi.zanshin.model.gore.AggregationLevel;
 import it.unitn.disi.zanshin.model.gore.Configuration;
-import it.unitn.disi.zanshin.model.gore.DefinableRequirement;
+import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 import it.unitn.disi.zanshin.remote.ITargetSystem;
@@ -93,9 +93,9 @@ public class SessionManager {
 	 * @param requirementsName
 	 * @return
 	 */
-	DefinableRequirement retrieveRequirement(Long userSessionId, String requirementsName) {
+	GOREElement retrieveRequirement(Long userSessionId, String requirementsName) {
 		// Retrieve the requirement instance from the repository service.
-		return (DefinableRequirement) repositoryService.retrieveRequirement(userSessionId, requirementsName);
+		return (GOREElement) repositoryService.retrieveRequirement(userSessionId, requirementsName);
 	}
 
 	/**
