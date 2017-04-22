@@ -6,6 +6,7 @@ package it.unitn.disi.zanshin.controller.internal.server;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class ZanshinClassLoaderException extends Exception {
 	/** Constructor. */
 	public ZanshinClassLoaderException(Throwable cause) {

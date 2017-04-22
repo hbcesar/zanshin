@@ -7,7 +7,6 @@ import it.unitn.disi.zanshin.model.gore.HardGoal;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.QualityConstraint;
-import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.Softgoal;
 import it.unitn.disi.zanshin.model.gore.Task;
 
@@ -145,7 +144,7 @@ public class GoalModelElements {
 			GOREElement target = awreq.getTarget();
 			if (target != null)
 				addToTargetMap(target, awreq);
-			//Não existe mais "otherTarget"
+			//Nï¿½o existe mais "otherTarget"
 //			for (GOREElement otherTarget : awreq.getOtherTargets())
 //				addToTargetMap(otherTarget, awreq);
 		}

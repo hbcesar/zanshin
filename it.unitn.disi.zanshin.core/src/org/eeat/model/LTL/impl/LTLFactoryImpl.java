@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eeat.model.LTL.*;
 import org.eeat.model.LTL.Event;
 import org.eeat.model.LTL.LTLFactory;
 import org.eeat.model.LTL.LTLPackage;

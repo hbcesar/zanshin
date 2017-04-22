@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  * @author Vitor E. Silva Souza (vitorsouza@gmail.com)
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class ZanshinRMIServer extends UnicastRemoteObject implements IZanshinServer, Serializable {
 	/** TODO: document this field. */
 	private static final String REQUIREMENTS_MODEL_FAKE_URI = "inputStream://fakeURI"; //$NON-NLS-1$

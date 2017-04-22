@@ -92,6 +92,7 @@ public class ModelManagementService implements IModelManagementService {
 	 * @throws IOException
 	 *           If any I/O errors occur during this operation.
 	 */
+	@SuppressWarnings("deprecation")
 	private void init() throws CoreException, IOException {
 		CoreUtils.log.debug("Initializing Zanshin Model Management Service"); //$NON-NLS-1$
 

@@ -307,7 +307,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		// Counts the number of children in each state and the number of definable children.
 		org.eclipse.emf.common.util.EList<Integer> stateCount = getChildrenStateCount();
 		int defChildrenCount = stateCount.get(stateCount.size() - 1);
-				
+						
 		// For AND-refined requirements, checks if all children have SUCCEEDED.
 		if (this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
 			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement p = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
@@ -320,9 +320,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 			else {
 				if (stateCount.get(it.unitn.disi.zanshin.model.gore.GOREElementState.FAILED_VALUE) == defChildrenCount) fail();
 			}
-		} else {
-			//TODO: Se for um awreq, qc ou da, faz o que?
-		}
+		} 
 	}
 
 	/**
@@ -334,15 +332,15 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		// Cannot replace a requirement instance with null.
 		if (newRequirement == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.error("Cannot replace a requirement instance with null. A proper requirement instance should be provided."); //$NON-NLS-1$
+					throw new IllegalArgumentException();
+		}
+						
+		// Can only replace requirements of the same class.
+		if (! newRequirement.eClass().equals(eClass())) {
+			it.unitn.disi.zanshin.core.CoreUtils.log.error("Cannot replace a requirement instance of class {0} with one of class {1}. Instances should be of the same class.", eClass().getName(), newRequirement.eClass().getName());//$NON-NLS-1$
 			throw new IllegalArgumentException();
 		}
-				
-			// Can only replace requirements of the same class.
-			if (! newRequirement.eClass().equals(eClass())) {
-				it.unitn.disi.zanshin.core.CoreUtils.log.error("Cannot replace a requirement instance of class {0} with one of class {1}. Instances should be of the same class.", eClass().getName(), newRequirement.eClass().getName());//$NON-NLS-1$
-				throw new IllegalArgumentException();
-			}
-				
+						
 		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm). When
 		// elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as EMF
 		// generated code will handle the inverse association automatically.
@@ -350,18 +348,19 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		setParent(null);
 		newRequirement.setParent(parent);
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Replacing requirement instances of class {0} ({1} -> {2})", eClass().getName(), this, newRequirement); //$NON-NLS-1$
-				
+						
 		// After a piece of the requirements tree gets replaced by new instances (with possible different states), check if
 		// the ancestors should also have their state reset. For instance, if a failed instance is replaced by a non-failing
 		// one in an AND-refinement, the parent should change from Failed to Started or Undefined. Navigate up the tree.
 		while (parent != null) {
-			// This procedure only makes sense in definable requirements.
+			// This procedure only makes sense in Goal Oriented Requirements.
 			if(parent instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement){
 				it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement req = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent;
 				
 				// Counts the number of children in each state and the number of definable children.
 				EList<Integer> stateCount = req.getChildrenStateCount();
-				int defChildrenCount = stateCount.get(stateCount.size() - 1);
+				//int defChildrenCount = stateCount.get(stateCount.size() - 1);
+				int defChildrenCount = getChildren().size();
 				boolean doReset = false;
 				
 				// Checks the type of the requirement.
@@ -389,9 +388,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 					it.unitn.disi.zanshin.core.CoreUtils.log.debug("The status of {0} has been reset to {1}", req.eClass().getName(), req.getState()); //$NON-NLS-1$
 				}
 					
-			} else {
-				//TODO: e se for ar, qc, da?
-			}
+			} 
+			
 			// Next ancestor.
 			parent = parent.getParent();
 		}

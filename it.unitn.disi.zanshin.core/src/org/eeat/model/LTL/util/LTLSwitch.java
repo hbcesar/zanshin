@@ -9,7 +9,6 @@ package org.eeat.model.LTL.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eeat.model.LTL.*;
 import org.eeat.model.LTL.Event;
 import org.eeat.model.LTL.LTLPackage;
 import org.eeat.model.LTL.OclAny;
