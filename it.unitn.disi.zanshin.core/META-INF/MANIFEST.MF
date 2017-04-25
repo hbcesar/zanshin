@@ -10,18 +10,12 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: it.unitn.disi.zanshin.model.eca,
  it.unitn.disi.zanshin.model.eca.impl,
  it.unitn.disi.zanshin.model.eca.util,
- it.unitn.disi.zanshin.model.gore;
-  uses:="org.eclipse.emf.ecore,
-   org.eclipse.emf.common.util,
-   org.eeat.model.LTL",
+ it.unitn.disi.zanshin.model.gore;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util,org.eeat.model.LTL",
  it.unitn.disi.zanshin.model.gore.impl,
  it.unitn.disi.zanshin.model.gore.util,
- it.unitn.disi.zanshin.services;
-  uses:="it.unitn.disi.zanshin.model.gore",
+ it.unitn.disi.zanshin.services;uses:="it.unitn.disi.zanshin.model.gore",
  it.unitn.disi.zanshin.util,
- org.eeat.model.LTL;
-  uses:="org.eclipse.emf.ecore,
-   org.eclipse.emf.common.util",
+ org.eeat.model.LTL;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
  org.eeat.model.LTL.impl,
  org.eeat.model.LTL.util
 Bundle-ActivationPolicy: lazy
@@ -54,6 +48,4 @@ Import-Package: it.unitn.disi.zanshin.model.eca,
  org.osgi.util.tracker;version="1.5.1"
 Require-Bundle: org.apache.felix.gogo.shell;bundle-version="0.8.0",
  org.eclipse.equinox.console;bundle-version="1.0.0",
- org.eclipse.equinox.ds;bundle-version="1.4.0",
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.equinox.ds;bundle-version="1.4.0"

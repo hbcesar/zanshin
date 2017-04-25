@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="scheduler">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="scheduler" nsURI="http://disi.unitn.it/zanshin/1.0/scheduler"
+    nsPrefix="scheduler">
   <eClassifiers xsi:type="ecore:EClass" name="SchedulerGoalModel" eSuperTypes="../../../../../../../../../it.unitn.disi.zanshin.core/META-INF/gore.ecore#//GoalModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="G_SchedMeet" eSuperTypes="../../../../../../../../../it.unitn.disi.zanshin.core/META-INF/gore.ecore#//HardGoal"/>
   <eClassifiers xsi:type="ecore:EClass" name="T_CharactMeet" eSuperTypes="../../../../../../../../../it.unitn.disi.zanshin.core/META-INF/gore.ecore#//Task"/>

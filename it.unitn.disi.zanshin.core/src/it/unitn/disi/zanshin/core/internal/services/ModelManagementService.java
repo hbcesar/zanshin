@@ -394,8 +394,10 @@ public class ModelManagementService implements IModelManagementService {
 		CoreUtils.log.debug("Generating classes from generator model..."); //$NON-NLS-1$
 		IProgressMonitor monitor = new NullProgressMonitor();
 
+		//AQUI: Nessa parte que ele throws o erro, dizendo que o genmodel ta invalido.
 		// Retrieves the genmodel object from the genmodel resource and checks that it's valid.
 		GenModel genModel = (GenModel) genModelResource.getContents().get(0);
+		CoreUtils.log.debug(genModel.toString());
 		IStatus status = genModel.validate();
 		if (!status.isOK()) {
 			Diagnostic diagnostic = genModel.diagnose();
