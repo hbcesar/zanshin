@@ -40,7 +40,7 @@ public interface GorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://disi.unitn.it/zanshin/1.0/gore";
+	String eNS_URI = "https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/gore.ecore";
 
 	/**
 	 * The package namespace name.

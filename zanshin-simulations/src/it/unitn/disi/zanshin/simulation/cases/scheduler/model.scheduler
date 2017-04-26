@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scheduler:SchedulerGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:it.unitn.disi.zanshin.model="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore" xmlns:scheduler="http://disi.unitn.it/zanshin/1.0/scheduler">
+<scheduler:SchedulerGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:it.unitn.disi.zanshin.model="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore" xmlns:scheduler="https://raw.githubusercontent.com/hbcesar/zanshin/master/zanshin-simulations/src/it/unitn/disi/zanshin/simulation/cases/scheduler/scheduler.ecore">
   <rootGoal xsi:type="scheduler:G_SchedMeet">
     <children xsi:type="scheduler:T_CharactMeet"/>
     <children xsi:type="scheduler:G_CollectTime" refinementType="or">
