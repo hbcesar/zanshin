@@ -347,7 +347,6 @@ public class ModelManagementService implements IModelManagementService {
 
 		// Determines the paths and URIs.
 		IPath ecorePath = metaModelFile.getLocation();
-		CoreUtils.log.debug("Caminho do metamodelo: {0}", ecorePath.toString()); 
 		IPath genModelPath = ecorePath.removeFileExtension().addFileExtension(GENMODEL_FILE_EXTENSION);
 		URI ecoreURI = URI.createFileURI(ecorePath.toString());
 		URI genModelURI = URI.createFileURI(genModelPath.toString());

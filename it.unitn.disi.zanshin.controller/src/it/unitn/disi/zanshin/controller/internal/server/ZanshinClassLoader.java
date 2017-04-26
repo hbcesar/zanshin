@@ -180,16 +180,18 @@ public class ZanshinClassLoader extends ClassLoader {
 			Class<? extends EPackage> packageClass = (Class<? extends EPackage>) packageClazz;
 			Method initMethod = packageClass.getMethod(FACTORY_INIT_METHOD_NAME);
 			initMethod.invoke(null);
-
 			// Initializes the factory class, keeping a reference to it in the class loader.
 			factoryClass = (Class<? extends EFactory>) factoryClazz;
 			factoryInstance = factoryClass.newInstance();
 			initMethod = factoryClass.getMethod(FACTORY_INIT_METHOD_NAME);
 			initMethod.invoke(factoryInstance);
+			ControllerUtils.log.debug("oie");
 		}
 
+		
 		// Else, load the Literals inner class from the package class.
 		else {
+			ControllerUtils.log.debug("4");
 			loadCompiledClass(packageName + PACKAGE_LITERALS_CLASS_SUFFIX, null);
 		}
 
