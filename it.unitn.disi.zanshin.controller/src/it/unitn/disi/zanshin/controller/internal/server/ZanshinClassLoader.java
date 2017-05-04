@@ -173,59 +173,24 @@ public class ZanshinClassLoader extends ClassLoader {
 		String impl = (loadImplementation ? IMPLEMENTATION_CLASS_SUFFIX : ""); //$NON-NLS-1$
 		Class<?> packageClazz = loadCompiledClass(packageName + PACKAGE_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
 		Class<?> factoryClazz = loadCompiledClass(packageName + FACTORY_CLASS_SUFFIX + impl, loadImplementation ? IMPLEMENTATION_PACKAGE_NAME : null);
-
-		/*
-		 * public static SchedulerPackage init() {
-		if (isInited)
-			return (SchedulerPackage) EPackage.Registry.INSTANCE.getEPackage(SchedulerPackage.eNS_URI);
-
-		// Obtain or create and register package
-		SchedulerPackageImpl theSchedulerPackage = (SchedulerPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof SchedulerPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new SchedulerPackageImpl());
-
-		isInited = true;
-
-		// Initialize simple dependencies
-		EcaPackage.eINSTANCE.eClass();
-		GorePackage.eINSTANCE.eClass();
-		LTLPackage.eINSTANCE.eClass();
-
-		// Create package meta-data objects
-		theSchedulerPackage.createPackageContents();
-
-		// Initialize created meta-data
-		theSchedulerPackage.initializePackageContents();
-
-		// Mark meta-data to indicate it can't be changed
-		theSchedulerPackage.freeze();
-
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(SchedulerPackage.eNS_URI, theSchedulerPackage);
-		return theSchedulerPackage;
-	}
-		 */
 		
 		// If we're loading implementations, initializes them.
 		if (loadImplementation) {
 			// Initializes the package, so it will register itself within EMF.
 			Class<? extends EPackage> packageClass = (Class<? extends EPackage>) packageClazz;
 			Method initMethod = packageClass.getMethod(FACTORY_INIT_METHOD_NAME);
-			ControllerUtils.log.debug(initMethod.getName());
 			initMethod.invoke(null);
-			ControllerUtils.log.debug("invocou!");
+			
 			// Initializes the factory class, keeping a reference to it in the class loader.
 			factoryClass = (Class<? extends EFactory>) factoryClazz;
 			factoryInstance = factoryClass.newInstance();
 			initMethod = factoryClass.getMethod(FACTORY_INIT_METHOD_NAME);
 			initMethod.invoke(factoryInstance);
-			ControllerUtils.log.debug("oie");
 		}
 
 		
 		// Else, load the Literals inner class from the package class.
 		else {
-			ControllerUtils.log.debug("4");
 			loadCompiledClass(packageName + PACKAGE_LITERALS_CLASS_SUFFIX, null);
 		}
 
