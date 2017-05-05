@@ -39,7 +39,7 @@ public interface EcaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://disi.unitn.it/zanshin/1.0/eca";
+	String eNS_URI = "https://nemo.inf.ufes.br/zanshin/eca";
 
 	/**
 	 * The package namespace name.

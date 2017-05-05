@@ -884,7 +884,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		taskEClass.getESuperTypes().add(this.getPerformativeRequirement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(goreElementEClass, GOREElement.class, "GOREElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(goreElementEClass, GOREElement.class, "GOREElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGOREElement_Parent(), this.getGOREElement(), null, "parent", null, 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGOREElement_Time(), ecorePackage.getEDate(), "time", null, 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGOREElement_State(), this.getGOREElementState(), "state", "undefined", 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -913,7 +913,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		addEOperation(goreElementEClass, ecorePackage.getEInt(), "getChildrenStateCount", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(goalOrientedRequirementEClass, GoalOrientedRequirement.class, "GoalOrientedRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(goalOrientedRequirementEClass, GoalOrientedRequirement.class, "GoalOrientedRequirement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGoalOrientedRequirement_Assumptions(), this.getDomainAssumption(), null, "assumptions", null, 0, -1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGoalOrientedRequirement_RefinementType(), this.getRefinementType(), "refinementType", null, 0, 1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGoalOrientedRequirement_Refinements(), this.getGoalOrientedRequirement(), null, "refinements", null, 0, -1, GoalOrientedRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -924,7 +924,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		initEClass(performativeRequirementEClass, PerformativeRequirement.class, "PerformativeRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(performativeRequirementEClass, PerformativeRequirement.class, "PerformativeRequirement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerformativeRequirement_StartTime(), ecorePackage.getEDate(), "startTime", null, 0, 1, PerformativeRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(performativeRequirementEClass, null, "cancel", 0, 1, IS_UNIQUE, IS_ORDERED);

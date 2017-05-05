@@ -24,7 +24,7 @@ import org.eeat.model.LTL.OclAny;
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface GOREElement extends OclAny {

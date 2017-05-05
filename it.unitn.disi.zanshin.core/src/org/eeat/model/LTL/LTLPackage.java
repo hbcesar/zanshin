@@ -36,7 +36,7 @@ public interface LTLPackage extends EPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://disi.unitn.it/zanshin/1.0/ltl"; //$NON-NLS-1$
+	String eNS_URI = "https://nemo.inf.ufes.br/zanshin/ltl"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

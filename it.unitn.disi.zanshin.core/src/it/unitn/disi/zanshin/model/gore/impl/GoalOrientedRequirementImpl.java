@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class GoalOrientedRequirementImpl extends GOREElementImpl implements GoalOrientedRequirement {
+public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implements GoalOrientedRequirement {
 	/**
 	 * The cached value of the '{@link #getAssumptions() <em>Assumptions</em>}' reference list.
 	 * <!-- begin-user-doc -->

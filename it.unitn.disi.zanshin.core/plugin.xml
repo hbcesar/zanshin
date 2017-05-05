@@ -14,21 +14,21 @@
       <package
             uri="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore"
             class="it.unitn.disi.zanshin.model.eca.EcaPackage"
-            genModel="model/zanshin.genmodel"/>
+            genModel="META-INF/zanshin.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/gore.ecore"
             class="it.unitn.disi.zanshin.model.gore.GorePackage"
-            genModel="model/zanshin.genmodel"/>
+            genModel="META-INF/zanshin.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="https://github.com/hbcesar/zanshin/blob/master/it.unitn.disi.zanshin.core/META-INF/LTL.ecore"
+            uri="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/LTL.ecore"
             class="org.eeat.model.LTL.LTLPackage"
-            genModel="model/zanshin.genmodel"/>
+            genModel="META-INF/zanshin.genmodel"/>
    </extension>
 
 </plugin>

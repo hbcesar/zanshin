@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gore" nsURI="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/gore.ecore"
     nsPrefix="it.unitn.disi.zanshin.model">
-  <eClassifiers xsi:type="ecore:EClass" name="GOREElement" eSuperTypes="LTL.ecore#//OclAny">
+  <eClassifiers xsi:type="ecore:EClass" name="GOREElement" abstract="true" eSuperTypes="LTL.ecore#//OclAny">
     <eOperations name="start">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement started: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xD;&#xA;setState(it.unitn.disi.zanshin.model.gore.GOREElementState.STARTED);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;// If the monitoring service is active, warn it that this requirement has been started.&#xD;&#xA;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xD;&#xA;if (monitoringService != null)&#xD;&#xA;&#x9;monitoringService.monitorMethodCall(this, it.unitn.disi.zanshin.model.gore.MonitorableMethod.START);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;// Propagate the start to the parent.&#xD;&#xA;it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();&#xD;&#xA;if ((parent != null) &amp;&amp; (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))&#xD;&#xA;&#x9;((GOREElement) parent).start();"/>
@@ -59,7 +59,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="awreqs" upperBound="-1"
         eType="#//AwReq"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" eSuperTypes="#//GOREElement">
+  <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" abstract="true"
+      eSuperTypes="#//GOREElement">
     <eOperations name="getChildren">
       <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
         <eTypeArguments eClassifier="#//GOREElement"/>
@@ -71,7 +72,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//GoalOrientedRequirement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" eSuperTypes="#//GoalOrientedRequirement">
+  <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" abstract="true"
+      eSuperTypes="#//GoalOrientedRequirement">
     <eOperations name="cancel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="// Only process the cancellation if the requirement has not yet been canceled.&#xD;&#xA;if (getState() != it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED) {&#xD;&#xA;&#x9;it.unitn.disi.zanshin.core.CoreUtils.log.debug(&quot;Requirement canceled: &quot; + eClass().getName() + &quot; (&quot; + this + &quot;)&quot;); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$&#xD;&#xA;&#x9;setState(it.unitn.disi.zanshin.model.gore.GOREElementState.CANCELED);&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;// If the monitoring service is active, warn it that this requirement has been canceled.&#xD;&#xA;&#x9;it.unitn.disi.zanshin.services.IMonitoringService monitoringService = it.unitn.disi.zanshin.core.Activator.getMonitoringService();&#xD;&#xA;&#x9;if (monitoringService != null)&#xD;&#xA;&#x9;&#x9;monitoringService.monitorMethodCall(this, it.unitn.disi.zanshin.model.gore.MonitorableMethod.CANCEL);&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;// If the requirement is canceled, then it has also ended.&#xD;&#xA;&#x9;end();&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;// Propagate the cancellation to the parent, depending if its definable/performative, and/or-refined.&#xD;&#xA;&#x9;//TODO: verificar propagacao pra outros tipos de requisito&#xD;&#xA;&#x9;it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();&#xD;&#xA;&#x9;if ((parent != null) &amp;&amp; (parent instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement)) {&#xD;&#xA;&#x9;&#x9;it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement req = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent;&#xD;&#xA;&#x9;&#x9;if (req.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) parent.checkState();&#xD;&#xA;&#x9;&#x9;else if (parent instanceof PerformativeRequirement) ((PerformativeRequirement) parent).cancel();&#xD;&#xA;&#x9;&#x9;else parent.fail();&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;// Also propagate the cancellation to the children if and-refined and the children are performative.&#xD;&#xA;&#x9;if (getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND)&#xD;&#xA;&#x9;&#x9;for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren())&#xD;&#xA;&#x9;&#x9;&#x9;if (child instanceof PerformativeRequirement) ((PerformativeRequirement) child).cancel();&#xD;&#xA;}"/>

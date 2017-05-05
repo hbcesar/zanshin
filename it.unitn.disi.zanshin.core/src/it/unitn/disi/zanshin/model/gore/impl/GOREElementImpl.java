@@ -40,7 +40,7 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  *
  * @generated
  */
-public class GOREElementImpl extends OclAnyImpl implements GOREElement {
+public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	/**
 	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
