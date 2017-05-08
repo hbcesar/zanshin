@@ -35,10 +35,6 @@
       <eParameters name="parameter" eType="#//Parameter"/>
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
-        eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" lowerBound="1"
-        eType="#//HardGoal" containment="true" eOpposite="#//HardGoal/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
         changeable="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -48,6 +44,10 @@
         <details key="suppressedSetVisibility" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
+        eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" eType="#//HardGoal"
+        containment="true" eOpposite="#//HardGoal/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
         containment="true" eOpposite="#//Configuration/goalModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
@@ -111,7 +111,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//GOREElementState"
         defaultValueLiteral="undefined"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="awreqs" upperBound="-1"
-        eType="#//AwReq" eOpposite="#//AwReq/parent"/>
+        eType="#//AwReq" containment="true" eOpposite="#//AwReq/parent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" abstract="true"
       eSuperTypes="#//GOREElement">
@@ -120,9 +120,9 @@
         <eTypeArguments eClassifier="#//GOREElement"/>
       </eGenericType>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assumptions" upperBound="-1"
-        eType="#//DomainAssumption" eOpposite="#//DomainAssumption/parent"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assumptions" upperBound="-1"
+        eType="#//DomainAssumption" containment="true" eOpposite="#//DomainAssumption/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//GoalOrientedRequirement" containment="true" eOpposite="#//GoalOrientedRequirement/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//GoalOrientedRequirement"
@@ -177,10 +177,10 @@
         eType="#//Softgoal" eOpposite="#//Softgoal/constraints"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AwReq" eSuperTypes="#//GOREElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
-        eType="#//GOREElement" eOpposite="#//GOREElement/awreqs"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementCoefficient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//GOREElement" eOpposite="#//GOREElement/awreqs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//GOREElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"

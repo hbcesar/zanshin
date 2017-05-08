@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -84,7 +85,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	protected GOREElementState state = STATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAwreqs() <em>Awreqs</em>}' reference list.
+	 * The cached value of the '{@link #getAwreqs() <em>Awreqs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAwreqs()
@@ -161,7 +162,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 */
 	public EList<AwReq> getAwreqs() {
 		if (awreqs == null) {
-			awreqs = new EObjectWithInverseResolvingEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS, GorePackage.AW_REQ__PARENT);
+			awreqs = new EObjectContainmentWithInverseEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS, GorePackage.AW_REQ__PARENT);
 		}
 		return awreqs;
 	}

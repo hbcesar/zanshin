@@ -40,7 +40,7 @@ public interface GoalModel extends EObject {
 	 * @see #setRootGoal(HardGoal)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_RootGoal()
 	 * @see it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel
-	 * @model opposite="goalModel" containment="true" required="true"
+	 * @model opposite="goalModel" containment="true"
 	 * @generated
 	 */
 	HardGoal getRootGoal();

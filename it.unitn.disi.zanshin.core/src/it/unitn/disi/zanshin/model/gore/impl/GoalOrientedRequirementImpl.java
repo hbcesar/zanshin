@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinementType <em>Refinement Type</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getParent <em>Parent</em>}</li>
  * </ul>
@@ -43,16 +43,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implements GoalOrientedRequirement {
-	/**
-	 * The cached value of the '{@link #getAssumptions() <em>Assumptions</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAssumptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DomainAssumption> assumptions;
-
 	/**
 	 * The default value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,6 +62,16 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	 * @ordered
 	 */
 	protected RefinementType refinementType = REFINEMENT_TYPE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAssumptions() <em>Assumptions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssumptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DomainAssumption> assumptions;
 
 	/**
 	 * The cached value of the '{@link #getRefinements() <em>Refinements</em>}' containment reference list.
@@ -109,7 +109,7 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	 */
 	public EList<DomainAssumption> getAssumptions() {
 		if (assumptions == null) {
-			assumptions = new EObjectWithInverseResolvingEList<DomainAssumption>(DomainAssumption.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GorePackage.DOMAIN_ASSUMPTION__PARENT);
+			assumptions = new EObjectContainmentWithInverseEList<DomainAssumption>(DomainAssumption.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GorePackage.DOMAIN_ASSUMPTION__PARENT);
 		}
 		return assumptions;
 	}
@@ -249,10 +249,10 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
-				return getAssumptions();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				return getRefinementType();
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
+				return getAssumptions();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				return getRefinements();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
@@ -270,12 +270,12 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
+				setRefinementType((RefinementType)newValue);
+				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				getAssumptions().clear();
 				getAssumptions().addAll((Collection<? extends DomainAssumption>)newValue);
-				return;
-			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
-				setRefinementType((RefinementType)newValue);
 				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				getRefinements().clear();
@@ -296,11 +296,11 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
-				getAssumptions().clear();
-				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				setRefinementType(REFINEMENT_TYPE_EDEFAULT);
+				return;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
+				getAssumptions().clear();
 				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				getRefinements().clear();
@@ -320,10 +320,10 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
-				return assumptions != null && !assumptions.isEmpty();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE:
 				return refinementType != REFINEMENT_TYPE_EDEFAULT;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
+				return assumptions != null && !assumptions.isEmpty();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				return refinements != null && !refinements.isEmpty();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:

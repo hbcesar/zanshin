@@ -189,13 +189,22 @@ public interface GorePackage extends EPackage {
 	int GOAL_MODEL = 0;
 
 	/**
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_MODEL__INTERNAL_ID = 0;
+
+	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_MODEL__ACTORS = 0;
+	int GOAL_MODEL__ACTORS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Root Goal</b></em>' containment reference.
@@ -204,16 +213,7 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_MODEL__ROOT_GOAL = 1;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL_MODEL__INTERNAL_ID = 2;
+	int GOAL_MODEL__ROOT_GOAL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
@@ -261,7 +261,7 @@ public interface GorePackage extends EPackage {
 	int GORE_ELEMENT__STATE = LTLPackage.OCL_ANY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -297,7 +297,7 @@ public interface GorePackage extends EPackage {
 	int GOAL_ORIENTED_REQUIREMENT__STATE = GORE_ELEMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -306,22 +306,22 @@ public interface GorePackage extends EPackage {
 	int GOAL_ORIENTED_REQUIREMENT__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Assumptions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = GORE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = GORE_ELEMENT_FEATURE_COUNT + 1;
+	int GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = GORE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Assumptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = GORE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -369,22 +369,13 @@ public interface GorePackage extends EPackage {
 	int PERFORMATIVE_REQUIREMENT__STATE = GOAL_ORIENTED_REQUIREMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int PERFORMATIVE_REQUIREMENT__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
-
-	/**
-	 * The feature id for the '<em><b>Assumptions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERFORMATIVE_REQUIREMENT__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -394,6 +385,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Assumptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMATIVE_REQUIREMENT__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -450,22 +450,13 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__STATE = PERFORMATIVE_REQUIREMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int HARD_GOAL__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
-
-	/**
-	 * The feature id for the '<em><b>Assumptions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HARD_GOAL__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -475,6 +466,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int HARD_GOAL__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Assumptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARD_GOAL__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -540,22 +540,13 @@ public interface GorePackage extends EPackage {
 	int SOFTGOAL__STATE = GOAL_ORIENTED_REQUIREMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int SOFTGOAL__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
-
-	/**
-	 * The feature id for the '<em><b>Assumptions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOFTGOAL__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -565,6 +556,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOFTGOAL__REFINEMENT_TYPE = GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Assumptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOFTGOAL__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -621,7 +621,7 @@ public interface GorePackage extends EPackage {
 	int QUALITY_CONSTRAINT__STATE = GORE_ELEMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -666,7 +666,7 @@ public interface GorePackage extends EPackage {
 	int AW_REQ__STATE = GORE_ELEMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -675,22 +675,22 @@ public interface GorePackage extends EPackage {
 	int AW_REQ__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AW_REQ__PARENT = GORE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AW_REQ__INCREMENT_COEFFICIENT = GORE_ELEMENT_FEATURE_COUNT + 1;
+	int AW_REQ__INCREMENT_COEFFICIENT = GORE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AW_REQ__PARENT = GORE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Aw Req</em>' class.
@@ -720,7 +720,7 @@ public interface GorePackage extends EPackage {
 	int DOMAIN_ASSUMPTION__STATE = GORE_ELEMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -729,7 +729,7 @@ public interface GorePackage extends EPackage {
 	int DOMAIN_ASSUMPTION__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -765,22 +765,13 @@ public interface GorePackage extends EPackage {
 	int TASK__STATE = PERFORMATIVE_REQUIREMENT__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Awreqs</b></em>' reference list.
+	 * The feature id for the '<em><b>Awreqs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
-
-	/**
-	 * The feature id for the '<em><b>Assumptions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -790,6 +781,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__REFINEMENT_TYPE = PERFORMATIVE_REQUIREMENT__REFINEMENT_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Assumptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -1112,10 +1112,10 @@ public interface GorePackage extends EPackage {
 	EAttribute getGOREElement_State();
 
 	/**
-	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Awreqs</em>'.
+	 * @return the meta object for the containment reference list '<em>Awreqs</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs()
 	 * @see #getGOREElement()
 	 * @generated
@@ -1133,10 +1133,10 @@ public interface GorePackage extends EPackage {
 	EClass getGoalOrientedRequirement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Assumptions</em>'.
+	 * @return the meta object for the containment reference list '<em>Assumptions</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions()
 	 * @see #getGoalOrientedRequirement()
 	 * @generated
@@ -1271,10 +1271,10 @@ public interface GorePackage extends EPackage {
 	EClass getAwReq();
 
 	/**
-	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @return the meta object for the container reference '<em>Parent</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.AwReq#getParent()
 	 * @see #getAwReq()
 	 * @generated
@@ -1303,10 +1303,10 @@ public interface GorePackage extends EPackage {
 	EClass getDomainAssumption();
 
 	/**
-	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @return the meta object for the container reference '<em>Parent</em>'.
 	 * @see it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent()
 	 * @see #getDomainAssumption()
 	 * @generated
@@ -1712,7 +1712,7 @@ public interface GorePackage extends EPackage {
 		EAttribute GORE_ELEMENT__STATE = eINSTANCE.getGOREElement_State();
 
 		/**
-		 * The meta object literal for the '<em><b>Awreqs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Awreqs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1730,7 +1730,7 @@ public interface GorePackage extends EPackage {
 		EClass GOAL_ORIENTED_REQUIREMENT = eINSTANCE.getGoalOrientedRequirement();
 
 		/**
-		 * The meta object literal for the '<em><b>Assumptions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Assumptions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1844,7 +1844,7 @@ public interface GorePackage extends EPackage {
 		EClass AW_REQ = eINSTANCE.getAwReq();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1870,7 +1870,7 @@ public interface GorePackage extends EPackage {
 		EClass DOMAIN_ASSUMPTION = eINSTANCE.getDomainAssumption();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

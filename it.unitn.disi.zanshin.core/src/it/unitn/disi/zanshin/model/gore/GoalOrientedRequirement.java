@@ -13,8 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType <em>Refinement Type</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent <em>Parent</em>}</li>
  * </ul>
@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface GoalOrientedRequirement extends GOREElement {
 	/**
-	 * Returns the value of the '<em><b>Assumptions</b></em>' reference list.
+	 * Returns the value of the '<em><b>Assumptions</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.DomainAssumption}.
 	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
@@ -34,10 +34,10 @@ public interface GoalOrientedRequirement extends GOREElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Assumptions</em>' reference list.
+	 * @return the value of the '<em>Assumptions</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement_Assumptions()
 	 * @see it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent
-	 * @model opposite="parent"
+	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
 	EList<DomainAssumption> getAssumptions();

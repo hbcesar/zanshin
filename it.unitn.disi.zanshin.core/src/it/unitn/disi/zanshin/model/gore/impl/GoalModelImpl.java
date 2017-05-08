@@ -36,9 +36,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getInternalId <em>Internal Id</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getActors <em>Actors</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRootGoal <em>Root Goal</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getInternalId <em>Internal Id</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRelations <em>Relations</em>}</li>
  * </ul>
@@ -46,26 +46,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class GoalModelImpl extends EObjectImpl implements GoalModel {
-	/**
-	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActors()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Actor> actors;
-
-	/**
-	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRootGoal()
-	 * @generated
-	 * @ordered
-	 */
-	protected HardGoal rootGoal;
-
 	/**
 	 * The default value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -85,6 +65,26 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 * @ordered
 	 */
 	protected Long internalId = INTERNAL_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> actors;
+
+	/**
+	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootGoal()
+	 * @generated
+	 * @ordered
+	 */
+	protected HardGoal rootGoal;
 
 	/**
 	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
@@ -381,12 +381,12 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case GorePackage.GOAL_MODEL__INTERNAL_ID:
+				return getInternalId();
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return getActors();
 			case GorePackage.GOAL_MODEL__ROOT_GOAL:
 				return getRootGoal();
-			case GorePackage.GOAL_MODEL__INTERNAL_ID:
-				return getInternalId();
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				return getConfiguration();
 			case GorePackage.GOAL_MODEL__RELATIONS:
@@ -454,12 +454,12 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case GorePackage.GOAL_MODEL__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalId != null : !INTERNAL_ID_EDEFAULT.equals(internalId);
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return actors != null && !actors.isEmpty();
 			case GorePackage.GOAL_MODEL__ROOT_GOAL:
 				return rootGoal != null;
-			case GorePackage.GOAL_MODEL__INTERNAL_ID:
-				return INTERNAL_ID_EDEFAULT == null ? internalId != null : !INTERNAL_ID_EDEFAULT.equals(internalId);
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				return configuration != null;
 			case GorePackage.GOAL_MODEL__RELATIONS:

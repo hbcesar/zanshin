@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,16 +27,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssumption {
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected GoalOrientedRequirement parent;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,24 +52,8 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	 * @generated
 	 */
 	public GoalOrientedRequirement getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (GoalOrientedRequirement)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.DOMAIN_ASSUMPTION__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GoalOrientedRequirement basicGetParent() {
-		return parent;
+		if (eContainerFeatureID() != GorePackage.DOMAIN_ASSUMPTION__PARENT) return null;
+		return (GoalOrientedRequirement)eInternalContainer();
 	}
 
 	/**
@@ -87,12 +62,7 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	 * @generated
 	 */
 	public NotificationChain basicSetParent(GoalOrientedRequirement newParent, NotificationChain msgs) {
-		GoalOrientedRequirement oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GorePackage.DOMAIN_ASSUMPTION__PARENT, oldParent, newParent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newParent, GorePackage.DOMAIN_ASSUMPTION__PARENT, msgs);
 		return msgs;
 	}
 
@@ -102,10 +72,12 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	 * @generated
 	 */
 	public void setParent(GoalOrientedRequirement newParent) {
-		if (newParent != parent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != GorePackage.DOMAIN_ASSUMPTION__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (parent != null)
-				msgs = ((InternalEObject)parent).eInverseRemove(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GoalOrientedRequirement.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
 				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GoalOrientedRequirement.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
@@ -124,8 +96,8 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GorePackage.DOMAIN_ASSUMPTION__PARENT:
-				if (parent != null)
-					msgs = ((InternalEObject)parent).eInverseRemove(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GoalOrientedRequirement.class, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParent((GoalOrientedRequirement)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -151,11 +123,24 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.DOMAIN_ASSUMPTION__PARENT:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GoalOrientedRequirement.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GorePackage.DOMAIN_ASSUMPTION__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
+				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,7 +184,7 @@ public class DomainAssumptionImpl extends GOREElementImpl implements DomainAssum
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GorePackage.DOMAIN_ASSUMPTION__PARENT:
-				return parent != null;
+				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}
