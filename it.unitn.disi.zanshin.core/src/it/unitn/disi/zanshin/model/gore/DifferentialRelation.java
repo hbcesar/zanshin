@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getOperator <em>Operator</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getValue <em>Value</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel <em>Goal Model</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getDifferentialRelation()
@@ -185,5 +186,33 @@ public interface DifferentialRelation extends EObject {
 	 * @generated
 	 */
 	void setValue(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Goal Model</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations <em>Relations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Goal Model</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Goal Model</em>' container reference.
+	 * @see #setGoalModel(GoalModel)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getDifferentialRelation_GoalModel()
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRelations
+	 * @model opposite="relations" transient="false"
+	 * @generated
+	 */
+	GoalModel getGoalModel();
+
+	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel <em>Goal Model</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Goal Model</em>' container reference.
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	void setGoalModel(GoalModel value);
 
 } // DifferentialRelation

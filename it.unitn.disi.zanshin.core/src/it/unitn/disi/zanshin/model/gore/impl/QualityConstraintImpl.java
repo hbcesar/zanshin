@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,22 +24,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl#getSoftgoal <em>Softgoal</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class QualityConstraintImpl extends GOREElementImpl implements QualityConstraint {
-	/**
-	 * The cached value of the '{@link #getSoftgoal() <em>Softgoal</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSoftgoal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Softgoal softgoal;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,16 +54,9 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Softgoal getSoftgoal() {
-		if (softgoal != null && softgoal.eIsProxy()) {
-			InternalEObject oldSoftgoal = (InternalEObject)softgoal;
-			softgoal = (Softgoal)eResolveProxy(oldSoftgoal);
-			if (softgoal != oldSoftgoal) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.QUALITY_CONSTRAINT__SOFTGOAL, oldSoftgoal, softgoal));
-			}
-		}
-		return softgoal;
+	public Softgoal getParent() {
+		if (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__PARENT) return null;
+		return (Softgoal)eInternalContainer();
 	}
 
 	/**
@@ -80,22 +64,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Softgoal basicGetSoftgoal() {
-		return softgoal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSoftgoal(Softgoal newSoftgoal, NotificationChain msgs) {
-		Softgoal oldSoftgoal = softgoal;
-		softgoal = newSoftgoal;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GorePackage.QUALITY_CONSTRAINT__SOFTGOAL, oldSoftgoal, newSoftgoal);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+	public NotificationChain basicSetParent(Softgoal newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, GorePackage.QUALITY_CONSTRAINT__PARENT, msgs);
 		return msgs;
 	}
 
@@ -104,18 +74,20 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSoftgoal(Softgoal newSoftgoal) {
-		if (newSoftgoal != softgoal) {
+	public void setParent(Softgoal newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (softgoal != null)
-				msgs = ((InternalEObject)softgoal).eInverseRemove(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
-			if (newSoftgoal != null)
-				msgs = ((InternalEObject)newSoftgoal).eInverseAdd(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
-			msgs = basicSetSoftgoal(newSoftgoal, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.QUALITY_CONSTRAINT__SOFTGOAL, newSoftgoal, newSoftgoal));
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.QUALITY_CONSTRAINT__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -126,11 +98,11 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	public void replaceWith(final GoalOrientedRequirement newRequirement) {
 		// Performs the replacement as a normal requirement first.
 		super.replaceWith(newRequirement);
-		
+				
 		// Then, replace the relationship quality constraints have with softgoals.
-		it.unitn.disi.zanshin.model.gore.Softgoal softgoal = getSoftgoal();
-		setSoftgoal(null);
-		((QualityConstraint) newRequirement).setSoftgoal(softgoal);
+		it.unitn.disi.zanshin.model.gore.Softgoal softgoal = getParent();
+		setParent(null);
+		((QualityConstraint) newRequirement).setParent(softgoal);
 	}
 
 	/**
@@ -141,10 +113,10 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				if (softgoal != null)
-					msgs = ((InternalEObject)softgoal).eInverseRemove(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
-				return basicSetSoftgoal((Softgoal)otherEnd, msgs);
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParent((Softgoal)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -157,8 +129,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				return basicSetSoftgoal(null, msgs);
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -169,11 +141,24 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				return eInternalContainer().eInverseRemove(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				if (resolve) return getSoftgoal();
-				return basicGetSoftgoal();
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -186,8 +171,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				setSoftgoal((Softgoal)newValue);
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				setParent((Softgoal)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -201,8 +186,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				setSoftgoal((Softgoal)null);
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				setParent((Softgoal)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -216,8 +201,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__SOFTGOAL:
-				return softgoal != null;
+			case GorePackage.QUALITY_CONSTRAINT__PARENT:
+				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

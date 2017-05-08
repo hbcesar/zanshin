@@ -68,6 +68,12 @@ public class GoreSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case GorePackage.GOAL_MODEL: {
+				GoalModel goalModel = (GoalModel)theEObject;
+				T result = caseGoalModel(goalModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case GorePackage.GORE_ELEMENT: {
 				GOREElement goreElement = (GOREElement)theEObject;
 				T result = caseGOREElement(goreElement);
@@ -160,12 +166,6 @@ public class GoreSwitch<T> extends Switch<T> {
 			case GorePackage.DIFFERENTIAL_RELATION: {
 				DifferentialRelation differentialRelation = (DifferentialRelation)theEObject;
 				T result = caseDifferentialRelation(differentialRelation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GorePackage.GOAL_MODEL: {
-				GoalModel goalModel = (GoalModel)theEObject;
-				T result = caseGoalModel(goalModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

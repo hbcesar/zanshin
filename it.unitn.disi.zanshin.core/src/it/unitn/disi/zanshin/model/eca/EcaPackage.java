@@ -39,7 +39,7 @@ public interface EcaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "https://nemo.inf.ufes.br/zanshin/eca";
+	String eNS_URI = "https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore";
 
 	/**
 	 * The package namespace name.
@@ -66,15 +66,6 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 */
 	int ECA_AW_REQ = 0;
-
-	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECA_AW_REQ__PARENT = GorePackage.AW_REQ__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -104,13 +95,13 @@ public interface EcaPackage extends EPackage {
 	int ECA_AW_REQ__AWREQS = GorePackage.AW_REQ__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECA_AW_REQ__TARGET = GorePackage.AW_REQ__TARGET;
+	int ECA_AW_REQ__PARENT = GorePackage.AW_REQ__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.

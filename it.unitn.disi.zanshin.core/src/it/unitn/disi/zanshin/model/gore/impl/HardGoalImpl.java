@@ -8,10 +8,12 @@ import it.unitn.disi.zanshin.model.gore.HardGoal;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,16 +29,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoal {
-	/**
-	 * The cached value of the '{@link #getGoalModel() <em>Goal Model</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGoalModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected GoalModel goalModel;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,15 +54,8 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @generated
 	 */
 	public GoalModel getGoalModel() {
-		if (goalModel != null && goalModel.eIsProxy()) {
-			InternalEObject oldGoalModel = (InternalEObject)goalModel;
-			goalModel = (GoalModel)eResolveProxy(oldGoalModel);
-			if (goalModel != oldGoalModel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.HARD_GOAL__GOAL_MODEL, oldGoalModel, goalModel));
-			}
-		}
-		return goalModel;
+		if (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL) return null;
+		return (GoalModel)eInternalContainer();
 	}
 
 	/**
@@ -78,8 +63,9 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GoalModel basicGetGoalModel() {
-		return goalModel;
+	public NotificationChain basicSetGoalModel(GoalModel newGoalModel, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.HARD_GOAL__GOAL_MODEL, msgs);
+		return msgs;
 	}
 
 	/**
@@ -88,10 +74,63 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	 * @generated
 	 */
 	public void setGoalModel(GoalModel newGoalModel) {
-		GoalModel oldGoalModel = goalModel;
-		goalModel = newGoalModel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.HARD_GOAL__GOAL_MODEL, oldGoalModel, goalModel));
+		if (newGoalModel != eInternalContainer() || (eContainerFeatureID() != GorePackage.HARD_GOAL__GOAL_MODEL && newGoalModel != null)) {
+			if (EcoreUtil.isAncestor(this, newGoalModel))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newGoalModel != null)
+				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
+			msgs = basicSetGoalModel(newGoalModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.HARD_GOAL__GOAL_MODEL, newGoalModel, newGoalModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetGoalModel((GoalModel)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
+				return basicSetGoalModel(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.HARD_GOAL__GOAL_MODEL:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__ROOT_GOAL, GoalModel.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -103,8 +142,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				if (resolve) return getGoalModel();
-				return basicGetGoalModel();
+				return getGoalModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,7 +186,7 @@ public class HardGoalImpl extends PerformativeRequirementImpl implements HardGoa
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GorePackage.HARD_GOAL__GOAL_MODEL:
-				return goalModel != null;
+				return getGoalModel() != null;
 		}
 		return super.eIsSet(featureID);
 	}

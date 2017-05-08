@@ -36,8 +36,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRootGoal <em>Root Goal</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getActors <em>Actors</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRootGoal <em>Root Goal</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getInternalId <em>Internal Id</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl#getRelations <em>Relations</em>}</li>
@@ -47,16 +47,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	/**
-	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRootGoal()
-	 * @generated
-	 * @ordered
-	 */
-	protected HardGoal rootGoal;
-
-	/**
 	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +55,16 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 * @ordered
 	 */
 	protected EList<Actor> actors;
+
+	/**
+	 * The cached value of the '{@link #getRootGoal() <em>Root Goal</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootGoal()
+	 * @generated
+	 * @ordered
+	 */
+	protected HardGoal rootGoal;
 
 	/**
 	 * The default value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
@@ -158,9 +158,9 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		if (newRootGoal != rootGoal) {
 			NotificationChain msgs = null;
 			if (rootGoal != null)
-				msgs = ((InternalEObject)rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
+				msgs = ((InternalEObject)rootGoal).eInverseRemove(this, GorePackage.HARD_GOAL__GOAL_MODEL, HardGoal.class, msgs);
 			if (newRootGoal != null)
-				msgs = ((InternalEObject)newRootGoal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
+				msgs = ((InternalEObject)newRootGoal).eInverseAdd(this, GorePackage.HARD_GOAL__GOAL_MODEL, HardGoal.class, msgs);
 			msgs = basicSetRootGoal(newRootGoal, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -239,7 +239,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 */
 	public EList<DifferentialRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS);
+			relations = new EObjectContainmentWithInverseEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS, GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL);
 		}
 		return relations;
 	}
@@ -339,10 +339,16 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		switch (featureID) {
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActors()).basicAdd(otherEnd, msgs);
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				if (rootGoal != null)
+					msgs = ((InternalEObject)rootGoal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__ROOT_GOAL, null, msgs);
+				return basicSetRootGoal((HardGoal)otherEnd, msgs);
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				if (configuration != null)
 					msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__CONFIGURATION, null, msgs);
 				return basicSetConfiguration((Configuration)otherEnd, msgs);
+			case GorePackage.GOAL_MODEL__RELATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRelations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -355,10 +361,10 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return basicSetRootGoal(null, msgs);
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				return basicSetRootGoal(null, msgs);
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				return basicSetConfiguration(null, msgs);
 			case GorePackage.GOAL_MODEL__RELATIONS:
@@ -375,10 +381,10 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return getRootGoal();
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return getActors();
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				return getRootGoal();
 			case GorePackage.GOAL_MODEL__INTERNAL_ID:
 				return getInternalId();
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
@@ -398,12 +404,12 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				setRootGoal((HardGoal)newValue);
-				return;
 			case GorePackage.GOAL_MODEL__ACTORS:
 				getActors().clear();
 				getActors().addAll((Collection<? extends Actor>)newValue);
+				return;
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				setRootGoal((HardGoal)newValue);
 				return;
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				setConfiguration((Configuration)newValue);
@@ -424,11 +430,11 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				setRootGoal((HardGoal)null);
-				return;
 			case GorePackage.GOAL_MODEL__ACTORS:
 				getActors().clear();
+				return;
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				setRootGoal((HardGoal)null);
 				return;
 			case GorePackage.GOAL_MODEL__CONFIGURATION:
 				setConfiguration((Configuration)null);
@@ -448,10 +454,10 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.GOAL_MODEL__ROOT_GOAL:
-				return rootGoal != null;
 			case GorePackage.GOAL_MODEL__ACTORS:
 				return actors != null && !actors.isEmpty();
+			case GorePackage.GOAL_MODEL__ROOT_GOAL:
+				return rootGoal != null;
 			case GorePackage.GOAL_MODEL__INTERNAL_ID:
 				return INTERNAL_ID_EDEFAULT == null ? internalId != null : !INTERNAL_ID_EDEFAULT.equals(internalId);
 			case GorePackage.GOAL_MODEL__CONFIGURATION:

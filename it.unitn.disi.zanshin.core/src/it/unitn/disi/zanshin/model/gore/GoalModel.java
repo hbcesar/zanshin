@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal <em>Root Goal</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalModel#getActors <em>Actors</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal <em>Root Goal</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalModel#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations <em>Relations</em>}</li>
  * </ul>
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface GoalModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Root Goal</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Root Goal</em>' containment reference isn't clear,
@@ -38,7 +39,8 @@ public interface GoalModel extends EObject {
 	 * @return the value of the '<em>Root Goal</em>' containment reference.
 	 * @see #setRootGoal(HardGoal)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_RootGoal()
-	 * @model containment="true" required="true"
+	 * @see it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel
+	 * @model opposite="goalModel" containment="true" required="true"
 	 * @generated
 	 */
 	HardGoal getRootGoal();
@@ -102,6 +104,7 @@ public interface GoalModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Relations</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.DifferentialRelation}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relations</em>' containment reference list isn't clear,
@@ -110,7 +113,8 @@ public interface GoalModel extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relations</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_Relations()
-	 * @model containment="true"
+	 * @see it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel
+	 * @model opposite="goalModel" containment="true"
 	 * @generated
 	 */
 	EList<DifferentialRelation> getRelations();

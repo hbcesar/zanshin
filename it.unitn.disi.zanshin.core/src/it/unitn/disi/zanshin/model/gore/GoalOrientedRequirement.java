@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinements <em>Refinements</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement()
@@ -26,6 +27,7 @@ public interface GoalOrientedRequirement extends GOREElement {
 	/**
 	 * Returns the value of the '<em><b>Assumptions</b></em>' reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.DomainAssumption}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Assumptions</em>' reference list isn't clear,
@@ -34,7 +36,8 @@ public interface GoalOrientedRequirement extends GOREElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assumptions</em>' reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement_Assumptions()
-	 * @model
+	 * @see it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent
+	 * @model opposite="parent"
 	 * @generated
 	 */
 	EList<DomainAssumption> getAssumptions();
@@ -71,6 +74,7 @@ public interface GoalOrientedRequirement extends GOREElement {
 	/**
 	 * Returns the value of the '<em><b>Refinements</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Refinements</em>' containment reference list isn't clear,
@@ -79,10 +83,39 @@ public interface GoalOrientedRequirement extends GOREElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Refinements</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement_Refinements()
-	 * @model containment="true"
+	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent
+	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
 	EList<GoalOrientedRequirement> getRefinements();
+
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinements <em>Refinements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent</em>' container reference.
+	 * @see #setParent(GoalOrientedRequirement)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement_Parent()
+	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinements
+	 * @model opposite="refinements" transient="false"
+	 * @generated
+	 */
+	GoalOrientedRequirement getParent();
+
+	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent <em>Parent</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent</em>' container reference.
+	 * @see #getParent()
+	 * @generated
+	 */
+	void setParent(GoalOrientedRequirement value);
 
 	/**
 	 * <!-- begin-user-doc -->

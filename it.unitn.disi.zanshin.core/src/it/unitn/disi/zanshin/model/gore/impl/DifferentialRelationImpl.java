@@ -5,16 +5,19 @@ package it.unitn.disi.zanshin.model.gore.impl;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
 import it.unitn.disi.zanshin.model.gore.DifferentialRelationOperator;
+import it.unitn.disi.zanshin.model.gore.GoalModel;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.Parameter;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getGoalModel <em>Goal Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -319,6 +323,91 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GoalModel getGoalModel() {
+		if (eContainerFeatureID() != GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL) return null;
+		return (GoalModel)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGoalModel(GoalModel newGoalModel, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newGoalModel, GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGoalModel(GoalModel newGoalModel) {
+		if (newGoalModel != eInternalContainer() || (eContainerFeatureID() != GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL && newGoalModel != null)) {
+			if (EcoreUtil.isAncestor(this, newGoalModel))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newGoalModel != null)
+				msgs = ((InternalEObject)newGoalModel).eInverseAdd(this, GorePackage.GOAL_MODEL__RELATIONS, GoalModel.class, msgs);
+			msgs = basicSetGoalModel(newGoalModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL, newGoalModel, newGoalModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetGoalModel((GoalModel)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				return basicSetGoalModel(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_MODEL__RELATIONS, GoalModel.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -336,6 +425,8 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return getOperator();
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				return getValue();
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				return getGoalModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -365,6 +456,9 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return;
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				setValue((Double)newValue);
+				return;
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				setGoalModel((GoalModel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -396,6 +490,9 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				setGoalModel((GoalModel)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -420,6 +517,8 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return operator != OPERATOR_EDEFAULT;
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				return value != VALUE_EDEFAULT;
+			case GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL:
+				return getGoalModel() != null;
 		}
 		return super.eIsSet(featureID);
 	}

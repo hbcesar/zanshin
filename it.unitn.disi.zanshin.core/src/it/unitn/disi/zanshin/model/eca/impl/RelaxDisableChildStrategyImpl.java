@@ -208,7 +208,7 @@ public class RelaxDisableChildStrategyImpl extends AdaptationStrategyImpl implem
 		
 		// Attribute requirement defaults to the AwReq's target.
 		if (requirement == null) {
-			setRequirement(awreq.getTarget());
+			setRequirement(awreq.getParent());
 			if (requirement == null) {
 				it.unitn.disi.zanshin.core.CoreUtils.log.warn("Strategy {0} is missing mandatory attribute \"requirement\" and cannot be executed. Cannot use the default value because the referred AwReq doesn't have a target set.", strategyName); //$NON-NLS-1$
 				return;

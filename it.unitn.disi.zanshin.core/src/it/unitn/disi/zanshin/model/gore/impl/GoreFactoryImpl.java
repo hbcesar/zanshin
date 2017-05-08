@@ -57,6 +57,7 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case GorePackage.GOAL_MODEL: return createGoalModel();
 			case GorePackage.HARD_GOAL: return createHardGoal();
 			case GorePackage.SOFTGOAL: return createSoftgoal();
 			case GorePackage.QUALITY_CONSTRAINT: return createQualityConstraint();
@@ -66,7 +67,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 			case GorePackage.ACTOR: return createActor();
 			case GorePackage.CONFIGURATION: return createConfiguration();
 			case GorePackage.DIFFERENTIAL_RELATION: return createDifferentialRelation();
-			case GorePackage.GOAL_MODEL: return createGoalModel();
 			case GorePackage.PARAMETER: return createParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");

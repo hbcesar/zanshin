@@ -13,6 +13,7 @@ import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,6 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eeat.model.LTL.impl.OclAnyImpl;
 
 /**
@@ -32,7 +35,6 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getAwreqs <em>Awreqs</em>}</li>
@@ -41,16 +43,6 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  * @generated
  */
 public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement {
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected GOREElement parent;
-
 	/**
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -125,44 +117,6 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GOREElement getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (GOREElement)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GOREElement basicGetParent() {
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(GOREElement newParent) {
-		GOREElement oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Date getTime() {
 		return time;
 	}
@@ -207,7 +161,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 */
 	public EList<AwReq> getAwreqs() {
 		if (awreqs == null) {
-			awreqs = new EObjectResolvingEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS);
+			awreqs = new EObjectWithInverseResolvingEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS, GorePackage.AW_REQ__PARENT);
 		}
 		return awreqs;
 	}
@@ -457,12 +411,60 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GOREElement getParent() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(GOREElement parent) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__AWREQS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAwreqs()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.GORE_ELEMENT__AWREQS:
+				return ((InternalEList<?>)getAwreqs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.GORE_ELEMENT__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
 			case GorePackage.GORE_ELEMENT__TIME:
 				return getTime();
 			case GorePackage.GORE_ELEMENT__STATE:
@@ -482,9 +484,6 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.GORE_ELEMENT__PARENT:
-				setParent((GOREElement)newValue);
-				return;
 			case GorePackage.GORE_ELEMENT__TIME:
 				setTime((Date)newValue);
 				return;
@@ -507,9 +506,6 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.GORE_ELEMENT__PARENT:
-				setParent((GOREElement)null);
-				return;
 			case GorePackage.GORE_ELEMENT__TIME:
 				setTime(TIME_EDEFAULT);
 				return;
@@ -531,8 +527,6 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.GORE_ELEMENT__PARENT:
-				return parent != null;
 			case GorePackage.GORE_ELEMENT__TIME:
 				return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
 			case GorePackage.GORE_ELEMENT__STATE:

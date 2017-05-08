@@ -2,6 +2,57 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gore" nsURI="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/gore.ecore"
     nsPrefix="it.unitn.disi.zanshin.model">
+  <eClassifiers xsi:type="ecore:EClass" name="GoalModel">
+    <eOperations name="getId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (internalId == null) internalId = System.currentTimeMillis();&#xA;return internalId;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Returns a list of relations associated with the given indicator.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if (indicator != null)&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;AwReq relationIndicator = relation.getIndicator(); &#xA;&#x9;&#x9;if ((relationIndicator != null) &amp;&amp; (relationIndicator.eClass().equals(indicator.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
+      </eAnnotations>
+      <eParameters name="indicator" eType="#//AwReq"/>
+    </eOperations>
+    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Returns a list of relations associated with the given parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if (parameter != null)&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;Parameter relationParameter = relation.getParameter(); &#xA;&#x9;&#x9;if ((relationParameter != null) &amp;&amp; (relationParameter.eClass().equals(parameter.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
+      </eAnnotations>
+      <eParameters name="parameter" eType="#//Parameter"/>
+    </eOperations>
+    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Returns a list of relations associated with the given indicator and the given parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if ((indicator != null) &amp;&amp; (parameter != null))&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;AwReq relationIndicator = relation.getIndicator();&#xA;&#x9;&#x9;Parameter relationParameter = relation.getParameter();&#xA;&#x9;&#x9;if ((relationIndicator != null) &amp;&amp; (relationIndicator.eClass().equals(indicator.eClass())) &amp;&amp; (relationParameter != null) &amp;&amp; (relationParameter.eClass().equals(parameter.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
+      </eAnnotations>
+      <eParameters name="indicator" eType="#//AwReq"/>
+      <eParameters name="parameter" eType="#//Parameter"/>
+    </eOperations>
+    <eOperations name="filterRelations" eType="#//DifferentialRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="// Filters the relations by indicator and parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = filterRelations(indicator, parameter);&#xA;&#xA;// Creates a fake parameter for the value comparison.&#xA;it.unitn.disi.zanshin.model.gore.Parameter param = parameter.createCopy();&#xA;param.setValue(value);&#xA;&#xA;// Looks for a relation in which value is within bounds. Returns the first one found.&#xA;for (DifferentialRelation relation : filteredRelations) &#xA;&#x9;if (param.withinBoundsOf(relation))&#xA;&#x9;&#x9;return relation;&#xA;&#xA;// If not found, return null.&#xA;return null;"/>
+      </eAnnotations>
+      <eParameters name="indicator" eType="#//AwReq"/>
+      <eParameters name="parameter" eType="#//Parameter"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
+        eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" lowerBound="1"
+        eType="#//HardGoal" containment="true" eOpposite="#//HardGoal/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        changeable="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedGetVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedSetVisibility" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
+        containment="true" eOpposite="#//Configuration/goalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+        eType="#//DifferentialRelation" containment="true" eOpposite="#//DifferentialRelation/goalModel"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GOREElement" abstract="true" eSuperTypes="LTL.ecore#//OclAny">
     <eOperations name="start">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -52,12 +103,15 @@
         <details key="body" value="// Counts the number of children in each state and the number of children.&#xD;&#xA;int[] stateCount = new int[it.unitn.disi.zanshin.model.gore.GOREElementState.VALUES.size()];&#xD;&#xA; &#xD;&#xA;for (it.unitn.disi.zanshin.model.gore.GOREElement child : getChildren()) {&#xD;&#xA;&#x9;stateCount[((GOREElement) child).getState().getValue()]++;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// Converts to EList so we can return&#xD;&#xA;EList&lt;Integer> stateCountList = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;for (int count : stateCount)&#xD;&#xA;&#x9;stateCountList.add(count);&#xD;&#xA;&#xD;&#xA;return stateCountList;"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//GOREElement"/>
+    <eOperations name="getParent" eType="#//GOREElement"/>
+    <eOperations name="setParent">
+      <eParameters name="parent" eType="#//GOREElement"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//GOREElementState"
         defaultValueLiteral="undefined"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="awreqs" upperBound="-1"
-        eType="#//AwReq"/>
+        eType="#//AwReq" eOpposite="#//AwReq/parent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" abstract="true"
       eSuperTypes="#//GOREElement">
@@ -67,10 +121,12 @@
       </eGenericType>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assumptions" upperBound="-1"
-        eType="#//DomainAssumption"/>
+        eType="#//DomainAssumption" eOpposite="#//DomainAssumption/parent"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refinementType" eType="#//RefinementType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
-        eType="#//GoalOrientedRequirement" containment="true"/>
+        eType="#//GoalOrientedRequirement" containment="true" eOpposite="#//GoalOrientedRequirement/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//GoalOrientedRequirement"
+        eOpposite="#//GoalOrientedRequirement/refinements"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PerformativeRequirement" abstract="true"
       eSuperTypes="#//GoalOrientedRequirement">
@@ -95,7 +151,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HardGoal" eSuperTypes="#//PerformativeRequirement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/rootGoal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Softgoal" eSuperTypes="#//GoalOrientedRequirement">
     <eOperations name="getChildren">
@@ -107,25 +164,28 @@
       </eGenericType>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-        eType="#//QualityConstraint" eOpposite="#//QualityConstraint/softgoal"/>
+        eType="#//QualityConstraint" containment="true" eOpposite="#//QualityConstraint/parent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualityConstraint" eSuperTypes="#//GOREElement">
     <eOperations name="replaceWith">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Performs the replacement as a normal requirement first.&#xA;super.replaceWith(newRequirement);&#xA;&#xA;// Then, replace the relationship quality constraints have with softgoals.&#xA;it.unitn.disi.zanshin.model.gore.Softgoal softgoal = getSoftgoal();&#xA;setSoftgoal(null);&#xA;((QualityConstraint) newRequirement).setSoftgoal(softgoal);"/>
+        <details key="body" value="// Performs the replacement as a normal requirement first.&#xD;&#xA;super.replaceWith(newRequirement);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;// Then, replace the relationship quality constraints have with softgoals.&#xD;&#xA;it.unitn.disi.zanshin.model.gore.Softgoal softgoal = getParent();&#xD;&#xA;setParent(null);&#xD;&#xA;((QualityConstraint) newRequirement).setParent(softgoal);"/>
       </eAnnotations>
       <eParameters name="newRequirement" eType="#//GoalOrientedRequirement"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="softgoal" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//Softgoal" eOpposite="#//Softgoal/constraints"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AwReq" eSuperTypes="#//GOREElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="#//GOREElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//GOREElement" eOpposite="#//GOREElement/awreqs"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementCoefficient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1.0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//GOREElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainAssumption" eSuperTypes="#//GOREElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//GoalOrientedRequirement" eOpposite="#//GoalOrientedRequirement/assumptions"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PerformativeRequirement"/>
   <eClassifiers xsi:type="ecore:EEnum" name="AggregationLevel">
     <eLiterals name="INSTANCE" literal="instance-level"/>
@@ -182,57 +242,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//DifferentialRelationOperator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0.0"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GoalModel">
-    <eOperations name="getId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (internalId == null) internalId = System.currentTimeMillis();&#xA;return internalId;"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Returns a list of relations associated with the given indicator.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if (indicator != null)&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;AwReq relationIndicator = relation.getIndicator(); &#xA;&#x9;&#x9;if ((relationIndicator != null) &amp;&amp; (relationIndicator.eClass().equals(indicator.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
-      </eAnnotations>
-      <eParameters name="indicator" eType="#//AwReq"/>
-    </eOperations>
-    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Returns a list of relations associated with the given parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if (parameter != null)&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;Parameter relationParameter = relation.getParameter(); &#xA;&#x9;&#x9;if ((relationParameter != null) &amp;&amp; (relationParameter.eClass().equals(parameter.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
-      </eAnnotations>
-      <eParameters name="parameter" eType="#//Parameter"/>
-    </eOperations>
-    <eOperations name="filterRelations" upperBound="-1" eType="#//DifferentialRelation">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Returns a list of relations associated with the given indicator and the given parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xA;if ((indicator != null) &amp;&amp; (parameter != null))&#xA;&#x9;for (DifferentialRelation relation : relations) {&#xA;&#x9;&#x9;AwReq relationIndicator = relation.getIndicator();&#xA;&#x9;&#x9;Parameter relationParameter = relation.getParameter();&#xA;&#x9;&#x9;if ((relationIndicator != null) &amp;&amp; (relationIndicator.eClass().equals(indicator.eClass())) &amp;&amp; (relationParameter != null) &amp;&amp; (relationParameter.eClass().equals(parameter.eClass())))&#xA;&#x9;&#x9;&#x9;filteredRelations.add(relation);&#xA;&#x9;}&#xA;return filteredRelations;"/>
-      </eAnnotations>
-      <eParameters name="indicator" eType="#//AwReq"/>
-      <eParameters name="parameter" eType="#//Parameter"/>
-    </eOperations>
-    <eOperations name="filterRelations" eType="#//DifferentialRelation">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="// Filters the relations by indicator and parameter.&#xA;EList&lt;DifferentialRelation> filteredRelations = filterRelations(indicator, parameter);&#xA;&#xA;// Creates a fake parameter for the value comparison.&#xA;it.unitn.disi.zanshin.model.gore.Parameter param = parameter.createCopy();&#xA;param.setValue(value);&#xA;&#xA;// Looks for a relation in which value is within bounds. Returns the first one found.&#xA;for (DifferentialRelation relation : filteredRelations) &#xA;&#x9;if (param.withinBoundsOf(relation))&#xA;&#x9;&#x9;return relation;&#xA;&#xA;// If not found, return null.&#xA;return null;"/>
-      </eAnnotations>
-      <eParameters name="indicator" eType="#//AwReq"/>
-      <eParameters name="parameter" eType="#//Parameter"/>
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rootGoal" lowerBound="1"
-        eType="#//HardGoal" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
-        eType="#//Actor" containment="true" eOpposite="#//Actor/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
-        changeable="false">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="suppressedGetVisibility" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="suppressedSetVisibility" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
-        containment="true" eOpposite="#//Configuration/goalModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
-        eType="#//DifferentialRelation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
+        eOpposite="#//GoalModel/relations"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eOperations name="greaterThan" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">

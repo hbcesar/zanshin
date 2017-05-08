@@ -52,7 +52,7 @@ public class EcaBasedAdaptationService implements IAdaptationService {
 		// Retrieves information on the AwReq.
 		EClass awreqClass = awreq.eClass();
 		String awreqName = awreqClass.getName();
-		GOREElement target = awreq.getTarget();
+		GOREElement target = awreq.getParent();
 
 		// Checks if the AwReq's target has been properly set.
 		if (target == null) {

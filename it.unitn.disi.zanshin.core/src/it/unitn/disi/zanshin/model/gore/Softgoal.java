@@ -22,19 +22,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Softgoal extends GoalOrientedRequirement {
 	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' reference list.
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.QualityConstraint}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getSoftgoal <em>Softgoal</em>}'.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' reference list.
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getSoftgoal_Constraints()
-	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getSoftgoal
-	 * @model opposite="softgoal"
+	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getParent
+	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
 	EList<QualityConstraint> getConstraints();

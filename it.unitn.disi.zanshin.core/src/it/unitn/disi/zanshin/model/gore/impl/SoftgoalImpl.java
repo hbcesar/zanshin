@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoal {
 	/**
-	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' reference list.
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getConstraints()
@@ -70,7 +71,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 */
 	public EList<QualityConstraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectWithInverseResolvingEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__SOFTGOAL);
+			constraints = new EObjectContainmentWithInverseEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__PARENT);
 		}
 		return constraints;
 	}

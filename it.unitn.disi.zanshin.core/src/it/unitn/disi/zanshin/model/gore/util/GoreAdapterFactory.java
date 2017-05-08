@@ -70,6 +70,10 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	protected GoreSwitch<Adapter> modelSwitch =
 		new GoreSwitch<Adapter>() {
 			@Override
+			public Adapter caseGoalModel(GoalModel object) {
+				return createGoalModelAdapter();
+			}
+			@Override
 			public Adapter caseGOREElement(GOREElement object) {
 				return createGOREElementAdapter();
 			}
@@ -116,10 +120,6 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDifferentialRelation(DifferentialRelation object) {
 				return createDifferentialRelationAdapter();
-			}
-			@Override
-			public Adapter caseGoalModel(GoalModel object) {
-				return createGoalModelAdapter();
 			}
 			@Override
 			public Adapter caseParameter(Parameter object) {

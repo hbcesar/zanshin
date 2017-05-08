@@ -8,6 +8,7 @@ import it.unitn.disi.zanshin.model.gore.GorePackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -21,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl#getIncrementCoefficient <em>Increment Coefficient</em>}</li>
  * </ul>
  *
@@ -29,14 +30,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AwReqImpl extends GOREElementImpl implements AwReq {
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * @see #getParent()
 	 * @generated
 	 * @ordered
 	 */
-	protected GOREElement target;
+	protected GOREElement parent;
 
 	/**
 	 * The default value of the '{@link #getIncrementCoefficient() <em>Increment Coefficient</em>}' attribute.
@@ -82,16 +83,16 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GOREElement getTarget() {
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (GOREElement)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
+	public GOREElement getParent() {
+		if (parent != null && parent.eIsProxy()) {
+			InternalEObject oldParent = (InternalEObject)parent;
+			parent = (GOREElement)eResolveProxy(oldParent);
+			if (parent != oldParent) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.AW_REQ__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.AW_REQ__PARENT, oldParent, parent));
 			}
 		}
-		return target;
+		return parent;
 	}
 
 	/**
@@ -99,8 +100,8 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GOREElement basicGetTarget() {
-		return target;
+	public GOREElement basicGetParent() {
+		return parent;
 	}
 
 	/**
@@ -108,11 +109,33 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(GOREElement newTarget) {
-		GOREElement oldTarget = target;
-		target = newTarget;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.AW_REQ__TARGET, oldTarget, target));
+	public NotificationChain basicSetParent(GOREElement newParent, NotificationChain msgs) {
+		GOREElement oldParent = parent;
+		parent = newParent;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GorePackage.AW_REQ__PARENT, oldParent, newParent);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(GOREElement newParent) {
+		if (newParent != parent) {
+			NotificationChain msgs = null;
+			if (parent != null)
+				msgs = ((InternalEObject)parent).eInverseRemove(this, GorePackage.GORE_ELEMENT__AWREQS, GOREElement.class, msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GORE_ELEMENT__AWREQS, GOREElement.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.AW_REQ__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -142,11 +165,41 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.AW_REQ__PARENT:
+				if (parent != null)
+					msgs = ((InternalEObject)parent).eInverseRemove(this, GorePackage.GORE_ELEMENT__AWREQS, GOREElement.class, msgs);
+				return basicSetParent((GOREElement)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.AW_REQ__PARENT:
+				return basicSetParent(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.AW_REQ__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
+			case GorePackage.AW_REQ__PARENT:
+				if (resolve) return getParent();
+				return basicGetParent();
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				return getIncrementCoefficient();
 		}
@@ -161,8 +214,8 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.AW_REQ__TARGET:
-				setTarget((GOREElement)newValue);
+			case GorePackage.AW_REQ__PARENT:
+				setParent((GOREElement)newValue);
 				return;
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				setIncrementCoefficient((Double)newValue);
@@ -179,8 +232,8 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.AW_REQ__TARGET:
-				setTarget((GOREElement)null);
+			case GorePackage.AW_REQ__PARENT:
+				setParent((GOREElement)null);
 				return;
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				setIncrementCoefficient(INCREMENT_COEFFICIENT_EDEFAULT);
@@ -197,8 +250,8 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.AW_REQ__TARGET:
-				return target != null;
+			case GorePackage.AW_REQ__PARENT:
+				return parent != null;
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				return incrementCoefficient != INCREMENT_COEFFICIENT_EDEFAULT;
 		}

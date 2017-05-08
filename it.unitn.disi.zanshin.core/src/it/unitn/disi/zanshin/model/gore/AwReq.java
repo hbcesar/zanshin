@@ -12,7 +12,7 @@ package it.unitn.disi.zanshin.model.gore;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.AwReq#getTarget <em>Target</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.AwReq#getIncrementCoefficient <em>Increment Coefficient</em>}</li>
  * </ul>
  *
@@ -22,30 +22,32 @@ package it.unitn.disi.zanshin.model.gore;
  */
 public interface AwReq extends GOREElement {
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * Returns the value of the '<em><b>Parent</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target</em>' reference isn't clear,
+	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(GOREElement)
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getAwReq_Target()
-	 * @model required="true"
+	 * @return the value of the '<em>Parent</em>' reference.
+	 * @see #setParent(GOREElement)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getAwReq_Parent()
+	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs
+	 * @model opposite="awreqs" required="true"
 	 * @generated
 	 */
-	GOREElement getTarget();
+	GOREElement getParent();
 
 	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.AwReq#getTarget <em>Target</em>}' reference.
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' reference.
-	 * @see #getTarget()
+	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @see #getParent()
 	 * @generated
 	 */
-	void setTarget(GOREElement value);
+	void setParent(GOREElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Increment Coefficient</b></em>' attribute.
