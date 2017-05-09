@@ -24,15 +24,17 @@ public interface Softgoal extends GoalOrientedRequirement {
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.QualityConstraint}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal <em>Target Soft Goal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constraints</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getSoftgoal_Constraints()
-	 * @model containment="true"
+	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal
+	 * @model opposite="targetSoftGoal" containment="true"
 	 * @generated
 	 */
 	EList<QualityConstraint> getConstraints();
@@ -41,7 +43,7 @@ public interface Softgoal extends GoalOrientedRequirement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" many="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();\r\nEList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();\r\nEList<QualityConstraint> qc = this.getConstraints();\r\nEList<GoalOrientedRequirement> goals = getRefinements();\r\n\t\t\t\t\t\t\r\nfor(GOREElement child : awreqs_da){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\t\t\r\nfor(GOREElement child : qc){\r\n\tchildren.add(child);\r\n}\r\n\t\t\r\nfor(GoalOrientedRequirement child : goals){\r\n\tchildren.add((GOREElement) child);\r\n}\r\n\t\t\t\t\t\t\r\nreturn children;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<GOREElement> children = new org.eclipse.emf.common.util.BasicEList<>();\r\nEList<GOREElement> awreqs_da = (EList<GOREElement>) super.getChildren();\r\nEList<QualityConstraint> qc = this.getConstraints();\r\nEList<it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement> goals = getRefinements();\r\n\t\t\t\t\t\t\t\t\r\nfor(GOREElement child : awreqs_da){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\t\t\t\t\r\nfor(GOREElement child : qc){\r\n\tchildren.add(child);\r\n}\r\n\t\t\t\t\r\nfor(it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement child : goals){\r\n\tchildren.add((GOREElement) child);\r\n}\r\n\t\t\t\t\t\t\t\t\r\nreturn children;'"
 	 * @generated
 	 */
 	EList<GOREElement> getChildren();

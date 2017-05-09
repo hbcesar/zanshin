@@ -6,9 +6,7 @@ import it.unitn.disi.zanshin.model.gore.Actor;
 import it.unitn.disi.zanshin.model.gore.AwReq;
 import it.unitn.disi.zanshin.model.gore.Configuration;
 import it.unitn.disi.zanshin.model.gore.DifferentialRelation;
-import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GoalModel;
-import it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 import it.unitn.disi.zanshin.model.gore.HardGoal;
 import it.unitn.disi.zanshin.model.gore.Parameter;
@@ -132,6 +130,27 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Long getInternalId() {
+		return internalId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Actor> getActors() {
+		if (actors == null) {
+			actors = new EObjectContainmentWithInverseEList<Actor>(Actor.class, this, GorePackage.GOAL_MODEL__ACTORS, GorePackage.ACTOR__GOAL_MODEL);
+		}
+		return actors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HardGoal getRootGoal() {
 		return rootGoal;
 	}
@@ -168,27 +187,6 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_MODEL__ROOT_GOAL, newRootGoal, newRootGoal));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Actor> getActors() {
-		if (actors == null) {
-			actors = new EObjectContainmentWithInverseEList<Actor>(Actor.class, this, GorePackage.GOAL_MODEL__ACTORS, GorePackage.ACTOR__GOAL_MODEL);
-		}
-		return actors;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Long getInternalId() {
-		return internalId;
 	}
 
 	/**

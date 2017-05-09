@@ -7,12 +7,13 @@ import it.unitn.disi.zanshin.model.gore.GOREElement;
 import it.unitn.disi.zanshin.model.gore.GorePackage;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl#getIncrementCoefficient <em>Increment Coefficient</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -94,11 +96,98 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GOREElement getTarget() {
+		if (eContainerFeatureID() != GorePackage.AW_REQ__TARGET) return null;
+		return (GOREElement)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTarget(GOREElement newTarget, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newTarget, GorePackage.AW_REQ__TARGET, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTarget(GOREElement newTarget) {
+		if (newTarget != eInternalContainer() || (eContainerFeatureID() != GorePackage.AW_REQ__TARGET && newTarget != null)) {
+			if (EcoreUtil.isAncestor(this, newTarget))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTarget != null)
+				msgs = ((InternalEObject)newTarget).eInverseAdd(this, GorePackage.GORE_ELEMENT__AWREQS, GOREElement.class, msgs);
+			msgs = basicSetTarget(newTarget, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.AW_REQ__TARGET, newTarget, newTarget));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.AW_REQ__TARGET:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetTarget((GOREElement)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.AW_REQ__TARGET:
+				return basicSetTarget(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.AW_REQ__TARGET:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GORE_ELEMENT__AWREQS, GOREElement.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				return getIncrementCoefficient();
+			case GorePackage.AW_REQ__TARGET:
+				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,6 +202,9 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 		switch (featureID) {
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				setIncrementCoefficient((Double)newValue);
+				return;
+			case GorePackage.AW_REQ__TARGET:
+				setTarget((GOREElement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -129,6 +221,9 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				setIncrementCoefficient(INCREMENT_COEFFICIENT_EDEFAULT);
 				return;
+			case GorePackage.AW_REQ__TARGET:
+				setTarget((GOREElement)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -143,6 +238,8 @@ public class AwReqImpl extends GOREElementImpl implements AwReq {
 		switch (featureID) {
 			case GorePackage.AW_REQ__INCREMENT_COEFFICIENT:
 				return incrementCoefficient != INCREMENT_COEFFICIENT_EDEFAULT;
+			case GorePackage.AW_REQ__TARGET:
+				return getTarget() != null;
 		}
 		return super.eIsSet(featureID);
 	}

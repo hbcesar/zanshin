@@ -22,6 +22,15 @@ public interface GoreFactory extends EFactory {
 	GoreFactory eINSTANCE = it.unitn.disi.zanshin.model.gore.impl.GoreFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Goal Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Goal Model</em>'.
+	 * @generated
+	 */
+	GoalModel createGoalModel();
+
+	/**
 	 * Returns a new object of class '<em>Hard Goal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +110,6 @@ public interface GoreFactory extends EFactory {
 	 * @generated
 	 */
 	DifferentialRelation createDifferentialRelation();
-
-	/**
-	 * Returns a new object of class '<em>Goal Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Goal Model</em>'.
-	 * @generated
-	 */
-	GoalModel createGoalModel();
 
 	/**
 	 * Returns a new object of class '<em>Parameter</em>'.

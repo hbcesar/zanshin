@@ -59,126 +59,6 @@ public interface GorePackage extends EPackage {
 	GorePackage eINSTANCE = it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl <em>GORE Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGOREElement()
-	 * @generated
-	 */
-	int GORE_ELEMENT = 1;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl <em>Goal Oriented Requirement</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGoalOrientedRequirement()
-	 * @generated
-	 */
-	int GOAL_ORIENTED_REQUIREMENT = 2;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl <em>Performative Requirement</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getPerformativeRequirement()
-	 * @generated
-	 */
-	int PERFORMATIVE_REQUIREMENT = 3;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl <em>Hard Goal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getHardGoal()
-	 * @generated
-	 */
-	int HARD_GOAL = 4;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl <em>Softgoal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getSoftgoal()
-	 * @generated
-	 */
-	int SOFTGOAL = 5;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl <em>Quality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getQualityConstraint()
-	 * @generated
-	 */
-	int QUALITY_CONSTRAINT = 6;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl <em>Aw Req</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.AwReqImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getAwReq()
-	 * @generated
-	 */
-	int AW_REQ = 7;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.DomainAssumptionImpl <em>Domain Assumption</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.DomainAssumptionImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getDomainAssumption()
-	 * @generated
-	 */
-	int DOMAIN_ASSUMPTION = 8;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.TaskImpl <em>Task</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.TaskImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getTask()
-	 * @generated
-	 */
-	int TASK = 9;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl <em>Actor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.ActorImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getActor()
-	 * @generated
-	 */
-	int ACTOR = 10;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl <em>Configuration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getConfiguration()
-	 * @generated
-	 */
-	int CONFIGURATION = 11;
-
-	/**
-	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl <em>Differential Relation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl
-	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getDifferentialRelation()
-	 * @generated
-	 */
-	int DIFFERENTIAL_RELATION = 12;
-
-	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl <em>Goal Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -243,6 +123,16 @@ public interface GorePackage extends EPackage {
 	int GOAL_MODEL_FEATURE_COUNT = 5;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl <em>GORE Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGOREElement()
+	 * @generated
+	 */
+	int GORE_ELEMENT = 1;
+
+	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,22 +160,23 @@ public interface GorePackage extends EPackage {
 	int GORE_ELEMENT__AWREQS = LTLPackage.OCL_ANY_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GORE_ELEMENT__PARENT = LTLPackage.OCL_ANY_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>GORE Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GORE_ELEMENT_FEATURE_COUNT = LTLPackage.OCL_ANY_FEATURE_COUNT + 4;
+	int GORE_ELEMENT_FEATURE_COUNT = LTLPackage.OCL_ANY_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl <em>Goal Oriented Requirement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGoalOrientedRequirement()
+	 * @generated
+	 */
+	int GOAL_ORIENTED_REQUIREMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -315,15 +206,6 @@ public interface GorePackage extends EPackage {
 	int GOAL_ORIENTED_REQUIREMENT__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL_ORIENTED_REQUIREMENT__PARENT = GORE_ELEMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,13 +224,22 @@ public interface GorePackage extends EPackage {
 	int GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = GORE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_ORIENTED_REQUIREMENT__PARENT = GORE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_ORIENTED_REQUIREMENT__REFINEMENTS = GORE_ELEMENT_FEATURE_COUNT + 2;
+	int GOAL_ORIENTED_REQUIREMENT__REFINEMENTS = GORE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Goal Oriented Requirement</em>' class.
@@ -357,7 +248,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 3;
+	int GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl <em>Performative Requirement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.PerformativeRequirementImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getPerformativeRequirement()
+	 * @generated
+	 */
+	int PERFORMATIVE_REQUIREMENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -387,15 +288,6 @@ public interface GorePackage extends EPackage {
 	int PERFORMATIVE_REQUIREMENT__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERFORMATIVE_REQUIREMENT__PARENT = GOAL_ORIENTED_REQUIREMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -412,6 +304,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PERFORMATIVE_REQUIREMENT__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMATIVE_REQUIREMENT__PARENT = GOAL_ORIENTED_REQUIREMENT__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -441,6 +342,16 @@ public interface GorePackage extends EPackage {
 	int PERFORMATIVE_REQUIREMENT_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl <em>Hard Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.HardGoalImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getHardGoal()
+	 * @generated
+	 */
+	int HARD_GOAL = 4;
+
+	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -468,15 +379,6 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HARD_GOAL__PARENT = PERFORMATIVE_REQUIREMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -493,6 +395,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int HARD_GOAL__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARD_GOAL__PARENT = PERFORMATIVE_REQUIREMENT__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -531,6 +442,16 @@ public interface GorePackage extends EPackage {
 	int HARD_GOAL_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl <em>Softgoal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.SoftgoalImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getSoftgoal()
+	 * @generated
+	 */
+	int SOFTGOAL = 5;
+
+	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -558,15 +479,6 @@ public interface GorePackage extends EPackage {
 	int SOFTGOAL__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOFTGOAL__PARENT = GOAL_ORIENTED_REQUIREMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -583,6 +495,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOFTGOAL__ASSUMPTIONS = GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOFTGOAL__PARENT = GOAL_ORIENTED_REQUIREMENT__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -612,6 +533,16 @@ public interface GorePackage extends EPackage {
 	int SOFTGOAL_FEATURE_COUNT = GOAL_ORIENTED_REQUIREMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl <em>Quality Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getQualityConstraint()
+	 * @generated
+	 */
+	int QUALITY_CONSTRAINT = 6;
+
+	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -639,13 +570,13 @@ public interface GorePackage extends EPackage {
 	int QUALITY_CONSTRAINT__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Target Soft Goal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY_CONSTRAINT__PARENT = GORE_ELEMENT__PARENT;
+	int QUALITY_CONSTRAINT__TARGET_SOFT_GOAL = GORE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Quality Constraint</em>' class.
@@ -654,7 +585,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY_CONSTRAINT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 0;
+	int QUALITY_CONSTRAINT_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl <em>Aw Req</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.AwReqImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getAwReq()
+	 * @generated
+	 */
+	int AW_REQ = 7;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -684,15 +625,6 @@ public interface GorePackage extends EPackage {
 	int AW_REQ__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AW_REQ__PARENT = GORE_ELEMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -702,13 +634,32 @@ public interface GorePackage extends EPackage {
 	int AW_REQ__INCREMENT_COEFFICIENT = GORE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Target</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AW_REQ__TARGET = GORE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Aw Req</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AW_REQ_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 1;
+	int AW_REQ_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.DomainAssumptionImpl <em>Domain Assumption</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.DomainAssumptionImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getDomainAssumption()
+	 * @generated
+	 */
+	int DOMAIN_ASSUMPTION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -738,13 +689,13 @@ public interface GorePackage extends EPackage {
 	int DOMAIN_ASSUMPTION__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_ASSUMPTION__PARENT = GORE_ELEMENT__PARENT;
+	int DOMAIN_ASSUMPTION__PARENT = GORE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Domain Assumption</em>' class.
@@ -753,7 +704,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_ASSUMPTION_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 0;
+	int DOMAIN_ASSUMPTION_FEATURE_COUNT = GORE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.TaskImpl <em>Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.TaskImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getTask()
+	 * @generated
+	 */
+	int TASK = 9;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -783,15 +744,6 @@ public interface GorePackage extends EPackage {
 	int TASK__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__PARENT = PERFORMATIVE_REQUIREMENT__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -808,6 +760,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__ASSUMPTIONS = PERFORMATIVE_REQUIREMENT__ASSUMPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__PARENT = PERFORMATIVE_REQUIREMENT__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
@@ -837,6 +798,16 @@ public interface GorePackage extends EPackage {
 	int TASK_FEATURE_COUNT = PERFORMATIVE_REQUIREMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl <em>Actor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.ActorImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getActor()
+	 * @generated
+	 */
+	int ACTOR = 10;
+
+	/**
 	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,6 +824,16 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl <em>Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getConfiguration()
+	 * @generated
+	 */
+	int CONFIGURATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -880,6 +861,16 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONFIGURATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl <em>Differential Relation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl
+	 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getDifferentialRelation()
+	 * @generated
+	 */
+	int DIFFERENTIAL_RELATION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Indicator</b></em>' reference.
@@ -1080,6 +1071,71 @@ public interface GorePackage extends EPackage {
 
 
 	/**
+	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Goal Model</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
+	 * @generated
+	 */
+	EClass getGoalModel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Internal Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal Id</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	EAttribute getGoalModel_InternalId();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getActors <em>Actors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actors</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getActors()
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	EReference getGoalModel_Actors();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal <em>Root Goal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root Goal</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal()
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	EReference getGoalModel_RootGoal();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getConfiguration()
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	EReference getGoalModel_Configuration();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations <em>Relations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Relations</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRelations()
+	 * @see #getGoalModel()
+	 * @generated
+	 */
+	EReference getGoalModel_Relations();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GOREElement <em>GORE Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1123,17 +1179,6 @@ public interface GorePackage extends EPackage {
 	EReference getGOREElement_Awreqs();
 
 	/**
-	 * Returns the meta object for the reference '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getParent()
-	 * @see #getGOREElement()
-	 * @generated
-	 */
-	EReference getGOREElement_Parent();
-
-	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement <em>Goal Oriented Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1142,6 +1187,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGoalOrientedRequirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType <em>Refinement Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Refinement Type</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType()
+	 * @see #getGoalOrientedRequirement()
+	 * @generated
+	 */
+	EAttribute getGoalOrientedRequirement_RefinementType();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getAssumptions <em>Assumptions</em>}'.
@@ -1155,15 +1211,15 @@ public interface GorePackage extends EPackage {
 	EReference getGoalOrientedRequirement_Assumptions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType <em>Refinement Type</em>}'.
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Refinement Type</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinementType()
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getParent()
 	 * @see #getGoalOrientedRequirement()
 	 * @generated
 	 */
-	EAttribute getGoalOrientedRequirement_RefinementType();
+	EReference getGoalOrientedRequirement_Parent();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement#getRefinements <em>Refinements</em>}'.
@@ -1250,6 +1306,17 @@ public interface GorePackage extends EPackage {
 	EClass getQualityConstraint();
 
 	/**
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal <em>Target Soft Goal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Target Soft Goal</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal()
+	 * @see #getQualityConstraint()
+	 * @generated
+	 */
+	EReference getQualityConstraint_TargetSoftGoal();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.AwReq <em>Aw Req</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1338,17 @@ public interface GorePackage extends EPackage {
 	EAttribute getAwReq_IncrementCoefficient();
 
 	/**
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.AwReq#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Target</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.AwReq#getTarget()
+	 * @see #getAwReq()
+	 * @generated
+	 */
+	EReference getAwReq_Target();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption <em>Domain Assumption</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1279,6 +1357,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDomainAssumption();
+
+	/**
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.DomainAssumption#getParent()
+	 * @see #getDomainAssumption()
+	 * @generated
+	 */
+	EReference getDomainAssumption_Parent();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Task <em>Task</em>}'.
@@ -1418,71 +1507,6 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDifferentialRelation_Value();
-
-	/**
-	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Goal Model</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
-	 * @generated
-	 */
-	EClass getGoalModel();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal <em>Root Goal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Root Goal</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRootGoal()
-	 * @see #getGoalModel()
-	 * @generated
-	 */
-	EReference getGoalModel_RootGoal();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getActors <em>Actors</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actors</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getActors()
-	 * @see #getGoalModel()
-	 * @generated
-	 */
-	EReference getGoalModel_Actors();
-
-	/**
-	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Internal Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Internal Id</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
-	 * @see #getGoalModel()
-	 * @generated
-	 */
-	EAttribute getGoalModel_InternalId();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Configuration</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getConfiguration()
-	 * @see #getGoalModel()
-	 * @generated
-	 */
-	EReference getGoalModel_Configuration();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link it.unitn.disi.zanshin.model.gore.GoalModel#getRelations <em>Relations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Relations</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel#getRelations()
-	 * @see #getGoalModel()
-	 * @generated
-	 */
-	EReference getGoalModel_Relations();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Parameter <em>Parameter</em>}'.
@@ -1642,6 +1666,56 @@ public interface GorePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl <em>Goal Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl
+		 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGoalModel()
+		 * @generated
+		 */
+		EClass GOAL_MODEL = eINSTANCE.getGoalModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GOAL_MODEL__INTERNAL_ID = eINSTANCE.getGoalModel_InternalId();
+
+		/**
+		 * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL_MODEL__ACTORS = eINSTANCE.getGoalModel_Actors();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Goal</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL_MODEL__ROOT_GOAL = eINSTANCE.getGoalModel_RootGoal();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL_MODEL__CONFIGURATION = eINSTANCE.getGoalModel_Configuration();
+
+		/**
+		 * The meta object literal for the '<em><b>Relations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL_MODEL__RELATIONS = eINSTANCE.getGoalModel_Relations();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl <em>GORE Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1676,14 +1750,6 @@ public interface GorePackage extends EPackage {
 		EReference GORE_ELEMENT__AWREQS = eINSTANCE.getGOREElement_Awreqs();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GORE_ELEMENT__PARENT = eINSTANCE.getGOREElement_Parent();
-
-		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl <em>Goal Oriented Requirement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1694,6 +1760,14 @@ public interface GorePackage extends EPackage {
 		EClass GOAL_ORIENTED_REQUIREMENT = eINSTANCE.getGoalOrientedRequirement();
 
 		/**
+		 * The meta object literal for the '<em><b>Refinement Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = eINSTANCE.getGoalOrientedRequirement_RefinementType();
+
+		/**
 		 * The meta object literal for the '<em><b>Assumptions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1702,12 +1776,12 @@ public interface GorePackage extends EPackage {
 		EReference GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS = eINSTANCE.getGoalOrientedRequirement_Assumptions();
 
 		/**
-		 * The meta object literal for the '<em><b>Refinement Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE = eINSTANCE.getGoalOrientedRequirement_RefinementType();
+		EReference GOAL_ORIENTED_REQUIREMENT__PARENT = eINSTANCE.getGoalOrientedRequirement_Parent();
 
 		/**
 		 * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.
@@ -1782,6 +1856,14 @@ public interface GorePackage extends EPackage {
 		EClass QUALITY_CONSTRAINT = eINSTANCE.getQualityConstraint();
 
 		/**
+		 * The meta object literal for the '<em><b>Target Soft Goal</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUALITY_CONSTRAINT__TARGET_SOFT_GOAL = eINSTANCE.getQualityConstraint_TargetSoftGoal();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl <em>Aw Req</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1800,6 +1882,14 @@ public interface GorePackage extends EPackage {
 		EAttribute AW_REQ__INCREMENT_COEFFICIENT = eINSTANCE.getAwReq_IncrementCoefficient();
 
 		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AW_REQ__TARGET = eINSTANCE.getAwReq_Target();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.DomainAssumptionImpl <em>Domain Assumption</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1808,6 +1898,14 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass DOMAIN_ASSUMPTION = eINSTANCE.getDomainAssumption();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_ASSUMPTION__PARENT = eINSTANCE.getDomainAssumption_Parent();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.TaskImpl <em>Task</em>}' class.
@@ -1920,56 +2018,6 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DIFFERENTIAL_RELATION__VALUE = eINSTANCE.getDifferentialRelation_Value();
-
-		/**
-		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl <em>Goal Model</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl
-		 * @see it.unitn.disi.zanshin.model.gore.impl.GorePackageImpl#getGoalModel()
-		 * @generated
-		 */
-		EClass GOAL_MODEL = eINSTANCE.getGoalModel();
-
-		/**
-		 * The meta object literal for the '<em><b>Root Goal</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL_MODEL__ROOT_GOAL = eINSTANCE.getGoalModel_RootGoal();
-
-		/**
-		 * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL_MODEL__ACTORS = eINSTANCE.getGoalModel_Actors();
-
-		/**
-		 * The meta object literal for the '<em><b>Internal Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GOAL_MODEL__INTERNAL_ID = eINSTANCE.getGoalModel_InternalId();
-
-		/**
-		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL_MODEL__CONFIGURATION = eINSTANCE.getGoalModel_Configuration();
-
-		/**
-		 * The meta object literal for the '<em><b>Relations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL_MODEL__RELATIONS = eINSTANCE.getGoalModel_Relations();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl <em>Parameter</em>}' class.

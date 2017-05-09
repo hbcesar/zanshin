@@ -156,7 +156,7 @@ public class RetryStrategyImpl extends AdaptationStrategyImpl implements RetrySt
 		}
 		
 		// The requirement to retry is always the AwReq's target.
-		it.unitn.disi.zanshin.model.gore.GOREElement requirement = awreq.getParent();
+		it.unitn.disi.zanshin.model.gore.GOREElement requirement = awreq.getTarget();
 		if (requirement == null) {
 			it.unitn.disi.zanshin.core.CoreUtils.log.warn("Strategy {0} cannot be executed because the referred AwReq doesn't have a target set.", strategyName); //$NON-NLS-1$
 			return;

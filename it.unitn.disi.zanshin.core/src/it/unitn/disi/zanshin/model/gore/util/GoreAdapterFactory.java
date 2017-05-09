@@ -150,6 +150,20 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
+	 * @generated
+	 */
+	public Adapter createGoalModelAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.GOREElement <em>GORE Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -314,20 +328,6 @@ public class GoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDifferentialRelationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see it.unitn.disi.zanshin.model.gore.GoalModel
-	 * @generated
-	 */
-	public Adapter createGoalModelAdapter() {
 		return null;
 	}
 

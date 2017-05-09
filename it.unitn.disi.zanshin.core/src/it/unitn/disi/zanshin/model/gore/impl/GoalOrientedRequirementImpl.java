@@ -19,10 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -36,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinementType <em>Refinement Type</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getAssumptions <em>Assumptions</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl#getRefinements <em>Refinements</em>}</li>
  * </ul>
  *
@@ -106,18 +104,6 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DomainAssumption> getAssumptions() {
-		if (assumptions == null) {
-			assumptions = new EObjectContainmentEList<DomainAssumption>(DomainAssumption.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS);
-		}
-		return assumptions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public RefinementType getRefinementType() {
 		return refinementType;
 	}
@@ -139,11 +125,85 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DomainAssumption> getAssumptions() {
+		if (assumptions == null) {
+			assumptions = new EObjectContainmentWithInverseEList<DomainAssumption>(DomainAssumption.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS, GorePackage.DOMAIN_ASSUMPTION__PARENT);
+		}
+		return assumptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GoalOrientedRequirement getParent() {
+		if (eContainerFeatureID() != GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT) return null;
+		return (GoalOrientedRequirement)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParent(GoalOrientedRequirement newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(GoalOrientedRequirement newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS, GoalOrientedRequirement.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT, newParent, newParent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<GoalOrientedRequirement> getRefinements() {
 		if (refinements == null) {
-			refinements = new EObjectContainmentEList<GoalOrientedRequirement>(GoalOrientedRequirement.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS);
+			refinements = new EObjectContainmentWithInverseEList<GoalOrientedRequirement>(GoalOrientedRequirement.class, this, GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS, GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT);
 		}
 		return refinements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssumptions()).basicAdd(otherEnd, msgs);
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParent((GoalOrientedRequirement)otherEnd, msgs);
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRefinements()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -156,10 +216,26 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 		switch (featureID) {
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				return ((InternalEList<?>)getAssumptions()).basicRemove(otherEnd, msgs);
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				return basicSetParent(null, msgs);
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				return ((InternalEList<?>)getRefinements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				return eInternalContainer().eInverseRemove(this, GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS, GoalOrientedRequirement.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -174,6 +250,8 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 				return getRefinementType();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				return getAssumptions();
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				return getParent();
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				return getRefinements();
 		}
@@ -195,6 +273,9 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				getAssumptions().clear();
 				getAssumptions().addAll((Collection<? extends DomainAssumption>)newValue);
+				return;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				setParent((GoalOrientedRequirement)newValue);
 				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				getRefinements().clear();
@@ -218,6 +299,9 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				getAssumptions().clear();
 				return;
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				setParent((GoalOrientedRequirement)null);
+				return;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				getRefinements().clear();
 				return;
@@ -237,6 +321,8 @@ public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implem
 				return refinementType != REFINEMENT_TYPE_EDEFAULT;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__ASSUMPTIONS:
 				return assumptions != null && !assumptions.isEmpty();
+			case GorePackage.GOAL_ORIENTED_REQUIREMENT__PARENT:
+				return getParent() != null;
 			case GorePackage.GOAL_ORIENTED_REQUIREMENT__REFINEMENTS:
 				return refinements != null && !refinements.isEmpty();
 		}

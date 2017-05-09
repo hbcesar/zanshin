@@ -28,6 +28,24 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface GoalModel extends EObject {
 	/**
+	 * Returns the value of the '<em><b>Actors</b></em>' containment reference list.
+	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.Actor}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.Actor#getGoalModel <em>Goal Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Actors</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actors</em>' containment reference list.
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_Actors()
+	 * @see it.unitn.disi.zanshin.model.gore.Actor#getGoalModel
+	 * @model opposite="goalModel" containment="true"
+	 * @generated
+	 */
+	EList<Actor> getActors();
+
+	/**
 	 * Returns the value of the '<em><b>Root Goal</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.HardGoal#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
@@ -54,24 +72,6 @@ public interface GoalModel extends EObject {
 	 * @generated
 	 */
 	void setRootGoal(HardGoal value);
-
-	/**
-	 * Returns the value of the '<em><b>Actors</b></em>' containment reference list.
-	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.Actor}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.Actor#getGoalModel <em>Goal Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Actors</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actors</em>' containment reference list.
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_Actors()
-	 * @see it.unitn.disi.zanshin.model.gore.Actor#getGoalModel
-	 * @model opposite="goalModel" containment="true"
-	 * @generated
-	 */
-	EList<Actor> getActors();
 
 	/**
 	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference.

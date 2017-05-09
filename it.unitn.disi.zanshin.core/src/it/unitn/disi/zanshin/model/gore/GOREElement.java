@@ -20,7 +20,6 @@ import org.eeat.model.LTL.OclAny;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement()
@@ -87,15 +86,17 @@ public interface GOREElement extends OclAny {
 	/**
 	 * Returns the value of the '<em><b>Awreqs</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.AwReq}.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.AwReq#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Awreqs</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Awreqs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Awreqs</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement_Awreqs()
-	 * @model containment="true"
+	 * @see it.unitn.disi.zanshin.model.gore.AwReq#getTarget
+	 * @model opposite="target" containment="true"
 	 * @generated
 	 */
 	EList<AwReq> getAwreqs();
@@ -175,25 +176,20 @@ public interface GOREElement extends OclAny {
 	EList<Integer> getChildrenStateCount();
 
 	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' reference.
-	 * @see #setParent(GOREElement)
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement_Parent()
-	 * @model
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {\r\n\tit.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;\r\n\treturn gore.getParent();\r\n} else if (this instanceof it.unitn.disi.zanshin.model.gore.AwReq) {\r\n\tit.unitn.disi.zanshin.model.gore.AwReq awreq = (it.unitn.disi.zanshin.model.gore.AwReq) this;\r\n\treturn awreq.getTarget();\r\n} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {\r\n\tit.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;\r\n\treturn qc.getTargetSoftGoal();\r\n}\r\n\t\t\r\nreturn null;'"
 	 * @generated
 	 */
 	GOREElement getParent();
 
 	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' reference.
-	 * @see #getParent()
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='\tif(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {\r\n\t\tit.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;\r\n\t\tgore.setParent((it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent);\r\n\t} else if (this instanceof it.unitn.disi.zanshin.model.gore.AwReq) {\r\n\t\tit.unitn.disi.zanshin.model.gore.AwReq awreq = (it.unitn.disi.zanshin.model.gore.AwReq) this;\r\n\t\tawreq.setTarget(parent);\r\n\t} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {\r\n\t\tit.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;\r\n\t\tqc.setTargetSoftGoal((it.unitn.disi.zanshin.model.gore.Softgoal) parent);\r\n\t}'"
 	 * @generated
 	 */
-	void setParent(GOREElement value);
+	void setParent(GOREElement parent);
 
 } // GOREElement

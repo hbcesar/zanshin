@@ -132,6 +132,16 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GoalModel createGoalModel() {
+		GoalModelImpl goalModel = new GoalModelImpl();
+		return goalModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HardGoal createHardGoal() {
 		HardGoalImpl hardGoal = new HardGoalImpl();
 		return hardGoal;
@@ -215,16 +225,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	public DifferentialRelation createDifferentialRelation() {
 		DifferentialRelationImpl differentialRelation = new DifferentialRelationImpl();
 		return differentialRelation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GoalModel createGoalModel() {
-		GoalModelImpl goalModel = new GoalModelImpl();
-		return goalModel;
 	}
 
 	/**
