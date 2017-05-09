@@ -24,7 +24,7 @@ public interface Softgoal extends GoalOrientedRequirement {
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.QualityConstraint}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal <em>Target Soft Goal</em>}'.
+	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
@@ -33,8 +33,8 @@ public interface Softgoal extends GoalOrientedRequirement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constraints</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getSoftgoal_Constraints()
-	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal
-	 * @model opposite="targetSoftGoal" containment="true"
+	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTarget
+	 * @model opposite="target" containment="true"
 	 * @generated
 	 */
 	EList<QualityConstraint> getConstraints();

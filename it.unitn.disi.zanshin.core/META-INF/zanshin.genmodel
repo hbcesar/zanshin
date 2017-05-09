@@ -250,9 +250,9 @@
       <genOperations ecoreOperation="gore.ecore#//GOREElement/findGoalModel"/>
       <genOperations ecoreOperation="gore.ecore#//GOREElement/getChildren"/>
       <genOperations ecoreOperation="gore.ecore#//GOREElement/getChildrenStateCount"/>
-      <genOperations ecoreOperation="gore.ecore#//GOREElement/getParent"/>
-      <genOperations ecoreOperation="gore.ecore#//GOREElement/setParent">
-        <genParameters ecoreParameter="gore.ecore#//GOREElement/setParent/parent"/>
+      <genOperations ecoreOperation="gore.ecore#//GOREElement/getRefinementSource"/>
+      <genOperations ecoreOperation="gore.ecore#//GOREElement/setRefinementSource">
+        <genParameters ecoreParameter="gore.ecore#//GOREElement/setRefinementSource/parent"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//GoalOrientedRequirement">
@@ -276,7 +276,7 @@
       <genOperations ecoreOperation="gore.ecore#//Softgoal/getChildren"/>
     </genClasses>
     <genClasses ecoreClass="gore.ecore#//QualityConstraint">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gore.ecore#//QualityConstraint/targetSoftGoal"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gore.ecore#//QualityConstraint/target"/>
       <genOperations ecoreOperation="gore.ecore#//QualityConstraint/replaceWith">
         <genParameters ecoreParameter="gore.ecore#//QualityConstraint/replaceWith/newRequirement"/>
       </genOperations>

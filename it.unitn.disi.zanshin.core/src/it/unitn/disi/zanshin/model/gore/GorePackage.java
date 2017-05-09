@@ -570,13 +570,13 @@ public interface GorePackage extends EPackage {
 	int QUALITY_CONSTRAINT__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
-	 * The feature id for the '<em><b>Target Soft Goal</b></em>' container reference.
+	 * The feature id for the '<em><b>Target</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY_CONSTRAINT__TARGET_SOFT_GOAL = GORE_ELEMENT_FEATURE_COUNT + 0;
+	int QUALITY_CONSTRAINT__TARGET = GORE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Quality Constraint</em>' class.
@@ -1306,15 +1306,15 @@ public interface GorePackage extends EPackage {
 	EClass getQualityConstraint();
 
 	/**
-	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal <em>Target Soft Goal</em>}'.
+	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.QualityConstraint#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Target Soft Goal</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTargetSoftGoal()
+	 * @return the meta object for the container reference '<em>Target</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.QualityConstraint#getTarget()
 	 * @see #getQualityConstraint()
 	 * @generated
 	 */
-	EReference getQualityConstraint_TargetSoftGoal();
+	EReference getQualityConstraint_Target();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.AwReq <em>Aw Req</em>}'.
@@ -1856,12 +1856,12 @@ public interface GorePackage extends EPackage {
 		EClass QUALITY_CONSTRAINT = eINSTANCE.getQualityConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Soft Goal</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference QUALITY_CONSTRAINT__TARGET_SOFT_GOAL = eINSTANCE.getQualityConstraint_TargetSoftGoal();
+		EReference QUALITY_CONSTRAINT__TARGET = eINSTANCE.getQualityConstraint_Target();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.AwReqImpl <em>Aw Req</em>}' class.

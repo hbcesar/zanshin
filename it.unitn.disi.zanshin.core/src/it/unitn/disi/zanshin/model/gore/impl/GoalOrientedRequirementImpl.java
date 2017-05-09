@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class GoalOrientedRequirementImpl extends GOREElementImpl implements GoalOrientedRequirement {
+public class GoalOrientedRequirementImpl extends GOREElementImpl implements GoalOrientedRequirement {
 	/**
 	 * The default value of the '{@link #getRefinementType() <em>Refinement Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -231,7 +231,7 @@ public class RelaxDisableChildStrategyImpl extends AdaptationStrategyImpl implem
 			controller.disable(child.eClass());
 		if ((level == it.unitn.disi.zanshin.model.gore.AggregationLevel.INSTANCE) || (level == it.unitn.disi.zanshin.model.gore.AggregationLevel.BOTH)) {
 			it.unitn.disi.zanshin.model.gore.GoalModel goalModel = requirement.findGoalModel();
-			GOREElement parent = requirement.getParent();
+			GOREElement parent = requirement.getRefinementSource();
 			controller.suspend(goalModel, requirement);
 			controller.terminate(goalModel, child);
 			if (child instanceof it.unitn.disi.zanshin.model.gore.PerformativeRequirement)

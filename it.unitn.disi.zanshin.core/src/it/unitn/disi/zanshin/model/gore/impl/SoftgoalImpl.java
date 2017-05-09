@@ -69,7 +69,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 */
 	public EList<QualityConstraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentWithInverseEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL);
+			constraints = new EObjectContainmentWithInverseEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__TARGET);
 		}
 		return constraints;
 	}

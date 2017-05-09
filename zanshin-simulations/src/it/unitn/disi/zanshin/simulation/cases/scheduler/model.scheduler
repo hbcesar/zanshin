@@ -2,7 +2,7 @@
 <scheduler:SchedulerGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scheduler="https://raw.githubusercontent.com/hbcesar/zanshin/master/zanshin-simulations/src/it/unitn/disi/zanshin/simulation/cases/scheduler/scheduler.ecore" xmlns:it.unitn.disi.zanshin.model="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore">
   <rootGoal xsi:type="scheduler:G_SchedMeet">
     <refinements xsi:type="scheduler:T_CharactMeet">
-      <awreqs xsi:type="scheduler:AR1" parent="//@rootGoal/@refinements.0">
+      <awreqs xsi:type="scheduler:AR1">
         <condition xsi:type="it.unitn.disi.zanshin.model:SimpleResolutionCondition"/>
         <strategies xsi:type="it.unitn.disi.zanshin.model:RetryStrategy" time="5000">
           <condition xsi:type="it.unitn.disi.zanshin.model:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="2"/>

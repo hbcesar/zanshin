@@ -41,7 +41,7 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  *
  * @generated
  */
-public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement {
+public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	/**
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -180,7 +180,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 			monitoringService.monitorMethodCall(this, it.unitn.disi.zanshin.model.gore.MonitorableMethod.START);
 						
 		// Propagate the start to the parent.
-		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getRefinementSource();
 		if ((parent != null) && (((GOREElement) parent).getState() == it.unitn.disi.zanshin.model.gore.GOREElementState.UNDEFINED))
 			((GOREElement) parent).start();
 	}
@@ -217,7 +217,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 		end();
 						
 		// Propagate the success to the parent, depending on the type of refinement.
-		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getRefinementSource();
 		if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement)) {
 			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement p = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent;
 			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.OR) ((GOREElement) parent).success();
@@ -243,7 +243,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 		end();
 						
 		// Propagate the failure to the parent, depending on the type of refinement.
-		it.unitn.disi.zanshin.model.gore.GOREElement parent = getParent();
+		it.unitn.disi.zanshin.model.gore.GOREElement parent = getRefinementSource();
 		if ((parent != null) && (parent instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement)) {
 			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement p = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent;
 			if (p.getRefinementType() == it.unitn.disi.zanshin.model.gore.RefinementType.AND) ((GOREElement) parent).fail();
@@ -297,9 +297,9 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 		// Changes the parent-child relationship (if there's no parent, we're setting null over null, so no harm). When
 		// elements have many-to-one bilateral associations, only the "one" side is manipulated. This is on purpose, as EMF
 		// generated code will handle the inverse association automatically.
-		GOREElement parent = getParent();
-		setParent(null);
-		newRequirement.setParent(parent);
+		GOREElement parent = getRefinementSource();
+		setRefinementSource(null);
+		newRequirement.setRefinementSource(parent);
 		it.unitn.disi.zanshin.core.CoreUtils.log.debug("Replacing requirement instances of class {0} ({1} -> {2})", eClass().getName(), this, newRequirement); //$NON-NLS-1$
 						
 		// After a piece of the requirements tree gets replaced by new instances (with possible different states), check if
@@ -344,7 +344,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 			} 
 			
 			// Next ancestor.
-			parent = parent.getParent();
+			parent = parent.getRefinementSource();
 		}
 	}
 
@@ -361,8 +361,8 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 					model = ((it.unitn.disi.zanshin.model.gore.HardGoal) this).getGoalModel();
 						
 		// If the model is not found in the root goal, move up the requirement tree looking for the root goal.
-		if ((model == null) && (getParent() != null))
-					model = getParent().findGoalModel();
+		if ((model == null) && (getRefinementSource() != null))
+					model = getRefinementSource().findGoalModel();
 						
 		// Returns the found model, or null if no model has been found.
 		return model;
@@ -410,7 +410,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GOREElement getParent() {
+	public GOREElement getRefinementSource() {
 		if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
 			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
 			return gore.getParent();
@@ -419,7 +419,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 			return awreq.getTarget();
 		} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {
 			it.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;
-			return qc.getTargetSoftGoal();
+			return qc.getTarget();
 		}
 				
 		return null;
@@ -430,7 +430,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParent(final GOREElement parent) {
+	public void setRefinementSource(final GOREElement parent) {
 			if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
 				it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
 				gore.setParent((it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent);
@@ -439,7 +439,7 @@ public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement 
 				awreq.setTarget(parent);
 			} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {
 				it.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;
-				qc.setTargetSoftGoal((it.unitn.disi.zanshin.model.gore.Softgoal) parent);
+				qc.setTarget((it.unitn.disi.zanshin.model.gore.Softgoal) parent);
 			}
 	}
 

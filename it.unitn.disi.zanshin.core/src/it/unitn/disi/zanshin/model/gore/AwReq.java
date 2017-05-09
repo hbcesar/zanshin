@@ -61,7 +61,7 @@ public interface AwReq extends GOREElement {
 	 * @see #setTarget(GOREElement)
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getAwReq_Target()
 	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs
-	 * @model opposite="awreqs" required="true" transient="false"
+	 * @model opposite="awreqs" transient="false"
 	 * @generated
 	 */
 	GOREElement getTarget();

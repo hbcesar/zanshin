@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalOrientedRequirement()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface GoalOrientedRequirement extends GOREElement {

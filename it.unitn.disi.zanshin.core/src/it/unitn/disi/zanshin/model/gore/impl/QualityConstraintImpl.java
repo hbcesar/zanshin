@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl#getTargetSoftGoal <em>Target Soft Goal</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.QualityConstraintImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,8 +55,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Softgoal getTargetSoftGoal() {
-		if (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL) return null;
+	public Softgoal getTarget() {
+		if (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__TARGET) return null;
 		return (Softgoal)eInternalContainer();
 	}
 
@@ -65,8 +65,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTargetSoftGoal(Softgoal newTargetSoftGoal, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTargetSoftGoal, GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL, msgs);
+	public NotificationChain basicSetTarget(Softgoal newTarget, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newTarget, GorePackage.QUALITY_CONSTRAINT__TARGET, msgs);
 		return msgs;
 	}
 
@@ -75,20 +75,20 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetSoftGoal(Softgoal newTargetSoftGoal) {
-		if (newTargetSoftGoal != eInternalContainer() || (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL && newTargetSoftGoal != null)) {
-			if (EcoreUtil.isAncestor(this, newTargetSoftGoal))
+	public void setTarget(Softgoal newTarget) {
+		if (newTarget != eInternalContainer() || (eContainerFeatureID() != GorePackage.QUALITY_CONSTRAINT__TARGET && newTarget != null)) {
+			if (EcoreUtil.isAncestor(this, newTarget))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newTargetSoftGoal != null)
-				msgs = ((InternalEObject)newTargetSoftGoal).eInverseAdd(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
-			msgs = basicSetTargetSoftGoal(newTargetSoftGoal, msgs);
+			if (newTarget != null)
+				msgs = ((InternalEObject)newTarget).eInverseAdd(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
+			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL, newTargetSoftGoal, newTargetSoftGoal));
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.QUALITY_CONSTRAINT__TARGET, newTarget, newTarget));
 	}
 
 	/**
@@ -101,9 +101,9 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 		super.replaceWith(newRequirement);
 				
 		// Then, replace the relationship quality constraints have with softgoals.
-		it.unitn.disi.zanshin.model.gore.Softgoal softgoal = (it.unitn.disi.zanshin.model.gore.Softgoal) getParent();
-		setParent(null);
-		((QualityConstraint) newRequirement).setParent(softgoal);
+		it.unitn.disi.zanshin.model.gore.Softgoal softgoal = (it.unitn.disi.zanshin.model.gore.Softgoal) getRefinementSource();
+		setRefinementSource(null);
+		((QualityConstraint) newRequirement).setRefinementSource(softgoal);
 	}
 
 	/**
@@ -114,10 +114,10 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetTargetSoftGoal((Softgoal)otherEnd, msgs);
+				return basicSetTarget((Softgoal)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -130,8 +130,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
-				return basicSetTargetSoftGoal(null, msgs);
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
+				return basicSetTarget(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,7 +144,7 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
 				return eInternalContainer().eInverseRemove(this, GorePackage.SOFTGOAL__CONSTRAINTS, Softgoal.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -158,8 +158,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
-				return getTargetSoftGoal();
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
+				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -172,8 +172,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
-				setTargetSoftGoal((Softgoal)newValue);
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
+				setTarget((Softgoal)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,8 +187,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
-				setTargetSoftGoal((Softgoal)null);
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
+				setTarget((Softgoal)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -202,8 +202,8 @@ public class QualityConstraintImpl extends GOREElementImpl implements QualityCon
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GorePackage.QUALITY_CONSTRAINT__TARGET_SOFT_GOAL:
-				return getTargetSoftGoal() != null;
+			case GorePackage.QUALITY_CONSTRAINT__TARGET:
+				return getTarget() != null;
 		}
 		return super.eIsSet(featureID);
 	}

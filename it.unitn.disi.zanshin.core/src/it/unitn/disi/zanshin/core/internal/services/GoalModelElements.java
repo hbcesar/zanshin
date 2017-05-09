@@ -141,7 +141,7 @@ public class GoalModelElements {
 		// If the requirement is an AwReq, adds its targets to the target map.
 		if (req instanceof AwReq) {
 			AwReq awreq = (AwReq) req;
-			GOREElement target = awreq.getParent();
+			GOREElement target = awreq.getTarget();
 			if (target != null)
 				addToTargetMap(target, awreq);
 			//N�o existe mais "otherTarget"
@@ -253,8 +253,8 @@ public class GoalModelElements {
 					// Goes through all AwReqs that target the requirement.
 					for (AwReq awreq : targetsMap.get(reqClass)) {
 						// If it's the primary target, replace it.
-						if (reqClass.equals(awreq.getParent().eClass()))
-							awreq.setParent((GOREElement) req);
+						if (reqClass.equals(awreq.getTarget().eClass()))
+							awreq.setTarget((GOREElement) req);
 
 						// If it's one of the other targets, replace it. Nao existe mais otherTargets
 //						DefinableRequirement oldTarget = null;

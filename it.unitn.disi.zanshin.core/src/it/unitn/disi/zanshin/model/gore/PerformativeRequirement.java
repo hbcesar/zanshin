@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getPerformativeRequirement()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface PerformativeRequirement extends GoalOrientedRequirement {

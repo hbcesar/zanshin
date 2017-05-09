@@ -31,6 +31,33 @@ public interface GoreFactory extends EFactory {
 	GoalModel createGoalModel();
 
 	/**
+	 * Returns a new object of class '<em>GORE Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GORE Element</em>'.
+	 * @generated
+	 */
+	GOREElement createGOREElement();
+
+	/**
+	 * Returns a new object of class '<em>Goal Oriented Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Goal Oriented Requirement</em>'.
+	 * @generated
+	 */
+	GoalOrientedRequirement createGoalOrientedRequirement();
+
+	/**
+	 * Returns a new object of class '<em>Performative Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Performative Requirement</em>'.
+	 * @generated
+	 */
+	PerformativeRequirement createPerformativeRequirement();
+
+	/**
 	 * Returns a new object of class '<em>Hard Goal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

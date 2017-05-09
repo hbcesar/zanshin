@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class PerformativeRequirementImpl extends GoalOrientedRequirementImpl implements PerformativeRequirement {
+public class PerformativeRequirementImpl extends GoalOrientedRequirementImpl implements PerformativeRequirement {
 	/**
 	 * The default value of the '{@link #getStartTime() <em>Start Time</em>}' attribute.
 	 * <!-- begin-user-doc -->

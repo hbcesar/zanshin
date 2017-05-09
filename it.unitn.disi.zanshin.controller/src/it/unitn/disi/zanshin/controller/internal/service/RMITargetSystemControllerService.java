@@ -268,7 +268,7 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 		// Resuming a requirement instance means attaching it back to its parent.
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
-		req.setParent(parent);
+		req.setRefinementSource(parent);
 
 		// Retrieves the session id and a reference to the target system responsible for this requirement instance.
 		Long sessionId = model.getId();
@@ -330,9 +330,9 @@ public class RMITargetSystemControllerService implements ITargetSystemController
 
 		// Suspending a requirement instance means removing it from its parent.
 		// Note: the parent-child or model-element association is bidirectional and EMF takes care of the opposite side.
-		GOREElement parent = req.getParent();
+		GOREElement parent = req.getRefinementSource();
 		if (parent != null) {
-			req.setParent(null);
+			req.setRefinementSource(null);
 
 			// Re-evaluates the parent, because the remaining children might all be successful.
 			parent.checkState();
