@@ -239,7 +239,7 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 	 */
 	public EList<DifferentialRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentWithInverseEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS, GorePackage.DIFFERENTIAL_RELATION__GOAL_MODEL);
+			relations = new EObjectContainmentEList<DifferentialRelation>(DifferentialRelation.class, this, GorePackage.GOAL_MODEL__RELATIONS);
 		}
 		return relations;
 	}
@@ -347,8 +347,6 @@ public class GoalModelImpl extends EObjectImpl implements GoalModel {
 				if (configuration != null)
 					msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GorePackage.GOAL_MODEL__CONFIGURATION, null, msgs);
 				return basicSetConfiguration((Configuration)otherEnd, msgs);
-			case GorePackage.GOAL_MODEL__RELATIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRelations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}

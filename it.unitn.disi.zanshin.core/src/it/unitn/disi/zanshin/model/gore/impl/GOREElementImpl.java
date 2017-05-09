@@ -43,7 +43,7 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  *
  * @generated
  */
-public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement {
+public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	/**
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->

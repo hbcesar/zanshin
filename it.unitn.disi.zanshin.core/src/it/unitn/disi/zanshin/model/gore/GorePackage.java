@@ -927,22 +927,13 @@ public interface GorePackage extends EPackage {
 	int DIFFERENTIAL_RELATION__VALUE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Goal Model</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIFFERENTIAL_RELATION__GOAL_MODEL = 6;
-
-	/**
 	 * The number of structural features of the '<em>Differential Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIFFERENTIAL_RELATION_FEATURE_COUNT = 7;
+	int DIFFERENTIAL_RELATION_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1451,17 +1442,6 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDifferentialRelation_Value();
-
-	/**
-	 * Returns the meta object for the container reference '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel <em>Goal Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Goal Model</em>'.
-	 * @see it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel()
-	 * @see #getDifferentialRelation()
-	 * @generated
-	 */
-	EReference getDifferentialRelation_GoalModel();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GoalModel <em>Goal Model</em>}'.
@@ -1988,14 +1968,6 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DIFFERENTIAL_RELATION__VALUE = eINSTANCE.getDifferentialRelation_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Goal Model</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DIFFERENTIAL_RELATION__GOAL_MODEL = eINSTANCE.getDifferentialRelation_GoalModel();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalModelImpl <em>Goal Model</em>}' class.

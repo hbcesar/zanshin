@@ -104,7 +104,6 @@ public interface GoalModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Relations</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.DifferentialRelation}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel <em>Goal Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relations</em>' containment reference list isn't clear,
@@ -113,8 +112,7 @@ public interface GoalModel extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relations</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGoalModel_Relations()
-	 * @see it.unitn.disi.zanshin.model.gore.DifferentialRelation#getGoalModel
-	 * @model opposite="goalModel" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DifferentialRelation> getRelations();
