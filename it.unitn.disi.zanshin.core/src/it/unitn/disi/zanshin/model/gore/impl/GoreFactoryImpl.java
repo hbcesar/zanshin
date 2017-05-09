@@ -58,9 +58,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case GorePackage.GOAL_MODEL: return createGoalModel();
-			case GorePackage.GORE_ELEMENT: return createGOREElement();
-			case GorePackage.GOAL_ORIENTED_REQUIREMENT: return createGoalOrientedRequirement();
-			case GorePackage.PERFORMATIVE_REQUIREMENT: return createPerformativeRequirement();
 			case GorePackage.HARD_GOAL: return createHardGoal();
 			case GorePackage.SOFTGOAL: return createSoftgoal();
 			case GorePackage.QUALITY_CONSTRAINT: return createQualityConstraint();
@@ -228,36 +225,6 @@ public class GoreFactoryImpl extends EFactoryImpl implements GoreFactory {
 	public GoalModel createGoalModel() {
 		GoalModelImpl goalModel = new GoalModelImpl();
 		return goalModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GOREElement createGOREElement() {
-		GOREElementImpl goreElement = new GOREElementImpl();
-		return goreElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GoalOrientedRequirement createGoalOrientedRequirement() {
-		GoalOrientedRequirementImpl goalOrientedRequirement = new GoalOrientedRequirementImpl();
-		return goalOrientedRequirement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PerformativeRequirement createPerformativeRequirement() {
-		PerformativeRequirementImpl performativeRequirement = new PerformativeRequirementImpl();
-		return performativeRequirement;
 	}
 
 	/**

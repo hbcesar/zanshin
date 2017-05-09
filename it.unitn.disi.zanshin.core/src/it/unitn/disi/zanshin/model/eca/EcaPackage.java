@@ -95,6 +95,15 @@ public interface EcaPackage extends EPackage {
 	int ECA_AW_REQ__AWREQS = GorePackage.AW_REQ__AWREQS;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECA_AW_REQ__PARENT = GorePackage.AW_REQ__PARENT;
+
+	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,15 +111,6 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECA_AW_REQ__INCREMENT_COEFFICIENT = GorePackage.AW_REQ__INCREMENT_COEFFICIENT;
-
-	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECA_AW_REQ__PARENT = GorePackage.AW_REQ__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.

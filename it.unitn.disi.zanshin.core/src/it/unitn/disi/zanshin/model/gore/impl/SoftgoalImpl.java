@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -71,7 +72,7 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 	 */
 	public EList<QualityConstraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentWithInverseEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS, GorePackage.QUALITY_CONSTRAINT__PARENT);
+			constraints = new EObjectContainmentEList<QualityConstraint>(QualityConstraint.class, this, GorePackage.SOFTGOAL__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -100,21 +101,6 @@ public class SoftgoalImpl extends GoalOrientedRequirementImpl implements Softgoa
 		}
 								
 		return children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case GorePackage.SOFTGOAL__CONSTRAINTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConstraints()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

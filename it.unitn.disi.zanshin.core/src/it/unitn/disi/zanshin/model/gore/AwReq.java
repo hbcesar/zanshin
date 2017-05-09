@@ -13,7 +13,6 @@ package it.unitn.disi.zanshin.model.gore;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.AwReq#getIncrementCoefficient <em>Increment Coefficient</em>}</li>
- *   <li>{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getAwReq()
@@ -21,34 +20,6 @@ package it.unitn.disi.zanshin.model.gore;
  * @generated
  */
 public interface AwReq extends GOREElement {
-	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' container reference.
-	 * @see #setParent(GOREElement)
-	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getAwReq_Parent()
-	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs
-	 * @model opposite="awreqs" required="true" transient="false"
-	 * @generated
-	 */
-	GOREElement getParent();
-
-	/**
-	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' container reference.
-	 * @see #getParent()
-	 * @generated
-	 */
-	void setParent(GOREElement value);
-
 	/**
 	 * Returns the value of the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * The default value is <code>"1.0"</code>.

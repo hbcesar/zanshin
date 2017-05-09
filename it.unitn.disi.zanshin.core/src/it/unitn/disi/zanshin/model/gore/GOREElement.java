@@ -20,10 +20,11 @@ import org.eeat.model.LTL.OclAny;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getAwreqs <em>Awreqs</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface GOREElement extends OclAny {
@@ -86,7 +87,6 @@ public interface GOREElement extends OclAny {
 	/**
 	 * Returns the value of the '<em><b>Awreqs</b></em>' containment reference list.
 	 * The list contents are of type {@link it.unitn.disi.zanshin.model.gore.AwReq}.
-	 * It is bidirectional and its opposite is '{@link it.unitn.disi.zanshin.model.gore.AwReq#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Awreqs</em>' reference list isn't clear,
@@ -95,8 +95,7 @@ public interface GOREElement extends OclAny {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Awreqs</em>' containment reference list.
 	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement_Awreqs()
-	 * @see it.unitn.disi.zanshin.model.gore.AwReq#getParent
-	 * @model opposite="parent" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AwReq> getAwreqs();
@@ -176,19 +175,25 @@ public interface GOREElement extends OclAny {
 	EList<Integer> getChildrenStateCount();
 
 	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @return the value of the '<em>Parent</em>' reference.
+	 * @see #setParent(GOREElement)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getGOREElement_Parent()
+	 * @model
 	 * @generated
 	 */
 	GOREElement getParent();
 
 	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getParent <em>Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @see #getParent()
 	 * @generated
 	 */
-	void setParent(GOREElement parent);
+	void setParent(GOREElement value);
 
 } // GOREElement

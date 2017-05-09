@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -39,11 +40,12 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getAwreqs <em>Awreqs</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GOREElementImpl extends OclAnyImpl implements GOREElement {
+public abstract class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	/**
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,6 +95,16 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * @ordered
 	 */
 	protected EList<AwReq> awreqs;
+
+	/**
+	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParent()
+	 * @generated
+	 * @ordered
+	 */
+	protected GOREElement parent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,7 +174,7 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public EList<AwReq> getAwreqs() {
 		if (awreqs == null) {
-			awreqs = new EObjectContainmentWithInverseEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS, GorePackage.AW_REQ__PARENT);
+			awreqs = new EObjectContainmentEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS);
 		}
 		return awreqs;
 	}
@@ -413,35 +425,36 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * @generated
 	 */
 	public GOREElement getParent() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(GOREElement parent) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case GorePackage.GORE_ELEMENT__AWREQS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAwreqs()).basicAdd(otherEnd, msgs);
+		if (parent != null && parent.eIsProxy()) {
+			InternalEObject oldParent = (InternalEObject)parent;
+			parent = (GOREElement)eResolveProxy(oldParent);
+			if (parent != oldParent) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
+			}
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GOREElement basicGetParent() {
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(GOREElement newParent) {
+		GOREElement oldParent = parent;
+		parent = newParent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GORE_ELEMENT__PARENT, oldParent, parent));
 	}
 
 	/**
@@ -472,6 +485,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				return getState();
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				return getAwreqs();
+			case GorePackage.GORE_ELEMENT__PARENT:
+				if (resolve) return getParent();
+				return basicGetParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -495,6 +511,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				getAwreqs().clear();
 				getAwreqs().addAll((Collection<? extends AwReq>)newValue);
 				return;
+			case GorePackage.GORE_ELEMENT__PARENT:
+				setParent((GOREElement)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -516,6 +535,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				getAwreqs().clear();
 				return;
+			case GorePackage.GORE_ELEMENT__PARENT:
+				setParent((GOREElement)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -534,6 +556,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				return state != STATE_EDEFAULT;
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				return awreqs != null && !awreqs.isEmpty();
+			case GorePackage.GORE_ELEMENT__PARENT:
+				return parent != null;
 		}
 		return super.eIsSet(featureID);
 	}
