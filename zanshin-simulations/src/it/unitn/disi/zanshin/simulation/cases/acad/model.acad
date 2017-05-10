@@ -1,102 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<acad:AcadGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:acad="http://disi.unitn.it/zanshin/1.0/acad" xmlns:eca="http://disi.unitn.it/zanshin/1.0/eca">
+<acad:AcadGoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:acad="https://raw.githubusercontent.com/hbcesar/zanshin/master/zanshin-simulations/src/it/unitn/disi/zanshin/simulation/cases/acad/acad.ecore" xmlns:eca="https://raw.githubusercontent.com/hbcesar/zanshin/master/it.unitn.disi.zanshin.core/META-INF/eca.ecore">
 	<rootGoal xsi:type="acad:G_GenDispatch">
-		<children xsi:type="acad:G_CallTaking">								<!-- //@rootGoal/@children.0 -->
-			<children xsi:type="acad:D_MaxCalls"/>
-			<children xsi:type="acad:G_RegCall">
-				<children xsi:type="acad:T_InputInfo"/>
-				<children xsi:type="acad:T_DetectLoc"/>
-			</children>
-			<children xsi:type="acad:T_ConfirmCall"/>
-			<children xsi:type="acad:G_AssignIncident">
-				<children xsi:type="acad:T_SearchDuplic"/>
-				<children xsi:type="acad:T_CreateOrAssign"/>
-			</children>
-		</children>
-		<children xsi:type="acad:D_DataUpd"/>								<!-- //@rootGoal/@children.1 -->
-		<children xsi:type="acad:G_ResourceId">								<!-- //@rootGoal/@children.2 -->
-			<children xsi:type="acad:T_SpecConfig"/>
-			<children xsi:type="acad:T_ConfIncident"/>
-		</children>
-		<children xsi:type="acad:G_ResourceMob">							<!-- //@rootGoal/@children.3 -->
-			<children xsi:type="acad:T_DetBestAmb"/>
-			<children xsi:type="acad:T_InformStat"/>
-			<children xsi:type="acad:G_RouteAssist" refinementType="or">
-				<children xsi:type="acad:D_DriverKnows"/>
-				<children xsi:type="acad:T_AcadAssists"/>
-				<children xsi:type="acad:T_StaffAssists"/>
-			</children>
-			<children xsi:type="acad:T_Feedback"/>
-		</children>
-		<children xsi:type="acad:G_ObtainMap" refinementType="or">			<!-- //@rootGoal/@children.4 -->
-			<children xsi:type="acad:D_GazetUpd"/>
-			<children xsi:type="acad:G_ManualMap" refinementType="or">
-				<children xsi:type="acad:T_CheckGazet"/>
-				<children xsi:type="acad:T_CheckPaper"/>
-			</children>
-		</children>
-		<children xsi:type="acad:G_IncidentUpd">							<!-- //@rootGoal/@children.5 -->
-			<children xsi:type="acad:G_MonitorRes">
-				<children xsi:type="acad:G_UpdPosition" refinementType="or">
-					<children xsi:type="acad:D_MDTPos"/>
-					<children xsi:type="acad:T_RadioPos"/>
-				</children>
-				<children xsi:type="acad:D_MDTUse"/>
-				<children xsi:type="acad:T_MonitorStatus"/>
-				<children xsi:type="acad:T_DispStatus"/>
-				<children xsi:type="acad:T_DispDepArriv"/>
-				<children xsi:type="acad:G_DispExcept" refinementType="or">
-					<children xsi:type="acad:T_Except"/>
-					<children xsi:type="acad:T_ExceptQueue"/>
-				</children>
-			</children>
-			<children xsi:type="acad:T_CloseIncident"/>
-			<children xsi:type="acad:T_ReplAmb"/>
-		</children>
+		<refinements xsi:type="acad:G_CallTaking">								<!-- //@rootGoal/@refinements.0 -->
+			<assumptions xsi:type="acad:D_MaxCalls"/>
+			<refinements xsi:type="acad:G_RegCall">
+				<refinements xsi:type="acad:T_InputInfo"/>
+				<refinements xsi:type="acad:T_DetectLoc"/>
+				<awreqs xsi:type="acad:AR15">										
+			      <condition xsi:type="eca:SimpleResolutionCondition"/>
+			      <strategies xsi:type="eca:RetryStrategy" time="5000">
+				    <condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+			      </strategies>
+			      <strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@refinements.0/@refinements.1/@refinements.1">
+				    <condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
+			      </strategies>
+		        </awreqs>
+			</refinements>
+			<refinements xsi:type="acad:T_ConfirmCall"/>
+			<refinements xsi:type="acad:G_AssignIncident">
+				<refinements xsi:type="acad:T_SearchDuplic"/>
+				<refinements xsi:type="acad:T_CreateOrAssign"/>
+			</refinements>
+		</refinements>
+		<assumptions xsi:type="acad:D_DataUpd"/>								<!-- //@rootGoal/@refinements.1 -->
+		<refinements xsi:type="acad:G_ResourceId">								<!-- //@rootGoal/@refinements.2 -->
+			<refinements xsi:type="acad:T_SpecConfig"/>
+			<refinements xsi:type="acad:T_ConfIncident"/>
+		</refinements>
+		<refinements xsi:type="acad:G_ResourceMob">							<!-- //@rootGoal/@refinements.3 -->
+			<refinements xsi:type="acad:T_DetBestAmb"/>
+			<refinements xsi:type="acad:T_InformStat"/>
+			<refinements xsi:type="acad:G_RouteAssist" refinementType="or">
+				<assumptions xsi:type="acad:D_DriverKnows"/>
+				<refinements xsi:type="acad:T_AcadAssists"/>
+				<refinements xsi:type="acad:T_StaffAssists"/>
+			</refinements>
+			<refinements xsi:type="acad:T_Feedback"/>
+		</refinements>
+		<refinements xsi:type="acad:G_ObtainMap" refinementType="or">			<!-- //@rootGoal/@refinements.4 -->
+			<assumptions xsi:type="acad:D_GazetUpd"/>
+			<refinements xsi:type="acad:G_ManualMap" refinementType="or">
+				<refinements xsi:type="acad:T_CheckGazet"/>
+				<refinements xsi:type="acad:T_CheckPaper"/>
+			</refinements>
+		</refinements>
+		<refinements xsi:type="acad:G_IncidentUpd">							<!-- //@rootGoal/@refinements.5 -->
+			<refinements xsi:type="acad:G_MonitorRes">
+				<refinements xsi:type="acad:G_UpdPosition" refinementType="or">
+					<assumptions xsi:type="acad:D_MDTPos"/>
+					<refinements xsi:type="acad:T_RadioPos"/>
+				</refinements>
+				<assumptions xsi:type="acad:D_MDTUse"/>
+				<refinements xsi:type="acad:T_MonitorStatus"/>
+				<refinements xsi:type="acad:T_DispStatus"/>
+				<refinements xsi:type="acad:T_DispDepArriv"/>
+				<refinements xsi:type="acad:G_DispExcept" refinementType="or">
+					<refinements xsi:type="acad:T_Except"/>
+					<refinements xsi:type="acad:T_ExceptQueue"/>
+				</refinements>
+			</refinements>
+			<refinements xsi:type="acad:T_CloseIncident"/>
+			<refinements xsi:type="acad:T_ReplAmb"/>
+		</refinements>
 		
 		<!-- Softgoals. -->
-		<children xsi:type="acad:S_FastArriv"/>		<!-- //@rootGoal/@children.6 -->
-		<children xsi:type="acad:S_FastDispatch"/>	<!-- //@rootGoal/@children.7 -->
-		<children xsi:type="acad:S_FastAssist"/>	<!-- //@rootGoal/@children.8 -->
-		<children xsi:type="acad:S_LowCost"/>		<!-- //@rootGoal/@children.9 -->
-		<children xsi:type="acad:S_UserFriendly"/>	<!-- //@rootGoal/@children.10 -->
-		
-		<!-- Quality Constraints. -->
-		<children xsi:type="acad:Q_AmbArriv" softgoal="//@rootGoal/@children.6"/>		<!-- //@rootGoal/@children.11 -->
-		<children xsi:type="acad:Q_Dispatch" softgoal="//@rootGoal/@children.7"/>		<!-- //@rootGoal/@children.12 -->
-		<children xsi:type="acad:Q_IncidResolv" softgoal="//@rootGoal/@children.8"/>	<!-- //@rootGoal/@children.13 -->
-		<children xsi:type="acad:Q_MaxCost" softgoal="//@rootGoal/@children.9"/>		<!-- //@rootGoal/@children.14 -->
-		<children xsi:type="acad:Q_MaxTimeMsg" softgoal="//@rootGoal/@children.10"/>	<!-- //@rootGoal/@children.15 -->
-		
-		<!-- AwReqs. -->
-		<children xsi:type="acad:AR1" target="//@rootGoal/@children.0/@children.0"/>									<!-- //@rootGoal/@children.16 -->
-		<children xsi:type="acad:AR2"/>																					<!-- //@rootGoal/@children.17 -->
-		<children xsi:type="acad:AR3"/>																					<!-- //@rootGoal/@children.18 -->
-		<children xsi:type="acad:AR4"/>																					<!-- //@rootGoal/@children.19 -->
-		<children xsi:type="acad:AR5"/>																					<!-- //@rootGoal/@children.20 -->
-		<children xsi:type="acad:AR6"/>																					<!-- //@rootGoal/@children.21 -->
-		<children xsi:type="acad:AR7"/>																					<!-- //@rootGoal/@children.22 -->
-		<children xsi:type="acad:AR8"/>																					<!-- //@rootGoal/@children.23 -->
-		<children xsi:type="acad:AR9"/>																					<!-- //@rootGoal/@children.24 -->
-		<children xsi:type="acad:AR10"/>																				<!-- //@rootGoal/@children.25 -->
-		<children xsi:type="acad:AR11" target="//@rootGoal/@children.12" incrementCoefficient="2">						<!-- //@rootGoal/@children.26 -->
+		<refinements xsi:type="acad:S_FastArriv">		<!-- //@rootGoal/@refinements.6 -->
+		  <constraints xsi:type="acad:Q_AmbArriv"/>
+		</refinements>
+		<refinements xsi:type="acad:S_FastDispatch">	<!-- //@rootGoal/@refinements.7 -->
+		  <constraints xsi:type="acad:Q_Dispatch">
+		   <awreqs xsi:type="acad:AR11" incrementCoefficient="2">						
 			<condition xsi:type="eca:ReconfigurationResolutionCondition"/>
 			<strategies xsi:type="eca:ReconfigurationStrategy" algorithmId="qualia">
 				<condition xsi:type="eca:ReconfigurationApplicabilityCondition"/>
 			</strategies>
-		</children>
-		<children xsi:type="acad:AR12"/>																					<!-- //@rootGoal/@children.27 -->
-		<children xsi:type="acad:AR13"/>																					<!-- //@rootGoal/@children.28 -->
-		<children xsi:type="acad:AR14"/>																					<!-- //@rootGoal/@children.29 -->
-		<children xsi:type="acad:AR15" target="//@rootGoal/@children.0/@children.1">										<!-- //@rootGoal/@children.30 -->
-			<condition xsi:type="eca:SimpleResolutionCondition"/>
-			<strategies xsi:type="eca:RetryStrategy" time="5000">
-				<condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
-			</strategies>
-			<strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@children.0/@children.1/@children.1">
-				<condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
-			</strategies>
-		</children>
+		   </awreqs>
+		 </constraints>
+		</refinements>
+		<refinements xsi:type="acad:S_FastAssist">	<!-- //@rootGoal/@refinements.8 -->
+		  <constraints xsi:type="acad:Q_IncidResolv"/>
+		</refinements>
+		<refinements xsi:type="acad:S_LowCost">		<!-- //@rootGoal/@refinements.9 -->
+		  <constraints xsi:type="acad:Q_MaxCost"/>
+		</refinements>
+		<refinements xsi:type="acad:S_UserFriendly">	<!-- //@rootGoal/@refinements.10 -->
+		  <constraints xsi:type="acad:Q_MaxTimeMsg"/>
+		</refinements>
 	</rootGoal>
 	
 	<!-- System parameters. -->
@@ -105,5 +94,5 @@
 	</configuration>
 	
 	<!-- Indicator / parameter differential relations. -->
-	<relations indicator="//@rootGoal/@children.26" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="ft" />
+	<relations indicator="//@rootGoal/@refinements.26" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="ft" />
 </acad:AcadGoalModel>
