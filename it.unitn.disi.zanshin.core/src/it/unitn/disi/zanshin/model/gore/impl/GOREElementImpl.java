@@ -412,11 +412,11 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 */
 	public GOREElement getRefinementSource() {
 		if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
-			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
-			return gore.getParent();
+			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement g = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
+			return g.getParent();
 		} else if (this instanceof it.unitn.disi.zanshin.model.gore.AwReq) {
-			it.unitn.disi.zanshin.model.gore.AwReq awreq = (it.unitn.disi.zanshin.model.gore.AwReq) this;
-			return awreq.getTarget();
+			it.unitn.disi.zanshin.model.gore.AwReq ar = (it.unitn.disi.zanshin.model.gore.AwReq) this;
+			return ar.getTarget();
 		} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {
 			it.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;
 			return qc.getTarget();
@@ -431,16 +431,16 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * @generated
 	 */
 	public void setRefinementSource(final GOREElement parent) {
-			if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
-				it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement gore = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
-				gore.setParent((it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent);
-			} else if (this instanceof it.unitn.disi.zanshin.model.gore.AwReq) {
-				it.unitn.disi.zanshin.model.gore.AwReq awreq = (it.unitn.disi.zanshin.model.gore.AwReq) this;
-				awreq.setTarget(parent);
-			} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {
-				it.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;
-				qc.setTarget((it.unitn.disi.zanshin.model.gore.Softgoal) parent);
-			}
+		if(this instanceof it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) {
+			it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement g = (it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) this;
+			g.setParent((it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement) parent);
+		} else if (this instanceof it.unitn.disi.zanshin.model.gore.AwReq) {
+			it.unitn.disi.zanshin.model.gore.AwReq ar = (it.unitn.disi.zanshin.model.gore.AwReq) this;
+			ar.setTarget(parent);
+		} else if (this instanceof it.unitn.disi.zanshin.model.gore.QualityConstraint) {
+			it.unitn.disi.zanshin.model.gore.QualityConstraint qc = (it.unitn.disi.zanshin.model.gore.QualityConstraint) this;
+			qc.setTarget((it.unitn.disi.zanshin.model.gore.Softgoal) parent);
+		}
 	}
 
 	/**
