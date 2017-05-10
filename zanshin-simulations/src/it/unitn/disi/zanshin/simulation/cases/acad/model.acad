@@ -11,7 +11,7 @@
 			      <strategies xsi:type="eca:RetryStrategy" time="5000">
 				    <condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
 			      </strategies>
-			      <strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@refinements.0/@refinements.1/@refinements.1">
+			      <strategies xsi:type="eca:RelaxDisableChildStrategy" child="//@rootGoal/@refinements.0/@refinements.0/@refinements.1">
 				    <condition xsi:type="eca:MaxExecutionsPerSessionApplicabilityCondition" maxExecutions="1"/>
 			      </strategies>
 		        </awreqs>
@@ -94,5 +94,5 @@
 	</configuration>
 	
 	<!-- Indicator / parameter differential relations. -->
-	<relations indicator="//@rootGoal/@refinements.26" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="ft" />
+	<relations indicator="//@rootGoal/@refinements.6/@constraints.0/@awreqs.0" parameter="//@configuration/@parameters.0" lowerBound="0" upperBound="180" operator="ft" />
 </acad:AcadGoalModel>
