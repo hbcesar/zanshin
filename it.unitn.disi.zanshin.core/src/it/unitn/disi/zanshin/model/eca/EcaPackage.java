@@ -95,6 +95,15 @@ public interface EcaPackage extends EPackage {
 	int ECA_AW_REQ__AWREQS = GorePackage.AW_REQ__AWREQS;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECA_AW_REQ__INTERNAL_ID = GorePackage.AW_REQ__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,13 +177,22 @@ public interface EcaPackage extends EPackage {
 	int RESOLUTION_CONDITION__AW_REQ = 0;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLUTION_CONDITION__INTERNAL_ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>Resolution Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLUTION_CONDITION_FEATURE_COUNT = 1;
+	int RESOLUTION_CONDITION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationStrategyImpl <em>Adaptation Strategy</em>}' class.
@@ -205,13 +223,22 @@ public interface EcaPackage extends EPackage {
 	int ADAPTATION_STRATEGY__CONDITION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTATION_STRATEGY__INTERNAL_ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>Adaptation Strategy</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTATION_STRATEGY_FEATURE_COUNT = 2;
+	int ADAPTATION_STRATEGY_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl <em>Applicability Condition</em>}' class.
@@ -233,13 +260,22 @@ public interface EcaPackage extends EPackage {
 	int APPLICABILITY_CONDITION__STRATEGY = 0;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICABILITY_CONDITION__INTERNAL_ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>Applicability Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICABILITY_CONDITION_FEATURE_COUNT = 1;
+	int APPLICABILITY_CONDITION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl <em>Event</em>}' class.
@@ -353,6 +389,15 @@ public interface EcaPackage extends EPackage {
 	int SIMPLE_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RESOLUTION_CONDITION__INTERNAL_ID = RESOLUTION_CONDITION__INTERNAL_ID;
+
+	/**
 	 * The number of structural features of the '<em>Simple Resolution Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -379,6 +424,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int AND_REFINED_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_RESOLUTION_CONDITION__INTERNAL_ID = RESOLUTION_CONDITION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -418,6 +472,15 @@ public interface EcaPackage extends EPackage {
 	int OR_REFINED_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_RESOLUTION_CONDITION__INTERNAL_ID = RESOLUTION_CONDITION__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -455,6 +518,15 @@ public interface EcaPackage extends EPackage {
 	int SIMPLE_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_APPLICABILITY_CONDITION__INTERNAL_ID = APPLICABILITY_CONDITION__INTERNAL_ID;
+
+	/**
 	 * The number of structural features of the '<em>Simple Applicability Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -481,6 +553,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAX_EXECUTIONS_PER_SESSION_APPLICABILITY_CONDITION__INTERNAL_ID = APPLICABILITY_CONDITION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Max Executions</b></em>' attribute.
@@ -520,6 +601,15 @@ public interface EcaPackage extends EPackage {
 	int AND_REFINED_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFINED_APPLICABILITY_CONDITION__INTERNAL_ID = APPLICABILITY_CONDITION__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -555,6 +645,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int OR_REFINED_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_REFINED_APPLICABILITY_CONDITION__INTERNAL_ID = APPLICABILITY_CONDITION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -603,6 +702,15 @@ public interface EcaPackage extends EPackage {
 	int ABORT_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABORT_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
+
+	/**
 	 * The number of structural features of the '<em>Abort Strategy</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -638,6 +746,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DELEGATE_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELEGATE_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Actor</b></em>' reference.
@@ -684,6 +801,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELAX_DISABLE_CHILD_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_DISABLE_CHILD_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' reference.
@@ -748,6 +874,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELAX_REPLACE__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELAX_REPLACE__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' reference.
@@ -823,6 +958,15 @@ public interface EcaPackage extends EPackage {
 	int RETRY_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Copy</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -876,6 +1020,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRENGTHEN_ENABLE_CHILD_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_ENABLE_CHILD_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' reference.
@@ -940,6 +1093,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRENGTHEN_REPLACE__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRENGTHEN_REPLACE__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' reference.
@@ -1015,6 +1177,15 @@ public interface EcaPackage extends EPackage {
 	int WARNING_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WARNING_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Actor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1052,6 +1223,15 @@ public interface EcaPackage extends EPackage {
 	int RECONFIGURATION_APPLICABILITY_CONDITION__STRATEGY = APPLICABILITY_CONDITION__STRATEGY;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_APPLICABILITY_CONDITION__INTERNAL_ID = APPLICABILITY_CONDITION__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Wrapped Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1087,6 +1267,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECONFIGURATION_RESOLUTION_CONDITION__AW_REQ = RESOLUTION_CONDITION__AW_REQ;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_RESOLUTION_CONDITION__INTERNAL_ID = RESOLUTION_CONDITION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Wrapped Condition</b></em>' containment reference.
@@ -1133,6 +1322,15 @@ public interface EcaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECONFIGURATION_STRATEGY__CONDITION = ADAPTATION_STRATEGY__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECONFIGURATION_STRATEGY__INTERNAL_ID = ADAPTATION_STRATEGY__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Algorithm Id</b></em>' attribute.
@@ -1236,6 +1434,17 @@ public interface EcaPackage extends EPackage {
 	EReference getResolutionCondition_AwReq();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.ResolutionCondition#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.ResolutionCondition#getInternalID()
+	 * @see #getResolutionCondition()
+	 * @generated
+	 */
+	EAttribute getResolutionCondition_InternalID();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy <em>Adaptation Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1268,6 +1477,17 @@ public interface EcaPackage extends EPackage {
 	EReference getAdaptationStrategy_Condition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getInternalID()
+	 * @see #getAdaptationStrategy()
+	 * @generated
+	 */
+	EAttribute getAdaptationStrategy_InternalID();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.ApplicabilityCondition <em>Applicability Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1287,6 +1507,17 @@ public interface EcaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getApplicabilityCondition_Strategy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.eca.ApplicabilityCondition#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.eca.ApplicabilityCondition#getInternalID()
+	 * @see #getApplicabilityCondition()
+	 * @generated
+	 */
+	EAttribute getApplicabilityCondition_InternalID();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.eca.Event <em>Event</em>}'.
@@ -1937,6 +2168,14 @@ public interface EcaPackage extends EPackage {
 		EReference RESOLUTION_CONDITION__AW_REQ = eINSTANCE.getResolutionCondition_AwReq();
 
 		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOLUTION_CONDITION__INTERNAL_ID = eINSTANCE.getResolutionCondition_InternalID();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationStrategyImpl <em>Adaptation Strategy</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1963,6 +2202,14 @@ public interface EcaPackage extends EPackage {
 		EReference ADAPTATION_STRATEGY__CONDITION = eINSTANCE.getAdaptationStrategy_Condition();
 
 		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTATION_STRATEGY__INTERNAL_ID = eINSTANCE.getAdaptationStrategy_InternalID();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl <em>Applicability Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1979,6 +2226,14 @@ public interface EcaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference APPLICABILITY_CONDITION__STRATEGY = eINSTANCE.getApplicabilityCondition_Strategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICABILITY_CONDITION__INTERNAL_ID = eINSTANCE.getApplicabilityCondition_InternalID();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.eca.impl.EventImpl <em>Event</em>}' class.

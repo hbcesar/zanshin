@@ -160,13 +160,22 @@ public interface GorePackage extends EPackage {
 	int GORE_ELEMENT__AWREQS = LTLPackage.OCL_ANY_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GORE_ELEMENT__INTERNAL_ID = LTLPackage.OCL_ANY_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>GORE Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GORE_ELEMENT_FEATURE_COUNT = LTLPackage.OCL_ANY_FEATURE_COUNT + 3;
+	int GORE_ELEMENT_FEATURE_COUNT = LTLPackage.OCL_ANY_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl <em>Goal Oriented Requirement</em>}' class.
@@ -204,6 +213,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL_ORIENTED_REQUIREMENT__AWREQS = GORE_ELEMENT__AWREQS;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_ORIENTED_REQUIREMENT__INTERNAL_ID = GORE_ELEMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -286,6 +304,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PERFORMATIVE_REQUIREMENT__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMATIVE_REQUIREMENT__INTERNAL_ID = GOAL_ORIENTED_REQUIREMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -377,6 +404,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int HARD_GOAL__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARD_GOAL__INTERNAL_ID = PERFORMATIVE_REQUIREMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -479,6 +515,15 @@ public interface GorePackage extends EPackage {
 	int SOFTGOAL__AWREQS = GOAL_ORIENTED_REQUIREMENT__AWREQS;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOFTGOAL__INTERNAL_ID = GOAL_ORIENTED_REQUIREMENT__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -570,6 +615,15 @@ public interface GorePackage extends EPackage {
 	int QUALITY_CONSTRAINT__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALITY_CONSTRAINT__INTERNAL_ID = GORE_ELEMENT__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,6 +677,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int AW_REQ__AWREQS = GORE_ELEMENT__AWREQS;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AW_REQ__INTERNAL_ID = GORE_ELEMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Increment Coefficient</b></em>' attribute.
@@ -689,6 +752,15 @@ public interface GorePackage extends EPackage {
 	int DOMAIN_ASSUMPTION__AWREQS = GORE_ELEMENT__AWREQS;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_ASSUMPTION__INTERNAL_ID = GORE_ELEMENT__INTERNAL_ID;
+
+	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,6 +814,15 @@ public interface GorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__AWREQS = PERFORMATIVE_REQUIREMENT__AWREQS;
+
+	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__INTERNAL_ID = PERFORMATIVE_REQUIREMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Refinement Type</b></em>' attribute.
@@ -817,13 +898,22 @@ public interface GorePackage extends EPackage {
 	int ACTOR__GOAL_MODEL = 0;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__INTERNAL_ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTOR_FEATURE_COUNT = 1;
+	int ACTOR_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl <em>Configuration</em>}' class.
@@ -854,13 +944,22 @@ public interface GorePackage extends EPackage {
 	int CONFIGURATION__GOAL_MODEL = 1;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__INTERNAL_ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_FEATURE_COUNT = 2;
+	int CONFIGURATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl <em>Differential Relation</em>}' class.
@@ -927,13 +1026,22 @@ public interface GorePackage extends EPackage {
 	int DIFFERENTIAL_RELATION__VALUE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIFFERENTIAL_RELATION__INTERNAL_ID = 6;
+
+	/**
 	 * The number of structural features of the '<em>Differential Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIFFERENTIAL_RELATION_FEATURE_COUNT = 6;
+	int DIFFERENTIAL_RELATION_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -991,13 +1099,22 @@ public interface GorePackage extends EPackage {
 	int PARAMETER__METRIC = 4;
 
 	/**
+	 * The feature id for the '<em><b>Internal ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__INTERNAL_ID = 5;
+
+	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = 5;
+	int PARAMETER_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link it.unitn.disi.zanshin.model.gore.AggregationLevel <em>Aggregation Level</em>}' enum.
@@ -1177,6 +1294,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGOREElement_Awreqs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.GOREElement#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.GOREElement#getInternalID()
+	 * @see #getGOREElement()
+	 * @generated
+	 */
+	EAttribute getGOREElement_InternalID();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.GoalOrientedRequirement <em>Goal Oriented Requirement</em>}'.
@@ -1401,6 +1529,17 @@ public interface GorePackage extends EPackage {
 	EReference getActor_GoalModel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.Actor#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.Actor#getInternalID()
+	 * @see #getActor()
+	 * @generated
+	 */
+	EAttribute getActor_InternalID();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Configuration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1431,6 +1570,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConfiguration_GoalModel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.Configuration#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.Configuration#getInternalID()
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	EAttribute getConfiguration_InternalID();
 
 	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation <em>Differential Relation</em>}'.
@@ -1509,6 +1659,17 @@ public interface GorePackage extends EPackage {
 	EAttribute getDifferentialRelation_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.DifferentialRelation#getInternalID()
+	 * @see #getDifferentialRelation()
+	 * @generated
+	 */
+	EAttribute getDifferentialRelation_InternalID();
+
+	/**
 	 * Returns the meta object for class '{@link it.unitn.disi.zanshin.model.gore.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1572,6 +1733,17 @@ public interface GorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParameter_Metric();
+
+	/**
+	 * Returns the meta object for the attribute '{@link it.unitn.disi.zanshin.model.gore.Parameter#getInternalID <em>Internal ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal ID</em>'.
+	 * @see it.unitn.disi.zanshin.model.gore.Parameter#getInternalID()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_InternalID();
 
 	/**
 	 * Returns the meta object for enum '{@link it.unitn.disi.zanshin.model.gore.AggregationLevel <em>Aggregation Level</em>}'.
@@ -1748,6 +1920,14 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference GORE_ELEMENT__AWREQS = eINSTANCE.getGOREElement_Awreqs();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GORE_ELEMENT__INTERNAL_ID = eINSTANCE.getGOREElement_InternalID();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.GoalOrientedRequirementImpl <em>Goal Oriented Requirement</em>}' class.
@@ -1936,6 +2116,14 @@ public interface GorePackage extends EPackage {
 		EReference ACTOR__GOAL_MODEL = eINSTANCE.getActor_GoalModel();
 
 		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTOR__INTERNAL_ID = eINSTANCE.getActor_InternalID();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl <em>Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1960,6 +2148,14 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONFIGURATION__GOAL_MODEL = eINSTANCE.getConfiguration_GoalModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFIGURATION__INTERNAL_ID = eINSTANCE.getConfiguration_InternalID();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl <em>Differential Relation</em>}' class.
@@ -2020,6 +2216,14 @@ public interface GorePackage extends EPackage {
 		EAttribute DIFFERENTIAL_RELATION__VALUE = eINSTANCE.getDifferentialRelation_Value();
 
 		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIFFERENTIAL_RELATION__INTERNAL_ID = eINSTANCE.getDifferentialRelation_InternalID();
+
+		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2068,6 +2272,14 @@ public interface GorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__METRIC = eINSTANCE.getParameter_Metric();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__INTERNAL_ID = eINSTANCE.getParameter_InternalID();
 
 		/**
 		 * The meta object literal for the '{@link it.unitn.disi.zanshin.model.gore.AggregationLevel <em>Aggregation Level</em>}' enum.

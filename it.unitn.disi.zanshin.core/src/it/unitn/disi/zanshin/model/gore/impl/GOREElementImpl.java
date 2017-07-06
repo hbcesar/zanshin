@@ -37,6 +37,7 @@ import org.eeat.model.LTL.impl.OclAnyImpl;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getTime <em>Time</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getState <em>State</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getAwreqs <em>Awreqs</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.GOREElementImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +92,26 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 	 * @ordered
 	 */
 	protected EList<AwReq> awreqs;
+
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +184,27 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 			awreqs = new EObjectContainmentWithInverseEList<AwReq>(AwReq.class, this, GorePackage.GORE_ELEMENT__AWREQS, GorePackage.AW_REQ__TARGET);
 		}
 		return awreqs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.GORE_ELEMENT__INTERNAL_ID, oldInternalID, internalID));
 	}
 
 	/**
@@ -486,6 +528,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				return getState();
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				return getAwreqs();
+			case GorePackage.GORE_ELEMENT__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -509,6 +553,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				getAwreqs().clear();
 				getAwreqs().addAll((Collection<? extends AwReq>)newValue);
 				return;
+			case GorePackage.GORE_ELEMENT__INTERNAL_ID:
+				setInternalID((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -530,6 +577,9 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				getAwreqs().clear();
 				return;
+			case GorePackage.GORE_ELEMENT__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -548,6 +598,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 				return state != STATE_EDEFAULT;
 			case GorePackage.GORE_ELEMENT__AWREQS:
 				return awreqs != null && !awreqs.isEmpty();
+			case GorePackage.GORE_ELEMENT__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -566,6 +618,8 @@ public class GOREElementImpl extends OclAnyImpl implements GOREElement {
 		result.append(time);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", internalID: ");
+		result.append(internalID);
 		result.append(')');
 		return result.toString();
 	}

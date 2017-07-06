@@ -348,6 +348,15 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getResolutionCondition_InternalID() {
+		return (EAttribute)resolutionConditionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAdaptationStrategy() {
 		return adaptationStrategyEClass;
 	}
@@ -375,6 +384,15 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAdaptationStrategy_InternalID() {
+		return (EAttribute)adaptationStrategyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getApplicabilityCondition() {
 		return applicabilityConditionEClass;
 	}
@@ -386,6 +404,15 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 	 */
 	public EReference getApplicabilityCondition_Strategy() {
 		return (EReference)applicabilityConditionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicabilityCondition_InternalID() {
+		return (EAttribute)applicabilityConditionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -909,13 +936,16 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 		resolutionConditionEClass = createEClass(RESOLUTION_CONDITION);
 		createEReference(resolutionConditionEClass, RESOLUTION_CONDITION__AW_REQ);
+		createEAttribute(resolutionConditionEClass, RESOLUTION_CONDITION__INTERNAL_ID);
 
 		adaptationStrategyEClass = createEClass(ADAPTATION_STRATEGY);
 		createEReference(adaptationStrategyEClass, ADAPTATION_STRATEGY__AW_REQ);
 		createEReference(adaptationStrategyEClass, ADAPTATION_STRATEGY__CONDITION);
+		createEAttribute(adaptationStrategyEClass, ADAPTATION_STRATEGY__INTERNAL_ID);
 
 		applicabilityConditionEClass = createEClass(APPLICABILITY_CONDITION);
 		createEReference(applicabilityConditionEClass, APPLICABILITY_CONDITION__STRATEGY);
+		createEAttribute(applicabilityConditionEClass, APPLICABILITY_CONDITION__INTERNAL_ID);
 
 		eventEClass = createEClass(EVENT);
 		createEReference(eventEClass, EVENT__SESSION);
@@ -1054,6 +1084,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 		initEClass(resolutionConditionEClass, ResolutionCondition.class, "ResolutionCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResolutionCondition_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Condition(), "awReq", null, 0, 1, ResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResolutionCondition_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, ResolutionCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(resolutionConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1061,6 +1092,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 		initEClass(adaptationStrategyEClass, AdaptationStrategy.class, "AdaptationStrategy", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdaptationStrategy_AwReq(), this.getEcaAwReq(), this.getEcaAwReq_Strategies(), "awReq", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptationStrategy_Condition(), this.getApplicabilityCondition(), this.getApplicabilityCondition_Strategy(), "condition", null, 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdaptationStrategy_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, AdaptationStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(adaptationStrategyEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1069,6 +1101,7 @@ public class EcaPackageImpl extends EPackageImpl implements EcaPackage {
 
 		initEClass(applicabilityConditionEClass, ApplicabilityCondition.class, "ApplicabilityCondition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplicabilityCondition_Strategy(), this.getAdaptationStrategy(), this.getAdaptationStrategy_Condition(), "strategy", null, 0, 1, ApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicabilityCondition_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, ApplicabilityCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(applicabilityConditionEClass, ecorePackage.getEBoolean(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAdaptationSession(), "session", 0, 1, IS_UNIQUE, IS_ORDERED);

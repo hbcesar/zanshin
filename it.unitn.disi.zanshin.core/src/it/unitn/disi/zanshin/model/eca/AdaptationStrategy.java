@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getAwReq <em>Aw Req</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getCondition <em>Condition</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getAdaptationStrategy()
@@ -77,6 +78,33 @@ public interface AdaptationStrategy extends EObject {
 	 * @generated
 	 */
 	void setCondition(ApplicabilityCondition value);
+
+	/**
+	 * Returns the value of the '<em><b>Internal ID</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Internal ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Internal ID</em>' attribute.
+	 * @see #setInternalID(Integer)
+	 * @see it.unitn.disi.zanshin.model.eca.EcaPackage#getAdaptationStrategy_InternalID()
+	 * @model default="0" id="true"
+	 * @generated
+	 */
+	Integer getInternalID();
+
+	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.eca.AdaptationStrategy#getInternalID <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Internal ID</em>' attribute.
+	 * @see #getInternalID()
+	 * @generated
+	 */
+	void setInternalID(Integer value);
 
 	/**
 	 * <!-- begin-user-doc -->

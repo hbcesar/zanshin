@@ -27,11 +27,31 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl#getStrategy <em>Strategy</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.ApplicabilityConditionImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class ApplicabilityConditionImpl extends EObjectImpl implements ApplicabilityCondition {
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,6 +110,27 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.APPLICABILITY_CONDITION__STRATEGY, newStrategy, newStrategy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.APPLICABILITY_CONDITION__INTERNAL_ID, oldInternalID, internalID));
 	}
 
 	/**
@@ -157,6 +198,8 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 		switch (featureID) {
 			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
 				return getStrategy();
+			case EcaPackage.APPLICABILITY_CONDITION__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -171,6 +214,9 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 		switch (featureID) {
 			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
 				setStrategy((AdaptationStrategy)newValue);
+				return;
+			case EcaPackage.APPLICABILITY_CONDITION__INTERNAL_ID:
+				setInternalID((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,6 +233,9 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
 				setStrategy((AdaptationStrategy)null);
 				return;
+			case EcaPackage.APPLICABILITY_CONDITION__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -201,8 +250,26 @@ public abstract class ApplicabilityConditionImpl extends EObjectImpl implements 
 		switch (featureID) {
 			case EcaPackage.APPLICABILITY_CONDITION__STRATEGY:
 				return getStrategy() != null;
+			case EcaPackage.APPLICABILITY_CONDITION__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (internalID: ");
+		result.append(internalID);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ApplicabilityConditionImpl

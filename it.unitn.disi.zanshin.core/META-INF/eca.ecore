@@ -24,6 +24,8 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="awReq" eType="#//EcaAwReq"
         eOpposite="#//EcaAwReq/condition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdaptationStrategy" abstract="true">
     <eOperations name="execute">
@@ -41,6 +43,8 @@
         eOpposite="#//EcaAwReq/strategies"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ApplicabilityCondition"
         containment="true" eOpposite="#//ApplicabilityCondition/strategy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicabilityCondition" abstract="true">
     <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -51,6 +55,8 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" eType="#//AdaptationStrategy"
         eOpposite="#//AdaptationStrategy/condition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="session" eType="#//AdaptationSession"

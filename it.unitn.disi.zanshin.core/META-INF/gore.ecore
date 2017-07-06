@@ -119,6 +119,8 @@
         defaultValueLiteral="undefined"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="awreqs" upperBound="-1"
         eType="#//AwReq" containment="true" eOpposite="#//AwReq/target"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalOrientedRequirement" eSuperTypes="#//GOREElement">
     <eOperations name="getChildren">
@@ -232,12 +234,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="Actor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
         eOpposite="#//GoalModel/actors"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true" eOpposite="#//Parameter/configuration"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalModel" eType="#//GoalModel"
         eOpposite="#//GoalModel/configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DifferentialRelation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="indicator" eType="#//AwReq"/>
@@ -247,6 +253,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//DifferentialRelationOperator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eOperations name="greaterThan" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
@@ -317,5 +325,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" lowerBound="1"
         eType="#//ParameterMetric" defaultValueLiteral="enumerated"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="0" iD="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationStrategyImpl#getAwReq <em>Aw Req</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationStrategyImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.eca.impl.AdaptationStrategyImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,6 +44,25 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 	 * @ordered
 	 */
 	protected ApplicabilityCondition condition;
+
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +172,27 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcaPackage.ADAPTATION_STRATEGY__INTERNAL_ID, oldInternalID, internalID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void execute(final AdaptationSession session) {
 		// This method is not supposed to be called.
 		it.unitn.disi.zanshin.core.CoreUtils.log.error("Method AdaptationStrategyImpl.execute() has been called, but this method is not meant to be called!"); //$NON-NLS-1$
@@ -230,6 +271,8 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 				return getAwReq();
 			case EcaPackage.ADAPTATION_STRATEGY__CONDITION:
 				return getCondition();
+			case EcaPackage.ADAPTATION_STRATEGY__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -247,6 +290,9 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 				return;
 			case EcaPackage.ADAPTATION_STRATEGY__CONDITION:
 				setCondition((ApplicabilityCondition)newValue);
+				return;
+			case EcaPackage.ADAPTATION_STRATEGY__INTERNAL_ID:
+				setInternalID((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -266,6 +312,9 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 			case EcaPackage.ADAPTATION_STRATEGY__CONDITION:
 				setCondition((ApplicabilityCondition)null);
 				return;
+			case EcaPackage.ADAPTATION_STRATEGY__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -282,8 +331,26 @@ public abstract class AdaptationStrategyImpl extends EObjectImpl implements Adap
 				return getAwReq() != null;
 			case EcaPackage.ADAPTATION_STRATEGY__CONDITION:
 				return condition != null;
+			case EcaPackage.ADAPTATION_STRATEGY__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (internalID: ");
+		result.append(internalID);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AdaptationStrategyImpl

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getOperator <em>Operator</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getValue <em>Value</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @see it.unitn.disi.zanshin.model.gore.GorePackage#getDifferentialRelation()
@@ -185,5 +186,32 @@ public interface DifferentialRelation extends EObject {
 	 * @generated
 	 */
 	void setValue(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Internal ID</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Internal ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Internal ID</em>' attribute.
+	 * @see #setInternalID(Integer)
+	 * @see it.unitn.disi.zanshin.model.gore.GorePackage#getDifferentialRelation_InternalID()
+	 * @model default="0" id="true"
+	 * @generated
+	 */
+	Integer getInternalID();
+
+	/**
+	 * Sets the value of the '{@link it.unitn.disi.zanshin.model.gore.DifferentialRelation#getInternalID <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Internal ID</em>' attribute.
+	 * @see #getInternalID()
+	 * @generated
+	 */
+	void setInternalID(Integer value);
 
 } // DifferentialRelation

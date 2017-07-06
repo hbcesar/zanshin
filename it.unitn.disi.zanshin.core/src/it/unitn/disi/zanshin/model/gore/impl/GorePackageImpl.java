@@ -362,6 +362,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGOREElement_InternalID() {
+		return (EAttribute)goreElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGoalOrientedRequirement() {
 		return goalOrientedRequirementEClass;
 	}
@@ -551,6 +560,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getActor_InternalID() {
+		return (EAttribute)actorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConfiguration() {
 		return configurationEClass;
 	}
@@ -571,6 +589,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 */
 	public EReference getConfiguration_GoalModel() {
 		return (EReference)configurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConfiguration_InternalID() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -641,6 +668,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDifferentialRelation_InternalID() {
+		return (EAttribute)differentialRelationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getParameter() {
 		return parameterEClass;
 	}
@@ -688,6 +724,15 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 	 */
 	public EAttribute getParameter_Metric() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameter_InternalID() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -792,6 +837,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		createEAttribute(goreElementEClass, GORE_ELEMENT__TIME);
 		createEAttribute(goreElementEClass, GORE_ELEMENT__STATE);
 		createEReference(goreElementEClass, GORE_ELEMENT__AWREQS);
+		createEAttribute(goreElementEClass, GORE_ELEMENT__INTERNAL_ID);
 
 		goalOrientedRequirementEClass = createEClass(GOAL_ORIENTED_REQUIREMENT);
 		createEAttribute(goalOrientedRequirementEClass, GOAL_ORIENTED_REQUIREMENT__REFINEMENT_TYPE);
@@ -822,10 +868,12 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		actorEClass = createEClass(ACTOR);
 		createEReference(actorEClass, ACTOR__GOAL_MODEL);
+		createEAttribute(actorEClass, ACTOR__INTERNAL_ID);
 
 		configurationEClass = createEClass(CONFIGURATION);
 		createEReference(configurationEClass, CONFIGURATION__PARAMETERS);
 		createEReference(configurationEClass, CONFIGURATION__GOAL_MODEL);
+		createEAttribute(configurationEClass, CONFIGURATION__INTERNAL_ID);
 
 		differentialRelationEClass = createEClass(DIFFERENTIAL_RELATION);
 		createEReference(differentialRelationEClass, DIFFERENTIAL_RELATION__INDICATOR);
@@ -834,6 +882,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		createEAttribute(differentialRelationEClass, DIFFERENTIAL_RELATION__UPPER_BOUND);
 		createEAttribute(differentialRelationEClass, DIFFERENTIAL_RELATION__OPERATOR);
 		createEAttribute(differentialRelationEClass, DIFFERENTIAL_RELATION__VALUE);
+		createEAttribute(differentialRelationEClass, DIFFERENTIAL_RELATION__INTERNAL_ID);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEReference(parameterEClass, PARAMETER__CONFIGURATION);
@@ -841,6 +890,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		createEAttribute(parameterEClass, PARAMETER__UNIT);
 		createEAttribute(parameterEClass, PARAMETER__VALUE);
 		createEAttribute(parameterEClass, PARAMETER__METRIC);
+		createEAttribute(parameterEClass, PARAMETER__INTERNAL_ID);
 
 		// Create enums
 		aggregationLevelEEnum = createEEnum(AGGREGATION_LEVEL);
@@ -922,6 +972,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		initEAttribute(getGOREElement_Time(), ecorePackage.getEDate(), "time", null, 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGOREElement_State(), this.getGOREElementState(), "state", "undefined", 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGOREElement_Awreqs(), this.getAwReq(), this.getAwReq_Target(), "awreqs", null, 0, -1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGOREElement_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, GOREElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(goreElementEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1005,10 +1056,12 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 
 		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActor_GoalModel(), this.getGoalModel(), this.getGoalModel_Actors(), "goalModel", null, 0, 1, Actor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getActor_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, Actor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfiguration_Parameters(), this.getParameter(), this.getParameter_Configuration(), "parameters", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_GoalModel(), this.getGoalModel(), this.getGoalModel_Configuration(), "goalModel", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfiguration_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(differentialRelationEClass, DifferentialRelation.class, "DifferentialRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDifferentialRelation_Indicator(), this.getAwReq(), null, "indicator", null, 0, 1, DifferentialRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1017,6 +1070,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		initEAttribute(getDifferentialRelation_UpperBound(), ecorePackage.getEString(), "upperBound", null, 0, 1, DifferentialRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDifferentialRelation_Operator(), this.getDifferentialRelationOperator(), "operator", null, 0, 1, DifferentialRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDifferentialRelation_Value(), ecorePackage.getEDouble(), "value", "0.0", 0, 1, DifferentialRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDifferentialRelation_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, DifferentialRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParameter_Configuration(), this.getConfiguration(), this.getConfiguration_Parameters(), "configuration", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1024,6 +1078,7 @@ public class GorePackageImpl extends EPackageImpl implements GorePackage {
 		initEAttribute(getParameter_Unit(), ecorePackage.getEString(), "unit", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Metric(), this.getParameterMetric(), "metric", "enumerated", 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_InternalID(), ecorePackage.getEIntegerObject(), "internalID", "0", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(parameterEClass, ecorePackage.getEBooleanObject(), "greaterThan", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);

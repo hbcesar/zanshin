@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getUnit <em>Unit</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getValue <em>Value</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getMetric <em>Metric</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ParameterImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
@@ -117,6 +118,26 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 * @ordered
 	 */
 	protected ParameterMetric metric = METRIC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,6 +281,27 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.PARAMETER__METRIC, oldMetric, metric));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.PARAMETER__INTERNAL_ID, oldInternalID, internalID));
 	}
 
 	/**
@@ -582,6 +624,8 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				return getValue();
 			case GorePackage.PARAMETER__METRIC:
 				return getMetric();
+			case GorePackage.PARAMETER__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -608,6 +652,9 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				return;
 			case GorePackage.PARAMETER__METRIC:
 				setMetric((ParameterMetric)newValue);
+				return;
+			case GorePackage.PARAMETER__INTERNAL_ID:
+				setInternalID((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -636,6 +683,9 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 			case GorePackage.PARAMETER__METRIC:
 				setMetric(METRIC_EDEFAULT);
 				return;
+			case GorePackage.PARAMETER__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -658,6 +708,8 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case GorePackage.PARAMETER__METRIC:
 				return metric != METRIC_EDEFAULT;
+			case GorePackage.PARAMETER__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -680,6 +732,8 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		result.append(value);
 		result.append(", metric: ");
 		result.append(metric);
+		result.append(", internalID: ");
+		result.append(internalID);
 		result.append(')');
 		return result.toString();
 	}

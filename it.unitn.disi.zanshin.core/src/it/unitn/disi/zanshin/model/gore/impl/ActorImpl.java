@@ -26,11 +26,31 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl#getGoalModel <em>Goal Model</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ActorImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ActorImpl extends EObjectImpl implements Actor {
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,6 +116,27 @@ public class ActorImpl extends EObjectImpl implements Actor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.ACTOR__INTERNAL_ID, oldInternalID, internalID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -145,6 +186,8 @@ public class ActorImpl extends EObjectImpl implements Actor {
 		switch (featureID) {
 			case GorePackage.ACTOR__GOAL_MODEL:
 				return getGoalModel();
+			case GorePackage.ACTOR__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -159,6 +202,9 @@ public class ActorImpl extends EObjectImpl implements Actor {
 		switch (featureID) {
 			case GorePackage.ACTOR__GOAL_MODEL:
 				setGoalModel((GoalModel)newValue);
+				return;
+			case GorePackage.ACTOR__INTERNAL_ID:
+				setInternalID((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,6 +221,9 @@ public class ActorImpl extends EObjectImpl implements Actor {
 			case GorePackage.ACTOR__GOAL_MODEL:
 				setGoalModel((GoalModel)null);
 				return;
+			case GorePackage.ACTOR__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -189,8 +238,26 @@ public class ActorImpl extends EObjectImpl implements Actor {
 		switch (featureID) {
 			case GorePackage.ACTOR__GOAL_MODEL:
 				return getGoalModel() != null;
+			case GorePackage.ACTOR__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (internalID: ");
+		result.append(internalID);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ActorImpl

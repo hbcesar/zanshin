@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.DifferentialRelationImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
@@ -134,6 +135,26 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 	 * @ordered
 	 */
 	protected double value = VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,6 +340,27 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.DIFFERENTIAL_RELATION__INTERNAL_ID, oldInternalID, internalID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -336,6 +378,8 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return getOperator();
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				return getValue();
+			case GorePackage.DIFFERENTIAL_RELATION__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -365,6 +409,9 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return;
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				setValue((Double)newValue);
+				return;
+			case GorePackage.DIFFERENTIAL_RELATION__INTERNAL_ID:
+				setInternalID((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -396,6 +443,9 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
+			case GorePackage.DIFFERENTIAL_RELATION__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -420,6 +470,8 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 				return operator != OPERATOR_EDEFAULT;
 			case GorePackage.DIFFERENTIAL_RELATION__VALUE:
 				return value != VALUE_EDEFAULT;
+			case GorePackage.DIFFERENTIAL_RELATION__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -442,6 +494,8 @@ public class DifferentialRelationImpl extends EObjectImpl implements Differentia
 		result.append(operator);
 		result.append(", value: ");
 		result.append(value);
+		result.append(", internalID: ");
+		result.append(internalID);
 		result.append(')');
 		return result.toString();
 	}

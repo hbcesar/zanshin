@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl#getGoalModel <em>Goal Model</em>}</li>
+ *   <li>{@link it.unitn.disi.zanshin.model.gore.impl.ConfigurationImpl#getInternalID <em>Internal ID</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,6 +49,25 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * @ordered
 	 */
 	protected EList<Parameter> parameters;
+
+	/**
+	 * The default value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INTERNAL_ID_EDEFAULT = new Integer(0);
+	/**
+	 * The cached value of the '{@link #getInternalID() <em>Internal ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInternalID()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer internalID = INTERNAL_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,6 +146,27 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getInternalID() {
+		return internalID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternalID(Integer newInternalID) {
+		Integer oldInternalID = internalID;
+		internalID = newInternalID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorePackage.CONFIGURATION__INTERNAL_ID, oldInternalID, internalID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -182,6 +223,8 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 				return getParameters();
 			case GorePackage.CONFIGURATION__GOAL_MODEL:
 				return getGoalModel();
+			case GorePackage.CONFIGURATION__INTERNAL_ID:
+				return getInternalID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +245,9 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 			case GorePackage.CONFIGURATION__GOAL_MODEL:
 				setGoalModel((GoalModel)newValue);
 				return;
+			case GorePackage.CONFIGURATION__INTERNAL_ID:
+				setInternalID((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -220,6 +266,9 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 			case GorePackage.CONFIGURATION__GOAL_MODEL:
 				setGoalModel((GoalModel)null);
 				return;
+			case GorePackage.CONFIGURATION__INTERNAL_ID:
+				setInternalID(INTERNAL_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,8 +285,26 @@ public class ConfigurationImpl extends EObjectImpl implements Configuration {
 				return parameters != null && !parameters.isEmpty();
 			case GorePackage.CONFIGURATION__GOAL_MODEL:
 				return getGoalModel() != null;
+			case GorePackage.CONFIGURATION__INTERNAL_ID:
+				return INTERNAL_ID_EDEFAULT == null ? internalID != null : !INTERNAL_ID_EDEFAULT.equals(internalID);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (internalID: ");
+		result.append(internalID);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ConfigurationImpl
