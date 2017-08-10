@@ -1,3 +1,5 @@
+This text is a copy from its original repository: https://github.com/sefms-disi-unitn/Zanshin
+
 The Zanshin Framework
 =====================
 
